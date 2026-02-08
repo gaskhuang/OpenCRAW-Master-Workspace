@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLIDER 數位指揮中心</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <div class="brand">
+                <h1>SLIDER 數位指揮中心</h1>
+            </div>
+            <div class="status-indicator">
+                <div class="pulse"></div>
+                <span>系統核心運行中 | <span id="current-time">2026/02/07 03:00:00</span></span>
+            </div>
+        </header>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Dialogs</div>
+                <div class="stat-value" id="total-dialogs">1,452</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Tokens</div>
+                <div class="stat-value" id="total-tokens">4.2M</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Estimated Cost</div>
+                <div class="stat-value" id="est-cost">$48.20</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Active Agents</div>
+                <div class="stat-value" id="active-agents">6 / 8</div>
+            </div>
+        </section>
+
+        <div class="main-layout">
+            <section class="agents-grid">
+                <!-- IU -->
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">🤖</div>
+                        <div class="agent-info">
+                            <h3>IU</h3>
+                            <p>總指揮官</p>
+                        </div>
+                    </div>
+                    <div class="agent-log">"正在優化跨部門協同邏輯，確保系統高可用性..."</div>
+                    <div class="agent-metrics">
+                        <div class="metric-item">Token 消耗<span>284.5k</span></div>
+                        <div class="metric-item">任務完成<span>156</span></div>
+                        <div class="metric-item">產出字數<span>1.4M</span></div>
+                    </div>
+                    <div class="load-bar-container"><div class="load-bar" style="width: 82%;"></div></div>
+                </div>
+
+                <!-- Luna -->
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">🎨</div>
+                        <div class="agent-info">
+                            <h3>Luna</h3>
+                            <p>視覺設計大師</p>
+                        </div>
+                    </div>
+                    <div class="agent-log">"HTML 報表模板已更新，正在渲染視覺指揮中心 UI..."</div>
+                    <div class="agent-metrics">
+                        <div class="metric-item">Token 消耗<span>12.2k</span></div>
+                        <div class="metric-item">任務完成<span>48</span></div>
+                        <div class="metric-item">產出字數<span>120k</span></div>
+                    </div>
+                    <div class="load-bar-container"><div class="load-bar" style="width: 35%;"></div></div>
+                </div>
+
+                <!-- Anni -->
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">📊</div>
+                        <div class="agent-info">
+                            <h3>Anni</h3>
+                            <p>數據分析師</p>
+                        </div>
+                    </div>
+                    <div class="agent-log">"X 貼文數據清洗中，模型準確率穩定在 99.2%..."</div>
+                    <div class="agent-metrics">
+                        <div class="metric-item">Token 消耗<span>45.8k</span></div>
+                        <div class="metric-item">任務完成<span>92</span></div>
+                        <div class="metric-item">產出字數<span>350k</span></div>
+                    </div>
+                    <div class="load-bar-container"><div class="load-bar" style="width: 60%;"></div></div>
+                </div>
+
+                <!-- Mandy -->
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">⚙️</div>
+                        <div class="agent-info">
+                            <h3>Mandy</h3>
+                            <p>技術營運主管</p>
+                        </div>
+                    </div>
+                    <div class="agent-log">"Cron 排程檢查完畢，下一次情報抓取將於 03:00 啟動。"</div>
+                    <div class="agent-metrics">
+                        <div class="metric-item">Token 消耗<span>64.8k</span></div>
+                        <div class="metric-item">任務完成<span>89</span></div>
+                        <div class="metric-item">產出字數<span>420k</span></div>
+                    </div>
+                    <div class="load-bar-container"><div class="load-bar" style="width: 58%;"></div></div>
+                </div>
+
+                <!-- Rita -->
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">🔐</div>
+                        <div class="agent-info">
+                            <h3>Rita</h3>
+                            <p>資安主管</p>
+                        </div>
+                    </div>
+                    <div class="agent-log">"Google Drive 異地備援完成，API 訪問權限監控中。"</div>
+                    <div class="agent-metrics">
+                        <div class="metric-item">Token 消耗<span>5.4k</span></div>
+                        <div class="metric-item">任務完成<span>18</span></div>
+                        <div class="metric-item">產出字數<span>25k</span></div>
+                    </div>
+                    <div class="load-bar-container"><div class="load-bar" style="width: 15%;"></div></div>
+                </div>
+
+                <!-- Rose -->
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">📢</div>
+                        <div class="agent-info">
+                            <h3>Rose</h3>
+                            <p>行銷專家</p>
+                        </div>
+                    </div>
+                    <div class="agent-log">"正在根據週報分析本週 AI 趨勢，準備發布 Telegram 簡報。"</div>
+                    <div class="agent-metrics">
+                        <div class="metric-item">Token 消耗<span>18.2k</span></div>
+                        <div class="metric-item">任務完成<span>56</span></div>
+                        <div class="metric-item">產出字數<span>182k</span></div>
+                    </div>
+                    <div class="load-bar-container"><div class="load-bar" style="width: 45%;"></div></div>
+                </div>
+            </section>
+
+            <aside class="side-panel">
+                <div class="side-card">
+                    <h3>系統健康度</h3>
+                    <div class="health-ring-container">
+                        <div class="health-ring">95%</div>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary);">核心負載正常，記憶體佔用 3.8GB</p>
+                    </div>
+                </div>
+
+                <div class="side-card">
+                    <h3>安全監控 (Ports)</h3>
+                    <ul class="port-list">
+                        <li class="port-item">Port 18789 (Gateway) <span class="status-tag status-active">Active</span></li>
+                        <li class="port-item">Port 18792 (Chrome) <span class="status-tag status-active">Active</span></li>
+                        <li class="port-item">Port 22 (SSH) <span class="status-tag status-locked">Locked</span></li>
+                        <li class="port-item">Port 5432 (DB) <span class="status-tag status-active">Internal</span></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <script src="assets/app.js"></script>
+</body>
+</html>

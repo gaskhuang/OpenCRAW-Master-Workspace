@@ -1,0 +1,21 @@
+{
+  "current_goal": "OpenCRAW 第二大腦收集與任務執行導向",
+  "active_projects": [
+    "OpenCRAW 第二大腦收集 (Knowledge Base)",
+    "任務執行清單維護 (Task List Management)",
+    "龍蝦配額管理系統 (Quota Guardian)"
+  ],
+  "technical_decisions": {
+    "information_routing": {
+      "task_signal": "執行任務",
+      "strategy_categories": ["龍蝦", "烤", "戰略"],
+      "website_lock": true
+    },
+    "memory_management": "龍蝦精華協議 (Distilled Asset Protocol) + 每10分鐘自動壓縮"
+  },
+  "hardware_info": {
+    "host": "user的MacBook Pro",
+    "os": "Darwin 21.6.0 (arm64)"
+  },
+  "last_updated": "2026-02-08 15:45:00"
+}
