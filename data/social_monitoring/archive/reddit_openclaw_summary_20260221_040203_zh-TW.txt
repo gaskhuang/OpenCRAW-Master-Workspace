@@ -1,0 +1,7 @@
+Reddit OpenClaw 監控完成（2026/2/21 04:02:32）
+採集貼文：79 則
+主要 subreddits：r/OpenclawBot(25)、r/openclaw(6)、r/Isletforum(3)、r/clawdbot(3)、r/HongKong(2)
+熱門主題 Top3：Chinese words made up of two words that describes the original word｜Yall remember these games??｜台美簽署「對等貿易協定」確立對等關稅15％且不疊加　「達成6大目標」一文全掌握
+關鍵趨勢：agent(30)、tool(17)、workflow(13)、automation(10)、install(8)
+JSON：/Users/user/data/social_monitoring/reddit_openclaw_monitor_20260221_040203.json
+報告：/Users/user/data/social_monitoring/reports/reddit_openclaw_report_20260221_040203.md
