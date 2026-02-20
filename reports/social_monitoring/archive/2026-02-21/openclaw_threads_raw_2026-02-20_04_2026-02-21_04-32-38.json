@@ -1,0 +1,18 @@
+{
+  "task": "OpenClaw Threads 即時監控",
+  "generated_at": "2026-02-21T04:31:58.587352+08:00",
+  "keywords": [
+    "OpenClaw",
+    "openclaw",
+    "@openclaw",
+    "#OpenClaw"
+  ],
+  "collection_runs": [],
+  "total_collected_before_filter": 0,
+  "total_posts": 0,
+  "posts": [],
+  "technical_limits": [
+    "Playwright/CDP 啟動失敗：BrowserType.launch_persistent_context: Failed to create a ProcessSingleton for your profile directory. This usually means that the profile is already in use by another instance of Chromium.\nCall log:\n  - <launching> /Applications/Google Chrome.app/Contents/MacOS/Google Chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --profile-directory=CrawlerKing --user-data-dir=/Users/user/.openclaw/chrome-crawler-profile --remote-debugging-pipe about:blank\n  - <launched> pid=89695\n  - [pid=89695][err] [89695:9362228:0221/043158.578893:ERROR:chrome/browser/process_singleton_posix.cc:345] Failed to create /Users/user/.openclaw/chrome-crawler-profile/SingletonLock: File exists (17)\n  - [pid=89695][err] [89695:9362228:0221/043158.579180:ERROR:chrome/app/chrome_main_delegate.cc:513] Failed to create a ProcessSingleton for your profile directory. This means that running multiple instances would start multiple browser processes rather than opening a new window in the existing process. Aborting now to avoid profile corruption.\n  - [pid=89695] <gracefully close start>\n  - [pid=89695] <kill>\n  - [pid=89695] <will force kill>\n  - [pid=89695] exception while trying to kill process: Error: kill EPERM\n  - [pid=89695] <process did exit: exitCode=21, signal=null>\n  - [pid=89695] starting temporary directories cleanup\n  - [pid=89695] finished temporary directories cleanup\n  - [pid=89695] <gracefully close end>\n"
+  ],
+  "coverage_note": "已使用 4 組關鍵字搜尋並滾動載入；若 Threads 需登入/限流/反爬，仍可能漏抓。"
+}
