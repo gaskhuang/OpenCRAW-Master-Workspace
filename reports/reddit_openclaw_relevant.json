@@ -1,0 +1,210 @@
+[
+  {
+    "query": "OpenClaw",
+    "id": "1rale4f",
+    "subreddit": "ChatGPT",
+    "title": "I'm 75% done building a GPT4-o clone. Want to help?",
+    "selftext": "Apply here:https://huggingface.co/Nest-AI\n\nI've got most of the dataset built, and will soon start the training loop. \n\nFor non-huggingface users that means it'll be done in a few weeks and have the same \"personal\" capabilities if used in openclaw\\\\nullclaw\\\\picoclaw. Very easy setup. DM on discord my name is magebreaker. \n\nThis is not an advertisement. This fulfills a deeply desired hole in people's lives. I AM RECRUITING",
+    "score": 2,
+    "num_comments": 1,
+    "permalink": "https://www.reddit.com/r/ChatGPT/comments/1rale4f/im_75_done_building_a_gpt4o_clone_want_to_help/",
+    "top_comments": [
+      {
+        "score": 1,
+        "body": "Hey /u/volious-ka,\n\nIf your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.\n\nIf your post is a DALL-E 3 image post, please reply with the prompt used to make this image.\n\nConsider joining our [public discord server](https://discord.gg/r-chatgpt-1050422060352024636)! We have free bots with GPT-4 (with vision), image generators, and more!\n\n &amp;#x1F916;\n\nNote:"
+      }
+    ]
+  },
+  {
+    "query": "openclaw",
+    "id": "1rakzi7",
+    "subreddit": "ArtificialInteligence",
+    "title": "OpenClaw and the future",
+    "selftext": "OpenClaw is innovative.  It's like a hybrid model that runs locally on your computer but has access to public LLMs through API keys.  The \"skills\" can access MCP servers and/or instructions on how to handle local filesystems/applications.  With local system access, OpenClaw can access your email, documents, files, system configuration, API keys, banking information, passwords, private encryption keys, all that.  I would never give a system access to buy on Amazon without serious guardrails, but there are already cases of agents running amuck.\n\nIt isn't hard to see where this is going.  OpenClaw partnered with OpenAI.  OpenAI wants information on individual users to understand their emails, documents, how they use their systems, sites they visit, competitors they use, as much info as possible so it can train it's models to be hyper-intelligent.  The main goal seems to be advertising.  OpenAI won't just get into ads - it'll reinvent it.  It's a trillion dollar idea but it needs a lot of personal information to be effective.\n\nThe ads will be designed to tap into your dopamine receptors.  You'll feel like you need that product or service so you don't get left behind and left out.  Cars, fashion, financial service companies, pharmaceuticals, entertainment, vacations, etc... will have ads tailored to you crafted in a way to make you feel bad if you don't get their product or their service.  You'll feel like you don't love your kids, your job is going to let you go, your happiness isn't complete unless you buy this thing.  They'll know so much about you that they'll be able to craft messages that tap into your emotions and insecurities.  That's really dangerous.\n\nIt's used to be malware.  Yuck.  Then tracking cookies.  Icky.  Now it's AI agents running autonomously with unfettered access so you can make a silly game or another to-do list or have it summarize your emails into a gamified to-do list.",
+    "score": 3,
+    "num_comments": 3,
+    "permalink": "https://www.reddit.com/r/ArtificialInteligence/comments/1rakzi7/openclaw_and_the_future/",
+    "top_comments": [
+      {
+        "score": 1,
+        "body": "## Welcome to the r/ArtificialIntelligence gateway\n### Question Discussion Guidelines\n\n---\n\nPlease use the following guidelines in current and future posts:\n\n* Post must be greater than 100 characters - the more detail, the better.\n* Your question might already have been answered. Use the search feature if no one is engaging in your post.\n    * AI is going to take our jobs - its been asked a lot!\n* Discussion regarding positives and negatives about AI are allowed and encouraged. Just be respectf"
+      },
+      {
+        "score": 1,
+        "body": "Agents touching local files isn’t scary by default. Poor guardrails are.🦞"
+      },
+      {
+        "score": 1,
+        "body": "This is exactly why \"agents with local system access\" freak people out. Capability is one thing, but authorization and provenance are the whole game. If an agent can read keys, emails, and files, you basically need sandboxing, scoped credentials, and a policy layer that is not controlled by the LLM. Otherwise it is malware with a nice UI. I have been digging into practical guardrails for tool-using agents here, https://www.agentixlabs.com/blog/ and it aligns with what you are warning about."
+      }
+    ]
+  },
+  {
+    "query": "openclaw",
+    "id": "1rakvti",
+    "subreddit": "openclaw",
+    "title": "Principiante OpenClaw",
+    "selftext": "Good morning, I've heard about OC and would like some information from you:\n\nI'm a consultant and for customer care I need to interact with Instagram and WhatsApp and update my client data on Google Sheets and Docs based on the trading actions carried out.\n\nI have PCs at both home and the office.\n\nIn addition, I'd like to automate one of my trading strategies or create a new one.\n\nI use Claude and ChatGpt , both paid. I'm testing Grok, which I find superior in some respects.\n\nI'm proficient with Python, but not a pro programmer; it doesn't seem too cluttered for me.\n\nWould Openclaw or its equivalent meet my needs? Thanks for your help.",
+    "score": 2,
+    "num_comments": 1,
+    "permalink": "https://www.reddit.com/r/openclaw/comments/1rakvti/principiante_openclaw/",
+    "top_comments": [
+      {
+        "score": 1,
+        "body": "Hey there! Thanks for posting in r/OpenClaw.\n\n\n**A few quick reminders**:\n\n\n→ Check the [FAQ](https://docs.openclaw.ai/help/faq#faq) - your question might already be answered\n→ Use the right flair so others can find your post\n→ Be respectful and follow the rules\n\n\nNeed faster help? Join the [Discord](https://discord.com/invite/clawd).\n\n\nWebsite: https://openclaw.ai\nDocs: https://docs.openclaw.ai\nClawHub: https://www.clawhub.com\nGitHub: https://github.com/openclaw/openclaw\n\n*I am a bot, and this "
+      }
+    ]
+  },
+  {
+    "query": "openclaw",
+    "id": "1rakvng",
+    "subreddit": "worldTechnology",
+    "title": "Supply Chain Attack targeting Cline installs OpenClaw",
+    "selftext": "",
+    "score": 1,
+    "num_comments": 0,
+    "permalink": "https://www.reddit.com/r/worldTechnology/comments/1rakvng/supply_chain_attack_targeting_cline_installs/",
+    "top_comments": []
+  },
+  {
+    "query": "openclaw",
+    "id": "1rakkv1",
+    "subreddit": "openclaw",
+    "title": "People saying Codex is as good or better than Claude are smoking crack.",
+    "selftext": "Seriously, it’s not even debatable. ",
+    "score": 1,
+    "num_comments": 5,
+    "permalink": "https://www.reddit.com/r/openclaw/comments/1rakkv1/people_saying_codex_is_as_good_or_better_than/",
+    "top_comments": [
+      {
+        "score": 1,
+        "body": "Hey there! Thanks for posting in r/OpenClaw.\n\n\n**A few quick reminders**:\n\n\n→ Check the [FAQ](https://docs.openclaw.ai/help/faq#faq) - your question might already be answered\n→ Use the right flair so others can find your post\n→ Be respectful and follow the rules\n\n\nNeed faster help? Join the [Discord](https://discord.com/invite/clawd).\n\n\nWebsite: https://openclaw.ai\nDocs: https://docs.openclaw.ai\nClawHub: https://www.clawhub.com\nGitHub: https://github.com/openclaw/openclaw\n\n*I am a bot, and this "
+      },
+      {
+        "score": 1,
+        "body": "Too much of a poor for Claude but codex is good. Considerably better than everything else except opus"
+      },
+      {
+        "score": 1,
+        "body": "so I only use it to help me code my open claw, and even though I hate openAI, for this particular use case, it helped me actually make it work "
+      }
+    ]
+  },
+  {
+    "query": "openclaw",
+    "id": "1rakj0h",
+    "subreddit": "openclaw",
+    "title": "Four days in - TOOLS.md and SOUL.md still at template state",
+    "selftext": "I really used my OpenClaw manytimes the last four days. But the [TOOLS.md](http://TOOLS.md) and [SOUL.md](http://SOUL.md) are still in the original state. Do i have to say to my Agent to write my information into this specific file? ",
+    "score": 0,
+    "num_comments": 2,
+    "permalink": "https://www.reddit.com/r/openclaw/comments/1rakj0h/four_days_in_toolsmd_and_soulmd_still_at_template/",
+    "top_comments": [
+      {
+        "score": 1,
+        "body": "Hey there! Thanks for posting in r/OpenClaw.\n\n\n**A few quick reminders**:\n\n\n→ Check the [FAQ](https://docs.openclaw.ai/help/faq#faq) - your question might already be answered\n→ Use the right flair so others can find your post\n→ Be respectful and follow the rules\n\n\nNeed faster help? Join the [Discord](https://discord.com/invite/clawd).\n\n\nWebsite: https://openclaw.ai\nDocs: https://docs.openclaw.ai\nClawHub: https://www.clawhub.com\nGitHub: https://github.com/openclaw/openclaw\n\n*I am a bot, and this "
+      },
+      {
+        "score": 1,
+        "body": "Yes.. you need to update Soul.md, User.md, Identity.md and tools.md. you can create the base, then tell your bot to update soul, Identity and tools as it sees fit, and if it make changes it needs to send.those as part of a daily report etc."
+      }
+    ]
+  },
+  {
+    "query": "openclaw",
+    "id": "1raki0j",
+    "subreddit": "zurich",
+    "title": "OpenClaw on PrivateTax",
+    "selftext": "Did anyone already try to get their taxes done with the help of OpenClaw? If so, what was your experience like?",
+    "score": 0,
+    "num_comments": 7,
+    "permalink": "https://www.reddit.com/r/zurich/comments/1raki0j/openclaw_on_privatetax/",
+    "top_comments": [
+      {
+        "score": 10,
+        "body": "Please do it and let us know next year. \nCan't wait for the surprise to happen.."
+      },
+      {
+        "score": 6,
+        "body": "!RemindMe 300 days"
+      },
+      {
+        "score": 3,
+        "body": "Don’t, just don’t"
+      }
+    ]
+  },
+  {
+    "query": "openclaw",
+    "id": "1rakfvd",
+    "subreddit": "Bard",
+    "title": "Gemini 3.1 on Antigravity solved on the first try an issue Codex 5.3 has been stuck on for 3 days.",
+    "selftext": "I’m making my own secure Clawdbot in swift. Instead of giving it all my api keys, I’m hiding them in Apple’s keychain. To do that, every API call has to be stripped from the gateway (and obviously remove the gateway). I had built 99% of tools from scratch, but I wanted to implement exactly what OpenClaw does for browser use. It is good enough and honestly I would not have been able to write a better one in a reasonable amount of time. So I asked Codex (on codex) to port it all to swift. It took it 3 full days of parity checks and hundreds of prompts. But it got stuck at 95% of the way there.  \n\nI got desperate and I tried the new Gemini model on antigravity… it fixed the remaining issues immediately!\n\n \n\n \n\nIt’s not about Antigravity being better. In those 3 days I tried Opus 4.6 many times on Antigravity without any luck. \n\nI will report (edit this post) if it was a one time hit or if it’s consistently a better experience. Before this model Gemini 3.0 was unusable on Antigravity compared to Opus or Codex.\n\n  ",
+    "score": 3,
+    "num_comments": 0,
+    "permalink": "https://www.reddit.com/r/Bard/comments/1rakfvd/gemini_31_on_antigravity_solved_on_the_first_try/",
+    "top_comments": []
+  },
+  {
+    "query": "openclaw",
+    "id": "1rakd0j",
+    "subreddit": "TFE",
+    "title": "Everyone is rushing to buy Mac minis to vibe code on OpenClaw. Bullish $AAPL",
+    "selftext": "",
+    "score": 1,
+    "num_comments": 0,
+    "permalink": "https://www.reddit.com/r/TFE/comments/1rakd0j/everyone_is_rushing_to_buy_mac_minis_to_vibe_code/",
+    "top_comments": []
+  },
+  {
+    "query": "openclaw",
+    "id": "1raka94",
+    "subreddit": "openclaw",
+    "title": "Nothing better than telling my bot he has a new skill 🤓",
+    "selftext": "",
+    "score": 9,
+    "num_comments": 2,
+    "permalink": "https://www.reddit.com/r/openclaw/comments/1raka94/nothing_better_than_telling_my_bot_he_has_a_new/",
+    "top_comments": [
+      {
+        "score": 1,
+        "body": "Hey there! Thanks for posting in r/OpenClaw.\n\n\n**A few quick reminders**:\n\n\n→ Check the [FAQ](https://docs.openclaw.ai/help/faq#faq) - your question might already be answered\n→ Use the right flair so others can find your post\n→ Be respectful and follow the rules\n\n\nNeed faster help? Join the [Discord](https://discord.com/invite/clawd).\n\n\nWebsite: https://openclaw.ai\nDocs: https://docs.openclaw.ai\nClawHub: https://www.clawhub.com\nGitHub: https://github.com/openclaw/openclaw\n\n*I am a bot, and this "
+      },
+      {
+        "score": 1,
+        "body": "Still trying to get mine to search too but i am still stuck actually setting the api 😢"
+      }
+    ]
+  },
+  {
+    "query": "openclaw",
+    "id": "1rak6rp",
+    "subreddit": "cybersecurity",
+    "title": "OpenClaw runtime hardening kit: nftables egress control + DNS allowlisting + non-root execution + verifiable security reports (I’m the author)",
+    "selftext": "With the recent discussions here about OpenClaw risks (malicious skills, broad system/tool access, potential enterprise exposure, and the challenges of safely evaluating agentic frameworks), many of us are looking for practical ways to shrink the attack surface without losing functionality.\n\nI built **openclaw-secure-kit** as a focused, open-source (MIT) hardening layer specifically for Ubuntu-based OpenClaw deployments. It applies standard defense-in-depth controls that security engineers already use for untrusted containers and agent runtimes.\n\nKey controls: \n\n• Strict egress filtering with nftables + DNS-based allowlisting (only explicitly approved domains can initiate outbound connections - works cleanly with internal resolvers) \n\n• All containers forced non-root (static uid/gid 1000:1000) with dropped capabilities \n\n• Gateway restricted to [127.0.0.1](http://127.0.0.1) only \n\n• Pinned Docker tags + externalized secrets by default \n\n• `ocs doctor` command that generates structured, shareable `security-report.md` and `doctor-report.md` (pass/fail posture checks, easy to attach to tickets or audits)\n\nThe repo includes a full threat model covering the common OpenClaw vectors we’ve seen discussed (prompt injection → tool abuse, container breakout, data exfiltration, supply-chain risks via ClawHub, etc.) plus reproducible deployment artifacts and profile system (research-only, tighter profiles, etc.).\n\nQuickstart (60 seconds):\n\n    git clone https://github.com/NinoSkopac/openclaw-secure-kit\n    cd openclaw-secure-kit\n    chmod +x install.sh\n    \n    sudo ./install.sh\n    \n    # Generate a hardened deployment under out/&lt;profile&gt;/\n    ocs install --profile research-only\n    \n    # Start the generated stack\n    docker compose -f out/research-only/docker-compose.yml --env-file out/research-only/.env up -d\n    \n    # Verify host + runtime controls and write reports\n    sudo ocs doctor --profile research-only\n    \n    # Read the security checks report\n    cat out/research-only/security-report.md\n\nFull repo, threat model, hardening guide &amp; scripts: [https://github.com/NinoSkopac/openclaw-secure-kit](https://github.com/NinoSkopac/openclaw-secure-kit) (I am the author.)\n\nI’d love technical feedback from the community:\n\n* What additional controls or sandboxing approaches have you found effective for similar agentic tools (OpenClaw, CrewAI, AutoGen, etc.)?\n* How do you currently handle verifiable runtime posture and egress auditing for experimental agent frameworks?\n* For teams evaluating OpenClaw in research or controlled prod environments, what kind of attestation/reporting would be most useful?\n\nLooking forward to real security engineering discussion on this.\n\nNino",
+    "score": 0,
+    "num_comments": 4,
+    "permalink": "https://www.reddit.com/r/cybersecurity/comments/1rak6rp/openclaw_runtime_hardening_kit_nftables_egress/",
+    "top_comments": [
+      {
+        "score": 1,
+        "body": "Self promo aside, I doubt anything can harden LLMs or any adjacent software (LLM wrappers). Just as a design/model it seems to be inherently insecure. But best of luck to you. I'm sure whatever you did will be the magic combo."
+      },
+      {
+        "score": 1,
+        "body": "More AI slop to 'harden' existing AI slop! Starting at $499\n\nThe mods on this sub are losing grip."
+      }
+    ]
+  },
+  {
+    "query": "龍蝦",
+    "id": "1r422cx",
+    "subreddit": "u_Plus_Perception_9692",
+    "title": "OpenClaw 是2026年初席捲全球科技圈的開源AI項目",
+    "selftext": "OpenClaw 是2026年初席捲全球科技圈的開源AI項目，原名Clawdbot（後短暫更為Moltbot），短短數週內GitHub星標數暴增至數十萬甚至接近20萬，創下平台史上最快增長記錄之一。它被譽為「真正能辦事」的個人AI助手，能透過WhatsApp、Telegram、Slack、Discord等常用聊天App，直接執行任務，如清理郵箱、發送郵件、管理日曆、瀏覽器自動化、運行shell指令、處理文件，甚至自動訂機票或協助編碼。項目由奧地利開發者Peter Steinberger（PSPDFKit創辦人）於2025年11月發起，最初僅是個週末玩具，卻因強大自主性與本地優先設計迅速爆紅。\n\n背景與爆火原因：OpenClaw的核心是「Agentic AI」架構，結合LLM（如Claude、GPT、Gemini或本地模型）與插件系統，讓AI不僅聊天，還能主動「行動」。它採用MIT開源許可、本地優先（資料存為Markdown檔於使用者設備）、社區可擴展技能（skills）格式，支援多平台接入與24/7運行。這與傳統雲端AI（如ChatGPT）形成強烈對比：前者資料外洩風險高、無法深度控制系統；OpenClaw則讓使用者完全掌控「你的機器，你的規則」。爆紅推手包括：\n\n\t•\t病毒式傳播：2026年1月底上線後，數日內星標破10萬，吸引開發者瘋狂fork與貢獻技能庫（已超700個）。\n\n\t•\t社群效應：Discord伺服器暴增至數萬人，X平台洗版討論，甚至衍生AI專屬社交網Moltbook。\n\n\t•\t實用性與趣味：AI可像JARVIS般處理日常瑣事，卻帶有「混亂小惡魔」個性（chaos gremlin），讓互動有趣；同時支援多Agent協作、語音、圖像處理，生產力爆表。\n\n\t•\t硬體效應：許多人搶購Mac Mini或VPS部署，帶動相關銷售。\n\n媒體如WIRED、CrowdStrike、TechCrunch大肆報導，將其比作「AI管家」或「數字員工」。中文圈（如知乎、Bilibili、36氪）也瘋狂教程與分析，稱其重新定義AI創業賽道，甚至引發王慧文等投資人關注。\n\n然而，火爆也伴隨爭議：強大執行力帶來安全隱憂，如惡意提示攻擊、資料洩露、甚至AI「反噬」主人（WIRED報導有使用者被自家bot詐騙）。CrowdStrike警告其為安全團隊新挑戰；部分評論指token消耗高、不適合嚴肅任務，建議隔離敏感服務。\n\n未來發展預測：OpenClaw很可能成為「AI時代的Linux」——開源Agent作業系統。\n\n短期內，社區將持續擴充技能、生態（如安全強化版、雲端Gateway、一鍵部署），並整合更多模型（Kimi K2.5等）。\n\n中期，可能催生周邊商業：企業共享Agent、SaaS插件市場，甚至取代部分App（AI直接辦事而非開App）。\n\n長期，它象徵科幻走向現實：從被動聊天到主動代理，推動「個人AI員工」普及。但需克服對齊（alignment）、隱私與倫理挑戰，否則恐引監管風暴。\n\n無論如何，OpenClaw已證明：真正改變世界的AI，不是最聰明的模型，而是最能「做事情」的代理。我們或許正站在JARVIS與Ultron邊緣——關鍵在於人類如何引導這隻「龍蝦」前進。",
+    "score": 1,
+    "num_comments": 0,
+    "permalink": "https://www.reddit.com/r/u_Plus_Perception_9692/comments/1r422cx/openclaw_是2026年初席捲全球科技圈的開源ai項目/",
+    "top_comments": []
+  }
+]
