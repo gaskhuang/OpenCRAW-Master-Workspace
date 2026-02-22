@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang='zh-Hant'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>X Monitor Web Report</title>
+  <style>
+    :root { --bg:#0b1220; --card:#111a2f; --text:#dbe7ff; --muted:#90a4c2; --acc:#5eead4; --line:#20314f; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,'Noto Sans TC',system-ui; }
+    .wrap { max-width:1120px; margin:28px auto; padding:0 16px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:14px; }
+    h1,h2 { margin:.2rem 0 .6rem 0; }
+    .muted { color:var(--muted); font-size:14px; }
+    .line { display:grid; grid-template-columns:48px 1fr auto; gap:10px; border-bottom:1px dashed #1a2944; padding:8px 0; }
+    .ln { color:#7aa2ff; text-decoration:none; font-variant-numeric:tabular-nums; }
+    .txt { cursor:pointer; }
+    .txt:hover { color:var(--acc); }
+    .tid { color:#fca5a5; text-decoration:none; font-family:ui-monospace,monospace; }
+    .pill { display:inline-block; border:1px solid #31507f; border-radius:999px; padding:4px 10px; margin:4px 6px 0 0; color:#b9d0ff; font-size:13px; }
+  </style>
+</head>
+<body>
+  <div class='wrap'>
+    <div class='card'>
+      <h1>OpenClaw X 平台智能分析（網站版）</h1>
+      <div class='muted'>Generated: 2026-02-22 15:32 (Asia/Taipei) ｜ Source: openclaw_x_top_2026-02-21_0632.json</div>
+      <p>記者摘要：本輪因 X 反爬/登入限制與無可用 Browser Relay 分頁，未取得可分析貼文與留言。</p>
+    </div>
+    <div class='card'><h2>六類自動歸納</h2><span class='pill'>風險與阻礙</span><span class='pill'>商業與營運</span><span class='pill'>實戰案例</span><span class='pill'>技術與工程</span><span class='pill'>生態與社群</span><span class='pill'>產品與發布</span></div>
+    <div class='card'><h2>三行洞察</h2><ol><li>資料可用性：本輪狀態為「blocked_login_or_anti_bot」，可分析貼文 0 則。</li><li>阻礙焦點：Something went wrong, but don’t fret — let’s give it another shot.；Empty/blocked response。</li><li>下一步：優先恢復可抓取來源（已登入 X + Relay tab），再執行 3 小時追蹤可得到完整趨勢。</li></ol></div>
+    <div class='card'>
+      <h2>明細（互動）</h2>
+      <div class='muted'>點文字：複製「文字 + 原文連結」｜點行號：複製 #Lxx 連結｜點 tweet_id：開原貼文</div>
+      <div class='line' id='L1'><a class='ln' href='#L1' data-line='1'>01</a><span class='txt' data-text='[x.com/search] Something went wrong, but don’t fret — let’s give it another shot.' data-link='https://x.com/search?q=OpenClaw&src=typed_query&f=top'>[x.com/search] Something went wrong, but don’t fret — let’s give it another shot.</span> </div><div class='line' id='L2'><a class='ln' href='#L2' data-line='2'>02</a><span class='txt' data-text='[nitter.net/search] Empty/blocked response' data-link='https://nitter.net/search?f=tweets&q=OpenClaw'>[nitter.net/search] Empty/blocked response</span> </div><div class='line' id='L3'><a class='ln' href='#L3' data-line='3'>03</a><span class='txt' data-text='[browser relay] No attached Chrome relay tab (tabs = 0)' data-link=''>[browser relay] No attached Chrome relay tab (tabs = 0)</span> </div>
+    </div>
+  </div>
+  <script>
+    async function cpy(t) { try { await navigator.clipboard.writeText(t); } catch(e){} }
+    document.querySelectorAll('.txt').forEach(el => el.addEventListener('click', () => {
+      const text = el.dataset.text || '';
+      const link = el.dataset.link || '';
+      cpy(link ? `${text}
+${link}` : text);
+    }));
+    document.querySelectorAll('.ln').forEach(el => el.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      const line = el.dataset.line;
+      const url = `${location.origin}${location.pathname}#L${line}`;
+      history.replaceState(null, '', `#L${line}`);
+      cpy(url);
+    }));
+  </script>
+</body>
+</html>
