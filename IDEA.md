@@ -5,30 +5,63 @@
 - **阿蓋小弟建議**: 實作 OCR 腳本（使用 Gemini-Flash）解析最新報表圖片並更新 Markdown。
 - **分數**: 8/10
 - **狀態**: 🚀 處理中 (Moving to In Progress)
+- **2026-02-24 研究更新**:
+  - **最佳模型**: Gemini 2.0 Flash（每美元 ~6,000 頁，最具成本效益）
+  - **成本比較**: Gemini 2.0 Flash (~6,000) > AWS Textract (~1,000) > OpenAI 4o (~200)
+  - **推薦專案**: alexispurslane/gemini-ocr (含幻覺檢測、Markdown 輸出)
+    - GitHub: https://github.com/alexispurslane/gemini-ocr
+  - **實測成效**: 處理時間 120x 加速，準確率 96%
 
 ## 📑 案例自動化撰寫與發布系統 (Automated Case Study System)
 - **目標**: 自動讀取 NAS 照片、GDrive 報價單，生成「蓋斯克風格」案例並發布至 WordPress。
 - **阿蓋小弟建議**: 建立「目錄監測器」，偵測到新照片即自動抓取相關 GDrive 檔案並產出草稿。
 - **分數**: 9/10
 - **狀態**: 🚀 處理中 (Moving to In Progress)
+- **2026-02-24 研究更新**:
+  - **NAS 監控**: Python watchdog (即時檔案監控)
+  - **WordPress 自動發布**: REST API 優於 XML-RPC
+  - **AI 內容生成**: GPT-4 Vision 分析照片 + 模板引擎
+  - **參考專案**:
+    - GitHub: imgeraldalinio/AI-Generated-WordPress-Blog-Post-Automation
+    - n8n: Content Farming Workflow (每日自動生成 10 篇文章)
 
 ## 🎙️ 連續免提語音交互方案 (Hands-Free Continuous Voice)
 - **目標**: 解決開車場景下的「無需點擊」語音對話。
 - **阿蓋小弟建議**: 測試 `voice-call` 插件，或實作「iMessage 指令轉接」方案（Hacker News 實測最穩方案）。
 - **分數**: 10/10
 - **狀態**: 🚀 處理中 (Moving to In Progress)
+- **2026-02-24 研究更新**:
+  - **方案 A (推薦)**: 電話通話式 AI - LiveKit Telephony + Bolna (完全免手持)
+    - GitHub: https://github.com/bolna-ai/bolna
+    - LiveKit: https://docs.livekit.io/telephony/
+  - **方案 B**: 免手持喚醒詞 - Anachrovox (支援 "Hey Assistant")
+    - GitHub: https://github.com/painebenjamin/anachrovox
+  - **方案 C**: iMessage 橋接 - Mautrix iMessage
+    - GitHub: https://github.com/mautrix/imessage
 
 ## 🦞 雙龍蝦 HA 實作部署 (Double Lobster High Availability)
 - **目標**: 實作「單機雙實例」架構，確保高可用性。
 - **阿蓋小弟建議**: 完善 `swarm.sh` 的健康檢查機制，斷線自動重啟。
 - **分數**: 7/10
 - **狀態**: 🚀 執行中 (In Progress)
+- **2026-02-24 研究更新**:
+  - **推薦方案**: Docker Compose + Autoheal (監控並自動重啟不健康容器)
+    - GitHub: https://github.com/willfarrell/docker-autoheal
+  - **備選方案**: PM2 Cluster 模式 (零停機重載、內建負載均衡)
+    - GitHub: https://github.com/vishalm/node-pm2-cluster-example
+  - **系統級方案**: Systemd 多實例模板 (agent@.service)
 
 ## 📡 OpenCRAW 3小時情報哨兵 (Intelligence Sentinel)
 - **目標**: 每 3 小時自動掃描 X/Reddit/Threads。
 - **阿蓋小弟建議**: 加入 "Claude Code", "Windsurf" 等熱門 Builder 關鍵字。
 - **分數**: 8/10
 - **狀態**: 🚀 全自動執行中 (Scheduled)
+- **2026-02-24 重要更新**:
+  - ⚠️ **Nitter 已停止服務**（2024 年初所有實例憑證過期）
+  - **X/Twitter 替代方案**: ntscraper (`pip install ntscraper`)
+  - **Reddit**: YARS (無需 API Key) / PRAW
+  - **Threads**: Zeeshanahmad4/Threads-Scraper (Playwright)
+  - **Claude Code 整合**: zxkane/social-agents (多平台自動化)
 
 ---
 
