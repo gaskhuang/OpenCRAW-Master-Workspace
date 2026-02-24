@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang='zh-Hant'>
+<head>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+<title>X Top 新文記者版</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2b;--text:#e5e7eb;--muted:#94a3b8;--acc:#60a5fa;--acc2:#22d3ee;--line:#1f2937}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans TC',sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 70px}
+h1{font-size:28px;margin:0 0 6px} .sub{color:var(--muted)}
+.cat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:16px 0}
+.cat h2{margin:0 0 10px;color:#bfdbfe;font-size:18px}
+.line{padding:6px 0;border-top:1px dashed #22304a} .line:first-of-type{border-top:none}
+.ln{display:inline-block;width:42px;color:#7dd3fc;text-decoration:none} .ln:hover{text-decoration:underline}
+.txt{cursor:pointer} .tid{color:var(--acc2);text-decoration:none;margin-left:6px} .tid:hover{text-decoration:underline}
+.meta{color:var(--muted);font-size:12px;margin-left:8px}
+.insight{background:#0f172a;border:1px solid #1e293b;padding:12px 14px;border-radius:12px}
+.blocked{background:#3f1d1d;border:1px solid #7f1d1d;padding:10px 12px;border-radius:10px;margin:12px 0;color:#fecaca}
+.empty{color:var(--muted)}
+.toast{position:fixed;right:16px;bottom:16px;background:#111827;color:#e5e7eb;padding:8px 10px;border-radius:10px;font-size:13px;opacity:0;transition:.2s}
+.toast.show{opacity:1}
+</style>
+</head>
+<body><div class='wrap'>
+<h1>X Top 新文記者版（滾動 80 次 / 六大類）</h1>
+<div class='sub'>最後更新：2026-02-24 09:25 (Asia/Taipei)</div>
+<div class='blocked'>⚠️ 抓取受阻：X 頁面需要登入驗證（CDP 19222 連線正常，但瀏覽器未處於已登入狀態，無法讀取探索內容）</div>
+<section class='cat'><h2>AI產品與模型</h2><p class='empty'>本輪無新增貼文</p></section>
+<section class='cat'><h2>晶片與硬體</h2><p class='empty'>本輪無新增貼文</p></section>
+<section class='cat'><h2>創業與商業策略</h2><p class='empty'>本輪無新增貼文</p></section>
+<section class='cat'><h2>政策與監管</h2><p class='empty'>本輪無新增貼文</p></section>
+<section class='cat'><h2>其他焦點</h2><p class='empty'>本輪無新增貼文</p></section>
+<section class='cat'><h2>焦點補位6</h2><p class='empty'>本輪無新增貼文</p></section>
+<section class='insight'><h2>三行洞察</h2>
+<ol>
+<li>本輪因 X 需要登入驗證，抓取流程受阻，未能讀取貼文內容。</li>
+<li>CDP 19222 連線正常，但瀏覽器 Profile 未包含有效的 X 登入 Session。</li>
+<li>建議使用已登入 X 的 Chrome Profile 重新執行，或改用其他認證方式。</li>
+</ol>
+</section>
+</div><div class='toast' id='toast'>已複製</div>
+<script>
+const toast = document.getElementById('toast');
+function showToast(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1200);}
+async function copyText(t){try{await navigator.clipboard.writeText(t);showToast('已複製');}catch(e){showToast('複製失敗');}}
+for (const line of document.querySelectorAll('.line')) {
+  const ln = line.querySelector('.ln');
+  const txt = line.querySelector('.txt');
+  ln.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const id = line.id;
+    history.replaceState(null,'','#'+id);
+    await copyText(location.origin + location.pathname + '#'+id);
+  });
+  txt.addEventListener('click', async () => {
+    await copyText(line.dataset.copy);
+  });
+}
+</script></body></html>
