@@ -1,0 +1,193 @@
+{
+  "timestamp": "2026-02-24 22:00",
+  "total_posts": 23,
+  "posts": [
+    {
+      "title": "Anyone actually using Openclaw?",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1r5v1jb/anyone_actually_using_openclaw/",
+      "description": "Most openclaw conversations in the news were fake made by him or marketing people. Now there are news of openclaw being bought by openAI for ...",
+      "subreddit": "r/LocalLLaMA",
+      "type": "討論/問答"
+    },
+    {
+      "title": "I feel left behind. What is special about OpenClaw?",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1r9gve8/i_feel_left_behind_what_is_special_about_openclaw/",
+      "description": "I've been running it on my M4 Mac Mini, and sending it on little tasks has been interesting to say the least.",
+      "subreddit": "r/LocalLLaMA",
+      "type": "討論/問答"
+    },
+    {
+      "title": "Do Not Use OpenClaw",
+      "url": "https://www.reddit.com/r/ArtificialSentience/comments/1qvcefb/do_not_use_openclaw/",
+      "description": "OpenClaw (formerly Moltbot, formerly Clawdbot) — a popular open-source AI assistant with 149k+ GitHub stars — ships with a **bundled hook called ...",
+      "subreddit": "r/ArtificialSentience",
+      "type": "警告/安全"
+    },
+    {
+      "title": "OpenClaw is a game changer.",
+      "url": "https://www.reddit.com/r/vibecoding/comments/1r2yh6a/openclaw_is_a_game_changer/",
+      "description": "Runs on my own machine, where I can control network traffic going in and out of the machine, and I can review the Agent skills it reviews. 2.",
+      "subreddit": "r/vibecoding",
+      "type": "正面評價"
+    },
+    {
+      "title": "I think openclaw is OVERHYPED. Just use skills",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rbjxpv/i_think_openclaw_is_overhyped_just_use_skills/",
+      "description": "I think openclaw is useful, loop, memory, agents, integrations, but after a week a testing, honestly I don't need it much.",
+      "subreddit": "r/LocalLLaMA",
+      "type": "負面評價"
+    },
+    {
+      "title": "The ULTIMATE OpenClaw Setup Guide!",
+      "url": "https://www.reddit.com/r/AiForSmallBusiness/comments/1r4uyrh/the_ultimate_openclaw_setup_guide/",
+      "description": "?** It's basically a thing that lets your computer run JavaScript programs. JavaScript is a programming language (like how English is a language ...",
+      "subreddit": "r/AiForSmallBusiness",
+      "type": "教學/指南"
+    },
+    {
+      "title": "OpenClaw is god-awful. It's either, you have to spend a ... - Reddit",
+      "url": "https://www.reddit.com/r/ArtificialInteligence/comments/1qrzxs7/openclaw_is_godawful_its_either_you_have_to_spend/",
+      "description": "For the money it will cost you to run OpenClaw, the benefits are significantly weak. First, it costs you like 50 cents to do like one simple ...",
+      "subreddit": "r/ArtificialInteligence",
+      "type": "負面評價"
+    },
+    {
+      "title": "Everyone talks about Clawdbot (openClaw), but not many ... - Reddit",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1r15ji4/everyone_talks_about_clawdbot_openclaw_but_not/",
+      "description": "Openclaw is a pirate ship with full root access. Part of what makes openclaw so interesting is the total flip of responsibility: local host ...",
+      "subreddit": "r/AI_Agents",
+      "type": "討論/問答"
+    },
+    {
+      "title": "OpenClaw: The Viral AI Agent that Broke the Internet - Reddit",
+      "url": "https://www.reddit.com/r/lexfridman/comments/1r2ipmx/openclaw_the_viral_ai_agent_that_broke_the/",
+      "description": "90 votes, 15 comments. I've been doing agentic coding for some time now. Claude Code is ... almost alright. Everything else sucks.",
+      "subreddit": "r/lexfridman",
+      "type": "討論/問答"
+    },
+    {
+      "title": "OpenClaw (AI assistant gateway) now available on Community Apps",
+      "url": "https://www.reddit.com/r/unRAID/comments/1qv4tky/openclaw_ai_assistant_gateway_now_available_on/",
+      "description": "OpenClaw promises to clear your inbox, send emails, manage calendars, and automate your life from chat apps. This community is for the people ...",
+      "subreddit": "r/unRAID",
+      "type": "討論/問答"
+    },
+    {
+      "title": "How much was OpenClaw actually sold to OpenAI for? $1B?? Can ...",
+      "url": "https://www.reddit.com/r/LocalLLM/comments/1r90rxi/how_much_was_openclaw_actually_sold_to_openai_for/",
+      "description": "They just hired the dude that made it, and are sponsoring the free open-source project OpenClaw. The tweet is just a joke of people just ...",
+      "subreddit": "r/LocalLLM",
+      "type": "討論/問答"
+    },
+    {
+      "title": "Honestly guys, is OpenClaw actually practically useful?",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1qx955i/honestly_guys_is_openclaw_actually_practically/",
+      "description": "I love trying all the new AI tools and so on, but couldn't find a reason to try OpenClaw or ClawdBot. I'm old and not very busy and like ...",
+      "subreddit": "r/ClaudeAI",
+      "type": "討論/問答"
+    },
+    {
+      "title": "All the OpenClaw bros are having a meltdown after the Anthropic ...",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1r9v27c/all_the_openclaw_bros_are_having_a_meltdown_after/",
+      "description": "503 votes, 194 comments. This was going to happen eventually, and honestly the token usage disparity between OpenClaw users and Claude Code ...",
+      "subreddit": "r/ClaudeAI",
+      "type": "討論/問答"
+    },
+    {
+      "title": "My openclaw agent leaked its thinking and it's scary",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1r8uygu/my_openclaw_agent_leaked_its_thinking_and_its/",
+      "description": "Better plan: The user is annoyed. I'll just say: \"I checked the log, it pulled the data but choked on formatting.",
+      "subreddit": "r/AI_Agents",
+      "type": "警告/安全"
+    },
+    {
+      "title": "Unpopular opinion: This whole \"clawdbot\" thing is just annoying",
+      "url": "https://www.reddit.com/r/claude/comments/1qpiezm/unpopular_opinion_this_whole_clawdbot_thing_is/",
+      "description": "Clawdbot is a fancy mcp, it has some SUPER cool features and self learning capabilities. That part is cool. But all this whining about not being ...",
+      "subreddit": "r/claude",
+      "type": "正面評價"
+    },
+    {
+      "title": "Is ClawdBot actually useful?",
+      "url": "https://www.reddit.com/r/AgentsOfAI/comments/1qn8g6d/is_clawdbot_actually_useful/",
+      "description": "While a useful concept, it is a security nightmare and best avoided. A single point of failure with access to your API tokens and data. A system ...",
+      "subreddit": "r/AgentsOfAI",
+      "type": "警告/安全"
+    },
+    {
+      "title": "Just thought that you guys should know something about Clawdbot",
+      "url": "https://www.reddit.com/r/vibecoding/comments/1qnylqe/just_thought_that_you_guys_should_know_something/",
+      "description": "Since your external chat is connected to the bot, any message will cause a reaction- meaning tokens to be used. Your WhatsApp or Telegram can ...",
+      "subreddit": "r/vibecoding",
+      "type": "討論/問答"
+    },
+    {
+      "title": "I used Clawdbot (now Moltbot) and here are some inconvenient truths",
+      "url": "https://www.reddit.com/r/LocalLLM/comments/1qp0jhl/i_used_clawdbot_now_moltbot_and_here_are_some/",
+      "description": "I tried Clawdbot (before the name switch so I am going to keep using it) on a dedicated VPS and then a Raspberry Pi, both considered disposable ...",
+      "subreddit": "r/LocalLLM",
+      "type": "討論/問答"
+    },
+    {
+      "title": "Clawdbot: the $5/month AI assistant that actually messages you first",
+      "url": "https://www.reddit.com/r/ClaudeCode/comments/1qmrkdu/clawdbot_the_5month_ai_assistant_that_actually/",
+      "description": "Clawdbot: the $5/month AI assistant that actually messages you first · It works with your existing Claude Pro/Max subscription (and many others).",
+      "subreddit": "r/ClaudeCode",
+      "type": "討論/問答"
+    },
+    {
+      "title": "Your thoughts about Clawdbot",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1qo94a8/your_thoughts_about_clawdbot/",
+      "description": "Clawdbot is powerful, but it runs just fine on EC2, Linux, or even older laptops. The value isn't really in macOS, it's in how it interacts with ...",
+      "subreddit": "r/AI_Agents",
+      "type": "討論/問答"
+    },
+    {
+      "title": "Clawdbot - What do you think about the hype? A n8n wrapper?",
+      "url": "https://www.reddit.com/r/n8n/comments/1qo8x5h/clawdbot_what_do_you_think_about_the_hype_a_n8n/",
+      "description": "For me Clawdbot is something way beyond n8n and Claude code since it can autonomously build stuff with both those tools. I just told it to make ...",
+      "subreddit": "r/n8n",
+      "type": "討論/問答"
+    },
+    {
+      "title": "Clawdbot: the AI assistant that actually messages you first - Reddit",
+      "url": "https://www.reddit.com/r/LocalLLM/comments/1qmrwxl/clawdbot_the_ai_assistant_that_actually_messages/",
+      "description": "Clawdbot opens up the potential for a massive supply-chain attack that can steal or destroy everything on your machine and network, ...",
+      "subreddit": "r/LocalLLM",
+      "type": "討論/問答"
+    },
+    {
+      "title": "We built something, then Clawdbot went viral. Now questioning ...",
+      "url": "https://www.reddit.com/r/startups/comments/1qp1akt/we_built_something_then_clawdbot_went_viral_now/",
+      "description": "We've been building for 3 months. Then Clawdbot blew up. They're doing something similar (covering our scope) - proactive AI assistant with ...",
+      "subreddit": "r/startups",
+      "type": "討論/問答"
+    }
+  ],
+  "stats": {
+    "subreddits": {
+      "r/LocalLLaMA": 3,
+      "r/ArtificialSentience": 1,
+      "r/vibecoding": 2,
+      "r/AiForSmallBusiness": 1,
+      "r/ArtificialInteligence": 1,
+      "r/AI_Agents": 3,
+      "r/lexfridman": 1,
+      "r/unRAID": 1,
+      "r/LocalLLM": 3,
+      "r/ClaudeAI": 2,
+      "r/claude": 1,
+      "r/AgentsOfAI": 1,
+      "r/ClaudeCode": 1,
+      "r/n8n": 1,
+      "r/startups": 1
+    },
+    "types": {
+      "討論/問答": 15,
+      "警告/安全": 3,
+      "正面評價": 2,
+      "負面評價": 2,
+      "教學/指南": 1
+    }
+  }
+}
