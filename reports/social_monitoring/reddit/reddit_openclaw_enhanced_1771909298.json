@@ -1,0 +1,114 @@
+{
+  "posts": [
+    {
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1r15ji4/everyone_talks_about_clawdbot_openclaw_but_not/",
+      "title": "Everyone talks about Clawdbot (openClaw), but not many ... - Reddit",
+      "description": "Openclaw is a pirate ship with full root access. Part of what makes openclaw so interesting is the total flip of responsibility: local host ...",
+      "position": 8
+    },
+    {
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1r3wc8f/whats_the_safest_way_to_start_playing_around_with/",
+      "title": "What's the safest way to start playing around with OpenClaw? - Reddit",
+      "description": "I'm experimenting with OpenClaw (open source) and plan to run it on a dedicated laptop. My setup plan: • Dedicated machine",
+      "position": 20
+    },
+    {
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1r8uygu/my_openclaw_agent_leaked_its_thinking_and_its/",
+      "title": "My openclaw agent leaked its thinking and it's scary : r/AI_Agents",
+      "description": "Better plan: The user is annoyed. I'll just say: \"I checked the log, it pulled the data but choked on formatting.",
+      "position": 15
+    },
+    {
+      "url": "https://www.reddit.com/r/AiForSmallBusiness/comments/1r4uyrh/the_ultimate_openclaw_setup_guide/",
+      "title": "The ULTIMATE OpenClaw Setup Guide! : r/AiForSmallBusiness",
+      "description": "?** It's basically a thing that lets your computer run JavaScript programs. JavaScript is a programming language (like how English is a language ...",
+      "position": 6
+    },
+    {
+      "url": "https://www.reddit.com/r/ArtificialInteligence/comments/1qrzxs7/openclaw_is_godawful_its_either_you_have_to_spend/",
+      "title": "OpenClaw is god-awful. It's either, you have to spend a ... - Reddit",
+      "description": "For the money it will cost you to run OpenClaw, the benefits are significantly weak. First, it costs you like 50 cents to do like one simple ...",
+      "position": 7
+    },
+    {
+      "url": "https://www.reddit.com/r/ArtificialSentience/comments/1qvcefb/do_not_use_openclaw/",
+      "title": "Do Not Use OpenClaw : r/ArtificialSentience - Reddit",
+      "description": "OpenClaw (formerly Moltbot, formerly Clawdbot) — a popular open-source AI assistant with 149k+ GitHub stars — ships with a **bundled hook called ...",
+      "position": 3
+    },
+    {
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1qx955i/honestly_guys_is_openclaw_actually_practically/",
+      "title": "Honestly guys, is OpenClaw actually practically useful? : r/ClaudeAI",
+      "description": "I love trying all the new AI tools and so on, but couldn't find a reason to try OpenClaw or ClawdBot. I'm old and not very busy and like ...",
+      "position": 13
+    },
+    {
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1r9v27c/all_the_openclaw_bros_are_having_a_meltdown_after/",
+      "title": "All the OpenClaw bros are having a meltdown after the Anthropic ...",
+      "description": "503 votes, 194 comments. This was going to happen eventually, and honestly the token usage disparity between OpenClaw users and Claude Code ...",
+      "position": 14
+    },
+    {
+      "url": "https://www.reddit.com/r/ClaudeCode/comments/1r7jfyu/my_adventures_with_openclaw_2_weeks_in_zero/",
+      "title": "My adventures with OpenClaw - 2 weeks in. Zero horror stories.",
+      "description": "After hearing and reading a ton about OpenClaw (previously clawdbot, moltbot etc) - I decided I was perfectly capable of installing it ...",
+      "position": 18
+    },
+    {
+      "url": "https://www.reddit.com/r/LLMDevs/comments/1r9136z/i_looked_into_openclaw_architecture_to_dig_some/",
+      "title": "I looked into OpenClaw architecture to dig some details : r/LLMDevs",
+      "description": "The architecture limits blast radius, it doesn't eliminate it. What stood out to me is that nothing about OpenClaw is technically revolutionary.",
+      "position": 16
+    },
+    {
+      "url": "https://www.reddit.com/r/LocalLLM/comments/1r90rxi/how_much_was_openclaw_actually_sold_to_openai_for/",
+      "title": "How much was OpenClaw actually sold to OpenAI for? $1B?? Can ...",
+      "description": "They just hired the dude that made it, and are sponsoring the free open-source project OpenClaw. The tweet is just a joke of people just ...",
+      "position": 12
+    },
+    {
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1r5v1jb/anyone_actually_using_openclaw/",
+      "title": "Anyone actually using Openclaw? : r/LocalLLaMA - Reddit",
+      "description": "Most openclaw conversations in the news were fake made by him or marketing people. Now there are news of openclaw being bought by openAI for ...",
+      "position": 1
+    },
+    {
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1r9gve8/i_feel_left_behind_what_is_special_about_openclaw/",
+      "title": "I feel left behind. What is special about OpenClaw? : r/LocalLLaMA",
+      "description": "I've been running it on my M4 Mac Mini, and sending it on little tasks has been interesting to say the least.",
+      "position": 2
+    },
+    {
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rbjxpv/i_think_openclaw_is_overhyped_just_use_skills/",
+      "title": "I think openclaw is OVERHYPED. Just use skills : r/LocalLLaMA",
+      "description": "I think openclaw is useful, loop, memory, agents, integrations, but after a week a testing, honestly I don't need it much.",
+      "position": 5
+    },
+    {
+      "url": "https://www.reddit.com/r/homelab/comments/1qt4sgq/deploy_openclaw_securely_on_kubernetes_with/",
+      "title": "Deploy OpenClaw Securely on Kubernetes with ArgoCD and Helm",
+      "description": "If you want to deploy multiple OpenClaw instances at once with this, I'd suggest combining them in an umbrella Helm chart. More replies.",
+      "position": 19
+    },
+    {
+      "url": "https://www.reddit.com/r/lexfridman/comments/1r2ipmx/openclaw_the_viral_ai_agent_that_broke_the/",
+      "title": "OpenClaw: The Viral AI Agent that Broke the Internet - Reddit",
+      "description": "90 votes, 15 comments. I've been doing agentic coding for some time now. Claude Code is ... almost alright. Everything else sucks.",
+      "position": 9
+    },
+    {
+      "url": "https://www.reddit.com/r/unRAID/comments/1qv4tky/openclaw_ai_assistant_gateway_now_available_on/",
+      "title": "OpenClaw (AI assistant gateway) now available on Community Apps",
+      "description": "OpenClaw promises to clear your inbox, send emails, manage calendars, and automate your life from chat apps. This community is for the people ...",
+      "position": 10
+    },
+    {
+      "url": "https://www.reddit.com/r/vibecoding/comments/1r2yh6a/openclaw_is_a_game_changer/",
+      "title": "OpenClaw is a game changer. : r/vibecoding - Reddit",
+      "description": "Runs on my own machine, where I can control network traffic going in and out of the machine, and I can review the Agent skills it reviews. 2.",
+      "position": 4
+    }
+  ],
+  "total": 18,
+  "timestamp": 1771909223
+}
