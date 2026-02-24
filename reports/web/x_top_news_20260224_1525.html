@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐦 X Top 新聞 - BLOCKED</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #16181c;
+            --text-primary: #e7e9ea;
+            --text-secondary: #71767b;
+            --accent: #1d9bf0;
+            --border: #2f3336;
+            --warning: #f4212e;
+            --warning-bg: rgba(244, 33, 46, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header h1 { font-size: 24px; margin-bottom: 8px; }
+        .header .meta {
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .blocked-banner {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        .blocked-banner h2 {
+            color: var(--warning);
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .blocked-banner p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .blocked-reason {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+            font-family: "SF Mono", Monaco, monospace;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .blocked-reason code {
+            color: var(--accent);
+            background: rgba(29, 155, 240, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--warning);
+        }
+        .stat-card .label {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .categories {
+            display: grid;
+            gap: 20px;
+        }
+        .category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            opacity: 0.5;
+        }
+        .category-header {
+            background: var(--bg-secondary);
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .category-header h3 { font-size: 18px; }
+        .category-count {
+            background: var(--border);
+            color: var(--text-secondary);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        .empty-state {
+            padding: 40px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 20px; }
+            .blocked-banner { margin: 20px; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🐦 X Top 新聞記者版</h1>
+        <div class="meta">
+            <span>📅 2026-02-24 15:20</span>
+            <span>🔄 滾動次數: 0/80 (已阻擋)</span>
+            <span>📊 抓取推文: 0</span>
+            <span>⚠️ 狀態: BLOCKED</span>
+        </div>
+    </header>
+
+    <div class="blocked-banner">
+        <h2>⚠️ 存取受阻</h2>
+        <p>本次抓取作業無法完成，原因如下：</p>
+        <div class="blocked-reason">
+            <strong>Blocked Reason:</strong><br><br>
+            <code>AUTH_REQUIRED</code> - X/Twitter 平台需要登入驗證<br><br>
+            頁面回應內容：<br>
+            • 「別錯過正在發生的新鮮事」<br>
+            • 「X 使用者總是搶先得知新消息」<br>
+            • 「發生錯誤。請嘗試重新載入。」<br>
+            • 未檢測到推文元素 (article[data-testid="tweet"])<br><br>
+            CDP 連線狀態: <code>http://127.0.0.1:19222</code> ✅ 正常<br>
+            目標網址: <code>https://x.com/explore/tabs/news</code>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number">0</div>
+                <div class="label">總推文數</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">0</div>
+                <div class="label">已分類</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">0</div>
+                <div class="label">總互動數</div>
+            </div>
+        </div>
+
+        <div class="categories">
+            <div class="category">
+                <div class="category-header">
+                    <span>📰</span>
+                    <h3>政治時事</h3>
+                    <span class="category-count">0</span>
+                </div>
+                <div class="empty-state">⚠️ 因存取受阻，無法獲取資料</div>
+            </div>
+            <div class="category">
+                <div class="category-header">
+                    <span>💻</span>
+                    <h3>科技資訊</h3>
+                    <span class="category-count">0</span>
+                </div>
+                <div class="empty-state">⚠️ 因存取受阻，無法獲取資料</div>
+            </div>
+            <div class="category">
+                <div class="category-header">
+                    <span>💰</span>
+                    <h3>財經金融</h3>
+                    <span class="category-count">0</span>
+                </div>
+                <div class="empty-state">⚠️ 因存取受阻，無法獲取資料</div>
+            </div>
+            <div class="category">
+                <div class="category-header">
+                    <span>🎬</span>
+                    <h3>娛樂影視</h3>
+                    <span class="category-count">0</span>
+                </div>
+                <div class="empty-state">⚠️ 因存取受阻，無法獲取資料</div>
+            </div>
+            <div class="category">
+                <div class="category-header">
+                    <span>⚽</span>
+                    <h3>體育運動</h3>
+                    <span class="category-count">0</span>
+                </div>
+                <div class="empty-state">⚠️ 因存取受阻，無法獲取資料</div>
+            </div>
+            <div class="category">
+                <div class="category-header">
+                    <span>🌍</span>
+                    <h3>國際社會</h3>
+                    <span class="category-count">0</span>
+                </div>
+                <div class="empty-state">⚠️ 因存取受阻，無法獲取資料</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>🤖 自動生成於 2026-02-24 15:20 | OpenClaw X Top 新文記者版</p>
+        <p>阻擋原因：AUTH_REQUIRED</p>
+    </footer>
+</body>
+</html>
