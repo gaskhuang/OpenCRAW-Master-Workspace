@@ -1,0 +1,47 @@
+# 🛑 Deny everything by default
+/*
+
+# ✅ Allow OpenClaw Core Folders
+!/memory/
+!/reports/
+!/scripts/
+!/openclaw/
+!/openclaw-service/
+!/openclaw-deploy-pack/
+!/sentinel-intelligence-hub/
+!/threads-scraper-tool/
+!/workspace/
+!/clawd/
+!/reddit-monitoring/
+
+# ✅ Allow Strategic Markdown Files
+!/*.md
+
+# ✅ Allow Core Scripts & Logic
+!/*.sh
+!/*.js
+!/*.py
+!/agent_monitor.js
+
+# ✅ Allow Web Assets
+!/*.html
+!/lobster_swarm.jpg
+
+# ❌ Explicitly Ignore Large/Sensitive/System items within allowed folders
+node_modules/
+venv/
+.DS_Store
+*.pyc
+__pycache__/
+.env
+openclaw.json
+*config.json
+*.mp3
+*.zip
+*.tar.gz
+
+# ❌ Ignore internal .git folders of nested repos to allow them as files
+/openclaw-service/.git
+/sentinel-intelligence-hub/.git
+/clawd/.git
+/threads-scraper-tool/.git
