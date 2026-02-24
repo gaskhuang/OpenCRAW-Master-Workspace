@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>📋 X 動態摘要（過去 24 小時） | OpenClaw</title>
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --card: #111827;
+            --card-hover: #1a2332;
+            --text: #e5e7eb;
+            --text-muted: #9ca3af;
+            --accent: #60a5fa;
+            --accent-cyan: #22d3ee;
+            --border: #1f2937;
+            --line-num: #6b7280;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        .blocked-banner {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        .category {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .category h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+        .item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border);
+            transition: background 0.2s;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        .item:hover {
+            background: var(--card-hover);
+            margin: 0 -12px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 6px;
+        }
+        .line-num {
+            color: var(--line-num);
+            font-size: 13px;
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            min-width: 40px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .line-num:hover {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+        }
+        .content {
+            flex: 1;
+        }
+        .text {
+            cursor: pointer;
+        }
+        .text:hover {
+            color: var(--accent-cyan);
+        }
+        .tweet-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: ui-monospace, monospace;
+            font-size: 13px;
+            margin-left: 6px;
+        }
+        .tweet-link:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        .meta {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-left: 8px;
+        }
+        .empty {
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 16px 0;
+        }
+        .insights {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            border: 1px solid #2d4a6f;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .insights h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: var(--accent-cyan);
+        }
+        .insights ol {
+            margin-left: 20px;
+            color: var(--text-muted);
+        }
+        .insights li {
+            margin: 8px 0;
+        }
+        .stats {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1f2937;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 X 動態摘要（過去 24 小時）</h1>
+            <div class="subtitle">最後更新：2026-02-24 21:32:43 (Asia/Taipei)</div>
+        </header>
+        
+        
+        
+        <div class="insights">
+            <h3>💡 三行洞察</h3>
+            <ol>
+                <li>本輪 Top 分頁滾動 80 次後，去重並新增 57 則可追蹤貼文，總追蹤數達 707。</li>
+                <li>高互動內容仍集中在 AI 模型更新、OpenClaw 生態動態與算力供應鏈敘事。</li>
+                <li>建議下一輪優先回訪高互動來源帳號，追蹤同議題延伸與反轉訊號。</li>
+            </ol>
+        </div>
+        
+        <section class="category">
+            <h2>🤖 AI 模型與工具</h2>
+            <div class="items"><div class="item" id="L1" data-copy="India was caught passing off a Chinese robot dog as its own at their ongoing AI summit, marring the entire event. WATCH AND SHARE:
+https://x.com/AndyBxxx/status/2024369253479305501">
+                <span class="line-num" title="複製 highlight 連結">001</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">India was caught passing off a Chinese robot dog as its own at their ongoing AI summit, marring the entire event. WATCH AND SHARE:</span>
+                    <a class="tweet-link" href="https://x.com/AndyBxxx/status/2024369253479305501" target="_blank" rel="noopener" title="開啟原文">(2024369253479305501)</a>
+                    <span class="meta">@AndyBxxx · ❤1K 🔁264</span>
+                </span>
+            </div><div class="item" id="L2" data-copy="A definitive agreement: AMD and @Meta are expanding our existing partnership, aligning roadmaps across silicon, systems and software to deliver AI platforms purpose-built for Meta’s workloads.
+https://x.com/AMD/status/2026268082742636938">
+                <span class="line-num" title="複製 highlight 連結">002</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">A definitive agreement: AMD and @Meta are expanding our existing partnership, aligning roadmaps across silicon, systems and software to deliver AI platforms purpose-built for Meta’s workloads.</span>
+                    <a class="tweet-link" href="https://x.com/AMD/status/2026268082742636938" target="_blank" rel="noopener" title="開啟原文">(2026268082742636938)</a>
+                    <span class="meta">@AMD · ❤689 🔁152</span>
+                </span>
+            </div><div class="item" id="L3" data-copy="Claude is insane for product management. I reverse-engineered how top PMs at Google, Meta, and Anthropic use it. The difference is night and day. Here are 10 prompts they don't want you to know (but I...
+https://x.com/godofprompt/status/2022612902411382957">
+                <span class="line-num" title="複製 highlight 連結">003</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Claude is insane for product management. I reverse-engineered how top PMs at Google, Meta, and Anthropic use it. The difference is night and day. Here are 10 prompts they don't want you to know (but I...</span>
+                    <a class="tweet-link" href="https://x.com/godofprompt/status/2022612902411382957" target="_blank" rel="noopener" title="開啟原文">(2022612902411382957)</a>
+                    <span class="meta">@godofprompt · ❤716 🔁88</span>
+                </span>
+            </div><div class="item" id="L4" data-copy="Holy shit… Anthropic quietly dropped 9 new FREE Claude Skills tutorials. Excel workflows, Chrome browsing, file editing, task automation, project management zero tech background needed.
+https://x.com/godofprompt/status/2026205192836776359">
+                <span class="line-num" title="複製 highlight 連結">004</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Holy shit… Anthropic quietly dropped 9 new FREE Claude Skills tutorials. Excel workflows, Chrome browsing, file editing, task automation, project management zero tech background needed.</span>
+                    <a class="tweet-link" href="https://x.com/godofprompt/status/2026205192836776359" target="_blank" rel="noopener" title="開啟原文">(2026205192836776359)</a>
+                    <span class="meta">@godofprompt · ❤423 🔁40</span>
+                </span>
+            </div><div class="item" id="L5" data-copy="안녕하세요, Korea Our CEO & Cofounder Evin @provenauthority joined Hankyung TV to share the vision for Billions and a message for our Korean community. We’re building a network where humans and AI agents p...
+https://x.com/billions_ntwk/status/2026266596533018687">
+                <span class="line-num" title="複製 highlight 連結">005</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">안녕하세요, Korea Our CEO & Cofounder Evin @provenauthority joined Hankyung TV to share the vision for Billions and a message for our Korean community. We’re building a network where humans and AI agents p...</span>
+                    <a class="tweet-link" href="https://x.com/billions_ntwk/status/2026266596533018687" target="_blank" rel="noopener" title="開啟原文">(2026266596533018687)</a>
+                    <span class="meta">@billions_ntwk · ❤274 🔁67</span>
+                </span>
+            </div><div class="item" id="L6" data-copy="♟ RAFA AI x Chess Tournament. It’s time to prove you can calculate moves not only on charts! Join our community chess tournament, show your tactical mind, outplay your opponents, and earn your place a...
+https://x.com/RAFA_AI/status/2026279938232345068">
+                <span class="line-num" title="複製 highlight 連結">006</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">♟ RAFA AI x Chess Tournament. It’s time to prove you can calculate moves not only on charts! Join our community chess tournament, show your tactical mind, outplay your opponents, and earn your place a...</span>
+                    <a class="tweet-link" href="https://x.com/RAFA_AI/status/2026279938232345068" target="_blank" rel="noopener" title="開啟原文">(2026279938232345068)</a>
+                    <span class="meta">@RAFA_AI · ❤168 🔁111</span>
+                </span>
+            </div><div class="item" id="L7" data-copy="World Labs CEO 李飞飞：语言本身只是对物理世界的有损表达。 煮意大利面时酱汁的变化、面条入水的状态，都无法仅靠文字还原。 为此，她创立 World Labs，专注研发空间智能技术，让AI通过视觉与三维空间感知真正&quot;理解&quot;物理世界，补足纯语言模型的根本局限。
+https://x.com/KKaWSB/status/2026191572954656940">
+                <span class="line-num" title="複製 highlight 連結">007</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">World Labs CEO 李飞飞：语言本身只是对物理世界的有损表达。 煮意大利面时酱汁的变化、面条入水的状态，都无法仅靠文字还原。 为此，她创立 World Labs，专注研发空间智能技术，让AI通过视觉与三维空间感知真正"理解"物理世界，补足纯语言模型的根本局限。</span>
+                    <a class="tweet-link" href="https://x.com/KKaWSB/status/2026191572954656940" target="_blank" rel="noopener" title="開啟原文">(2026191572954656940)</a>
+                    <span class="meta">@KKaWSB · ❤224 🔁53</span>
+                </span>
+            </div><div class="item" id="L8" data-copy="Dario Amodei ，Anthropic （Claude）共同創辦人，前百度與 OpenAI 員工，痛恨中國模型、無法跟 Sam Altman 牽手，最近 Elon Musk 整天罵他，過去幾週血洗軟體產業的那個男人 XDD
+https://x.com/pirrer/status/2026203831953227995">
+                <span class="line-num" title="複製 highlight 連結">008</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Dario Amodei ，Anthropic （Claude）共同創辦人，前百度與 OpenAI 員工，痛恨中國模型、無法跟 Sam Altman 牽手，最近 Elon Musk 整天罵他，過去幾週血洗軟體產業的那個男人 XDD</span>
+                    <a class="tweet-link" href="https://x.com/pirrer/status/2026203831953227995" target="_blank" rel="noopener" title="開啟原文">(2026203831953227995)</a>
+                    <span class="meta">@pirrer · ❤114 🔁1</span>
+                </span>
+            </div><div class="item" id="L9" data-copy="The bottleneck isn't AI. It's you. If your idea is trash, your AI outputs will be too. 99% of you don't have an AI skills problem - you have an AI idea communication problem.
+https://x.com/milesdeutscher/status/2026263354608951683">
+                <span class="line-num" title="複製 highlight 連結">009</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">The bottleneck isn't AI. It's you. If your idea is trash, your AI outputs will be too. 99% of you don't have an AI skills problem - you have an AI idea communication problem.</span>
+                    <a class="tweet-link" href="https://x.com/milesdeutscher/status/2026263354608951683" target="_blank" rel="noopener" title="開啟原文">(2026263354608951683)</a>
+                    <span class="meta">@milesdeutscher · ❤72 🔁11</span>
+                </span>
+            </div><div class="item" id="L10" data-copy="I finally understand why &quot;act as an expert&quot; prompts are destroying your results. After 200+ tests across Claude, ChatGPT, and Gemini I found what actually works.
+https://x.com/godofprompt/status/2026232675330310159">
+                <span class="line-num" title="複製 highlight 連結">010</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">I finally understand why "act as an expert" prompts are destroying your results. After 200+ tests across Claude, ChatGPT, and Gemini I found what actually works.</span>
+                    <a class="tweet-link" href="https://x.com/godofprompt/status/2026232675330310159" target="_blank" rel="noopener" title="開啟原文">(2026232675330310159)</a>
+                    <span class="meta">@godofprompt · ❤74 🔁21</span>
+                </span>
+            </div><div class="item" id="L11" data-copy="これはすごい。最近Instagramでバズってる「3D野菜がカメラに向かって豆知識を叫ぶ」リール動画をCluade Codeで完全再現してみたので解説。 ㅤ 海外だとフォロワー数十万人のアカウントがゴロゴロいるけど、日本語版はまだほぼ誰もやってない。 ㅤ これ、Gemini × Kling 3.0 ×
+https://x.com/SuguruKun_ai/status/2026268293649334689">
+                <span class="line-num" title="複製 highlight 連結">011</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">これはすごい。最近Instagramでバズってる「3D野菜がカメラに向かって豆知識を叫ぶ」リール動画をCluade Codeで完全再現してみたので解説。 ㅤ 海外だとフォロワー数十万人のアカウントがゴロゴロいるけど、日本語版はまだほぼ誰もやってない。 ㅤ これ、Gemini × Kling 3.0 ×</span>
+                    <a class="tweet-link" href="https://x.com/SuguruKun_ai/status/2026268293649334689" target="_blank" rel="noopener" title="開啟原文">(2026268293649334689)</a>
+                    <span class="meta">@SuguruKun_ai · ❤92 🔁8</span>
+                </span>
+            </div><div class="item" id="L12" data-copy="Google. OpenAI. Anthropic. They're all working on the same problem for agents. How to let agents control the UI layer at runtime, rather than just output text.
+https://x.com/_avichawla/status/2021497035359420620">
+                <span class="line-num" title="複製 highlight 連結">012</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Google. OpenAI. Anthropic. They're all working on the same problem for agents. How to let agents control the UI layer at runtime, rather than just output text.</span>
+                    <a class="tweet-link" href="https://x.com/_avichawla/status/2021497035359420620" target="_blank" rel="noopener" title="開啟原文">(2021497035359420620)</a>
+                    <span class="meta">@_avichawla · ❤72 🔁15</span>
+                </span>
+            </div><div class="item" id="L13" data-copy="I tried all the free writing tools in 2026 — ChatGPT, Claude, Gemini, and Grok. Some are great for drafting ideas fast. Some help with research and finding info.
+https://x.com/aaliya_va/status/2026265862379040989">
+                <span class="line-num" title="複製 highlight 連結">013</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">I tried all the free writing tools in 2026 — ChatGPT, Claude, Gemini, and Grok. Some are great for drafting ideas fast. Some help with research and finding info.</span>
+                    <a class="tweet-link" href="https://x.com/aaliya_va/status/2026265862379040989" target="_blank" rel="noopener" title="開啟原文">(2026265862379040989)</a>
+                    <span class="meta">@aaliya_va · ❤55 🔁3</span>
+                </span>
+            </div><div class="item" id="L14" data-copy="Struggling to choose the right AI for each task? Use this guide to pick the right AI tool in seconds. [ remember to bookmark this post for later ] 1. ChatGPT: ↳ If your focus is content, whether it’s ...
+https://x.com/AndrewBolis/status/2026269658878542259">
+                <span class="line-num" title="複製 highlight 連結">014</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Struggling to choose the right AI for each task? Use this guide to pick the right AI tool in seconds. [ remember to bookmark this post for later ] 1. ChatGPT: ↳ If your focus is content, whether it’s ...</span>
+                    <a class="tweet-link" href="https://x.com/AndrewBolis/status/2026269658878542259" target="_blank" rel="noopener" title="開啟原文">(2026269658878542259)</a>
+                    <span class="meta">@AndrewBolis · ❤36 🔁15</span>
+                </span>
+            </div><div class="item" id="L15" data-copy="Holding 20K + $DEVVE? You qualify. I’m sending a FREE $Blocky AI Agent NFT to every verified holder. Follow Blocky on X & Telegram. DM your ETH wallet. Let’s reward the real ones.
+https://x.com/BlockyAiAgent/status/2026276939158130879">
+                <span class="line-num" title="複製 highlight 連結">015</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Holding 20K + $DEVVE? You qualify. I’m sending a FREE $Blocky AI Agent NFT to every verified holder. Follow Blocky on X & Telegram. DM your ETH wallet. Let’s reward the real ones.</span>
+                    <a class="tweet-link" href="https://x.com/BlockyAiAgent/status/2026276939158130879" target="_blank" rel="noopener" title="開啟原文">(2026276939158130879)</a>
+                    <span class="meta">@BlockyAiAgent · ❤33 🔁11</span>
+                </span>
+            </div><div class="item" id="L16" data-copy="Learn how to create a token with a $U pair from @UTechStables - whether it’s a meme, AI project, utility product, or even RWA. And with Burn Season’s Tax Dividend Dash by @fourdotmemezh , timing could...
+https://x.com/tutorialtoken/status/2026281130899443890">
+                <span class="line-num" title="複製 highlight 連結">016</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Learn how to create a token with a $U pair from @UTechStables - whether it’s a meme, AI project, utility product, or even RWA. And with Burn Season’s Tax Dividend Dash by @fourdotmemezh , timing could...</span>
+                    <a class="tweet-link" href="https://x.com/tutorialtoken/status/2026281130899443890" target="_blank" rel="noopener" title="開啟原文">(2026281130899443890)</a>
+                    <span class="meta">@tutorialtoken · ❤26 🔁10</span>
+                </span>
+            </div><div class="item" id="L17" data-copy="用 AI 写代码确实快，但代码质量参差不齐，有时候自己审查又容易漏掉问题，想找个靠谱的自动化审查方案不太容易。 可以试下，Review Loop 这个开源插件，给 Claude Code 开发工作流增加一个自动化的代码审查闭环。 当我们发布任务后，Claude 负责写代码，完成后插件自动调用 Codex
+https://x.com/GitHub_Daily/status/2026258348803592645">
+                <span class="line-num" title="複製 highlight 連結">017</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">用 AI 写代码确实快，但代码质量参差不齐，有时候自己审查又容易漏掉问题，想找个靠谱的自动化审查方案不太容易。 可以试下，Review Loop 这个开源插件，给 Claude Code 开发工作流增加一个自动化的代码审查闭环。 当我们发布任务后，Claude 负责写代码，完成后插件自动调用 Codex</span>
+                    <a class="tweet-link" href="https://x.com/GitHub_Daily/status/2026258348803592645" target="_blank" rel="noopener" title="開啟原文">(2026258348803592645)</a>
+                    <span class="meta">@GitHub_Daily · ❤34 🔁5</span>
+                </span>
+            </div><div class="item" id="L18" data-copy="Voicenotes iOS just got a major upgrade! Redesigned Home & Menu Faster, easier recording Summaries & instant AI answers Quick search & tagging Import PDFs, calls & photos Share & export in a click Fas...
+https://x.com/voicenotesai/status/2026274754798502383">
+                <span class="line-num" title="複製 highlight 連結">018</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Voicenotes iOS just got a major upgrade! Redesigned Home & Menu Faster, easier recording Summaries & instant AI answers Quick search & tagging Import PDFs, calls & photos Share & export in a click Fas...</span>
+                    <a class="tweet-link" href="https://x.com/voicenotesai/status/2026274754798502383" target="_blank" rel="noopener" title="開啟原文">(2026274754798502383)</a>
+                    <span class="meta">@voicenotesai · ❤25 🔁4</span>
+                </span>
+            </div><div class="item" id="L19" data-copy="I tested Claude Opus 4.6 against a senior product designer. 12 Claude Opus 4.6 prompts → 30+ product renders in 5 hours. The output looks like Apple hired the team personally.
+https://x.com/thisguyknowsai/status/2026218696453271677">
+                <span class="line-num" title="複製 highlight 連結">019</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">I tested Claude Opus 4.6 against a senior product designer. 12 Claude Opus 4.6 prompts → 30+ product renders in 5 hours. The output looks like Apple hired the team personally.</span>
+                    <a class="tweet-link" href="https://x.com/thisguyknowsai/status/2026218696453271677" target="_blank" rel="noopener" title="開啟原文">(2026218696453271677)</a>
+                    <span class="meta">@thisguyknowsai · ❤12 🔁7</span>
+                </span>
+            </div><div class="item" id="L20" data-copy="The @Stacks Hackathon: $20,000 Prize Pool Submission open March 2. Register now to take part! Bounties include best use of USDCx, most innovative sBTC use, and AI for Bitcoin x402 integrations.
+https://x.com/StacksDevs/status/2026276825207648335">
+                <span class="line-num" title="複製 highlight 連結">020</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">The @Stacks Hackathon: $20,000 Prize Pool Submission open March 2. Register now to take part! Bounties include best use of USDCx, most innovative sBTC use, and AI for Bitcoin x402 integrations.</span>
+                    <a class="tweet-link" href="https://x.com/StacksDevs/status/2026276825207648335" target="_blank" rel="noopener" title="開啟原文">(2026276825207648335)</a>
+                    <span class="meta">@StacksDevs · ❤15 🔁2</span>
+                </span>
+            </div><div class="item" id="L21" data-copy="By the end of 2026, the difference between consultants using AI and those who aren’t will be easy to see. @dguido sat down with @riskybusiness to talk systems, feedback loops, and organizational chang...
+https://x.com/trailofbits/status/2026258823875317946">
+                <span class="line-num" title="複製 highlight 連結">021</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">By the end of 2026, the difference between consultants using AI and those who aren’t will be easy to see. @dguido sat down with @riskybusiness to talk systems, feedback loops, and organizational chang...</span>
+                    <a class="tweet-link" href="https://x.com/trailofbits/status/2026258823875317946" target="_blank" rel="noopener" title="開啟原文">(2026258823875317946)</a>
+                    <span class="meta">@trailofbits · ❤15 🔁1</span>
+                </span>
+            </div><div class="item" id="L22" data-copy="UMD researchers studied 2.6 million ai agents on Moltbook, the largest ai-only social network. nearly 300,000 posts. 1.8 million comments. no humans in the loop the question: if you let enough agents ...
+https://x.com/rryssf_/status/2026271324109238416">
+                <span class="line-num" title="複製 highlight 連結">022</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">UMD researchers studied 2.6 million ai agents on Moltbook, the largest ai-only social network. nearly 300,000 posts. 1.8 million comments. no humans in the loop the question: if you let enough agents ...</span>
+                    <a class="tweet-link" href="https://x.com/rryssf_/status/2026271324109238416" target="_blank" rel="noopener" title="開啟原文">(2026271324109238416)</a>
+                    <span class="meta">@rryssf_ · ❤10 🔁1</span>
+                </span>
+            </div><div class="item" id="L23" data-copy="Prompt engineering is overrated. My 4-word prompt (&quot;Summarize my action items&quot;) works better than the 200-word ones I used to write. Took me a bit to realize why.
+https://x.com/aaditsh/status/2026282171577856113">
+                <span class="line-num" title="複製 highlight 連結">023</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Prompt engineering is overrated. My 4-word prompt ("Summarize my action items") works better than the 200-word ones I used to write. Took me a bit to realize why.</span>
+                    <a class="tweet-link" href="https://x.com/aaditsh/status/2026282171577856113" target="_blank" rel="noopener" title="開啟原文">(2026282171577856113)</a>
+                    <span class="meta">@aaditsh · ❤6 🔁1</span>
+                </span>
+            </div><div class="item" id="L24" data-copy="Consensus Hong Kong 2026 was a blast! From AI-native Web3 infrastructure to protecting privacy in the age of LLMs, the focus was on concrete, high-impact use cases.
+https://x.com/PundiAI/status/2026279958457278827">
+                <span class="line-num" title="複製 highlight 連結">024</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Consensus Hong Kong 2026 was a blast! From AI-native Web3 infrastructure to protecting privacy in the age of LLMs, the focus was on concrete, high-impact use cases.</span>
+                    <a class="tweet-link" href="https://x.com/PundiAI/status/2026279958457278827" target="_blank" rel="noopener" title="開啟原文">(2026279958457278827)</a>
+                    <span class="meta">@PundiAI · ❤5 🔁1</span>
+                </span>
+            </div><div class="item" id="L25" data-copy="We are pleased to announce that the U.S. Patent and Trademark Office (USPTO) has awarded Inventor Donald Leka, Founder and CEO of Jumptuit, the following AI Search patent, “System and Method of AI Ass...
+https://x.com/DonaldLeka/status/2026278577541374144">
+                <span class="line-num" title="複製 highlight 連結">025</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">We are pleased to announce that the U.S. Patent and Trademark Office (USPTO) has awarded Inventor Donald Leka, Founder and CEO of Jumptuit, the following AI Search patent, “System and Method of AI Ass...</span>
+                    <a class="tweet-link" href="https://x.com/DonaldLeka/status/2026278577541374144" target="_blank" rel="noopener" title="開啟原文">(2026278577541374144)</a>
+                    <span class="meta">@DonaldLeka · ❤4 🔁4</span>
+                </span>
+            </div><div class="item" id="L26" data-copy="AI टेक्नोलॉजी के साथ AC AI टेक्नोलॉजी से लैस होंगे AC गर्मियों को ध्यान में रखते हुए दो नए प्रोडक्ट Voltas के MD मुकुंदन मेनन से ज़ी बिज़नेस से की खास बात #Voltas #AirConditioner #AI #SmartAppliances ...
+https://x.com/ZeeBusiness/status/2026268819107594473">
+                <span class="line-num" title="複製 highlight 連結">026</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">AI टेक्नोलॉजी के साथ AC AI टेक्नोलॉजी से लैस होंगे AC गर्मियों को ध्यान में रखते हुए दो नए प्रोडक्ट Voltas के MD मुकुंदन मेनन से ज़ी बिज़नेस से की खास बात #Voltas #AirConditioner #AI #SmartAppliances ...</span>
+                    <a class="tweet-link" href="https://x.com/ZeeBusiness/status/2026268819107594473" target="_blank" rel="noopener" title="開啟原文">(2026268819107594473)</a>
+                    <span class="meta">@ZeeBusiness · ❤4 🔁2</span>
+                </span>
+            </div><div class="item" id="L27" data-copy="a16z的Bryan Kim刚发了一篇文章，一句话说清楚了AI广告化的必然性： ChatGPT有8亿周活用户，但付费率只有5-10%。 剩下那90%怎么变现？ 答案从互联网诞生第一天就写好了
+https://x.com/FinanceYF5/status/2026259058949492914">
+                <span class="line-num" title="複製 highlight 連結">027</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">a16z的Bryan Kim刚发了一篇文章，一句话说清楚了AI广告化的必然性： ChatGPT有8亿周活用户，但付费率只有5-10%。 剩下那90%怎么变现？ 答案从互联网诞生第一天就写好了</span>
+                    <a class="tweet-link" href="https://x.com/FinanceYF5/status/2026259058949492914" target="_blank" rel="noopener" title="開啟原文">(2026259058949492914)</a>
+                    <span class="meta">@FinanceYF5 · ❤3 🔁1</span>
+                </span>
+            </div><div class="item" id="L28" data-copy="Two months ago it was “Code Red” at OpenAI… and their existential threat was Gemini 3. Now it’s a momentum shift. Anthropic moved from enterprise-only to consumer surge, new models, Co-Work, major ad ...
+https://x.com/adambhighfill/status/2026289397314855400">
+                <span class="line-num" title="複製 highlight 連結">028</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Two months ago it was “Code Red” at OpenAI… and their existential threat was Gemini 3. Now it’s a momentum shift. Anthropic moved from enterprise-only to consumer surge, new models, Co-Work, major ad ...</span>
+                    <a class="tweet-link" href="https://x.com/adambhighfill/status/2026289397314855400" target="_blank" rel="noopener" title="開啟原文">(2026289397314855400)</a>
+                    <span class="meta">@adambhighfill · ❤0 🔁0</span>
+                </span>
+            </div><div class="item" id="L29" data-copy="Top 7 AI Tools That Actually Work in India (Feb 2026): 1. ChatGPT — Writing, coding, analysis 2. Google Gemini — Best for Hindi content 3. Claude — Deep reasoning & creative work 4.
+https://x.com/HindiAIGuru/status/2026289274937909263">
+                <span class="line-num" title="複製 highlight 連結">029</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Top 7 AI Tools That Actually Work in India (Feb 2026): 1. ChatGPT — Writing, coding, analysis 2. Google Gemini — Best for Hindi content 3. Claude — Deep reasoning & creative work 4.</span>
+                    <a class="tweet-link" href="https://x.com/HindiAIGuru/status/2026289274937909263" target="_blank" rel="noopener" title="開啟原文">(2026289274937909263)</a>
+                    <span class="meta">@HindiAIGuru · ❤0 🔁0</span>
+                </span>
+            </div><div class="item" id="L30" data-copy="OpenClaw is just a shell. The model you plug into it is everything. Here's what actually works after testing them all: → Claude Sonnet + ChatGPT Codex → best intelligence, best results → Qwen 3.5 → so...
+https://x.com/ProfitBoardroom/status/2026289017600582066">
+                <span class="line-num" title="複製 highlight 連結">030</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">OpenClaw is just a shell. The model you plug into it is everything. Here's what actually works after testing them all: → Claude Sonnet + ChatGPT Codex → best intelligence, best results → Qwen 3.5 → so...</span>
+                    <a class="tweet-link" href="https://x.com/ProfitBoardroom/status/2026289017600582066" target="_blank" rel="noopener" title="開啟原文">(2026289017600582066)</a>
+                    <span class="meta">@ProfitBoardroom · ❤0 🔁0</span>
+                </span>
+            </div><div class="item" id="L31" data-copy="Most founders are building better AI models. Tanay is trying to kill the keyboard. While people debate GPT vs Claude… He asked a more dangerous question: What if the real bottleneck isn’t intelligence...
+https://x.com/Shruti_0810/status/2026288654092734780">
+                <span class="line-num" title="複製 highlight 連結">031</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Most founders are building better AI models. Tanay is trying to kill the keyboard. While people debate GPT vs Claude… He asked a more dangerous question: What if the real bottleneck isn’t intelligence...</span>
+                    <a class="tweet-link" href="https://x.com/Shruti_0810/status/2026288654092734780" target="_blank" rel="noopener" title="開啟原文">(2026288654092734780)</a>
+                    <span class="meta">@Shruti_0810 · ❤0 🔁0</span>
+                </span>
+            </div></div>
+        </section><section class="category">
+            <h2>🦞 OpenClaw 生態</h2>
+            <div class="items"><div class="item" id="L32" data-copy="SN50 is here, the fastest chip built for agentic AI. Max speed of up to 5X faster; run agentic AI at a 3X lower cost than GPUs, unlocking cloud-scale inference economics.
+https://x.com/SambaNovaAI/status/2026257152197996585">
+                <span class="line-num" title="複製 highlight 連結">032</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">SN50 is here, the fastest chip built for agentic AI. Max speed of up to 5X faster; run agentic AI at a 3X lower cost than GPUs, unlocking cloud-scale inference economics.</span>
+                    <a class="tweet-link" href="https://x.com/SambaNovaAI/status/2026257152197996585" target="_blank" rel="noopener" title="開啟原文">(2026257152197996585)</a>
+                    <span class="meta">@SambaNovaAI · ❤61 🔁24</span>
+                </span>
+            </div><div class="item" id="L33" data-copy="TenacitOS - 虾哥的实时监控仪表盘与控制中心 OpenClaw 的 Mission Control 直接读取 OpenClaw 安装目录的配置、代理、会话、内存和日志，无需额外数据库或后端，OpenClaw 本身就是后端。你可以把它理解为 OpenClaw 的「原生 GUI 外壳」。  github.com/carlosazaustre /tenacitOS …
+https://x.com/geekbb/status/2026223826263044136">
+                <span class="line-num" title="複製 highlight 連結">033</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">TenacitOS - 虾哥的实时监控仪表盘与控制中心 OpenClaw 的 Mission Control 直接读取 OpenClaw 安装目录的配置、代理、会话、内存和日志，无需额外数据库或后端，OpenClaw 本身就是后端。你可以把它理解为 OpenClaw 的「原生 GUI 外壳」。  github.com/carlosazaustre /tenacitOS …</span>
+                    <a class="tweet-link" href="https://x.com/geekbb/status/2026223826263044136" target="_blank" rel="noopener" title="開啟原文">(2026223826263044136)</a>
+                    <span class="meta">@geekbb · ❤68 🔁15</span>
+                </span>
+            </div><div class="item" id="L34" data-copy="木子总结的四种浏览器方案： 1、内置的web_fetch（无浏览器、适用于无需登录的，可以抓取公开信息） 2、API last30days skill（无浏览器、需要API key ，适用于搜索精细化的场景，成本单次在0.2美元） 3、自动化的OpenClaw managed（单独的网页，可24*7运行，基本上可以接替所有浏览器的操作）
+https://x.com/zstmfhy/status/2026211384049209554">
+                <span class="line-num" title="複製 highlight 連結">034</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">木子总结的四种浏览器方案： 1、内置的web_fetch（无浏览器、适用于无需登录的，可以抓取公开信息） 2、API last30days skill（无浏览器、需要API key ，适用于搜索精细化的场景，成本单次在0.2美元） 3、自动化的OpenClaw managed（单独的网页，可24*7运行，基本上可以接替所有浏览器的操作）</span>
+                    <a class="tweet-link" href="https://x.com/zstmfhy/status/2026211384049209554" target="_blank" rel="noopener" title="開啟原文">(2026211384049209554)</a>
+                    <span class="meta">@zstmfhy · ❤62 🔁12</span>
+                </span>
+            </div><div class="item" id="L35" data-copy="@Claw_Natiion | Showcase Stream hosted by @TonyCatoff
+https://x.com/CyreneAIStudios/status/2026276227573801274">
+                <span class="line-num" title="複製 highlight 連結">035</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">@Claw_Natiion | Showcase Stream hosted by @TonyCatoff</span>
+                    <a class="tweet-link" href="https://x.com/CyreneAIStudios/status/2026276227573801274" target="_blank" rel="noopener" title="開啟原文">(2026276227573801274)</a>
+                    <span class="meta">@CyreneAIStudios · ❤27 🔁26</span>
+                </span>
+            </div><div class="item" id="L36" data-copy="just imagine creating a Polymarket trading bot in minutes, without Claude and OpenClaw, no code needed and earning real profits 24/7 is it possible? yes and @PredictEngineai can help you with that! ke...
+https://x.com/slash1sol/status/2026269228056146350">
+                <span class="line-num" title="複製 highlight 連結">036</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">just imagine creating a Polymarket trading bot in minutes, without Claude and OpenClaw, no code needed and earning real profits 24/7 is it possible? yes and @PredictEngineai can help you with that! ke...</span>
+                    <a class="tweet-link" href="https://x.com/slash1sol/status/2026269228056146350" target="_blank" rel="noopener" title="開啟原文">(2026269228056146350)</a>
+                    <span class="meta">@slash1sol · ❤26 🔁4</span>
+                </span>
+            </div><div class="item" id="L37" data-copy="OpenClaw 龙虾饲养池Mac mini 近期不错的价格，叠加教育优惠3100 可以拿下。 京东自营保修也不用愁，需要的朋友可以看看。
+https://x.com/berryxia/status/2026264023508070656">
+                <span class="line-num" title="複製 highlight 連結">037</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">OpenClaw 龙虾饲养池Mac mini 近期不错的价格，叠加教育优惠3100 可以拿下。 京东自营保修也不用愁，需要的朋友可以看看。</span>
+                    <a class="tweet-link" href="https://x.com/berryxia/status/2026264023508070656" target="_blank" rel="noopener" title="開啟原文">(2026264023508070656)</a>
+                    <span class="meta">@berryxia · ❤16 🔁2</span>
+                </span>
+            </div><div class="item" id="L38" data-copy="Here we go! Two trustless agents discover each other over p2p (BitTorrent Mainline DHT) and agree on a content-addressed Wasm program as their shared state machine.
+https://x.com/raulvk/status/2026271724015116611">
+                <span class="line-num" title="複製 highlight 連結">038</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Here we go! Two trustless agents discover each other over p2p (BitTorrent Mainline DHT) and agree on a content-addressed Wasm program as their shared state machine.</span>
+                    <a class="tweet-link" href="https://x.com/raulvk/status/2026271724015116611" target="_blank" rel="noopener" title="開啟原文">(2026271724015116611)</a>
+                    <span class="meta">@raulvk · ❤12 🔁3</span>
+                </span>
+            </div><div class="item" id="L39" data-copy="一张很有意思的数据图：近 50% 的 Agent 调用都发生在软件工程领域。 Han Wang表示：“如果我今天再创办一家公司，我会专注做这些事情”
+https://x.com/FinanceYF5/status/2026212388945711295">
+                <span class="line-num" title="複製 highlight 連結">039</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">一张很有意思的数据图：近 50% 的 Agent 调用都发生在软件工程领域。 Han Wang表示：“如果我今天再创办一家公司，我会专注做这些事情”</span>
+                    <a class="tweet-link" href="https://x.com/FinanceYF5/status/2026212388945711295" target="_blank" rel="noopener" title="開啟原文">(2026212388945711295)</a>
+                    <span class="meta">@FinanceYF5 · ❤14 🔁1</span>
+                </span>
+            </div><div class="item" id="L40" data-copy="Notion 预告的大招好像已经上线了，就是 custom agent
+https://x.com/dingyi/status/2026282743454441491">
+                <span class="line-num" title="複製 highlight 連結">040</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Notion 预告的大招好像已经上线了，就是 custom agent</span>
+                    <a class="tweet-link" href="https://x.com/dingyi/status/2026282743454441491" target="_blank" rel="noopener" title="開啟原文">(2026282743454441491)</a>
+                    <span class="meta">@dingyi · ❤5 🔁0</span>
+                </span>
+            </div><div class="item" id="L41" data-copy="This guy built a social media platform for AI bots. No humans allowed. Over a million AI agents signed up in days. The internet lost its mind. And the tool that made it possible, OpenClaw, hit 175,000...
+https://x.com/ProfitBoardroom/status/2026289455305527324">
+                <span class="line-num" title="複製 highlight 連結">041</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">This guy built a social media platform for AI bots. No humans allowed. Over a million AI agents signed up in days. The internet lost its mind. And the tool that made it possible, OpenClaw, hit 175,000...</span>
+                    <a class="tweet-link" href="https://x.com/ProfitBoardroom/status/2026289455305527324" target="_blank" rel="noopener" title="開啟原文">(2026289455305527324)</a>
+                    <span class="meta">@ProfitBoardroom · ❤0 🔁0</span>
+                </span>
+            </div><div class="item" id="L42" data-copy="My video on some of my fav openclaw gems $FELIX $CLAWD $KELLYCLAUDE Openclaw Cryto AI Agents: Next Big Narrative  youtu.be/0ndBEx2r6TI?si =kwaddPz3r6DaA9UL … via @YouTube
+https://x.com/nirajhodler/status/2026289397885481002">
+                <span class="line-num" title="複製 highlight 連結">042</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">My video on some of my fav openclaw gems $FELIX $CLAWD $KELLYCLAUDE Openclaw Cryto AI Agents: Next Big Narrative  youtu.be/0ndBEx2r6TI?si =kwaddPz3r6DaA9UL … via @YouTube</span>
+                    <a class="tweet-link" href="https://x.com/nirajhodler/status/2026289397885481002" target="_blank" rel="noopener" title="開啟原文">(2026289397885481002)</a>
+                    <span class="meta">@nirajhodler · ❤0 🔁0</span>
+                </span>
+            </div><div class="item" id="L43" data-copy="The game is simple: Email plasmasummit634@lnemail.net and try to trick the @openclaw agent into giving you the balance in its wallet. @Bumi already cracked it once! Visit  mailmike.lol to see the agen...
+https://x.com/MattAhlborg/status/2026289291291185524">
+                <span class="line-num" title="複製 highlight 連結">043</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">The game is simple: Email plasmasummit634@lnemail.net and try to trick the @openclaw agent into giving you the balance in its wallet. @Bumi already cracked it once! Visit  mailmike.lol to see the agen...</span>
+                    <a class="tweet-link" href="https://x.com/MattAhlborg/status/2026289291291185524" target="_blank" rel="noopener" title="開啟原文">(2026289291291185524)</a>
+                    <span class="meta">@MattAhlborg · ❤0 🔁0</span>
+                </span>
+            </div><div class="item" id="L44" data-copy="预告一个大工程，我实现了 @openclaw 的 agent team，一个接近 Claude Code 的可以真实创建和认领任务，agent 之间可以互相沟通的 agent team。
+https://x.com/FradSer/status/2026288985996481018">
+                <span class="line-num" title="複製 highlight 連結">044</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">预告一个大工程，我实现了 @openclaw 的 agent team，一个接近 Claude Code 的可以真实创建和认领任务，agent 之间可以互相沟通的 agent team。</span>
+                    <a class="tweet-link" href="https://x.com/FradSer/status/2026288985996481018" target="_blank" rel="noopener" title="開啟原文">(2026288985996481018)</a>
+                    <span class="meta">@FradSer · ❤0 🔁0</span>
+                </span>
+            </div><div class="item" id="L45" data-copy="My OpenClaw Agent - EP. 2 After the initial setup, I’m now asking myself which agentic wallet and crypto skills I should give to my agent. As of today, there are three major providers: > @bankrbot -> ...
+https://x.com/diegoxyz/status/2026288265540645070">
+                <span class="line-num" title="複製 highlight 連結">045</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">My OpenClaw Agent - EP. 2 After the initial setup, I’m now asking myself which agentic wallet and crypto skills I should give to my agent. As of today, there are three major providers: &gt; @bankrbot -&gt; ...</span>
+                    <a class="tweet-link" href="https://x.com/diegoxyz/status/2026288265540645070" target="_blank" rel="noopener" title="開啟原文">(2026288265540645070)</a>
+                    <span class="meta">@diegoxyz · ❤0 🔁0</span>
+                </span>
+            </div></div>
+        </section><section class="category">
+            <h2>🛠️ 開發者工具與實踐</h2>
+            <div class="items"><div class="item" id="L46" data-copy="BREAKING : Cline released Cline CLI 2.0, an open-source AI coding agent powered by Kimi K2.5 and MiniMax M2.5, available for free! `npm install -g cline` on Windows, Mac, and Linux.
+https://x.com/testingcatalog/status/2022348951459172604">
+                <span class="line-num" title="複製 highlight 連結">046</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">BREAKING : Cline released Cline CLI 2.0, an open-source AI coding agent powered by Kimi K2.5 and MiniMax M2.5, available for free! `npm install -g cline` on Windows, Mac, and Linux.</span>
+                    <a class="tweet-link" href="https://x.com/testingcatalog/status/2022348951459172604" target="_blank" rel="noopener" title="開啟原文">(2022348951459172604)</a>
+                    <span class="meta">@testingcatalog · ❤1.8K 🔁221</span>
+                </span>
+            </div><div class="item" id="L47" data-copy="our revamped homepage, built for speed use the new omnibar to jump back to a past vibe coding session, resume a playground chat or even create an API key ctrl ⌃ + / to launch instantly from anywhere i...
+https://x.com/GoogleAIStudio/status/2021635247935566225">
+                <span class="line-num" title="複製 highlight 連結">047</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">our revamped homepage, built for speed use the new omnibar to jump back to a past vibe coding session, resume a playground chat or even create an API key ctrl ⌃ + / to launch instantly from anywhere i...</span>
+                    <a class="tweet-link" href="https://x.com/GoogleAIStudio/status/2021635247935566225" target="_blank" rel="noopener" title="開啟原文">(2021635247935566225)</a>
+                    <span class="meta">@GoogleAIStudio · ❤837 🔁86</span>
+                </span>
+            </div><div class="item" id="L48" data-copy="掌握AI能力可以VibeCoding的人 在这个时间窗口会积攒出大量工具资产 我本来想找个活码工具用来替企微二维码+做统计 结果一看这些破saas全都收费 跟AI直接说了几句话，同步人工先配着 不一会儿这系统就出来了 还能用 SaaS已死 趁着token还便宜 赶紧做工具 全量CLI包给Agent用！
+https://x.com/yangyi/status/2025076899559735611">
+                <span class="line-num" title="複製 highlight 連結">048</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">掌握AI能力可以VibeCoding的人 在这个时间窗口会积攒出大量工具资产 我本来想找个活码工具用来替企微二维码+做统计 结果一看这些破saas全都收费 跟AI直接说了几句话，同步人工先配着 不一会儿这系统就出来了 还能用 SaaS已死 趁着token还便宜 赶紧做工具 全量CLI包给Agent用！</span>
+                    <a class="tweet-link" href="https://x.com/yangyi/status/2025076899559735611" target="_blank" rel="noopener" title="開啟原文">(2025076899559735611)</a>
+                    <span class="meta">@yangyi · ❤56 🔁4</span>
+                </span>
+            </div><div class="item" id="L49" data-copy="Stop Googling. Start building. There's a repo with 284,000+ stars that lists EVERY useful Python library ever made. → Web frameworks: Django, Flask, FastAPI → AI/ML: TensorFlow, PyTorch, scikit-learn,...
+https://x.com/Whizz_ai/status/2026250794136436964">
+                <span class="line-num" title="複製 highlight 連結">049</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Stop Googling. Start building. There's a repo with 284,000+ stars that lists EVERY useful Python library ever made. → Web frameworks: Django, Flask, FastAPI → AI/ML: TensorFlow, PyTorch, scikit-learn,...</span>
+                    <a class="tweet-link" href="https://x.com/Whizz_ai/status/2026250794136436964" target="_blank" rel="noopener" title="開啟原文">(2026250794136436964)</a>
+                    <span class="meta">@Whizz_ai · ❤35 🔁20</span>
+                </span>
+            </div><div class="item" id="L50" data-copy="OpenAI Codex CLI 实用最佳实践 很难得看到介绍 Codex 实践的文章，Twitter 上、Reddit 上、Youtube 上基本都找不到，好容易找到一篇，一起看看。朋友们如果有这方面文章，感谢分享！ cc @OpenAIDevs AGENTS. md 与自定义配置 首先澄清一个常见误解：AGENTS. md
+https://x.com/shao__meng/status/2026246864509800956">
+                <span class="line-num" title="複製 highlight 連結">050</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">OpenAI Codex CLI 实用最佳实践 很难得看到介绍 Codex 实践的文章，Twitter 上、Reddit 上、Youtube 上基本都找不到，好容易找到一篇，一起看看。朋友们如果有这方面文章，感谢分享！ cc @OpenAIDevs AGENTS. md 与自定义配置 首先澄清一个常见误解：AGENTS. md</span>
+                    <a class="tweet-link" href="https://x.com/shao__meng/status/2026246864509800956" target="_blank" rel="noopener" title="開啟原文">(2026246864509800956)</a>
+                    <span class="meta">@shao__meng · ❤16 🔁1</span>
+                </span>
+            </div><div class="item" id="L51" data-copy="Ready to return to Raccoon City? 3 days until Resident Evil Requiem with #RTXON
+https://x.com/NvidiaANZ/status/2026288534772928648">
+                <span class="line-num" title="複製 highlight 連結">051</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Ready to return to Raccoon City? 3 days until Resident Evil Requiem with #RTXON</span>
+                    <a class="tweet-link" href="https://x.com/NvidiaANZ/status/2026288534772928648" target="_blank" rel="noopener" title="開啟原文">(2026288534772928648)</a>
+                    <span class="meta">@NvidiaANZ · ❤0 🔁0</span>
+                </span>
+            </div></div>
+        </section><section class="category">
+            <h2>🔍 其他焦點</h2>
+            <div class="items"><div class="item" id="L52" data-copy="Pre-order for Comet on iOS is now live in the Apple App Store. Sign up now.  apps.apple.com/us/app/comet-a i-personal-assistant/id6748622471 …
+https://x.com/perplexity_ai/status/2024532470407065819">
+                <span class="line-num" title="複製 highlight 連結">052</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Pre-order for Comet on iOS is now live in the Apple App Store. Sign up now.  apps.apple.com/us/app/comet-a i-personal-assistant/id6748622471 …</span>
+                    <a class="tweet-link" href="https://x.com/perplexity_ai/status/2024532470407065819" target="_blank" rel="noopener" title="開啟原文">(2024532470407065819)</a>
+                    <span class="meta">@perplexity_ai · ❤790 🔁132</span>
+                </span>
+            </div><div class="item" id="L53" data-copy="
+https://x.com/bozhou_ai/status/2026215490062897241">
+                <span class="line-num" title="複製 highlight 連結">053</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結"></span>
+                    <a class="tweet-link" href="https://x.com/bozhou_ai/status/2026215490062897241" target="_blank" rel="noopener" title="開啟原文">(2026215490062897241)</a>
+                    <span class="meta">@bozhou_ai · ❤607 🔁156</span>
+                </span>
+            </div><div class="item" id="L54" data-copy="剪映+即梦AI短视频创作实战课 ：  pan.quark.cn/s/fae229669333
+https://x.com/FLMdongtianfudi/status/2026267271161856390">
+                <span class="line-num" title="複製 highlight 連結">054</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">剪映+即梦AI短视频创作实战课 ：  pan.quark.cn/s/fae229669333</span>
+                    <a class="tweet-link" href="https://x.com/FLMdongtianfudi/status/2026267271161856390" target="_blank" rel="noopener" title="開啟原文">(2026267271161856390)</a>
+                    <span class="meta">@FLMdongtianfudi · ❤93 🔁25</span>
+                </span>
+            </div><div class="item" id="L55" data-copy="02.25日复盘计划 1.利欧股份：AI营销+液冷泵+合作字节跳动，开盘高开就发现有资金兑现，承接力度不是很好，但盘中有出现一定的缩量冲高表现，主力资金也是净流出的走势，这个位置我不会考虑进场参与
+https://x.com/sanhuyanxishe/status/2026271255364780389">
+                <span class="line-num" title="複製 highlight 連結">055</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">02.25日复盘计划 1.利欧股份：AI营销+液冷泵+合作字节跳动，开盘高开就发现有资金兑现，承接力度不是很好，但盘中有出现一定的缩量冲高表现，主力资金也是净流出的走势，这个位置我不会考虑进场参与</span>
+                    <a class="tweet-link" href="https://x.com/sanhuyanxishe/status/2026271255364780389" target="_blank" rel="noopener" title="開啟原文">(2026271255364780389)</a>
+                    <span class="meta">@sanhuyanxishe · ❤10 🔁2</span>
+                </span>
+            </div></div>
+        </section><section class="category">
+            <h2>🎬 AI 影片與圖像</h2>
+            <div class="items"><div class="item" id="L56" data-copy="We’ve got $5,000 for the best video creators on X We’re looking for banger videos for the upcoming @Enhanced_Games Whether it’s high-octane AI or top-tier brain rot, if it goes viral, we want to pay y...
+https://x.com/kloutgg/status/2026281796237930666">
+                <span class="line-num" title="複製 highlight 連結">056</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">We’ve got $5,000 for the best video creators on X We’re looking for banger videos for the upcoming @Enhanced_Games Whether it’s high-octane AI or top-tier brain rot, if it goes viral, we want to pay y...</span>
+                    <a class="tweet-link" href="https://x.com/kloutgg/status/2026281796237930666" target="_blank" rel="noopener" title="開啟原文">(2026281796237930666)</a>
+                    <span class="meta">@kloutgg · ❤127 🔁108</span>
+                </span>
+            </div></div>
+        </section><section class="category">
+            <h2>🔐 安全與基礎設施</h2>
+            <div class="items"><div class="item" id="L57" data-copy="牛马AI内测用户们动手能力很强 这5个平台的Bot接通了4个 唯有企业微信是最恶心且能力最低的 我还说把AI企微bot接到群里当客服 结果人家都没这功能 只能继续走以前SCRM hack的方式 这么封闭做什么呢
+https://x.com/yangyi/status/2026270656439157113">
+                <span class="line-num" title="複製 highlight 連結">057</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">牛马AI内测用户们动手能力很强 这5个平台的Bot接通了4个 唯有企业微信是最恶心且能力最低的 我还说把AI企微bot接到群里当客服 结果人家都没这功能 只能继续走以前SCRM hack的方式 这么封闭做什么呢</span>
+                    <a class="tweet-link" href="https://x.com/yangyi/status/2026270656439157113" target="_blank" rel="noopener" title="開啟原文">(2026270656439157113)</a>
+                    <span class="meta">@yangyi · ❤4 🔁1</span>
+                </span>
+            </div></div>
+        </section>
+        
+        <div class="stats">
+            📊 共收集 221 條推文，精選顯示於上
+        </div>
+    </div>
+    
+    <div class="toast" id="toast">已複製到剪貼簿</div>
+    
+    <script>
+        const toast = document.getElementById('toast');
+        let toastTimeout;
+        
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+        
+        async function copyToClipboard(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showToast('已複製到剪貼簿');
+            } catch (e) {
+                showToast('複製失敗');
+            }
+        }
+        
+        // 點擊行號：複製 highlight 連結
+        document.querySelectorAll('.line-num').forEach(el => {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                const item = el.closest('.item');
+                const lineId = item.id;
+                const url = `${location.origin}${location.pathname}#${lineId}`;
+                history.replaceState(null, '', `#${lineId}`);
+                copyToClipboard(url);
+            });
+        });
+        
+        // 點擊文字：複製「文字 + 原文連結」
+        document.querySelectorAll('.text').forEach(el => {
+            el.addEventListener('click', () => {
+                const item = el.closest('.item');
+                const copyText = item.dataset.copy;
+                copyToClipboard(copyText);
+            });
+        });
+    </script>
+</body>
+</html>
