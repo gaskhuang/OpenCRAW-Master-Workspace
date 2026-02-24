@@ -1,0 +1,38 @@
+{
+  "name": "lib",
+  "dependencies": {
+    "@google/gemini-cli": {
+      "version": "0.26.0",
+      "overridden": false
+    },
+    "@lancedb/lancedb-darwin-arm64": {
+      "version": "0.24.1",
+      "overridden": false
+    },
+    "@lancedb/lancedb": {
+      "version": "0.24.1",
+      "overridden": false
+    },
+    "@vibe-kit/grok-cli": {
+      "version": "0.0.34",
+      "overridden": false
+    },
+    "corepack": {
+      "version": "0.30.0",
+      "overridden": false
+    },
+    "npm": {
+      "version": "10.9.2",
+      "overridden": false
+    },
+    "openclaw": {
+      "version": "2026.2.4",
+      "resolved": "file:../../../../../openclaw/openclaw",
+      "overridden": false
+    },
+    "pnpm": {
+      "version": "10.28.2",
+      "overridden": false
+    }
+  }
+}

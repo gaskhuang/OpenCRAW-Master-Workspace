@@ -157,8 +157,44 @@
         - **成效**: 靠這套進階 AI 流程，把原本要花 12 個月的成效，90 天就做到了。
     - **自動標籤**: #ClaudeCowork #本地SEO #Schema #關鍵字研究 #Ahrefs #自動化流程
 
+## FB 貼文收集 (2026-02-24)
+
+### Will 保哥技術交流 – OpenClaw 訂閱危機
+- **連結**：https://www.facebook.com/share/p/17R4CDC6jn/
+- **摘要**：訂閱靠輕用多數，重用少數破壞模型。OpenClaw 高頻自動化讓人人重用，平台忍但蒐數據限額。
+- **標籤**：#訂閱邏輯 #OpenClaw風險 #商業模式
+- **時間**：22小時前 (937讚)
+
+### OpenClaw 中文社群 – Zeabur 救蝦
+- **連結**：https://www.facebook.com/share/p/1D4SF7EUvi/
+- **摘要**：升級崩，Zeabur 無檔 hack 重啟抓 json 救。tail -f /dev/null 修。
+- **標籤**：#Zeabur坑 #OpenClaw救機 #部署教學
+- **時間**：6小時前 (13讚)
+
 ## 2026-02-23｜廠商分享會邀請
 - **時間**：2026/3/20 (五) 下午3~4點
 - **內容**：邀請「蓋斯克哥哥」分享網路架設專業與眉角
 - **格式**：25分鐘分享 + 5分鐘 QA
 - **狀態**：待確認是否方便；上次已提及
+## [2026-02-24] Pahud Hsieh FB 貼文：localissue sync 小本本同步機制
+
+- **連結**：https://www.facebook.com/share/p/1C9tWHzcVZ/?mibextid=wwXIfr
+- **摘要**：介紹 localissue CLI 的 sync 功能。使用 \`localissue sync --push ID\` 將本地小本本 (ISSUE.md) 同步到 GitHub issue，\`--pull ID\` 反向同步。強調本地反覆修改思路後再公開，避免 agent 產生尷尬內容（如『主公』）直接推上 GH。有 ASCII flowchart 示意圖與範例對話。作者不公開 source code，認為人人可自製。
+- **圖片**：
+  - Flowchart：https://www.facebook.com/photo/?fbid=10163743187090469&set=pcb.10163743259025469
+  - Help output：https://www.facebook.com/photo/?fbid=10163743258490469&set=pcb.10163743259025469
+- **標籤**：#localissue #小本本 #GitHubIssue #CLI #開發工具 #agent工作流
+- **存檔時間**：2026-02-24 09:19
+
+---
+
+### Will 保哥技術交流：Gemini 3.1 Pro Preview 三角函數互動教學
+- **連結**：https://www.facebook.com/share/p/18AN2PbeEZ/?mibextid=wwXIfr
+- **摘要**：在『Generative AI 技術交流中心』分享用 Google Gemini 3.1 Pro Preview（新上架）設計的互動式三角函數動畫教學工具。連結：https://tri.gh.miniasp.com/ （TRI.GH.MINIASP.COM）。附兩張圖示意，獲 416 讚、57 分享、19 留言。留言範例：『看看三角函數是如何運作的』。時間：3 天前。
+- **圖片**：
+  - 圖1：https://www.facebook.com/photo/?fbid=1357322956421790&set=pcb.1613005486550327
+  - 圖2：https://www.facebook.com/photo/?fbid=1357322953088457&set=pcb.1613005486550327
+- **標籤**：#Gemini3.1 #三角函數 #互動教學 #視覺化 #AI生成工具 #GenerativeAI
+- **存檔時間**：2026-02-24 09:30
+
+---

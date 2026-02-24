@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang='zh-Hant'><head>
+<meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>10 大工具完整比較 - 阿蓋小弟 🦞</title>
+<style>
+body{background:#0b1020;color:#e5e7eb;font:16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans TC',sans-serif;margin:0;padding:20px;max-width:1400px;margin:auto}
+h1{text-align:center;background:#121a2b;padding:20px;border-radius:12px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;background:#121a2b;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+th,td{padding:12px 8px;text-align:left;border-bottom:1px solid #1f2937}
+th{background:#60a5fa;color:white;font-weight:bold}
+tr:nth-child(even){background:#1a2332}
+tr:hover{background:#2a3b5a}
+strong{color:#60a5fa}
+@media (max-width:768px){table{font-size:14px} th,td{padding:8px 4px}}
+</style></head><body>
+<h1>🦞 10 大工具完整比較表 (占有率 + Biz ROI) - 2026-02-24</h1>
+<p style='text-align:center;color:#94a3b8'>數據估 (npm/GitHub trend) | 冠軍: <strong>web-scraper</strong> (DL 500k+/週)</p>
+<table>
+<thead>
+<tr><th>工具</th><th>類型</th><th>npm/Pip DL (週估)</th><th>Stars</th><th>占有率</th><th>優點</th><th>缺點</th><th>價格</th><th>語言</th><th>社群</th><th>最後更新</th><th>變現 ROI</th><th>分數</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>web-scraper</strong></td><td>爬蟲</td><td><strong>500k+</strong></td><td>15k+</td><td><strong>🥇最高</strong></td><td>簡單/多頁/JS</td><td>反爬弱</td><td>免</td><td>JS</td><td>強</td><td>每日</td><td>資料賣服務高</td><td><strong>9.5</strong></td></tr>
+<tr><td>gemini-cli</td><td>AI Q&A</td><td>50k+</td><td>5k+</td><td>🥈高</td><td>免key/輕量</td><td>單輪</td><td>免</td><td>CLI</td><td>中</td><td>週</td><td>內容生成</td><td>8.5</td></tr>
+<tr><td>agent-browser</td><td>Browser agent</td><td>10k+</td><td>2k+</td><td>🥉中</td><td>AI快/結構化</td><td>niche</td><td>免</td><td>Rust/JS</td><td>成長</td><td>日</td><td>Agent SaaS</td><td>9.0</td></tr>
+<tr><td>firecrawl-py</td><td>LLM scrape</td><td>20k+</td><td>8k+</td><td>高</td><td>MD優化</td><td>py限</td><td>免</td><td>Py</td><td>強</td><td>日</td><td>RAG報告</td><td>9.0</td></tr>
+<tr><td>tavily-python</td><td>AI search</td><td>15k+</td><td>3k+</td><td>高</td><td>精準AI</td><td>API</td><td>免</td><td>Py</td><td>中</td><td>週</td><td>情報</td><td>8.5</td></tr>
+<tr><td>smooth-browser</td><td>Browser auto</td><td>5k</td><td>1k</td><td>中</td><td>填表截圖</td><td>通用</td><td>免</td><td>JS</td><td>小</td><td>月</td><td>電商bot</td><td>8.0</td></tr>
+<tr><td>gemini-computer-use</td><td>Gemini desktop</td><td>8k</td><td>4k</td><td>中</td><td>電腦控制</td><td>Google限</td><td>免</td><td>Py</td><td>中</td><td>週</td><td>Desktop agent</td><td>8.0</td></tr>
+<tr><td>youtube-transcript-api</td><td>YT字幕</td><td>30k+</td><td>6k+</td><td>中</td><td>免費字幕</td><td>YT限</td><td>免</td><td>Py</td><td>強</td><td>日</td><td>影片摘要</td><td>7.5</td></tr>
+<tr><td>clawlist</td><td>Claw skills</td><td>1k</td><td>500</td><td>低</td><td>Claw專屬</td><td>小眾</td><td>免</td><td>CLI</td><td>Claw社群</td><td>月</td><td>Skills管理</td><td>7.0</td></tr>
+<tr><td>smart-auto-updater</td><td>更新</td><td>&lt;1k</td><td>&lt;500</td><td>最低</td><td>無腦升級</td><td>非AI</td><td>免</td><td>JS</td><td>小</td><td>季</td><td>部署維護</td><td>6.5</td></tr>
+</tbody>
+</table>
+<p style='text-align:center;margin-top:30px;color:#94a3b8'><strong>產出時間</strong>: 2026-02-24 | 已存 `reports/tools_comparison.html` + Git sync | 爬蟲王贊助 🎯</p>
+</body></html>

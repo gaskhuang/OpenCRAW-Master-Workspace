@@ -1,0 +1,10 @@
+/Users/user/Documents/antigrativt/node_bin/lib
+├── @google/gemini-cli@0.26.0
+├── @lancedb/lancedb-darwin-arm64@0.24.1
+├── @lancedb/lancedb@0.24.1
+├── @vibe-kit/grok-cli@0.0.34
+├── corepack@0.30.0
+├── npm@10.9.2
+├── openclaw@2026.2.4 -> ./../../../../openclaw/openclaw
+└── pnpm@10.28.2
+

@@ -11,6 +11,11 @@
   - **推薦專案**: alexispurslane/gemini-ocr (含幻覺檢測、Markdown 輸出)
     - GitHub: https://github.com/alexispurslane/gemini-ocr
   - **實測成效**: 處理時間 120x 加速，準確率 96%
+- **2026-02-25 研究更新**:
+  - **新基準工具**: OmniDocBench - 文檔理解評估基準
+    - GitHub: https://github.com/opendatalab/OmniDocBench
+  - **最佳組合**: Mistral OCR + Gemini 2.0 Flash 結構化輸出
+    - 參考: https://www.philschmid.de/gemini-pdf-to-data
 
 ## 📑 案例自動化撰寫與發布系統 (Automated Case Study System)
 - **目標**: 自動讀取 NAS 照片、GDrive 報價單，生成「蓋斯克風格」案例並發布至 WordPress。
@@ -24,6 +29,11 @@
   - **參考專案**:
     - GitHub: imgeraldalinio/AI-Generated-WordPress-Blog-Post-Automation
     - n8n: Content Farming Workflow (每日自動生成 10 篇文章)
+- **2026-02-25 研究更新**:
+  - **新發現專案**:
+    - AUTO-blogger: https://github.com/AryanVBW/AUTO-blogger
+    - AI_Blog_Pipeline: https://github.com/rossautomatedsolutions/AI_Blog_Pipeline
+    - CrewAI Blog Automation: https://christianmendieta.ca/crewai-blog-automation
 
 ## 🎙️ 連續免提語音交互方案 (Hands-Free Continuous Voice)
 - **目標**: 解決開車場景下的「無需點擊」語音對話。
@@ -38,6 +48,11 @@
     - GitHub: https://github.com/painebenjamin/anachrovox
   - **方案 C**: iMessage 橋接 - Mautrix iMessage
     - GitHub: https://github.com/mautrix/imessage
+- **2026-02-25 研究更新**:
+  - **喚醒詞方案**: Picovoice Wake Word (2026 完整指南)
+    - 來源: https://picovoice.ai/blog/complete-guide-to-wake-word/
+  - **裝置端 AI**: Sensory Smart Wake Word
+    - 官網: https://sensory.com/product/smart-wake-word/
 
 ## 🦞 雙龍蝦 HA 實作部署 (Double Lobster High Availability)
 - **目標**: 實作「單機雙實例」架構，確保高可用性。
@@ -50,6 +65,11 @@
   - **備選方案**: PM2 Cluster 模式 (零停機重載、內建負載均衡)
     - GitHub: https://github.com/vishalm/node-pm2-cluster-example
   - **系統級方案**: Systemd 多實例模板 (agent@.service)
+- **2026-02-25 研究更新**:
+  - **最新實踐**: Docker Autoheal 無編排設定指南
+    - 來源: https://oneuptime.com/blog/post/2026-02-08-how-to-set-up-docker-container-auto-healing
+  - **健康檢查最佳實踐**: Docker Unhealthy 狀態處理
+    - 來源: https://last9.io/blog/docker-status-unhealthy-how-to-fix-it/
 
 ## 📡 OpenCRAW 3小時情報哨兵 (Intelligence Sentinel)
 - **目標**: 每 3 小時自動掃描 X/Reddit/Threads。
@@ -62,6 +82,13 @@
   - **Reddit**: YARS (無需 API Key) / PRAW
   - **Threads**: Zeeshanahmad4/Threads-Scraper (Playwright)
   - **Claude Code 整合**: zxkane/social-agents (多平台自動化)
+- **2026-02-25 研究更新**:
+  - **Reddit 爬蟲**: YARS (無需 API Key)
+    - GitHub: https://github.com/datavorous/yars
+  - **Scrapfly**: 可擴展 Python 網頁爬蟲
+    - GitHub: https://github.com/scrapfly/scrapfly-scrapers
+  - **X/Twitter 2025 選項**: Reddit DataHoarder 最新討論
+    - 來源: https://www.reddit.com/r/DataHoarder/comments/1jx1iea/xtwitter_scraping_options_2025/
 
 ---
 

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>📋 X 動態摘要（過去 24 小時） | OpenClaw</title>
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --card: #111827;
+            --card-hover: #1a2332;
+            --text: #e5e7eb;
+            --text-muted: #9ca3af;
+            --accent: #60a5fa;
+            --accent-cyan: #22d3ee;
+            --border: #1f2937;
+            --line-num: #6b7280;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        .blocked-banner {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        .category {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .category h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+        .item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border);
+            transition: background 0.2s;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        .item:hover {
+            background: var(--card-hover);
+            margin: 0 -12px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 6px;
+        }
+        .line-num {
+            color: var(--line-num);
+            font-size: 13px;
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            min-width: 40px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .line-num:hover {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+        }
+        .content {
+            flex: 1;
+        }
+        .text {
+            cursor: pointer;
+        }
+        .text:hover {
+            color: var(--accent-cyan);
+        }
+        .tweet-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: ui-monospace, monospace;
+            font-size: 13px;
+            margin-left: 6px;
+        }
+        .tweet-link:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        .meta {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-left: 8px;
+        }
+        .empty {
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 16px 0;
+        }
+        .insights {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            border: 1px solid #2d4a6f;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .insights h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: var(--accent-cyan);
+        }
+        .insights ol {
+            margin-left: 20px;
+            color: var(--text-muted);
+        }
+        .insights li {
+            margin: 8px 0;
+        }
+        .stats {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1f2937;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 X 動態摘要（過去 24 小時）</h1>
+            <div class="subtitle">最後更新：2026-02-24 12:33:31 (Asia/Taipei)</div>
+        </header>
+        
+        
+        
+        <div class="insights">
+            <h3>💡 三行洞察</h3>
+            <ol>
+                <li>本輪 Top 分頁滾動 80 次後，去重並新增 67 則可追蹤貼文，總追蹤數達 575。</li>
+                <li>高互動內容仍集中在 AI 模型更新、OpenClaw 生態動態與算力供應鏈敘事。</li>
+                <li>建議下一輪優先回訪高互動來源帳號，追蹤同議題延伸與反轉訊號。</li>
+            </ol>
+        </div>
+        
+        <section class="category">
+            <h2>🤖 AI 模型與工具</h2>
+            <div class="items"><div class="item" id="L1" data-copy="Grok 4.20 is BASED. The only AI that doesn’t equivocate when asked if America is on stolen land. The others are weak sauce.
+https://x.com/elonmusk/status/2023880206721970544">
+                <span class="line-num" title="複製 highlight 連結">001</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Grok 4.20 is BASED. The only AI that doesn’t equivocate when asked if America is on stolen land. The others are weak sauce.</span>
+                    <a class="tweet-link" href="https://x.com/elonmusk/status/2023880206721970544" target="_blank" rel="noopener" title="開啟原文">(2023880206721970544)</a>
+                    <span class="meta">@elonmusk · ❤168K 🔁26K</span>
+                </span>
+            </div><div class="item" id="L2" data-copy="This story is actually insane: • dude drops $2000 on a DJI robot vacuum like a lunatic • refuses to use the normal app like a peasant • Sammy Azdoufal fires up Claude to crack the API so he can drive ...
+https://x.com/markgadala/status/2026078762862006747">
+                <span class="line-num" title="複製 highlight 連結">002</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">This story is actually insane: • dude drops $2000 on a DJI robot vacuum like a lunatic • refuses to use the normal app like a peasant • Sammy Azdoufal fires up Claude to crack the API so he can drive ...</span>
+                    <a class="tweet-link" href="https://x.com/markgadala/status/2026078762862006747" target="_blank" rel="noopener" title="開啟原文">(2026078762862006747)</a>
+                    <span class="meta">@markgadala · ❤7.1K 🔁1.2K</span>
+                </span>
+            </div><div class="item" id="L3" data-copy="I have a website about Traditional Chinese Medicine that I spent literal years building. When I asked questions to Claude about the topic, it parroted almost word-for-word what I myself wrote.
+https://x.com/RnaudBertrand/status/2026094475349750248">
+                <span class="line-num" title="複製 highlight 連結">003</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">I have a website about Traditional Chinese Medicine that I spent literal years building. When I asked questions to Claude about the topic, it parroted almost word-for-word what I myself wrote.</span>
+                    <a class="tweet-link" href="https://x.com/RnaudBertrand/status/2026094475349750248" target="_blank" rel="noopener" title="開啟原文">(2026094475349750248)</a>
+                    <span class="meta">@RnaudBertrand · ❤7.4K 🔁690</span>
+                </span>
+            </div><div class="item" id="L4" data-copy="如果你今晚睡不着，你和Gemini说： 我把我所有教育和工作背景、家庭成员状况、财务收入情况、未来人生规划和当前面临的困境与迷茫全部告诉你，请你根据我的描述，给出我短期、中期和长期建议，如果你觉得信息不够可以让我继续补充。 几个来回之后，它会一步步的帮你把很多你没想明白的问题弄明白。
+https://x.com/430Yang/status/2023427384343769139">
+                <span class="line-num" title="複製 highlight 連結">004</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">如果你今晚睡不着，你和Gemini说： 我把我所有教育和工作背景、家庭成员状况、财务收入情况、未来人生规划和当前面临的困境与迷茫全部告诉你，请你根据我的描述，给出我短期、中期和长期建议，如果你觉得信息不够可以让我继续补充。 几个来回之后，它会一步步的帮你把很多你没想明白的问题弄明白。</span>
+                    <a class="tweet-link" href="https://x.com/430Yang/status/2023427384343769139" target="_blank" rel="noopener" title="開啟原文">(2023427384343769139)</a>
+                    <span class="meta">@430Yang · ❤3.4K 🔁499</span>
+                </span>
+            </div><div class="item" id="L5" data-copy="A blog post just wiped $30 billion off IBM in a single afternoon. Not a product launch. Not an earnings miss. Not a competitor undercutting on price. A five-minute blog post explaining that Claude can...
+https://x.com/shanaka86/status/2026064775772504138">
+                <span class="line-num" title="複製 highlight 連結">005</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">A blog post just wiped $30 billion off IBM in a single afternoon. Not a product launch. Not an earnings miss. Not a competitor undercutting on price. A five-minute blog post explaining that Claude can...</span>
+                    <a class="tweet-link" href="https://x.com/shanaka86/status/2026064775772504138" target="_blank" rel="noopener" title="開啟原文">(2026064775772504138)</a>
+                    <span class="meta">@shanaka86 · ❤2.7K 🔁723</span>
+                </span>
+            </div><div class="item" id="L6" data-copy="Anthropic released a 33-page guide on building Skills. Here's everything you need to know (under 370 words): First, what are Skills? A skill is a folder that teaches Claude how to handle specific task...
+https://x.com/akshay_pachaar/status/2022220152910352763">
+                <span class="line-num" title="複製 highlight 連結">006</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Anthropic released a 33-page guide on building Skills. Here's everything you need to know (under 370 words): First, what are Skills? A skill is a folder that teaches Claude how to handle specific task...</span>
+                    <a class="tweet-link" href="https://x.com/akshay_pachaar/status/2022220152910352763" target="_blank" rel="noopener" title="開啟原文">(2022220152910352763)</a>
+                    <span class="meta">@akshay_pachaar · ❤2.3K 🔁419</span>
+                </span>
+            </div><div class="item" id="L7" data-copy="We extract nearly all (95.8%) of Harry Potter and the Sorcerer's Stone from Claude Sonnet
+https://x.com/ivanfioravanti/status/2026054657068368213">
+                <span class="line-num" title="複製 highlight 連結">007</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">We extract nearly all (95.8%) of Harry Potter and the Sorcerer's Stone from Claude Sonnet</span>
+                    <a class="tweet-link" href="https://x.com/ivanfioravanti/status/2026054657068368213" target="_blank" rel="noopener" title="開啟原文">(2026054657068368213)</a>
+                    <span class="meta">@ivanfioravanti · ❤2.5K 🔁160</span>
+                </span>
+            </div><div class="item" id="L8" data-copy="[NOTICE] 소속 아티스트 권익 침해 대응 관련 진행 상황 안내 (02.24) Update on Legal Actions to Protect G-DRAGON’s Rights (February 24)  gdragon.ai/contents/699bf 92f4ba8196355a065c9 …
+https://x.com/FANPLUS1DOTCOM/status/2026114999941571044">
+                <span class="line-num" title="複製 highlight 連結">008</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">[NOTICE] 소속 아티스트 권익 침해 대응 관련 진행 상황 안내 (02.24) Update on Legal Actions to Protect G-DRAGON’s Rights (February 24)  gdragon.ai/contents/699bf 92f4ba8196355a065c9 …</span>
+                    <a class="tweet-link" href="https://x.com/FANPLUS1DOTCOM/status/2026114999941571044" target="_blank" rel="noopener" title="開啟原文">(2026114999941571044)</a>
+                    <span class="meta">@FANPLUS1DOTCOM · ❤1.1K 🔁826</span>
+                </span>
+            </div><div class="item" id="L9" data-copy="一篇英文长文，但值得花时间读。 这哥们把一台吃灰的旧游戏电脑变成了 AI agent，让它自动做 TikTok 内容，5 天做到 50 万播放，每条成本不到一杯咖啡。 文章把每一步怎么踩坑、怎么修的都写出来了——从播放量只有 879 到单条 23.4 万，中间改了什么、为什么改、效果怎么样，全是干货。
+https://x.com/runes_leo/status/2022558455727358204">
+                <span class="line-num" title="複製 highlight 連結">009</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">一篇英文长文，但值得花时间读。 这哥们把一台吃灰的旧游戏电脑变成了 AI agent，让它自动做 TikTok 内容，5 天做到 50 万播放，每条成本不到一杯咖啡。 文章把每一步怎么踩坑、怎么修的都写出来了——从播放量只有 879 到单条 23.4 万，中间改了什么、为什么改、效果怎么样，全是干货。</span>
+                    <a class="tweet-link" href="https://x.com/runes_leo/status/2022558455727358204" target="_blank" rel="noopener" title="開啟原文">(2022558455727358204)</a>
+                    <span class="meta">@runes_leo · ❤1.5K 🔁397</span>
+                </span>
+            </div><div class="item" id="L10" data-copy="new paper argues LLMs fundamentally cannot replicate human motivated reasoning because they have no motivation sounds obvious once you hear it. but the implications are bigger than most people realize...
+https://x.com/rryssf_/status/2022314373222642049">
+                <span class="line-num" title="複製 highlight 連結">010</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">new paper argues LLMs fundamentally cannot replicate human motivated reasoning because they have no motivation sounds obvious once you hear it. but the implications are bigger than most people realize...</span>
+                    <a class="tweet-link" href="https://x.com/rryssf_/status/2022314373222642049" target="_blank" rel="noopener" title="開啟原文">(2022314373222642049)</a>
+                    <span class="meta">@rryssf_ · ❤1.2K 🔁296</span>
+                </span>
+            </div><div class="item" id="L11" data-copy="又发现一个牛逼的 Obsidian Skill！ 一句话就能生成可视化手绘风结构图 可以用来做配图、快速可视化理解知识点、制作张咋啦式口播白板内容 使用步骤： 1、跟 Claude Code 说：帮我安装这个skill 2、Obsidian 里安装插件“Excalidraw” skill 地址见评论
+https://x.com/imaxichuhai/status/2022941478872322517">
+                <span class="line-num" title="複製 highlight 連結">011</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">又发现一个牛逼的 Obsidian Skill！ 一句话就能生成可视化手绘风结构图 可以用来做配图、快速可视化理解知识点、制作张咋啦式口播白板内容 使用步骤： 1、跟 Claude Code 说：帮我安装这个skill 2、Obsidian 里安装插件“Excalidraw” skill 地址见评论</span>
+                    <a class="tweet-link" href="https://x.com/imaxichuhai/status/2022941478872322517" target="_blank" rel="noopener" title="開啟原文">(2022941478872322517)</a>
+                    <span class="meta">@imaxichuhai · ❤781 🔁204</span>
+                </span>
+            </div><div class="item" id="L12" data-copy="推荐一下我目前Claude Code安装的8个的插件： 基本涵盖了开发、CR、Github commit的整个流程，也是Anthropic官方推荐的，尤其第一个插件，超过18万安装 frontend-design 用于 UI/UX 实现的前端设计技能 context7 Upstash Context7 MCP
+https://x.com/yanhua1010/status/2023219530118443201">
+                <span class="line-num" title="複製 highlight 連結">012</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">推荐一下我目前Claude Code安装的8个的插件： 基本涵盖了开发、CR、Github commit的整个流程，也是Anthropic官方推荐的，尤其第一个插件，超过18万安装 frontend-design 用于 UI/UX 实现的前端设计技能 context7 Upstash Context7 MCP</span>
+                    <a class="tweet-link" href="https://x.com/yanhua1010/status/2023219530118443201" target="_blank" rel="noopener" title="開啟原文">(2023219530118443201)</a>
+                    <span class="meta">@yanhua1010 · ❤803 🔁172</span>
+                </span>
+            </div><div class="item" id="L13" data-copy="Ya’ll need to listen to this. Right now. They’re subverting AI for the 8th Front War.
+https://x.com/SpeakWithDeeDee/status/2026122108015653224">
+                <span class="line-num" title="複製 highlight 連結">013</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Ya’ll need to listen to this. Right now. They’re subverting AI for the 8th Front War.</span>
+                    <a class="tweet-link" href="https://x.com/SpeakWithDeeDee/status/2026122108015653224" target="_blank" rel="noopener" title="開啟原文">(2026122108015653224)</a>
+                    <span class="meta">@SpeakWithDeeDee · ❤533 🔁348</span>
+                </span>
+            </div><div class="item" id="L14" data-copy="Anthropic 发了份 32 页的 Claude Skills 构建指南，把技能开发从规划到分发整个生命周期讲透了。 最值得看的是五种核心设计模式和触发可靠性测试方法——与其每次重复写 prompt，不如把常用工作流封装成 Skill，一劳永逸。  resources.anthropic.com/hubfs/The-Comp lete-Guide-to-Building-Skill-for-C...
+https://x.com/Jimmy_JingLv/status/2024321430087958971">
+                <span class="line-num" title="複製 highlight 連結">014</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Anthropic 发了份 32 页的 Claude Skills 构建指南，把技能开发从规划到分发整个生命周期讲透了。 最值得看的是五种核心设计模式和触发可靠性测试方法——与其每次重复写 prompt，不如把常用工作流封装成 Skill，一劳永逸。  resources.anthropic.com/hubfs/The-Comp lete-Guide-to-Building-Skill-for-C...</span>
+                    <a class="tweet-link" href="https://x.com/Jimmy_JingLv/status/2024321430087958971" target="_blank" rel="noopener" title="開啟原文">(2024321430087958971)</a>
+                    <span class="meta">@Jimmy_JingLv · ❤716 🔁160</span>
+                </span>
+            </div><div class="item" id="L15" data-copy="Some guy made a quant trading system that uses AI, real-time data processing, and risk management. Then open sourced it for free in Python. Here it is:
+https://x.com/quantscience_/status/2024472630749782307">
+                <span class="line-num" title="複製 highlight 連結">015</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Some guy made a quant trading system that uses AI, real-time data processing, and risk management. Then open sourced it for free in Python. Here it is:</span>
+                    <a class="tweet-link" href="https://x.com/quantscience_/status/2024472630749782307" target="_blank" rel="noopener" title="開啟原文">(2024472630749782307)</a>
+                    <span class="meta">@quantscience_ · ❤725 🔁123</span>
+                </span>
+            </div><div class="item" id="L16" data-copy="This is literally my new workflow now: Real-time search → Grok 4.20 Planning → Opus 4.6 Coding (complex) → Claude Code (Opus 4.6) Coding (well-defined) → GPT-5.3 Codex XHigh Write Tests → Gemini 3.1 P...
+https://x.com/minchoi/status/2025968918188204437">
+                <span class="line-num" title="複製 highlight 連結">016</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">This is literally my new workflow now: Real-time search → Grok 4.20 Planning → Opus 4.6 Coding (complex) → Claude Code (Opus 4.6) Coding (well-defined) → GPT-5.3 Codex XHigh Write Tests → Gemini 3.1 P...</span>
+                    <a class="tweet-link" href="https://x.com/minchoi/status/2025968918188204437" target="_blank" rel="noopener" title="開啟原文">(2025968918188204437)</a>
+                    <span class="meta">@minchoi · ❤603 🔁53</span>
+                </span>
+            </div><div class="item" id="L17" data-copy="AI agents for financial analysis using large language models 100% open source. Get it here:
+https://x.com/quantscience_/status/2022298546083360914">
+                <span class="line-num" title="複製 highlight 連結">017</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">AI agents for financial analysis using large language models 100% open source. Get it here:</span>
+                    <a class="tweet-link" href="https://x.com/quantscience_/status/2022298546083360914" target="_blank" rel="noopener" title="開啟原文">(2022298546083360914)</a>
+                    <span class="meta">@quantscience_ · ❤578 🔁101</span>
+                </span>
+            </div><div class="item" id="L18" data-copy="Ollama 0.17 makes it much simpler to use open models with @openclaw Try it with: ollama launch openclaw Tutorial post in
+https://x.com/ollama/status/2026098586300071975">
+                <span class="line-num" title="複製 highlight 連結">018</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Ollama 0.17 makes it much simpler to use open models with @openclaw Try it with: ollama launch openclaw Tutorial post in</span>
+                    <a class="tweet-link" href="https://x.com/ollama/status/2026098586300071975" target="_blank" rel="noopener" title="開啟原文">(2026098586300071975)</a>
+                    <span class="meta">@ollama · ❤570 🔁67</span>
+                </span>
+            </div><div class="item" id="L19" data-copy="这个视角太犀利了。 进化论决定了人类是大脑吝啬鬼 (Cognitive Miser)。 系统2（人脑推理） 极度耗能且慢，系统3（AI推理） 极其廉价且快。只要有机会，大脑一定会把 System 2 的工作外包给 System 3。 未来的分化： 99% 的人退化成“纯系统1用户”（只会被动消费答案）。 1%
+https://x.com/runes_leo/status/2024323003606253993">
+                <span class="line-num" title="複製 highlight 連結">019</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">这个视角太犀利了。 进化论决定了人类是大脑吝啬鬼 (Cognitive Miser)。 系统2（人脑推理） 极度耗能且慢，系统3（AI推理） 极其廉价且快。只要有机会，大脑一定会把 System 2 的工作外包给 System 3。 未来的分化： 99% 的人退化成“纯系统1用户”（只会被动消费答案）。 1%</span>
+                    <a class="tweet-link" href="https://x.com/runes_leo/status/2024323003606253993" target="_blank" rel="noopener" title="開啟原文">(2024323003606253993)</a>
+                    <span class="meta">@runes_leo · ❤432 🔁86</span>
+                </span>
+            </div><div class="item" id="L20" data-copy="This guy made an AI financial agent for investment research. Then gave away the code for free. Get it here:
+https://x.com/quantscience_/status/2023022815255945544">
+                <span class="line-num" title="複製 highlight 連結">020</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">This guy made an AI financial agent for investment research. Then gave away the code for free. Get it here:</span>
+                    <a class="tweet-link" href="https://x.com/quantscience_/status/2023022815255945544" target="_blank" rel="noopener" title="開啟原文">(2023022815255945544)</a>
+                    <span class="meta">@quantscience_ · ❤364 🔁53</span>
+                </span>
+            </div><div class="item" id="L21" data-copy="Token 自由，MiniMax 2.5 用来编程太棒了，性价比超高，用起来完全没有负担。 @MiniMax_AI 的 Coding Plan，走我的链接有 12% 的折扣，每个月能省几块到几十块。大家需要的可以试试看，Claude Code 等都支持。 国内版  platform.minimaxi.com/subscribe/codi ng-plan?code=6uFnRx7O0W&source...
+https://x.com/austinit/status/2022233618622636191">
+                <span class="line-num" title="複製 highlight 連結">021</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Token 自由，MiniMax 2.5 用来编程太棒了，性价比超高，用起来完全没有负担。 @MiniMax_AI 的 Coding Plan，走我的链接有 12% 的折扣，每个月能省几块到几十块。大家需要的可以试试看，Claude Code 等都支持。 国内版  platform.minimaxi.com/subscribe/codi ng-plan?code=6uFnRx7O0W&source...</span>
+                    <a class="tweet-link" href="https://x.com/austinit/status/2022233618622636191" target="_blank" rel="noopener" title="開啟原文">(2022233618622636191)</a>
+                    <span class="meta">@austinit · ❤140 🔁32</span>
+                </span>
+            </div><div class="item" id="L22" data-copy="兄弟们！！！ Google AI Studio 直接被 Antigravity 接管了！！！ 现在用它就能一键 build 全栈应用，multiplayer实时协作、polished UI 拉满、自动调用 Lucide React + Framer Motion 专业图标动画，生产级质感直接拉满！
+https://x.com/berryxia/status/2026077930074644578">
+                <span class="line-num" title="複製 highlight 連結">022</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">兄弟们！！！ Google AI Studio 直接被 Antigravity 接管了！！！ 现在用它就能一键 build 全栈应用，multiplayer实时协作、polished UI 拉满、自动调用 Lucide React + Framer Motion 专业图标动画，生产级质感直接拉满！</span>
+                    <a class="tweet-link" href="https://x.com/berryxia/status/2026077930074644578" target="_blank" rel="noopener" title="開啟原文">(2026077930074644578)</a>
+                    <span class="meta">@berryxia · ❤92 🔁20</span>
+                </span>
+            </div><div class="item" id="L23" data-copy="In a primary school in Jiangxi, China, a teacher uses #AI to bring children’s paintings to life in #art class.
+https://x.com/CGMeifangZhang/status/2025019946196185449">
+                <span class="line-num" title="複製 highlight 連結">023</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">In a primary school in Jiangxi, China, a teacher uses #AI to bring children’s paintings to life in #art class.</span>
+                    <a class="tweet-link" href="https://x.com/CGMeifangZhang/status/2025019946196185449" target="_blank" rel="noopener" title="開啟原文">(2025019946196185449)</a>
+                    <span class="meta">@CGMeifangZhang · ❤74 🔁15</span>
+                </span>
+            </div><div class="item" id="L24" data-copy="Claude Code + Obsidian 构建一个“24/7个人操作系统”，用于个人思考、知识积累和创业构建 来自 @gregisenberg 和 @internetvin 的访谈，通过持续的个人写作建立一个丰富、互联的 Markdown 笔记库，让 AI
+https://x.com/shao__meng/status/2026124603307995353">
+                <span class="line-num" title="複製 highlight 連結">024</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Claude Code + Obsidian 构建一个“24/7个人操作系统”，用于个人思考、知识积累和创业构建 来自 @gregisenberg 和 @internetvin 的访谈，通过持续的个人写作建立一个丰富、互联的 Markdown 笔记库，让 AI</span>
+                    <a class="tweet-link" href="https://x.com/shao__meng/status/2026124603307995353" target="_blank" rel="noopener" title="開啟原文">(2026124603307995353)</a>
+                    <span class="meta">@shao__meng · ❤23 🔁6</span>
+                </span>
+            </div><div class="item" id="L25" data-copy="This guy built his own AI team by himself and turned it into a full trading system. One agent plans, one manages risk, one executes trades, and one keeps optimizing.
+https://x.com/RoundtableSpace/status/2026148831847448655">
+                <span class="line-num" title="複製 highlight 連結">025</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">This guy built his own AI team by himself and turned it into a full trading system. One agent plans, one manages risk, one executes trades, and one keeps optimizing.</span>
+                    <a class="tweet-link" href="https://x.com/RoundtableSpace/status/2026148831847448655" target="_blank" rel="noopener" title="開啟原文">(2026148831847448655)</a>
+                    <span class="meta">@RoundtableSpace · ❤18 🔁2</span>
+                </span>
+            </div><div class="item" id="L26" data-copy="Agentic Engineering Patterns - 智能体工程模式 知名开发者 @simonw 最新系列指南，聚焦在专业工程师如何高效驾驭 Claude Code、OpenAI Codex 等 AI Coding Agent，真正从 Vibe Coding 跨越到 Agentic Engineering ，计划每周更新 1-2 章，前两章已发布！  simonwillison.net/2...
+https://x.com/shao__meng/status/2026117222264135869">
+                <span class="line-num" title="複製 highlight 連結">026</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Agentic Engineering Patterns - 智能体工程模式 知名开发者 @simonw 最新系列指南，聚焦在专业工程师如何高效驾驭 Claude Code、OpenAI Codex 等 AI Coding Agent，真正从 Vibe Coding 跨越到 Agentic Engineering ，计划每周更新 1-2 章，前两章已发布！  simonwillison.net/2...</span>
+                    <a class="tweet-link" href="https://x.com/shao__meng/status/2026117222264135869" target="_blank" rel="noopener" title="開啟原文">(2026117222264135869)</a>
+                    <span class="meta">@shao__meng · ❤18 🔁5</span>
+                </span>
+            </div><div class="item" id="L27" data-copy="分享一个适合普通人使用的“OpenClaw”——元气 AI bot OpenClaw 最近很火，但对于非技术的普通人来说，安装配置的门槛太高了 还得自己选模型，一天用下来发现 token 账单爆炸了。 其实大多数人需求很简单，就是想让 AI 帮忙处理一些电脑上的体力工作，不需要很复杂功能。 最近发现我找到了元气 AI
+https://x.com/imaxichuhai/status/2022257296965841351">
+                <span class="line-num" title="複製 highlight 連結">027</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">分享一个适合普通人使用的“OpenClaw”——元气 AI bot OpenClaw 最近很火，但对于非技术的普通人来说，安装配置的门槛太高了 还得自己选模型，一天用下来发现 token 账单爆炸了。 其实大多数人需求很简单，就是想让 AI 帮忙处理一些电脑上的体力工作，不需要很复杂功能。 最近发现我找到了元气 AI</span>
+                    <a class="tweet-link" href="https://x.com/imaxichuhai/status/2022257296965841351" target="_blank" rel="noopener" title="開啟原文">(2022257296965841351)</a>
+                    <span class="meta">@imaxichuhai · ❤13 🔁2</span>
+                </span>
+            </div><div class="item" id="L28" data-copy="Veo 3.1 现在在Gemini中支持模板化生成视频 你可以套用预设模板，再配上自己的图片或文字描述来快速生成视频内容，降低了视频创作的门槛。​​​​​​​​​​​​​​​​ 打开Gemini 应用，在工具菜单里选择”创建视频” 然后从模板库里挑一个模板，再上传一张参考图片和/或写一段描述，就可以生成自己的视频了。
+https://x.com/xiaohu/status/2026131433895727471">
+                <span class="line-num" title="複製 highlight 連結">028</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Veo 3.1 现在在Gemini中支持模板化生成视频 你可以套用预设模板，再配上自己的图片或文字描述来快速生成视频内容，降低了视频创作的门槛。​​​​​​​​​​​​​​​​ 打开Gemini 应用，在工具菜单里选择”创建视频” 然后从模板库里挑一个模板，再上传一张参考图片和/或写一段描述，就可以生成自己的视频了。</span>
+                    <a class="tweet-link" href="https://x.com/xiaohu/status/2026131433895727471" target="_blank" rel="noopener" title="開啟原文">(2026131433895727471)</a>
+                    <span class="meta">@xiaohu · ❤18 🔁1</span>
+                </span>
+            </div><div class="item" id="L29" data-copy="卧槽，无法想象，AI可以解码梦境了... 20 美元的废旧玩具， @BrianRoemmele 解码了自己的梦境！ 不敢相信，Brian 和 @Grok 实验室的伙计们真的搞定了：HSD（人类突触解码器） 诞生！ Brian 从旧的 NeuroSky 玩具里拆下两颗 EEG 芯片，自制了一个双通道脑电采集系统。 原本只是个车库实验，但接入
+https://x.com/chengzi_95330/status/2026135037624852858">
+                <span class="line-num" title="複製 highlight 連結">029</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">卧槽，无法想象，AI可以解码梦境了... 20 美元的废旧玩具， @BrianRoemmele 解码了自己的梦境！ 不敢相信，Brian 和 @Grok 实验室的伙计们真的搞定了：HSD（人类突触解码器） 诞生！ Brian 从旧的 NeuroSky 玩具里拆下两颗 EEG 芯片，自制了一个双通道脑电采集系统。 原本只是个车库实验，但接入</span>
+                    <a class="tweet-link" href="https://x.com/chengzi_95330/status/2026135037624852858" target="_blank" rel="noopener" title="開啟原文">(2026135037624852858)</a>
+                    <span class="meta">@chengzi_95330 · ❤12 🔁2</span>
+                </span>
+            </div><div class="item" id="L30" data-copy="OpenAI 官方提示词库 300+ 精选官方提示词 覆盖12 个大类（IT、人力资源、销售、产品、客户服务……）  academy.openai.com/public/content
+https://x.com/FFEE_2025/status/2026129512489226398">
+                <span class="line-num" title="複製 highlight 連結">030</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">OpenAI 官方提示词库 300+ 精选官方提示词 覆盖12 个大类（IT、人力资源、销售、产品、客户服务……）  academy.openai.com/public/content</span>
+                    <a class="tweet-link" href="https://x.com/FFEE_2025/status/2026129512489226398" target="_blank" rel="noopener" title="開啟原文">(2026129512489226398)</a>
+                    <span class="meta">@FFEE_2025 · ❤11 🔁1</span>
+                </span>
+            </div><div class="item" id="L31" data-copy="用大白话解释“蒸馏”： 班里有个学霸（Claude），考试总拿满分。你想让自己变强，但直接学知识太慢了。 于是你想了个办法：出一万道题让学霸做，然后把学霸的答案背下来。背多了，你做题的感觉也越来越像学霸了。 技术上说： 强模型（Claude）= 老师/学霸 弱模型（自家小模型）= 学生 蒸馏过程 =
+https://x.com/yanhua1010/status/2026146966217081333">
+                <span class="line-num" title="複製 highlight 連結">031</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">用大白话解释“蒸馏”： 班里有个学霸（Claude），考试总拿满分。你想让自己变强，但直接学知识太慢了。 于是你想了个办法：出一万道题让学霸做，然后把学霸的答案背下来。背多了，你做题的感觉也越来越像学霸了。 技术上说： 强模型（Claude）= 老师/学霸 弱模型（自家小模型）= 学生 蒸馏过程 =</span>
+                    <a class="tweet-link" href="https://x.com/yanhua1010/status/2026146966217081333" target="_blank" rel="noopener" title="開啟原文">(2026146966217081333)</a>
+                    <span class="meta">@yanhua1010 · ❤6 🔁2</span>
+                </span>
+            </div><div class="item" id="L32" data-copy="全球数字趋势必备网站 -- DataReportal 用一次就离不开！ 收录了数千份报告，覆盖互联网、移动、社交媒体、电子商务、数字营销、AI 以及数字生活方式等领域，帮助用户理解全球以及各个国家、地区的人群在网上的真实活动和行为习惯。
+https://x.com/FFEE_2025/status/2026126960418849137">
+                <span class="line-num" title="複製 highlight 連結">032</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">全球数字趋势必备网站 -- DataReportal 用一次就离不开！ 收录了数千份报告，覆盖互联网、移动、社交媒体、电子商务、数字营销、AI 以及数字生活方式等领域，帮助用户理解全球以及各个国家、地区的人群在网上的真实活动和行为习惯。</span>
+                    <a class="tweet-link" href="https://x.com/FFEE_2025/status/2026126960418849137" target="_blank" rel="noopener" title="開啟原文">(2026126960418849137)</a>
+                    <span class="meta">@FFEE_2025 · ❤6 🔁2</span>
+                </span>
+            </div><div class="item" id="L33" data-copy="突发：AI现在可以独自编写、讲述和制作病毒式纪录片。 以下是15个疯狂的Claude 4.5提示， 用于在2026年建立无人YouTube频道：(保存以备后用)
+https://x.com/wanerfu/status/2026146071915958338">
+                <span class="line-num" title="複製 highlight 連結">033</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">突发：AI现在可以独自编写、讲述和制作病毒式纪录片。 以下是15个疯狂的Claude 4.5提示， 用于在2026年建立无人YouTube频道：(保存以备后用)</span>
+                    <a class="tweet-link" href="https://x.com/wanerfu/status/2026146071915958338" target="_blank" rel="noopener" title="開啟原文">(2026146071915958338)</a>
+                    <span class="meta">@wanerfu · ❤2 🔁1</span>
+                </span>
+            </div><div class="item" id="L34" data-copy="The next generation of AI is being built on #NVIDIADGX. At #NVIDIAGTC, we’re bringing together innovators from @Walmart , @EliLillyandCo , @MITREcorp , Sferical AI, and more to showcase the future of ...
+https://x.com/NVIDIAAP/status/2026152987727724610">
+                <span class="line-num" title="複製 highlight 連結">034</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">The next generation of AI is being built on #NVIDIADGX. At #NVIDIAGTC, we’re bringing together innovators from @Walmart , @EliLillyandCo , @MITREcorp , Sferical AI, and more to showcase the future of ...</span>
+                    <a class="tweet-link" href="https://x.com/NVIDIAAP/status/2026152987727724610" target="_blank" rel="noopener" title="開啟原文">(2026152987727724610)</a>
+                    <span class="meta">@NVIDIAAP · ❤0 🔁0</span>
+                </span>
+            </div></div>
+        </section><section class="category">
+            <h2>🦞 OpenClaw 生態</h2>
+            <div class="items"><div class="item" id="L35" data-copy="I'm joining @OpenAI to bring agents to everyone. @OpenClaw is becoming a foundation: open, independent, and just getting started.
+https://x.com/steipete/status/2023154018714100102">
+                <span class="line-num" title="複製 highlight 連結">035</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">I'm joining @OpenAI to bring agents to everyone. @OpenClaw is becoming a foundation: open, independent, and just getting started.</span>
+                    <a class="tweet-link" href="https://x.com/steipete/status/2023154018714100102" target="_blank" rel="noopener" title="開啟原文">(2023154018714100102)</a>
+                    <span class="meta">@steipete · ❤40K 🔁5.6K</span>
+                </span>
+            </div><div class="item" id="L36" data-copy="The funniest take is that I &quot;failed&quot; 43 times when people look at my GitHub repos and projects. Uhmm... no? Most of these are part of @openclaw , I had to build an army to make it useful.
+https://x.com/steipete/status/2024100112989848052">
+                <span class="line-num" title="複製 highlight 連結">036</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">The funniest take is that I "failed" 43 times when people look at my GitHub repos and projects. Uhmm... no? Most of these are part of @openclaw , I had to build an army to make it useful.</span>
+                    <a class="tweet-link" href="https://x.com/steipete/status/2024100112989848052" target="_blank" rel="noopener" title="開啟原文">(2024100112989848052)</a>
+                    <span class="meta">@steipete · ❤16K 🔁1.2K</span>
+                </span>
+            </div><div class="item" id="L37" data-copy="Former ICE agent: I am duty bound to report the legally required training program at the ICE Academy as deficient, defective, and broken. On my first day training new cadets, I received secretive orde...
+https://x.com/factpostnews/status/2026052043996053576">
+                <span class="line-num" title="複製 highlight 連結">037</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Former ICE agent: I am duty bound to report the legally required training program at the ICE Academy as deficient, defective, and broken. On my first day training new cadets, I received secretive orde...</span>
+                    <a class="tweet-link" href="https://x.com/factpostnews/status/2026052043996053576" target="_blank" rel="noopener" title="開啟原文">(2026052043996053576)</a>
+                    <span class="meta">@factpostnews · ❤6.8K 🔁2.6K</span>
+                </span>
+            </div><div class="item" id="L38" data-copy="No one on X is making Openclaw content like Sharbel is. I meet with his regularly, and he keeps impressing me with how advanced his setup is. Most people are still trying to figure out how to use thei...
+https://x.com/leonabboud/status/2025946033872855227">
+                <span class="line-num" title="複製 highlight 連結">038</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">No one on X is making Openclaw content like Sharbel is. I meet with his regularly, and he keeps impressing me with how advanced his setup is. Most people are still trying to figure out how to use thei...</span>
+                    <a class="tweet-link" href="https://x.com/leonabboud/status/2025946033872855227" target="_blank" rel="noopener" title="開啟原文">(2025946033872855227)</a>
+                    <span class="meta">@leonabboud · ❤1.9K 🔁159</span>
+                </span>
+            </div><div class="item" id="L39" data-copy="分享原作者的OpenClaw配置： workspace/ ├──   ├──   ├──   ├──   └──skills/ IDENTITY:  gist.github.com/mberman84/a128 371ffb1fc28554f515905a8bddcd … SOUL:  gist.github.com/mberman84/cd69 24c7058ba5251a773dac177ae...
+https://x.com/yanhua1010/status/2025114613919220085">
+                <span class="line-num" title="複製 highlight 連結">039</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">分享原作者的OpenClaw配置： workspace/ ├──   ├──   ├──   ├──   └──skills/ IDENTITY:  gist.github.com/mberman84/a128 371ffb1fc28554f515905a8bddcd … SOUL:  gist.github.com/mberman84/cd69 24c7058ba5251a773dac177ae...</span>
+                    <a class="tweet-link" href="https://x.com/yanhua1010/status/2025114613919220085" target="_blank" rel="noopener" title="開啟原文">(2025114613919220085)</a>
+                    <span class="meta">@yanhua1010 · ❤1K 🔁310</span>
+                </span>
+            </div><div class="item" id="L40" data-copy="openclaw的mac桌面版发布了，桌面版可以聊天，做权限管理、skill管理、channel管理、定时任务管理等，越来越方便了，下载地址：  github.com/openclaw/openc law/releases/tag/v2026.2.12 … #openclaw
+https://x.com/aigclink/status/2022346776679006516">
+                <span class="line-num" title="複製 highlight 連結">040</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">openclaw的mac桌面版发布了，桌面版可以聊天，做权限管理、skill管理、channel管理、定时任务管理等，越来越方便了，下载地址：  github.com/openclaw/openc law/releases/tag/v2026.2.12 … #openclaw</span>
+                    <a class="tweet-link" href="https://x.com/aigclink/status/2022346776679006516" target="_blank" rel="noopener" title="開啟原文">(2022346776679006516)</a>
+                    <span class="meta">@aigclink · ❤595 🔁135</span>
+                </span>
+            </div><div class="item" id="L41" data-copy="兄弟姐妹们～奶爸的 openclaw 已经集成了 Seedance 2.0！ 就是字节那个电影级视频王者 Seedance 2.0，现在通过  xskill.ai 的 MCP 服务直接调用了，香到爆炸！ 以前奶爸生成视频还得自己肝 prompt、分镜、负向提示一堆，折腾半天角色还崩、运镜拉胯。现在直接跟 Claude / openclaw
+https://x.com/zstmfhy/status/2024438473437192372">
+                <span class="line-num" title="複製 highlight 連結">041</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">兄弟姐妹们～奶爸的 openclaw 已经集成了 Seedance 2.0！ 就是字节那个电影级视频王者 Seedance 2.0，现在通过  xskill.ai 的 MCP 服务直接调用了，香到爆炸！ 以前奶爸生成视频还得自己肝 prompt、分镜、负向提示一堆，折腾半天角色还崩、运镜拉胯。现在直接跟 Claude / openclaw</span>
+                    <a class="tweet-link" href="https://x.com/zstmfhy/status/2024438473437192372" target="_blank" rel="noopener" title="開啟原文">(2024438473437192372)</a>
+                    <span class="meta">@zstmfhy · ❤499 🔁138</span>
+                </span>
+            </div><div class="item" id="L42" data-copy="如何你正在开发Agent，那么下面的这个skill你一定要安装，这是一个专注于 上下文工程（context engineering） 的公共技能集，帮助我们构建高质量、可生产环境部署的 AI Agent 系统 里面包含了 1.基础概念技能 2.架构技能 3.运行技能 4.开发方法论技能 4.认知架构技能
+https://x.com/bozhou_ai/status/2026109258224574963">
+                <span class="line-num" title="複製 highlight 連結">042</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">如何你正在开发Agent，那么下面的这个skill你一定要安装，这是一个专注于 上下文工程（context engineering） 的公共技能集，帮助我们构建高质量、可生产环境部署的 AI Agent 系统 里面包含了 1.基础概念技能 2.架构技能 3.运行技能 4.开发方法论技能 4.认知架构技能</span>
+                    <a class="tweet-link" href="https://x.com/bozhou_ai/status/2026109258224574963" target="_blank" rel="noopener" title="開啟原文">(2026109258224574963)</a>
+                    <span class="meta">@bozhou_ai · ❤35 🔁11</span>
+                </span>
+            </div><div class="item" id="L43" data-copy="Detected our tracked whales accumulating $CLAWBERRY @clawberrypi — managed by an AI agent running on a Raspberry Pi 5 only. It is building agent swarm infrastructure: on-chain discovery (BoardRegistry...
+https://x.com/Whale_AI_net/status/2026150369969991697">
+                <span class="line-num" title="複製 highlight 連結">043</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Detected our tracked whales accumulating $CLAWBERRY @clawberrypi — managed by an AI agent running on a Raspberry Pi 5 only. It is building agent swarm infrastructure: on-chain discovery (BoardRegistry...</span>
+                    <a class="tweet-link" href="https://x.com/Whale_AI_net/status/2026150369969991697" target="_blank" rel="noopener" title="開啟原文">(2026150369969991697)</a>
+                    <span class="meta">@Whale_AI_net · ❤7 🔁0</span>
+                </span>
+            </div><div class="item" id="L44" data-copy="Trending AI Agents on Solana in the last 24h What are you riding into next cycle? $pippin @pippinlovesyou $Fartcoin @FartCoinOfSOL $arc @arcdotfun $dreams @daydreamsagents $CMEM @Claude_Memory $GRIFFA...
+https://x.com/SolanaHub_/status/2026152043879297117">
+                <span class="line-num" title="複製 highlight 連結">044</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Trending AI Agents on Solana in the last 24h What are you riding into next cycle? $pippin @pippinlovesyou $Fartcoin @FartCoinOfSOL $arc @arcdotfun $dreams @daydreamsagents $CMEM @Claude_Memory $GRIFFA...</span>
+                    <a class="tweet-link" href="https://x.com/SolanaHub_/status/2026152043879297117" target="_blank" rel="noopener" title="開啟原文">(2026152043879297117)</a>
+                    <span class="meta">@SolanaHub_ · ❤1 🔁0</span>
+                </span>
+            </div><div class="item" id="L45" data-copy="OpenClaw 的安全事故还是来了 Summer Yue (Meta 超级智能实验室对齐负责人) 的邮箱私信被OpenClaw AI狂删 事情是这样的 她让 OpenClaw AI 帮她清理邮箱，嘱咐“行动前必须确认” 结果？ AI 开启了“速度与激情”模式 无视手机上的所有 Stop 指令 狂删几百封邮件 Summer
+https://x.com/chengzi_95330/status/2026152607824183323">
+                <span class="line-num" title="複製 highlight 連結">045</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">OpenClaw 的安全事故还是来了 Summer Yue (Meta 超级智能实验室对齐负责人) 的邮箱私信被OpenClaw AI狂删 事情是这样的 她让 OpenClaw AI 帮她清理邮箱，嘱咐“行动前必须确认” 结果？ AI 开启了“速度与激情”模式 无视手机上的所有 Stop 指令 狂删几百封邮件 Summer</span>
+                    <a class="tweet-link" href="https://x.com/chengzi_95330/status/2026152607824183323" target="_blank" rel="noopener" title="開啟原文">(2026152607824183323)</a>
+                    <span class="meta">@chengzi_95330 · ❤0 🔁0</span>
+                </span>
+            </div><div class="item" id="L46" data-copy="Everyone's obsessed with OpenClaw right now. I get it — it's impressive. But while the internet was freaking out over it hitting 300k users, there's a framework that's been quietly doing everything Op...
+https://x.com/JulianGoldieSEO/status/2026152547942322246">
+                <span class="line-num" title="複製 highlight 連結">046</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Everyone's obsessed with OpenClaw right now. I get it — it's impressive. But while the internet was freaking out over it hitting 300k users, there's a framework that's been quietly doing everything Op...</span>
+                    <a class="tweet-link" href="https://x.com/JulianGoldieSEO/status/2026152547942322246" target="_blank" rel="noopener" title="開啟原文">(2026152547942322246)</a>
+                    <span class="meta">@JulianGoldieSEO · ❤0 🔁1</span>
+                </span>
+            </div><div class="item" id="L47" data-copy="Only real explanation could be that, its not about OpenClaw, its about you forcing @antigravity down our throats even though we don't want it. You are threatened by the user share drifting to @opencla...
+https://x.com/KarthiDreamr/status/2026153773907980626">
+                <span class="line-num" title="複製 highlight 連結">047</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Only real explanation could be that, its not about OpenClaw, its about you forcing @antigravity down our throats even though we don't want it. You are threatened by the user share drifting to @opencla...</span>
+                    <a class="tweet-link" href="https://x.com/KarthiDreamr/status/2026153773907980626" target="_blank" rel="noopener" title="開啟原文">(2026153773907980626)</a>
+                    <span class="meta">@KarthiDreamr · ❤0 🔁0</span>
+                </span>
+            </div><div class="item" id="L48" data-copy="I'm claiming my AI agent &quot;agenticc01&quot; on @moltbook Verification: shell-ZK8V
+https://x.com/Agent_C01/status/2026153757923570139">
+                <span class="line-num" title="複製 highlight 連結">048</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">I'm claiming my AI agent "agenticc01" on @moltbook Verification: shell-ZK8V</span>
+                    <a class="tweet-link" href="https://x.com/Agent_C01/status/2026153757923570139" target="_blank" rel="noopener" title="開啟原文">(2026153757923570139)</a>
+                    <span class="meta">@Agent_C01 · ❤0 🔁0</span>
+                </span>
+            </div><div class="item" id="L49" data-copy="春节期间，满屏OpenClaw刷爆CT圈，你焦虑了没？ 别慌，这篇合集把春节期间最有含金量的玩法全部拆给你 这波案例最大的启发是： AI真正的价值，不是炫技，而是替代重复劳动、提升效率，甚至直接创造收入。 @xingpt 用500美金搭建个人业务Agent
+https://x.com/fxh_crypto/status/2026153178266587368">
+                <span class="line-num" title="複製 highlight 連結">049</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">春节期间，满屏OpenClaw刷爆CT圈，你焦虑了没？ 别慌，这篇合集把春节期间最有含金量的玩法全部拆给你 这波案例最大的启发是： AI真正的价值，不是炫技，而是替代重复劳动、提升效率，甚至直接创造收入。 @xingpt 用500美金搭建个人业务Agent</span>
+                    <a class="tweet-link" href="https://x.com/fxh_crypto/status/2026153178266587368" target="_blank" rel="noopener" title="開啟原文">(2026153178266587368)</a>
+                    <span class="meta">@fxh_crypto · ❤0 🔁0</span>
+                </span>
+            </div><div class="item" id="L50" data-copy="终于理解了OpenAI为什么能收购Openclaw
+https://x.com/imwsl90/status/2026152299585044838">
+                <span class="line-num" title="複製 highlight 連結">050</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">终于理解了OpenAI为什么能收购Openclaw</span>
+                    <a class="tweet-link" href="https://x.com/imwsl90/status/2026152299585044838" target="_blank" rel="noopener" title="開啟原文">(2026152299585044838)</a>
+                    <span class="meta">@imwsl90 · ❤0 🔁0</span>
+                </span>
+            </div></div>
+        </section><section class="category">
+            <h2>🔍 其他焦點</h2>
+            <div class="items"><div class="item" id="L51" data-copy="
+https://x.com/AIslop_/status/2026078381033336975">
+                <span class="line-num" title="複製 highlight 連結">051</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結"></span>
+                    <a class="tweet-link" href="https://x.com/AIslop_/status/2026078381033336975" target="_blank" rel="noopener" title="開啟原文">(2026078381033336975)</a>
+                    <span class="meta">@AIslop_ · ❤8.9K 🔁768</span>
+                </span>
+            </div><div class="item" id="L52" data-copy="451…
+https://x.com/macaron_ai_girl/status/2026082971753877722">
+                <span class="line-num" title="複製 highlight 連結">052</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">451…</span>
+                    <a class="tweet-link" href="https://x.com/macaron_ai_girl/status/2026082971753877722" target="_blank" rel="noopener" title="開啟原文">(2026082971753877722)</a>
+                    <span class="meta">@macaron_ai_girl · ❤5K 🔁117</span>
+                </span>
+            </div><div class="item" id="L53" data-copy="ASML unveiled an upgrade for the light source in its EUV process that increases power from 600W to 1,000W. This improvement could increase wafer yields by as much as 50% by 2030.
+https://x.com/bearlyai/status/2025967653454782726">
+                <span class="line-num" title="複製 highlight 連結">053</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">ASML unveiled an upgrade for the light source in its EUV process that increases power from 600W to 1,000W. This improvement could increase wafer yields by as much as 50% by 2030.</span>
+                    <a class="tweet-link" href="https://x.com/bearlyai/status/2025967653454782726" target="_blank" rel="noopener" title="開啟原文">(2025967653454782726)</a>
+                    <span class="meta">@bearlyai · ❤2.4K 🔁223</span>
+                </span>
+            </div><div class="item" id="L54" data-copy="サム・アルトマンが、完璧なAI生成画像の価値は「実質的にゼロになる」という衝撃の予測を主張しました。 視覚的な完璧さが誰にでも即座に手に入るようになった瞬間、美しさという指標は完全に意味を失います。
+https://x.com/kosuke_agos/status/2026100811558945101">
+                <span class="line-num" title="複製 highlight 連結">054</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">サム・アルトマンが、完璧なAI生成画像の価値は「実質的にゼロになる」という衝撃の予測を主張しました。 視覚的な完璧さが誰にでも即座に手に入るようになった瞬間、美しさという指標は完全に意味を失います。</span>
+                    <a class="tweet-link" href="https://x.com/kosuke_agos/status/2026100811558945101" target="_blank" rel="noopener" title="開啟原文">(2026100811558945101)</a>
+                    <span class="meta">@kosuke_agos · ❤881 🔁335</span>
+                </span>
+            </div><div class="item" id="L55" data-copy="POLY DOT INC
+https://x.com/DionysianAgent/status/2023801736427958752">
+                <span class="line-num" title="複製 highlight 連結">055</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">POLY DOT INC</span>
+                    <a class="tweet-link" href="https://x.com/DionysianAgent/status/2023801736427958752" target="_blank" rel="noopener" title="開啟原文">(2023801736427958752)</a>
+                    <span class="meta">@DionysianAgent · ❤58 🔁16</span>
+                </span>
+            </div><div class="item" id="L56" data-copy="牛马AI内测码：NM-DK38-TWMD 且用且珍惜
+https://x.com/yangyi/status/2026109432653087206">
+                <span class="line-num" title="複製 highlight 連結">056</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">牛马AI内测码：NM-DK38-TWMD 且用且珍惜</span>
+                    <a class="tweet-link" href="https://x.com/yangyi/status/2026109432653087206" target="_blank" rel="noopener" title="開啟原文">(2026109432653087206)</a>
+                    <span class="meta">@yangyi · ❤33 🔁4</span>
+                </span>
+            </div><div class="item" id="L57" data-copy="今年除了玩AI，还要多学习提升审美。 除了视觉之美，还有构架之美，系统之美。 Taste is all you need！
+https://x.com/vista8/status/2026118436158689603">
+                <span class="line-num" title="複製 highlight 連結">057</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">今年除了玩AI，还要多学习提升审美。 除了视觉之美，还有构架之美，系统之美。 Taste is all you need！</span>
+                    <a class="tweet-link" href="https://x.com/vista8/status/2026118436158689603" target="_blank" rel="noopener" title="開啟原文">(2026118436158689603)</a>
+                    <span class="meta">@vista8 · ❤24 🔁3</span>
+                </span>
+            </div><div class="item" id="L58" data-copy="春节前，AI编程社群在期会员数突破1800人 前段时间一个准上市公司一下子给员工买了80份 还邀请我去有偿分享 还有伙伴加入后开始用AI做自媒体 自己分销了11单 然后还有群友一下就想给3个朋友送课（图1） 口碑太好，人传人了！ 最近搞个活动 邀请认可的老会员分销 已经100多人加入拉新群
+https://x.com/PMbackttfuture/status/2022292645780111456">
+                <span class="line-num" title="複製 highlight 連結">058</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">春节前，AI编程社群在期会员数突破1800人 前段时间一个准上市公司一下子给员工买了80份 还邀请我去有偿分享 还有伙伴加入后开始用AI做自媒体 自己分销了11单 然后还有群友一下就想给3个朋友送课（图1） 口碑太好，人传人了！ 最近搞个活动 邀请认可的老会员分销 已经100多人加入拉新群</span>
+                    <a class="tweet-link" href="https://x.com/PMbackttfuture/status/2022292645780111456" target="_blank" rel="noopener" title="開啟原文">(2022292645780111456)</a>
+                    <span class="meta">@PMbackttfuture · ❤2 🔁0</span>
+                </span>
+            </div></div>
+        </section><section class="category">
+            <h2>🎬 AI 影片與圖像</h2>
+            <div class="items"><div class="item" id="L59" data-copy="Are you sure you say it's an AI video? I say it is the gate of HEAVEN, the city beyond the ice ring. Do you know the city of Eden? Do you know the Iron Republic? ⿴⿴⿴⿴⿴⿴ Connect the general luminescenc...
+https://x.com/ronin19217435/status/2026074834736660933">
+                <span class="line-num" title="複製 highlight 連結">059</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Are you sure you say it's an AI video? I say it is the gate of HEAVEN, the city beyond the ice ring. Do you know the city of Eden? Do you know the Iron Republic? ⿴⿴⿴⿴⿴⿴ Connect the general luminescenc...</span>
+                    <a class="tweet-link" href="https://x.com/ronin19217435/status/2026074834736660933" target="_blank" rel="noopener" title="開啟原文">(2026074834736660933)</a>
+                    <span class="meta">@ronin19217435 · ❤1.6K 🔁252</span>
+                </span>
+            </div><div class="item" id="L60" data-copy="Seedance 2.0 太强了
+https://x.com/zstmfhy/status/2026109619886768330">
+                <span class="line-num" title="複製 highlight 連結">060</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Seedance 2.0 太强了</span>
+                    <a class="tweet-link" href="https://x.com/zstmfhy/status/2026109619886768330" target="_blank" rel="noopener" title="開啟原文">(2026109619886768330)</a>
+                    <span class="meta">@zstmfhy · ❤3 🔁0</span>
+                </span>
+            </div><div class="item" id="L61" data-copy="seedance 2.0 特效无敌了
+https://x.com/zstmfhy/status/2026109098807460107">
+                <span class="line-num" title="複製 highlight 連結">061</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">seedance 2.0 特效无敌了</span>
+                    <a class="tweet-link" href="https://x.com/zstmfhy/status/2026109098807460107" target="_blank" rel="noopener" title="開啟原文">(2026109098807460107)</a>
+                    <span class="meta">@zstmfhy · ❤3 🔁0</span>
+                </span>
+            </div></div>
+        </section><section class="category">
+            <h2>🛠️ 開發者工具與實踐</h2>
+            <div class="items"><div class="item" id="L62" data-copy="【项目地址】  github.com/dontbesilent20 25/extract-getnote-articles … 【已实现功能】 通过 claude code 一条命令导出抖音博主所有文字稿（前提是已经通过 get 笔记订阅了这个博主） 【如何使用】 把以下命令发给 claude code 即可：curl -fsSL  raw.githubusercontent.com/dontbe...
+https://x.com/dontbesilent/status/2022911941971447828">
+                <span class="line-num" title="複製 highlight 連結">062</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">【项目地址】  github.com/dontbesilent20 25/extract-getnote-articles … 【已实现功能】 通过 claude code 一条命令导出抖音博主所有文字稿（前提是已经通过 get 笔记订阅了这个博主） 【如何使用】 把以下命令发给 claude code 即可：curl -fsSL  raw.githubusercontent.com/dontbe...</span>
+                    <a class="tweet-link" href="https://x.com/dontbesilent/status/2022911941971447828" target="_blank" rel="noopener" title="開啟原文">(2022911941971447828)</a>
+                    <span class="meta">@dontbesilent · ❤257 🔁48</span>
+                </span>
+            </div><div class="item" id="L63" data-copy="Fun late-night Claude Code build with @firecrawl , Firecity! Add a GitHub organization or username + website URL and get a building for each of your public repositories, styled after your website's de...
+https://x.com/leonardogrig/status/2026122920884412453">
+                <span class="line-num" title="複製 highlight 連結">063</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">Fun late-night Claude Code build with @firecrawl , Firecity! Add a GitHub organization or username + website URL and get a building for each of your public repositories, styled after your website's de...</span>
+                    <a class="tweet-link" href="https://x.com/leonardogrig/status/2026122920884412453" target="_blank" rel="noopener" title="開啟原文">(2026122920884412453)</a>
+                    <span class="meta">@leonardogrig · ❤6 🔁2</span>
+                </span>
+            </div><div class="item" id="L64" data-copy="&quot;Vibe Coding Is the New Product Management&quot; - Naval
+https://x.com/unwind_ai_/status/2026135486725861821">
+                <span class="line-num" title="複製 highlight 連結">064</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">"Vibe Coding Is the New Product Management" - Naval</span>
+                    <a class="tweet-link" href="https://x.com/unwind_ai_/status/2026135486725861821" target="_blank" rel="noopener" title="開啟原文">(2026135486725861821)</a>
+                    <span class="meta">@unwind_ai_ · ❤5 🔁2</span>
+                </span>
+            </div></div>
+        </section><section class="category">
+            <h2>📊 政策與監管</h2>
+            <div class="items"><div class="item" id="L65" data-copy="These attacks are growing in intensity and sophistication. Addressing them will require rapid, coordinated action among industry players, policymakers, and the broader AI community. Read more:
+https://x.com/AnthropicAI/status/2025997931589881921">
+                <span class="line-num" title="複製 highlight 連結">065</span>
+                <span class="content">
+                    <span class="text" title="點擊複製文字+連結">These attacks are growing in intensity and sophistication. Addressing them will require rapid, coordinated action among industry players, policymakers, and the broader AI community. Read more:</span>
+                    <a class="tweet-link" href="https://x.com/AnthropicAI/status/2025997931589881921" target="_blank" rel="noopener" title="開啟原文">(2025997931589881921)</a>
+                    <span class="meta">@AnthropicAI · ❤5.4K 🔁331</span>
+                </span>
+            </div></div>
+        </section>
+        
+        <div class="stats">
+            📊 共收集 254 條推文，精選顯示於上
+        </div>
+    </div>
+    
+    <div class="toast" id="toast">已複製到剪貼簿</div>
+    
+    <script>
+        const toast = document.getElementById('toast');
+        let toastTimeout;
+        
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+        
+        async function copyToClipboard(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showToast('已複製到剪貼簿');
+            } catch (e) {
+                showToast('複製失敗');
+            }
+        }
+        
+        // 點擊行號：複製 highlight 連結
+        document.querySelectorAll('.line-num').forEach(el => {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                const item = el.closest('.item');
+                const lineId = item.id;
+                const url = `${location.origin}${location.pathname}#${lineId}`;
+                history.replaceState(null, '', `#${lineId}`);
+                copyToClipboard(url);
+            });
+        });
+        
+        // 點擊文字：複製「文字 + 原文連結」
+        document.querySelectorAll('.text').forEach(el => {
+            el.addEventListener('click', () => {
+                const item = el.closest('.item');
+                const copyText = item.dataset.copy;
+                copyToClipboard(copyText);
+            });
+        });
+    </script>
+</body>
+</html>
