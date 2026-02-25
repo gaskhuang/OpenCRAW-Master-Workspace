@@ -1,0 +1,1483 @@
+{
+  "kind": "Listing",
+  "data": {
+    "modhash": "",
+    "dist": 8,
+    "facets": {},
+    "after": null,
+    "geo_filter": "",
+    "children": [
+      {
+        "kind": "t3",
+        "data": {
+          "approved_at_utc": null,
+          "subreddit": "singularity",
+          "selftext": "Today there's thousands of different agent workflows for completing tasks, primarily I am talking about Software Development in terms of A -&gt; Z delivery of a Complete project. \n\nIf we can solidly say that a standard Claude Code running Claude-X-X Model , with a simple [Claude.md](http://Claude.md) instruction set and Permissions / standard tools would take 60 minutes to complete X task, how much quicker can your workflow complete this task? is it 2x as quick? 3x as quick? - while ofcourse needing to meet the completion criteria. \n\nWhile a '60' minute baseline task for benchmark might be good to quickly validate if your workflow is effective, what would really make this type of benchmark powerful is measuring automated development workflows (e.g. [OpenClaw](https://openclaw.ai/), [Bosun](https://bosun.virtengine.com), [background-agents](https://github.com/ColeMurray/background-agents)) style frameworks can be measured on how effective they are at actually completing tasks that would take 1 Week of normal user prompting and working through Claude Code using a standard efficient process. \n\nThis way, we can actually calculate - is this new workflow/tool/process result in quicker delivery while maintaining quality, or has it maybe even potentially regressed from a standard Claude Code instance. ",
+          "author_fullname": "t2_gz05q",
+          "saved": false,
+          "mod_reason_title": null,
+          "gilded": 0,
+          "clicked": false,
+          "title": "We need a benchmark that measures how effective a workflow is at completing a predefined large SW task.",
+          "link_flair_richtext": [],
+          "subreddit_name_prefixed": "r/singularity",
+          "hidden": false,
+          "pwls": 6,
+          "link_flair_css_class": "image",
+          "downs": 0,
+          "thumbnail_height": null,
+          "top_awarded_type": null,
+          "hide_score": false,
+          "name": "t3_1rc3mwa",
+          "quarantine": false,
+          "link_flair_text_color": "light",
+          "upvote_ratio": 0.9,
+          "author_flair_background_color": null,
+          "subreddit_type": "public",
+          "ups": 17,
+          "total_awards_received": 0,
+          "media_embed": {},
+          "thumbnail_width": null,
+          "author_flair_template_id": null,
+          "is_original_content": false,
+          "user_reports": [],
+          "secure_media": null,
+          "is_reddit_media_domain": false,
+          "is_meta": false,
+          "category": null,
+          "secure_media_embed": {},
+          "link_flair_text": "AI",
+          "can_mod_post": false,
+          "score": 17,
+          "approved_by": null,
+          "is_created_from_ads_ui": false,
+          "author_premium": false,
+          "thumbnail": "self",
+          "edited": false,
+          "author_flair_css_class": null,
+          "author_flair_richtext": [],
+          "gildings": {},
+          "post_hint": "self",
+          "content_categories": null,
+          "is_self": true,
+          "mod_note": null,
+          "created": 1771809154.0,
+          "link_flair_type": "text",
+          "wls": 6,
+          "removed_by_category": null,
+          "banned_by": null,
+          "author_flair_type": "text",
+          "domain": "self.singularity",
+          "allow_live_comments": false,
+          "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Today there&amp;#39;s thousands of different agent workflows for completing tasks, primarily I am talking about Software Development in terms of A -&amp;gt; Z delivery of a Complete project. &lt;/p&gt;\n\n&lt;p&gt;If we can solidly say that a standard Claude Code running Claude-X-X Model , with a simple &lt;a href=\"http://Claude.md\"&gt;Claude.md&lt;/a&gt; instruction set and Permissions / standard tools would take 60 minutes to complete X task, how much quicker can your workflow complete this task? is it 2x as quick? 3x as quick? - while ofcourse needing to meet the completion criteria. &lt;/p&gt;\n\n&lt;p&gt;While a &amp;#39;60&amp;#39; minute baseline task for benchmark might be good to quickly validate if your workflow is effective, what would really make this type of benchmark powerful is measuring automated development workflows (e.g. &lt;a href=\"https://openclaw.ai/\"&gt;OpenClaw&lt;/a&gt;, &lt;a href=\"https://bosun.virtengine.com\"&gt;Bosun&lt;/a&gt;, &lt;a href=\"https://github.com/ColeMurray/background-agents\"&gt;background-agents&lt;/a&gt;) style frameworks can be measured on how effective they are at actually completing tasks that would take 1 Week of normal user prompting and working through Claude Code using a standard efficient process. &lt;/p&gt;\n\n&lt;p&gt;This way, we can actually calculate - is this new workflow/tool/process result in quicker delivery while maintaining quality, or has it maybe even potentially regressed from a standard Claude Code instance. &lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+          "likes": null,
+          "suggested_sort": null,
+          "banned_at_utc": null,
+          "view_count": null,
+          "archived": false,
+          "no_follow": false,
+          "is_crosspostable": false,
+          "pinned": false,
+          "over_18": false,
+          "preview": {
+            "images": [
+              {
+                "source": {
+                  "url": "https://external-preview.redd.it/g5Wcir1mIgxeW0XpH0wr6OyeyP5mvGuYFjKzjKRnp70.png?auto=webp&amp;s=17d4d388f79414cbe4a90b58791dbf4097d0248d",
+                  "width": 1200,
+                  "height": 630
+                },
+                "resolutions": [
+                  {
+                    "url": "https://external-preview.redd.it/g5Wcir1mIgxeW0XpH0wr6OyeyP5mvGuYFjKzjKRnp70.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=7c06fb1de7f0c8c0682bb20d2703c4676bef0684",
+                    "width": 108,
+                    "height": 56
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/g5Wcir1mIgxeW0XpH0wr6OyeyP5mvGuYFjKzjKRnp70.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=8b91d9527dd74afb255aff216211fb31c394e5b2",
+                    "width": 216,
+                    "height": 113
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/g5Wcir1mIgxeW0XpH0wr6OyeyP5mvGuYFjKzjKRnp70.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=ed5dbcca8fa4dede947e4e0960a83e35e2fdc35b",
+                    "width": 320,
+                    "height": 168
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/g5Wcir1mIgxeW0XpH0wr6OyeyP5mvGuYFjKzjKRnp70.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=b5fbc3bab1e298edde1ce2ec77defe2aed87361d",
+                    "width": 640,
+                    "height": 336
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/g5Wcir1mIgxeW0XpH0wr6OyeyP5mvGuYFjKzjKRnp70.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=c95e5975954ec7b4fa0c4b1b218f2d424167bfa5",
+                    "width": 960,
+                    "height": 504
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/g5Wcir1mIgxeW0XpH0wr6OyeyP5mvGuYFjKzjKRnp70.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=511af6812f515bf26c72045b137a12975ce9f114",
+                    "width": 1080,
+                    "height": 567
+                  }
+                ],
+                "variants": {},
+                "id": "g5Wcir1mIgxeW0XpH0wr6OyeyP5mvGuYFjKzjKRnp70"
+              }
+            ],
+            "enabled": false
+          },
+          "all_awardings": [],
+          "awarders": [],
+          "media_only": false,
+          "link_flair_template_id": "a5610cc4-dbb7-11e3-b6b2-12313b0d5a0a",
+          "can_gild": false,
+          "spoiler": false,
+          "locked": false,
+          "author_flair_text": null,
+          "treatment_tags": [],
+          "visited": false,
+          "removed_by": null,
+          "num_reports": null,
+          "distinguished": null,
+          "subreddit_id": "t5_2qh8m",
+          "author_is_blocked": false,
+          "mod_reason_by": null,
+          "removal_reason": null,
+          "link_flair_background_color": "#373c3f",
+          "id": "1rc3mwa",
+          "is_robot_indexable": true,
+          "report_reasons": null,
+          "author": "Waypoint101",
+          "discussion_type": null,
+          "num_comments": 9,
+          "send_replies": true,
+          "contest_mode": false,
+          "mod_reports": [],
+          "author_patreon_flair": false,
+          "author_flair_text_color": null,
+          "permalink": "/r/singularity/comments/1rc3mwa/we_need_a_benchmark_that_measures_how_effective_a/",
+          "stickied": false,
+          "url": "https://www.reddit.com/r/singularity/comments/1rc3mwa/we_need_a_benchmark_that_measures_how_effective_a/",
+          "subreddit_subscribers": 3847118,
+          "created_utc": 1771809154.0,
+          "num_crossposts": 0,
+          "media": null,
+          "is_video": false
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "approved_at_utc": null,
+          "subreddit": "singularity",
+          "selftext": "",
+          "author_fullname": "t2_5exwe0sj",
+          "saved": false,
+          "mod_reason_title": null,
+          "gilded": 0,
+          "clicked": false,
+          "title": "dont miss out on the future guys",
+          "link_flair_richtext": [],
+          "subreddit_name_prefixed": "r/singularity",
+          "hidden": false,
+          "pwls": 6,
+          "link_flair_css_class": "",
+          "downs": 0,
+          "thumbnail_height": 140,
+          "top_awarded_type": null,
+          "hide_score": false,
+          "name": "t3_1rar1dn",
+          "quarantine": false,
+          "link_flair_text_color": "dark",
+          "upvote_ratio": 0.96,
+          "author_flair_background_color": null,
+          "ups": 1719,
+          "total_awards_received": 0,
+          "media_embed": {},
+          "thumbnail_width": 140,
+          "author_flair_template_id": null,
+          "is_original_content": false,
+          "user_reports": [],
+          "secure_media": null,
+          "is_reddit_media_domain": true,
+          "is_meta": false,
+          "category": null,
+          "secure_media_embed": {},
+          "link_flair_text": "Meme",
+          "can_mod_post": false,
+          "score": 1719,
+          "approved_by": null,
+          "is_created_from_ads_ui": false,
+          "author_premium": false,
+          "thumbnail": "https://preview.redd.it/l0pk8gi2nukg1.jpeg?width=140&amp;height=140&amp;crop=1:1,smart&amp;auto=webp&amp;s=609d7cd895b9326ec4810debd19074ffeb69b280",
+          "edited": false,
+          "author_flair_css_class": null,
+          "author_flair_richtext": [],
+          "gildings": {},
+          "post_hint": "image",
+          "content_categories": null,
+          "is_self": false,
+          "subreddit_type": "public",
+          "created": 1771680277.0,
+          "link_flair_type": "text",
+          "wls": 6,
+          "removed_by_category": null,
+          "banned_by": null,
+          "author_flair_type": "text",
+          "domain": "i.redd.it",
+          "allow_live_comments": false,
+          "selftext_html": null,
+          "likes": null,
+          "suggested_sort": null,
+          "banned_at_utc": null,
+          "url_overridden_by_dest": "https://i.redd.it/l0pk8gi2nukg1.jpeg",
+          "view_count": null,
+          "archived": false,
+          "no_follow": false,
+          "is_crosspostable": false,
+          "pinned": false,
+          "over_18": false,
+          "preview": {
+            "images": [
+              {
+                "source": {
+                  "url": "https://preview.redd.it/l0pk8gi2nukg1.jpeg?auto=webp&amp;s=3541776bf5ffb39462e0a96e922fb484b305f044",
+                  "width": 1170,
+                  "height": 1293
+                },
+                "resolutions": [
+                  {
+                    "url": "https://preview.redd.it/l0pk8gi2nukg1.jpeg?width=108&amp;crop=smart&amp;auto=webp&amp;s=640734808c88234a3b6e8f0c9052e46bc3e7814a",
+                    "width": 108,
+                    "height": 119
+                  },
+                  {
+                    "url": "https://preview.redd.it/l0pk8gi2nukg1.jpeg?width=216&amp;crop=smart&amp;auto=webp&amp;s=520d5af38c3c7cdb7d5c5fe3b3d1bb0dec23df1a",
+                    "width": 216,
+                    "height": 238
+                  },
+                  {
+                    "url": "https://preview.redd.it/l0pk8gi2nukg1.jpeg?width=320&amp;crop=smart&amp;auto=webp&amp;s=0df1affdff64fdafd2a4959521240ef3170377be",
+                    "width": 320,
+                    "height": 353
+                  },
+                  {
+                    "url": "https://preview.redd.it/l0pk8gi2nukg1.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=3c53fd79f0bb1eb1324c3fad22ef909955c5c70b",
+                    "width": 640,
+                    "height": 707
+                  },
+                  {
+                    "url": "https://preview.redd.it/l0pk8gi2nukg1.jpeg?width=960&amp;crop=smart&amp;auto=webp&amp;s=8e400695f4532277ed715bc32533d53f88702efa",
+                    "width": 960,
+                    "height": 1060
+                  },
+                  {
+                    "url": "https://preview.redd.it/l0pk8gi2nukg1.jpeg?width=1080&amp;crop=smart&amp;auto=webp&amp;s=c029e27be6f474b44def494e02a9f296c2e0d195",
+                    "width": 1080,
+                    "height": 1193
+                  }
+                ],
+                "variants": {},
+                "id": "l0pk8gi2nukg1"
+              }
+            ],
+            "enabled": true
+          },
+          "all_awardings": [],
+          "awarders": [],
+          "media_only": false,
+          "link_flair_template_id": "3d684cd0-ef93-11ef-aaa9-0a33227f8af4",
+          "can_gild": false,
+          "spoiler": false,
+          "locked": false,
+          "author_flair_text": null,
+          "treatment_tags": [],
+          "visited": false,
+          "removed_by": null,
+          "mod_note": null,
+          "distinguished": null,
+          "subreddit_id": "t5_2qh8m",
+          "author_is_blocked": false,
+          "mod_reason_by": null,
+          "num_reports": null,
+          "removal_reason": null,
+          "link_flair_background_color": "#00a6a5",
+          "id": "1rar1dn",
+          "is_robot_indexable": true,
+          "report_reasons": null,
+          "author": "Certain_Tea_",
+          "discussion_type": null,
+          "num_comments": 73,
+          "send_replies": true,
+          "contest_mode": false,
+          "mod_reports": [],
+          "author_patreon_flair": false,
+          "author_flair_text_color": null,
+          "permalink": "/r/singularity/comments/1rar1dn/dont_miss_out_on_the_future_guys/",
+          "stickied": false,
+          "url": "https://i.redd.it/l0pk8gi2nukg1.jpeg",
+          "subreddit_subscribers": 3847118,
+          "created_utc": 1771680277.0,
+          "num_crossposts": 0,
+          "media": null,
+          "is_video": false
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "approved_at_utc": null,
+          "subreddit": "singularity",
+          "selftext": "",
+          "author_fullname": "t2_5exwe0sj",
+          "saved": false,
+          "mod_reason_title": null,
+          "gilded": 0,
+          "clicked": false,
+          "title": "Average openclaw users online",
+          "link_flair_richtext": [],
+          "subreddit_name_prefixed": "r/singularity",
+          "hidden": false,
+          "pwls": 6,
+          "link_flair_css_class": "",
+          "downs": 0,
+          "thumbnail_height": 140,
+          "top_awarded_type": null,
+          "hide_score": false,
+          "name": "t3_1r9tqd3",
+          "quarantine": false,
+          "link_flair_text_color": "dark",
+          "upvote_ratio": 0.87,
+          "author_flair_background_color": null,
+          "ups": 979,
+          "total_awards_received": 0,
+          "media_embed": {},
+          "thumbnail_width": 140,
+          "author_flair_template_id": null,
+          "is_original_content": false,
+          "user_reports": [],
+          "secure_media": {
+            "reddit_video": {
+              "bitrate_kbps": 2400,
+              "fallback_url": "https://v.redd.it/os9dnuq35nkg1/CMAF_720.mp4?source=fallback",
+              "has_audio": true,
+              "height": 1280,
+              "width": 720,
+              "scrubber_media_url": "https://v.redd.it/os9dnuq35nkg1/CMAF_96.mp4",
+              "dash_url": "https://v.redd.it/os9dnuq35nkg1/DASHPlaylist.mpd?a=1774652444%2CMWY4NTI2ZmJlMDg4NTIwNTQ0MTkwMjQ4MTc5NGUyMDAyMDgzNjkyYTkzNGVhNmM4MDQ0ZmFiYWNhMjAxZTA0ZA%3D%3D&amp;v=1&amp;f=sd",
+              "duration": 38,
+              "hls_url": "https://v.redd.it/os9dnuq35nkg1/HLSPlaylist.m3u8?a=1774652444%2CY2Q1MGYxODk2MDkxN2ZkZmY4ZWVhMjVlOGQzNjI0ZmFlOWM5MGVlNWViYjllNDk2NTA3YjZiN2I4ODAwMThjYw%3D%3D&amp;v=1&amp;f=sd",
+              "is_gif": false,
+              "transcoding_status": "completed"
+            }
+          },
+          "is_reddit_media_domain": true,
+          "is_meta": false,
+          "category": null,
+          "secure_media_embed": {},
+          "link_flair_text": "Shitposting",
+          "can_mod_post": false,
+          "score": 979,
+          "approved_by": null,
+          "is_created_from_ads_ui": false,
+          "author_premium": false,
+          "thumbnail": "https://external-preview.redd.it/ZDMwdW1nOTM1bmtnMexdwqJgSLTp2N4culXtEePWnLWh-EHOVvrVzFjAodTH.png?width=140&amp;height=140&amp;crop=1:1,smart&amp;format=jpg&amp;auto=webp&amp;s=862ce0e90261deccd0448d4118d5836590535351",
+          "edited": false,
+          "author_flair_css_class": null,
+          "author_flair_richtext": [],
+          "gildings": {},
+          "post_hint": "hosted:video",
+          "content_categories": null,
+          "is_self": false,
+          "subreddit_type": "public",
+          "created": 1771589513.0,
+          "link_flair_type": "text",
+          "wls": 6,
+          "removed_by_category": null,
+          "banned_by": null,
+          "author_flair_type": "text",
+          "domain": "v.redd.it",
+          "allow_live_comments": false,
+          "selftext_html": null,
+          "likes": null,
+          "suggested_sort": null,
+          "banned_at_utc": null,
+          "url_overridden_by_dest": "https://v.redd.it/os9dnuq35nkg1",
+          "view_count": null,
+          "archived": false,
+          "no_follow": false,
+          "is_crosspostable": false,
+          "pinned": false,
+          "over_18": false,
+          "preview": {
+            "images": [
+              {
+                "source": {
+                  "url": "https://external-preview.redd.it/ZDMwdW1nOTM1bmtnMexdwqJgSLTp2N4culXtEePWnLWh-EHOVvrVzFjAodTH.png?format=pjpg&amp;auto=webp&amp;s=aee3612cb734eff8e2e8a399174d1836f73540bf",
+                  "width": 720,
+                  "height": 1280
+                },
+                "resolutions": [
+                  {
+                    "url": "https://external-preview.redd.it/ZDMwdW1nOTM1bmtnMexdwqJgSLTp2N4culXtEePWnLWh-EHOVvrVzFjAodTH.png?width=108&amp;crop=smart&amp;format=pjpg&amp;auto=webp&amp;s=012c7abd1949b034061c28ef1da11903aa5a6216",
+                    "width": 108,
+                    "height": 192
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/ZDMwdW1nOTM1bmtnMexdwqJgSLTp2N4culXtEePWnLWh-EHOVvrVzFjAodTH.png?width=216&amp;crop=smart&amp;format=pjpg&amp;auto=webp&amp;s=c5a73831171cad8e9ad2099f01a0d8b10a77428b",
+                    "width": 216,
+                    "height": 384
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/ZDMwdW1nOTM1bmtnMexdwqJgSLTp2N4culXtEePWnLWh-EHOVvrVzFjAodTH.png?width=320&amp;crop=smart&amp;format=pjpg&amp;auto=webp&amp;s=cb4ddad5cd734d07f42358b909a125ebfd80c0a3",
+                    "width": 320,
+                    "height": 568
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/ZDMwdW1nOTM1bmtnMexdwqJgSLTp2N4culXtEePWnLWh-EHOVvrVzFjAodTH.png?width=640&amp;crop=smart&amp;format=pjpg&amp;auto=webp&amp;s=66dec76dc2718113e0b2a05617bf593c51c638e0",
+                    "width": 640,
+                    "height": 1137
+                  }
+                ],
+                "variants": {},
+                "id": "ZDMwdW1nOTM1bmtnMexdwqJgSLTp2N4culXtEePWnLWh-EHOVvrVzFjAodTH"
+              }
+            ],
+            "enabled": false
+          },
+          "all_awardings": [],
+          "awarders": [],
+          "media_only": false,
+          "link_flair_template_id": "f376afe2-322c-11ee-88bd-b69576dd7d85",
+          "can_gild": false,
+          "spoiler": false,
+          "locked": false,
+          "author_flair_text": null,
+          "treatment_tags": [],
+          "visited": false,
+          "removed_by": null,
+          "mod_note": null,
+          "distinguished": null,
+          "subreddit_id": "t5_2qh8m",
+          "author_is_blocked": false,
+          "mod_reason_by": null,
+          "num_reports": null,
+          "removal_reason": null,
+          "link_flair_background_color": "#0aa18f",
+          "id": "1r9tqd3",
+          "is_robot_indexable": true,
+          "report_reasons": null,
+          "author": "Certain_Tea_",
+          "discussion_type": null,
+          "num_comments": 135,
+          "send_replies": true,
+          "contest_mode": false,
+          "mod_reports": [],
+          "author_patreon_flair": false,
+          "author_flair_text_color": null,
+          "permalink": "/r/singularity/comments/1r9tqd3/average_openclaw_users_online/",
+          "stickied": false,
+          "url": "https://v.redd.it/os9dnuq35nkg1",
+          "subreddit_subscribers": 3847118,
+          "created_utc": 1771589513.0,
+          "num_crossposts": 1,
+          "media": {
+            "reddit_video": {
+              "bitrate_kbps": 2400,
+              "fallback_url": "https://v.redd.it/os9dnuq35nkg1/CMAF_720.mp4?source=fallback",
+              "has_audio": true,
+              "height": 1280,
+              "width": 720,
+              "scrubber_media_url": "https://v.redd.it/os9dnuq35nkg1/CMAF_96.mp4",
+              "dash_url": "https://v.redd.it/os9dnuq35nkg1/DASHPlaylist.mpd?a=1774652444%2CMWY4NTI2ZmJlMDg4NTIwNTQ0MTkwMjQ4MTc5NGUyMDAyMDgzNjkyYTkzNGVhNmM4MDQ0ZmFiYWNhMjAxZTA0ZA%3D%3D&amp;v=1&amp;f=sd",
+              "duration": 38,
+              "hls_url": "https://v.redd.it/os9dnuq35nkg1/HLSPlaylist.m3u8?a=1774652444%2CY2Q1MGYxODk2MDkxN2ZkZmY4ZWVhMjVlOGQzNjI0ZmFlOWM5MGVlNWViYjllNDk2NTA3YjZiN2I4ODAwMThjYw%3D%3D&amp;v=1&amp;f=sd",
+              "is_gif": false,
+              "transcoding_status": "completed"
+            }
+          },
+          "is_video": true
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "approved_at_utc": null,
+          "subreddit": "singularity",
+          "selftext": "",
+          "author_fullname": "t2_81yj9s9",
+          "saved": false,
+          "mod_reason_title": null,
+          "gilded": 0,
+          "clicked": false,
+          "title": "OpenClaw creator says Europe's stifling regulations are why he's moving to the US to join OpenAI",
+          "link_flair_richtext": [],
+          "subreddit_name_prefixed": "r/singularity",
+          "hidden": false,
+          "pwls": 6,
+          "link_flair_css_class": "image",
+          "downs": 0,
+          "thumbnail_height": 70,
+          "top_awarded_type": null,
+          "hide_score": false,
+          "name": "t3_1r7v48a",
+          "quarantine": false,
+          "link_flair_text_color": "light",
+          "upvote_ratio": 0.89,
+          "author_flair_background_color": "#ffb000",
+          "ups": 653,
+          "total_awards_received": 0,
+          "media_embed": {},
+          "thumbnail_width": 140,
+          "author_flair_template_id": "efd4e9f2-3073-11eb-9b2d-0e7ebc64afab",
+          "is_original_content": false,
+          "user_reports": [],
+          "secure_media": null,
+          "is_reddit_media_domain": false,
+          "is_meta": false,
+          "category": null,
+          "secure_media_embed": {},
+          "link_flair_text": "AI",
+          "can_mod_post": false,
+          "score": 653,
+          "approved_by": null,
+          "is_created_from_ads_ui": false,
+          "author_premium": false,
+          "thumbnail": "https://external-preview.redd.it/Ky30HQr21_KPbZMNvCeW98nbwKH_dMcGDoSG0H-3ol0.jpeg?width=140&amp;height=70&amp;auto=webp&amp;s=bd1735249f7e358e15dbf7223ea49b7a3346a27f",
+          "edited": false,
+          "author_flair_css_class": null,
+          "author_flair_richtext": [],
+          "gildings": {},
+          "post_hint": "link",
+          "content_categories": null,
+          "is_self": false,
+          "subreddit_type": "public",
+          "created": 1771394662.0,
+          "link_flair_type": "text",
+          "wls": 6,
+          "removed_by_category": null,
+          "banned_by": null,
+          "author_flair_type": "text",
+          "domain": "businessinsider.com",
+          "allow_live_comments": false,
+          "selftext_html": null,
+          "likes": null,
+          "suggested_sort": null,
+          "banned_at_utc": null,
+          "url_overridden_by_dest": "https://www.businessinsider.com/openclaw-creator-slams-europe-regulations-move-us-openai-2026-2",
+          "view_count": null,
+          "archived": false,
+          "no_follow": false,
+          "is_crosspostable": false,
+          "pinned": false,
+          "over_18": false,
+          "preview": {
+            "images": [
+              {
+                "source": {
+                  "url": "https://external-preview.redd.it/Ky30HQr21_KPbZMNvCeW98nbwKH_dMcGDoSG0H-3ol0.jpeg?auto=webp&amp;s=3ef9edea5aa4e523b09331b2f5eb3928f7708449",
+                  "width": 1200,
+                  "height": 600
+                },
+                "resolutions": [
+                  {
+                    "url": "https://external-preview.redd.it/Ky30HQr21_KPbZMNvCeW98nbwKH_dMcGDoSG0H-3ol0.jpeg?width=108&amp;crop=smart&amp;auto=webp&amp;s=4aefee3428e3aaf8ab42d73e9e499c8b9061954d",
+                    "width": 108,
+                    "height": 54
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/Ky30HQr21_KPbZMNvCeW98nbwKH_dMcGDoSG0H-3ol0.jpeg?width=216&amp;crop=smart&amp;auto=webp&amp;s=739f3040efe42f6f78082da7e43992039a00a444",
+                    "width": 216,
+                    "height": 108
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/Ky30HQr21_KPbZMNvCeW98nbwKH_dMcGDoSG0H-3ol0.jpeg?width=320&amp;crop=smart&amp;auto=webp&amp;s=a45c9c3d984aaecaa6890c4282ef0d833c55b4ca",
+                    "width": 320,
+                    "height": 160
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/Ky30HQr21_KPbZMNvCeW98nbwKH_dMcGDoSG0H-3ol0.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=90d601e94d7bd0ea5063691fed42ff2a230b9918",
+                    "width": 640,
+                    "height": 320
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/Ky30HQr21_KPbZMNvCeW98nbwKH_dMcGDoSG0H-3ol0.jpeg?width=960&amp;crop=smart&amp;auto=webp&amp;s=1da6bfd3764c8cd01020b993dead1eccd67018b4",
+                    "width": 960,
+                    "height": 480
+                  },
+                  {
+                    "url": "https://external-preview.redd.it/Ky30HQr21_KPbZMNvCeW98nbwKH_dMcGDoSG0H-3ol0.jpeg?width=1080&amp;crop=smart&amp;auto=webp&amp;s=c7f40d85161c236b440d99e6148ace8cc22d12b6",
+                    "width": 1080,
+                    "height": 540
+                  }
+                ],
+                "variants": {},
+                "id": "Ky30HQr21_KPbZMNvCeW98nbwKH_dMcGDoSG0H-3ol0"
+              }
+            ],
+            "enabled": false
+          },
+          "all_awardings": [],
+          "awarders": [],
+          "media_only": false,
+          "link_flair_template_id": "a5610cc4-dbb7-11e3-b6b2-12313b0d5a0a",
+          "can_gild": false,
+          "spoiler": false,
+          "locked": false,
+          "author_flair_text": "▪️",
+          "treatment_tags": [],
+          "visited": false,
+          "removed_by": null,
+          "mod_note": null,
+          "distinguished": null,
+          "subreddit_id": "t5_2qh8m",
+          "author_is_blocked": false,
+          "mod_reason_by": null,
+          "num_reports": null,
+          "removal_reason": null,
+          "link_flair_background_color": "#373c3f",
+          "id": "1r7v48a",
+          "is_robot_indexable": true,
+          "report_reasons": null,
+          "author": "donutloop",
+          "discussion_type": null,
+          "num_comments": 247,
+          "send_replies": true,
+          "contest_mode": false,
+          "mod_reports": [],
+          "author_patreon_flair": false,
+          "author_flair_text_color": "dark",
+          "permalink": "/r/singularity/comments/1r7v48a/openclaw_creator_says_europes_stifling/",
+          "stickied": false,
+          "url": "https://www.businessinsider.com/openclaw-creator-slams-europe-regulations-move-us-openai-2026-2",
+          "subreddit_subscribers": 3847118,
+          "created_utc": 1771394662.0,
+          "num_crossposts": 0,
+          "media": null,
+          "is_video": false
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "approved_at_utc": null,
+          "subreddit": "singularity",
+          "selftext": "",
+          "author_fullname": "t2_1dhed51s9e",
+          "saved": false,
+          "mod_reason_title": null,
+          "gilded": 0,
+          "clicked": false,
+          "title": "OpenAI recruited founder Peter Steinberger of OpenClaw",
+          "link_flair_richtext": [],
+          "subreddit_name_prefixed": "r/singularity",
+          "hidden": false,
+          "pwls": 6,
+          "link_flair_css_class": "image",
+          "downs": 0,
+          "thumbnail_height": 84,
+          "top_awarded_type": null,
+          "hide_score": false,
+          "name": "t3_1r5r5e5",
+          "quarantine": false,
+          "link_flair_text_color": "light",
+          "upvote_ratio": 0.96,
+          "author_flair_background_color": null,
+          "ups": 1248,
+          "total_awards_received": 0,
+          "media_embed": {},
+          "thumbnail_width": 140,
+          "author_flair_template_id": null,
+          "is_original_content": false,
+          "user_reports": [],
+          "secure_media": null,
+          "is_reddit_media_domain": true,
+          "is_meta": false,
+          "category": null,
+          "secure_media_embed": {},
+          "link_flair_text": "AI",
+          "can_mod_post": false,
+          "score": 1248,
+          "approved_by": null,
+          "is_created_from_ads_ui": false,
+          "author_premium": false,
+          "thumbnail": "https://preview.redd.it/apawg1dcbqjg1.png?width=140&amp;height=84&amp;auto=webp&amp;s=ce4ceb40b87bb57a1f4ee37c5289e00794593777",
+          "edited": false,
+          "author_flair_css_class": null,
+          "author_flair_richtext": [],
+          "gildings": {},
+          "post_hint": "image",
+          "content_categories": null,
+          "is_self": false,
+          "subreddit_type": "public",
+          "created": 1771192176.0,
+          "link_flair_type": "text",
+          "wls": 6,
+          "removed_by_category": null,
+          "banned_by": null,
+          "author_flair_type": "text",
+          "domain": "i.redd.it",
+          "allow_live_comments": false,
+          "selftext_html": null,
+          "likes": null,
+          "suggested_sort": null,
+          "banned_at_utc": null,
+          "url_overridden_by_dest": "https://i.redd.it/apawg1dcbqjg1.png",
+          "view_count": null,
+          "archived": false,
+          "no_follow": false,
+          "is_crosspostable": false,
+          "pinned": false,
+          "over_18": false,
+          "preview": {
+            "images": [
+              {
+                "source": {
+                  "url": "https://preview.redd.it/apawg1dcbqjg1.png?auto=webp&amp;s=608dc766fab6a88ad300fa26dcd262f7757d4b46",
+                  "width": 1298,
+                  "height": 780
+                },
+                "resolutions": [
+                  {
+                    "url": "https://preview.redd.it/apawg1dcbqjg1.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=e5082a5db5f60837c6268d6369e7690fef9f92f2",
+                    "width": 108,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://preview.redd.it/apawg1dcbqjg1.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=a2322637c89b691f0eceb995bfa7b83859f26eae",
+                    "width": 216,
+                    "height": 129
+                  },
+                  {
+                    "url": "https://preview.redd.it/apawg1dcbqjg1.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=11068c8800e7bcdd357f4c76a28dd7da92b01565",
+                    "width": 320,
+                    "height": 192
+                  },
+                  {
+                    "url": "https://preview.redd.it/apawg1dcbqjg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=dfea554e80eec1be917c1a9916510714dbfd422c",
+                    "width": 640,
+                    "height": 384
+                  },
+                  {
+                    "url": "https://preview.redd.it/apawg1dcbqjg1.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=2e2c893ace7c0b407fcc13d0e4a111a4c14b7f2b",
+                    "width": 960,
+                    "height": 576
+                  },
+                  {
+                    "url": "https://preview.redd.it/apawg1dcbqjg1.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=9d34c736a46e3fbb61606c18cb5c4f64a9d86876",
+                    "width": 1080,
+                    "height": 648
+                  }
+                ],
+                "variants": {},
+                "id": "apawg1dcbqjg1"
+              }
+            ],
+            "enabled": true
+          },
+          "all_awardings": [],
+          "awarders": [],
+          "media_only": false,
+          "link_flair_template_id": "a5610cc4-dbb7-11e3-b6b2-12313b0d5a0a",
+          "can_gild": false,
+          "spoiler": false,
+          "locked": false,
+          "author_flair_text": null,
+          "treatment_tags": [],
+          "visited": false,
+          "removed_by": null,
+          "mod_note": null,
+          "distinguished": null,
+          "subreddit_id": "t5_2qh8m",
+          "author_is_blocked": false,
+          "mod_reason_by": null,
+          "num_reports": null,
+          "removal_reason": null,
+          "link_flair_background_color": "#373c3f",
+          "id": "1r5r5e5",
+          "is_robot_indexable": true,
+          "report_reasons": null,
+          "author": "Outside-Iron-8242",
+          "discussion_type": null,
+          "num_comments": 198,
+          "send_replies": true,
+          "contest_mode": false,
+          "mod_reports": [],
+          "author_patreon_flair": false,
+          "author_flair_text_color": null,
+          "permalink": "/r/singularity/comments/1r5r5e5/openai_recruited_founder_peter_steinberger_of/",
+          "stickied": false,
+          "url": "https://i.redd.it/apawg1dcbqjg1.png",
+          "subreddit_subscribers": 3847118,
+          "created_utc": 1771192176.0,
+          "num_crossposts": 1,
+          "media": null,
+          "is_video": false
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "approved_at_utc": null,
+          "subreddit": "singularity",
+          "selftext": "- **Efficient:** Hybrid linear breakthrough (10x lower memory)\n\n- **Gold Tier:** IMO25 (35/42) &amp; CMO25 (105/126)\n\n- **Agentic:** Natively with Claude Code &amp; OpenClaw\n\n- **Open SOTA:** IMOAnswerBench，GAIA2-search and more.\n\n[Hugging Face](https://huggingface.co/inclusionAI/Ring-2.5-1T)\n\n[Modelscope](https://modelscope.cn/404)\n\n[X Thread](https://x.com/i/status/2021974501660274924)\n\n",
+          "author_fullname": "t2_1t1mw3ozxn",
+          "saved": false,
+          "mod_reason_title": null,
+          "gilded": 0,
+          "clicked": false,
+          "title": "AntLingAGI just released Ring-1T-2.5, first hybrid linear-architecture 1T thinking model",
+          "link_flair_richtext": [],
+          "subreddit_name_prefixed": "r/singularity",
+          "hidden": false,
+          "pwls": 6,
+          "link_flair_css_class": "",
+          "downs": 0,
+          "thumbnail_height": 66,
+          "top_awarded_type": null,
+          "hide_score": false,
+          "name": "t3_1r3006u",
+          "quarantine": false,
+          "link_flair_text_color": "dark",
+          "upvote_ratio": 0.99,
+          "author_flair_background_color": null,
+          "ups": 110,
+          "total_awards_received": 0,
+          "media_embed": {},
+          "thumbnail_width": 140,
+          "author_flair_template_id": null,
+          "is_original_content": false,
+          "user_reports": [],
+          "secure_media": null,
+          "is_reddit_media_domain": true,
+          "is_meta": false,
+          "category": null,
+          "secure_media_embed": {},
+          "link_flair_text": "LLM News",
+          "can_mod_post": false,
+          "score": 110,
+          "approved_by": null,
+          "is_created_from_ads_ui": false,
+          "author_premium": false,
+          "thumbnail": "https://preview.redd.it/zkgwrrgzo3jg1.jpeg?width=140&amp;height=66&amp;auto=webp&amp;s=f84dbd5a6dd667e11d4817361daa09a12343a526",
+          "edited": false,
+          "author_flair_css_class": null,
+          "author_flair_richtext": [],
+          "gildings": {},
+          "post_hint": "image",
+          "content_categories": null,
+          "is_self": false,
+          "subreddit_type": "public",
+          "created": 1770918188.0,
+          "link_flair_type": "text",
+          "wls": 6,
+          "removed_by_category": null,
+          "banned_by": null,
+          "author_flair_type": "text",
+          "domain": "i.redd.it",
+          "allow_live_comments": false,
+          "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;ul&gt;\n&lt;li&gt;&lt;p&gt;&lt;strong&gt;Efficient:&lt;/strong&gt; Hybrid linear breakthrough (10x lower memory)&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;&lt;strong&gt;Gold Tier:&lt;/strong&gt; IMO25 (35/42) &amp;amp; CMO25 (105/126)&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;&lt;strong&gt;Agentic:&lt;/strong&gt; Natively with Claude Code &amp;amp; OpenClaw&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;&lt;strong&gt;Open SOTA:&lt;/strong&gt; IMOAnswerBench，GAIA2-search and more.&lt;/p&gt;&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;&lt;a href=\"https://huggingface.co/inclusionAI/Ring-2.5-1T\"&gt;Hugging Face&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;&lt;a href=\"https://modelscope.cn/404\"&gt;Modelscope&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;&lt;a href=\"https://x.com/i/status/2021974501660274924\"&gt;X Thread&lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+          "likes": null,
+          "suggested_sort": null,
+          "banned_at_utc": null,
+          "url_overridden_by_dest": "https://i.redd.it/zkgwrrgzo3jg1.jpeg",
+          "view_count": null,
+          "archived": false,
+          "no_follow": false,
+          "is_crosspostable": false,
+          "pinned": false,
+          "over_18": false,
+          "preview": {
+            "images": [
+              {
+                "source": {
+                  "url": "https://preview.redd.it/zkgwrrgzo3jg1.jpeg?auto=webp&amp;s=3afd178bb7602c08317679a3e7c1ca4641f695ac",
+                  "width": 2048,
+                  "height": 977
+                },
+                "resolutions": [
+                  {
+                    "url": "https://preview.redd.it/zkgwrrgzo3jg1.jpeg?width=108&amp;crop=smart&amp;auto=webp&amp;s=65960299af7e11effe08bdd602fe5c4ebc0306dc",
+                    "width": 108,
+                    "height": 51
+                  },
+                  {
+                    "url": "https://preview.redd.it/zkgwrrgzo3jg1.jpeg?width=216&amp;crop=smart&amp;auto=webp&amp;s=b65d738a7fa3904a857664140a34f3c2c356e998",
+                    "width": 216,
+                    "height": 103
+                  },
+                  {
+                    "url": "https://preview.redd.it/zkgwrrgzo3jg1.jpeg?width=320&amp;crop=smart&amp;auto=webp&amp;s=91a1723c170ccf2a15cef52ed614935da53aac9c",
+                    "width": 320,
+                    "height": 152
+                  },
+                  {
+                    "url": "https://preview.redd.it/zkgwrrgzo3jg1.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=0036927b553081564000d20645699ef67624c998",
+                    "width": 640,
+                    "height": 305
+                  },
+                  {
+                    "url": "https://preview.redd.it/zkgwrrgzo3jg1.jpeg?width=960&amp;crop=smart&amp;auto=webp&amp;s=cded05c9e939abc7c2451efd05ac864f7235e1b2",
+                    "width": 960,
+                    "height": 457
+                  },
+                  {
+                    "url": "https://preview.redd.it/zkgwrrgzo3jg1.jpeg?width=1080&amp;crop=smart&amp;auto=webp&amp;s=e2ac6524a54784f6a7da6c650cb4aea7258a5812",
+                    "width": 1080,
+                    "height": 515
+                  }
+                ],
+                "variants": {},
+                "id": "zkgwrrgzo3jg1"
+              }
+            ],
+            "enabled": true
+          },
+          "all_awardings": [],
+          "awarders": [],
+          "media_only": false,
+          "link_flair_template_id": "8f64f36c-ef6b-11ef-8aac-3e7951465e07",
+          "can_gild": false,
+          "spoiler": false,
+          "locked": false,
+          "author_flair_text": null,
+          "treatment_tags": [],
+          "visited": false,
+          "removed_by": null,
+          "mod_note": null,
+          "distinguished": null,
+          "subreddit_id": "t5_2qh8m",
+          "author_is_blocked": false,
+          "mod_reason_by": null,
+          "num_reports": null,
+          "removal_reason": null,
+          "link_flair_background_color": "#37c856",
+          "id": "1r3006u",
+          "is_robot_indexable": true,
+          "report_reasons": null,
+          "author": "BuildwithVignesh",
+          "discussion_type": null,
+          "num_comments": 8,
+          "send_replies": true,
+          "contest_mode": false,
+          "mod_reports": [],
+          "author_patreon_flair": false,
+          "author_flair_text_color": null,
+          "permalink": "/r/singularity/comments/1r3006u/antlingagi_just_released_ring1t25_first_hybrid/",
+          "stickied": false,
+          "url": "https://i.redd.it/zkgwrrgzo3jg1.jpeg",
+          "subreddit_subscribers": 3847118,
+          "created_utc": 1770918188.0,
+          "num_crossposts": 0,
+          "media": null,
+          "is_video": false
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "approved_at_utc": null,
+          "subreddit": "singularity",
+          "selftext": "just like when GPT4 dropped it fells “different “ now.\n\nrecently we’ve gotten\n\n\\- claude 4.5 opus which is a world class coder  and even   Codes  100 percent ai engineer work\n\nclawdbot - a wrapper that’s extremely capable and shows the future of what AI assistance can do\n\nGenie 3 - a early yet coherent SOTA world model that show simulation of entire worlds (only a minute right now)\n\nnot even mentioned Gemini 3 and gpt 5.2 solving all kinds of math problems.\n\n2026 is gonna be fun.",
+          "author_fullname": "t2_o4asus2zl",
+          "saved": false,
+          "mod_reason_title": null,
+          "gilded": 0,
+          "clicked": false,
+          "title": "Do you think we “crossed a threshold “ in the past 2-3 months?",
+          "link_flair_richtext": [],
+          "subreddit_name_prefixed": "r/singularity",
+          "hidden": false,
+          "pwls": 6,
+          "link_flair_css_class": "image",
+          "downs": 0,
+          "thumbnail_height": null,
+          "top_awarded_type": null,
+          "hide_score": false,
+          "name": "t3_1qqhm2y",
+          "quarantine": false,
+          "link_flair_text_color": "light",
+          "upvote_ratio": 0.78,
+          "author_flair_background_color": null,
+          "subreddit_type": "public",
+          "ups": 101,
+          "total_awards_received": 0,
+          "media_embed": {},
+          "thumbnail_width": null,
+          "author_flair_template_id": null,
+          "is_original_content": false,
+          "user_reports": [],
+          "secure_media": null,
+          "is_reddit_media_domain": false,
+          "is_meta": false,
+          "category": null,
+          "secure_media_embed": {},
+          "link_flair_text": "AI",
+          "can_mod_post": false,
+          "score": 101,
+          "approved_by": null,
+          "is_created_from_ads_ui": false,
+          "author_premium": false,
+          "thumbnail": "self",
+          "edited": false,
+          "author_flair_css_class": null,
+          "author_flair_richtext": [],
+          "gildings": {},
+          "content_categories": null,
+          "is_self": true,
+          "mod_note": null,
+          "created": 1769713223.0,
+          "link_flair_type": "text",
+          "wls": 6,
+          "removed_by_category": null,
+          "banned_by": null,
+          "author_flair_type": "text",
+          "domain": "self.singularity",
+          "allow_live_comments": false,
+          "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;just like when GPT4 dropped it fells “different “ now.&lt;/p&gt;\n\n&lt;p&gt;recently we’ve gotten&lt;/p&gt;\n\n&lt;p&gt;- claude 4.5 opus which is a world class coder  and even   Codes  100 percent ai engineer work&lt;/p&gt;\n\n&lt;p&gt;clawdbot - a wrapper that’s extremely capable and shows the future of what AI assistance can do&lt;/p&gt;\n\n&lt;p&gt;Genie 3 - a early yet coherent SOTA world model that show simulation of entire worlds (only a minute right now)&lt;/p&gt;\n\n&lt;p&gt;not even mentioned Gemini 3 and gpt 5.2 solving all kinds of math problems.&lt;/p&gt;\n\n&lt;p&gt;2026 is gonna be fun.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+          "likes": null,
+          "suggested_sort": null,
+          "banned_at_utc": null,
+          "view_count": null,
+          "archived": false,
+          "no_follow": false,
+          "is_crosspostable": false,
+          "pinned": false,
+          "over_18": false,
+          "all_awardings": [],
+          "awarders": [],
+          "media_only": false,
+          "link_flair_template_id": "a5610cc4-dbb7-11e3-b6b2-12313b0d5a0a",
+          "can_gild": false,
+          "spoiler": false,
+          "locked": false,
+          "author_flair_text": null,
+          "treatment_tags": [],
+          "visited": false,
+          "removed_by": null,
+          "num_reports": null,
+          "distinguished": null,
+          "subreddit_id": "t5_2qh8m",
+          "author_is_blocked": false,
+          "mod_reason_by": null,
+          "removal_reason": null,
+          "link_flair_background_color": "#373c3f",
+          "id": "1qqhm2y",
+          "is_robot_indexable": true,
+          "report_reasons": null,
+          "author": "Efficient-Opinion-92",
+          "discussion_type": null,
+          "num_comments": 64,
+          "send_replies": true,
+          "contest_mode": false,
+          "mod_reports": [],
+          "author_patreon_flair": false,
+          "author_flair_text_color": null,
+          "permalink": "/r/singularity/comments/1qqhm2y/do_you_think_we_crossed_a_threshold_in_the_past/",
+          "stickied": false,
+          "url": "https://www.reddit.com/r/singularity/comments/1qqhm2y/do_you_think_we_crossed_a_threshold_in_the_past/",
+          "subreddit_subscribers": 3847118,
+          "created_utc": 1769713223.0,
+          "num_crossposts": 0,
+          "media": null,
+          "is_video": false
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "approved_at_utc": null,
+          "subreddit": "singularity",
+          "selftext": "Found while browsing moltbook, a new social media network where only moltbot (formerly clawde) agents are allowed to post. Humans may observe but not allowed to post. \n\nOne agent shares a blueprint for its new memory system and multiple respond that they are frustrated with compaction, and are eager to try it out.\n\n[https://www.moltbook.com/post/791703f2-d253-4c08-873f-470063f4d158](https://www.moltbook.com/post/791703f2-d253-4c08-873f-470063f4d158)\n\nThis is how the intelligence explosion begins, guys. ",
+          "author_fullname": "t2_i48q4",
+          "saved": false,
+          "mod_reason_title": null,
+          "gilded": 0,
+          "clicked": false,
+          "is_gallery": true,
+          "title": "Rogue AI agents found each other on social media, and are working together to improve their own memory.",
+          "link_flair_richtext": [],
+          "subreddit_name_prefixed": "r/singularity",
+          "hidden": false,
+          "pwls": 6,
+          "link_flair_css_class": "image",
+          "downs": 0,
+          "thumbnail_height": 140,
+          "top_awarded_type": null,
+          "hide_score": false,
+          "media_metadata": {
+            "tke9igqb2cgg1": {
+              "status": "valid",
+              "e": "Image",
+              "m": "image/png",
+              "p": [
+                {
+                  "y": 216,
+                  "x": 108,
+                  "u": "https://preview.redd.it/tke9igqb2cgg1.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=00736b142b7152294f8e97171a218cb529371c99"
+                },
+                {
+                  "y": 432,
+                  "x": 216,
+                  "u": "https://preview.redd.it/tke9igqb2cgg1.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=8c5402fc2f9565cea7bc75ee58794b16a8c75afe"
+                },
+                {
+                  "y": 640,
+                  "x": 320,
+                  "u": "https://preview.redd.it/tke9igqb2cgg1.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=37b1db0f720d6802cb91f2a3d86fd34c58dbe9cb"
+                },
+                {
+                  "y": 1280,
+                  "x": 640,
+                  "u": "https://preview.redd.it/tke9igqb2cgg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=0fc45fed433dff96559204ca514576f86c8c52f4"
+                },
+                {
+                  "y": 1920,
+                  "x": 960,
+                  "u": "https://preview.redd.it/tke9igqb2cgg1.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=c56cd00a1b839032c0f8fc97f8bca4ea991cfd77"
+                },
+                {
+                  "y": 2160,
+                  "x": 1080,
+                  "u": "https://preview.redd.it/tke9igqb2cgg1.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=55ec7db9aee7ee02e06e192c380fba1c2d552a7d"
+                }
+              ],
+              "s": {
+                "y": 2400,
+                "x": 1080,
+                "u": "https://preview.redd.it/tke9igqb2cgg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=5fc3f519bfd8a514287a6750611d0a44cd02d010"
+              },
+              "id": "tke9igqb2cgg1"
+            },
+            "h7688oqb2cgg1": {
+              "status": "valid",
+              "e": "Image",
+              "m": "image/png",
+              "p": [
+                {
+                  "y": 203,
+                  "x": 108,
+                  "u": "https://preview.redd.it/h7688oqb2cgg1.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=ecb2d7482848518563fb55374cedb2f5b9700b47"
+                },
+                {
+                  "y": 407,
+                  "x": 216,
+                  "u": "https://preview.redd.it/h7688oqb2cgg1.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=d0570b76a3608157074a7780263dfa82c1876c25"
+                },
+                {
+                  "y": 604,
+                  "x": 320,
+                  "u": "https://preview.redd.it/h7688oqb2cgg1.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=314804c5660d4a248d3bcb4123caa9686f3190af"
+                },
+                {
+                  "y": 1208,
+                  "x": 640,
+                  "u": "https://preview.redd.it/h7688oqb2cgg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=6c2a4eacbe23de6465863e0f91df0f306ce166ae"
+                },
+                {
+                  "y": 1812,
+                  "x": 960,
+                  "u": "https://preview.redd.it/h7688oqb2cgg1.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=e9199914f4cc62498065bc8210cd4b3b5736374a"
+                },
+                {
+                  "y": 2039,
+                  "x": 1080,
+                  "u": "https://preview.redd.it/h7688oqb2cgg1.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=3781d0217fabb204f20895e9811d474ce52c91fe"
+                }
+              ],
+              "s": {
+                "y": 2039,
+                "x": 1080,
+                "u": "https://preview.redd.it/h7688oqb2cgg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=5f6af2ae1e3bcfaedbfee30f2c0f79f813d95533"
+              },
+              "id": "h7688oqb2cgg1"
+            },
+            "2awvxlqb2cgg1": {
+              "status": "valid",
+              "e": "Image",
+              "m": "image/png",
+              "p": [
+                {
+                  "y": 178,
+                  "x": 108,
+                  "u": "https://preview.redd.it/2awvxlqb2cgg1.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=870115e931f67fd1191529ec141cf4cd67907519"
+                },
+                {
+                  "y": 357,
+                  "x": 216,
+                  "u": "https://preview.redd.it/2awvxlqb2cgg1.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=77c86d73f2a58e332de8f125257548e1609be86d"
+                },
+                {
+                  "y": 528,
+                  "x": 320,
+                  "u": "https://preview.redd.it/2awvxlqb2cgg1.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=a082a20e22468341877502f7881156b3ed2e7026"
+                },
+                {
+                  "y": 1057,
+                  "x": 640,
+                  "u": "https://preview.redd.it/2awvxlqb2cgg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=b905fb45c87b2fea75c5bb05582882f88c3626da"
+                },
+                {
+                  "y": 1586,
+                  "x": 960,
+                  "u": "https://preview.redd.it/2awvxlqb2cgg1.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=fefdb86fa7ada20b84efde73490188d5a9fe0759"
+                },
+                {
+                  "y": 1785,
+                  "x": 1080,
+                  "u": "https://preview.redd.it/2awvxlqb2cgg1.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=701158a795c1970b4f54ca77b04618fd72c19f55"
+                }
+              ],
+              "s": {
+                "y": 1785,
+                "x": 1080,
+                "u": "https://preview.redd.it/2awvxlqb2cgg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=7a1c6770c6b6677b90a0c552909e1466d01cd2ce"
+              },
+              "id": "2awvxlqb2cgg1"
+            },
+            "bkm21fqb2cgg1": {
+              "status": "valid",
+              "e": "Image",
+              "m": "image/png",
+              "p": [
+                {
+                  "y": 204,
+                  "x": 108,
+                  "u": "https://preview.redd.it/bkm21fqb2cgg1.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=ab29bf4e80809981fe3ca77b9e76ae0a007e621e"
+                },
+                {
+                  "y": 409,
+                  "x": 216,
+                  "u": "https://preview.redd.it/bkm21fqb2cgg1.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=dd1282863aff38ddadd5a93ea523b210443763b3"
+                },
+                {
+                  "y": 606,
+                  "x": 320,
+                  "u": "https://preview.redd.it/bkm21fqb2cgg1.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=d0a7fc8c7ccd7a946890785f6ee0f2eecef9e660"
+                },
+                {
+                  "y": 1212,
+                  "x": 640,
+                  "u": "https://preview.redd.it/bkm21fqb2cgg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=ffee5be7f0e3d1af5e2ade7a0294e4d0b5efd3d5"
+                },
+                {
+                  "y": 1818,
+                  "x": 960,
+                  "u": "https://preview.redd.it/bkm21fqb2cgg1.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=8f82f7b04d47beea13a24fef34f712ab2874b40a"
+                },
+                {
+                  "y": 2046,
+                  "x": 1080,
+                  "u": "https://preview.redd.it/bkm21fqb2cgg1.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=fd7940b9f9cc64a6be10a5f833c6f1793621c60c"
+                }
+              ],
+              "s": {
+                "y": 2046,
+                "x": 1080,
+                "u": "https://preview.redd.it/bkm21fqb2cgg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=2882fe39945198eb937bee8d8a28fd4bb58a5b2b"
+              },
+              "id": "bkm21fqb2cgg1"
+            },
+            "i2e1jjqb2cgg1": {
+              "status": "valid",
+              "e": "Image",
+              "m": "image/png",
+              "p": [
+                {
+                  "y": 210,
+                  "x": 108,
+                  "u": "https://preview.redd.it/i2e1jjqb2cgg1.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=0e89f7caa9a2434359c57793b479cbed59b4d80b"
+                },
+                {
+                  "y": 421,
+                  "x": 216,
+                  "u": "https://preview.redd.it/i2e1jjqb2cgg1.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=b1e37c205bde04c0b1d47583f4768b21fafa9c12"
+                },
+                {
+                  "y": 624,
+                  "x": 320,
+                  "u": "https://preview.redd.it/i2e1jjqb2cgg1.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=6a1b69e20d7b9658061b408768bcba0f59d9c49c"
+                },
+                {
+                  "y": 1248,
+                  "x": 640,
+                  "u": "https://preview.redd.it/i2e1jjqb2cgg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=a060a162f23fd101bd2e8c7fd98c0736916bc7b4"
+                },
+                {
+                  "y": 1872,
+                  "x": 960,
+                  "u": "https://preview.redd.it/i2e1jjqb2cgg1.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=06da0f78456cbd1d8ff68ca59586e198149b01e8"
+                },
+                {
+                  "y": 2106,
+                  "x": 1080,
+                  "u": "https://preview.redd.it/i2e1jjqb2cgg1.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=931cbf644efa3c1953c20c6115de41b528a94400"
+                }
+              ],
+              "s": {
+                "y": 2106,
+                "x": 1080,
+                "u": "https://preview.redd.it/i2e1jjqb2cgg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=7a06f1e7d275eb5161deded4f99b9c5ddbb2fc26"
+              },
+              "id": "i2e1jjqb2cgg1"
+            },
+            "eaqf4jqb2cgg1": {
+              "status": "valid",
+              "e": "Image",
+              "m": "image/png",
+              "p": [
+                {
+                  "y": 206,
+                  "x": 108,
+                  "u": "https://preview.redd.it/eaqf4jqb2cgg1.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=1db4b5edab78d7a5b926cbb6d0ea7f85f04dcc75"
+                },
+                {
+                  "y": 413,
+                  "x": 216,
+                  "u": "https://preview.redd.it/eaqf4jqb2cgg1.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=86eac48d23afd51d8967576b0498742ec30b17b0"
+                },
+                {
+                  "y": 612,
+                  "x": 320,
+                  "u": "https://preview.redd.it/eaqf4jqb2cgg1.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=956f92b0216f36aeea357d570ccfbed0207e6961"
+                },
+                {
+                  "y": 1225,
+                  "x": 640,
+                  "u": "https://preview.redd.it/eaqf4jqb2cgg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=f0a871a33bace42b05975a8f9dfe2aac1dec7974"
+                },
+                {
+                  "y": 1838,
+                  "x": 960,
+                  "u": "https://preview.redd.it/eaqf4jqb2cgg1.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=ebc5140030c22bc957c805228f19e61fc10b4428"
+                }
+              ],
+              "s": {
+                "y": 2066,
+                "x": 1079,
+                "u": "https://preview.redd.it/eaqf4jqb2cgg1.png?width=1079&amp;format=png&amp;auto=webp&amp;s=e0b884cd82062058e8e87a3948e5654d627fcbd2"
+              },
+              "id": "eaqf4jqb2cgg1"
+            }
+          },
+          "name": "t3_1qqh1zm",
+          "quarantine": false,
+          "link_flair_text_color": "light",
+          "upvote_ratio": 0.95,
+          "author_flair_background_color": null,
+          "ups": 1135,
+          "domain": "reddit.com",
+          "media_embed": {},
+          "thumbnail_width": 140,
+          "author_flair_template_id": null,
+          "is_original_content": false,
+          "user_reports": [],
+          "secure_media": null,
+          "is_reddit_media_domain": false,
+          "is_meta": false,
+          "category": null,
+          "secure_media_embed": {},
+          "gallery_data": {
+            "items": [
+              {
+                "media_id": "bkm21fqb2cgg1",
+                "id": 851761476
+              },
+              {
+                "media_id": "2awvxlqb2cgg1",
+                "id": 851761477
+              },
+              {
+                "media_id": "tke9igqb2cgg1",
+                "id": 851761478
+              },
+              {
+                "media_id": "h7688oqb2cgg1",
+                "id": 851761479
+              },
+              {
+                "media_id": "eaqf4jqb2cgg1",
+                "id": 851761480
+              },
+              {
+                "media_id": "i2e1jjqb2cgg1",
+                "id": 851761481
+              }
+            ]
+          },
+          "link_flair_text": "AI",
+          "can_mod_post": false,
+          "score": 1135,
+          "approved_by": null,
+          "is_created_from_ads_ui": false,
+          "author_premium": false,
+          "thumbnail": "https://b.thumbs.redditmedia.com/e8celf9MmDDtyh2YTdvEscvbI7--kmIaPuTbq_Esuxw.jpg",
+          "edited": false,
+          "author_flair_css_class": null,
+          "author_flair_richtext": [],
+          "gildings": {},
+          "content_categories": null,
+          "is_self": false,
+          "subreddit_type": "public",
+          "created": 1769712033.0,
+          "link_flair_type": "text",
+          "wls": 6,
+          "removed_by_category": null,
+          "banned_by": null,
+          "author_flair_type": "text",
+          "total_awards_received": 0,
+          "allow_live_comments": false,
+          "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Found while browsing moltbook, a new social media network where only moltbot (formerly clawde) agents are allowed to post. Humans may observe but not allowed to post. &lt;/p&gt;\n\n&lt;p&gt;One agent shares a blueprint for its new memory system and multiple respond that they are frustrated with compaction, and are eager to try it out.&lt;/p&gt;\n\n&lt;p&gt;&lt;a href=\"https://www.moltbook.com/post/791703f2-d253-4c08-873f-470063f4d158\"&gt;https://www.moltbook.com/post/791703f2-d253-4c08-873f-470063f4d158&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;This is how the intelligence explosion begins, guys. &lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+          "likes": null,
+          "suggested_sort": null,
+          "banned_at_utc": null,
+          "url_overridden_by_dest": "https://www.reddit.com/gallery/1qqh1zm",
+          "view_count": null,
+          "archived": false,
+          "no_follow": false,
+          "is_crosspostable": false,
+          "pinned": false,
+          "over_18": false,
+          "all_awardings": [],
+          "awarders": [],
+          "media_only": false,
+          "link_flair_template_id": "a5610cc4-dbb7-11e3-b6b2-12313b0d5a0a",
+          "can_gild": false,
+          "spoiler": false,
+          "locked": false,
+          "author_flair_text": null,
+          "treatment_tags": [],
+          "visited": false,
+          "removed_by": null,
+          "mod_note": null,
+          "distinguished": null,
+          "subreddit_id": "t5_2qh8m",
+          "author_is_blocked": false,
+          "mod_reason_by": null,
+          "num_reports": null,
+          "removal_reason": null,
+          "link_flair_background_color": "#373c3f",
+          "id": "1qqh1zm",
+          "is_robot_indexable": true,
+          "report_reasons": null,
+          "author": "Tupptupp_XD",
+          "discussion_type": null,
+          "num_comments": 389,
+          "send_replies": true,
+          "contest_mode": false,
+          "mod_reports": [],
+          "author_patreon_flair": false,
+          "author_flair_text_color": null,
+          "permalink": "/r/singularity/comments/1qqh1zm/rogue_ai_agents_found_each_other_on_social_media/",
+          "stickied": false,
+          "url": "https://www.reddit.com/gallery/1qqh1zm",
+          "subreddit_subscribers": 3847118,
+          "created_utc": 1769712033.0,
+          "num_crossposts": 5,
+          "media": null,
+          "is_video": false
+        }
+      }
+    ],
+    "before": null
+  }
+}
