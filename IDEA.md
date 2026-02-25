@@ -53,11 +53,23 @@
     - 來源: https://picovoice.ai/blog/complete-guide-to-wake-word/
   - **裝置端 AI**: Sensory Smart Wake Word
     - 官網: https://sensory.com/product/smart-wake-word/
+- **2026-02-26 研究更新** (每日覆盤):
+  - **🚗 開車場景最佳組合**: microWakeWord + Speech-to-Phrase + Piper
+    - 延遲: <1 秒完整語音循環
+    - 完全離線、零 API 費用
+    - microWakeWord: https://github.com/OHF-Voice/micro-wake-word
+    - Speech-to-Phrase: https://github.com/OHF-Voice/speech-to-phrase
+    - Piper: https://github.com/OHF-Voice/piper1-gpl
+  - **替代方案 B**: openWakeWord + Faster-Whisper + FishAudio-S1
+    - 高品質對話、延遲 1-2 秒
+    - openWakeWord: https://github.com/dscripka/openWakeWord
+    - Faster-Whisper: https://github.com/SYSTRAN/faster-whisper
+    - FishAudio-S1: https://github.com/fishaudio/fish-speech
 
 ## 🦞 雙龍蝦 HA 實作部署 (Double Lobster High Availability)
 - **目標**: 實作「單機雙實例」架構，確保高可用性。
 - **阿蓋小弟建議**: 完善 `swarm.sh` 的健康檢查機制，斷線自動重啟。
-- **分數**: 7/10
+- **分數**: 8/10
 - **狀態**: 🚀 執行中 (In Progress)
 - **2026-02-24 研究更新**:
   - **推薦方案**: Docker Compose + Autoheal (監控並自動重啟不健康容器)
@@ -70,6 +82,20 @@
     - 來源: https://oneuptime.com/blog/post/2026-02-08-how-to-set-up-docker-container-auto-healing
   - **健康檢查最佳實踐**: Docker Unhealthy 狀態處理
     - 來源: https://last9.io/blog/docker-status-unhealthy-how-to-fix-it/
+- **2026-02-26 研究更新** (每日覆盤):
+  - **🍎 Mac Mini 部署評估**:
+    - M4 (16GB): 建議 4-6 實例
+    - M4 (24GB+): 可支援 6-10+ 實例
+  - **健康檢查實作範例**:
+    ```yaml
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:18789/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    ```
+  - **參考**: Wyoming Satellite (語音衛星 HA 架構)
+    - GitHub: https://github.com/rhasspy/wyoming-satellite
 
 ## 📡 OpenCRAW 3小時情報哨兵 (Intelligence Sentinel)
 - **目標**: 每 3 小時自動掃描 X/Reddit/Threads。
