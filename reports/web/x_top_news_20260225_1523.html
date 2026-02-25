@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>📋 X Top 新聞（記者版）| OpenClaw</title>
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --card: #111827;
+            --card-hover: #1a2332;
+            --text: #e5e7eb;
+            --text-muted: #9ca3af;
+            --accent: #60a5fa;
+            --accent-cyan: #22d3ee;
+            --border: #1f2937;
+            --line-num: #6b7280;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        .blocked-banner {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #fca5a5;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+        .insights {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            border: 1px solid #2d4a6f;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .insights h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: var(--accent-cyan);
+        }
+        .insights ol {
+            margin-left: 20px;
+            color: var(--text-muted);
+        }
+        .insights li {
+            margin: 8px 0;
+        }
+        .category {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .category h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+        .empty {
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 24px 0;
+            text-align: center;
+        }
+        .stats {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+        .line-num {
+            color: var(--line-num);
+            font-size: 13px;
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            min-width: 40px;
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐦 X Top 新聞（記者版）</h1>
+            <div class="subtitle">產生時間：2026-02-25 15:23 (台北時間)｜本輪受阻</div>
+        </header>
+        
+        <div class="blocked-banner">⚠️ X 頁面需要重新登入（cookies 已過期或 session 失效），請手動登入後重試</div>
+        
+        <div class="insights">
+            <h3>💡 記者摘要</h3>
+            <ol>
+                <li>本輪受登入限制，無法讀取 X Top 分頁內容，需人工介入重新登入帳號。</li>
+                <li>已維持同版型產出，方便對照與後續補抓，資料將在恢復連線後自動回填。</li>
+                <li>建議優先恢復 X 登入狀態（開啟瀏覽器訪問 x.com 並完成登入），再以同流程重跑即可得完整趨勢。</li>
+            </ol>
+        </div>
+        
+        <section class="category">
+            <h2>🤖 AI 模型與工具</h2>
+            <div class="items"><div class="empty">本輪受阻，暫無新推文</div></div>
+        </section><section class="category">
+            <h2>🦞 OpenClaw 生態</h2>
+            <div class="items"><div class="empty">本輪受阻，暫無新推文</div></div>
+        </section><section class="category">
+            <h2>🎬 AI 影片與圖像</h2>
+            <div class="items"><div class="empty">本輪受阻，暫無新推文</div></div>
+        </section><section class="category">
+            <h2>🛠️ 開發者工具與實踐</h2>
+            <div class="items"><div class="empty">本輪受阻，暫無新推文</div></div>
+        </section><section class="category">
+            <h2>🏭 產業與市場動態</h2>
+            <div class="items"><div class="empty">本輪受阻，暫無新推文</div></div>
+        </section><section class="category">
+            <h2>💡 AI 觀點與趨勢</h2>
+            <div class="items"><div class="empty">本輪受阻，暫無新推文</div></div>
+        </section>
+        
+        <div class="stats">
+            📊 本輪受阻，共收集 0 條新推文
+        </div>
+    </div>
+</body>
+</html>
