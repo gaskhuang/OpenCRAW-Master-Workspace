@@ -182,7 +182,7 @@ async def scrape_top_80():
     result = {'blocked_reason': '', 'posts': []}
     try:
         async with async_playwright() as p:
-            browser = await p.chromium.connect_over_cdp('http://127.0.0.1:18792')
+            browser = await p.chromium.connect_over_cdp('http://127.0.0.1:19222')
             context = browser.contexts[0] if browser.contexts else await browser.new_context()
             page = context.pages[0] if context.pages else await context.new_page()
 
