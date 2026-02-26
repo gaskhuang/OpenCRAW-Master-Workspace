@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X Top News - 20260226</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #15202b;
+      color: #e7e9ea;
+      line-height: 1.6;
+    }
+    .header {
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #38444d;
+      margin-bottom: 20px;
+    }
+    .header h1 { margin: 0; color: #1d9bf0; font-size: 1.8em; }
+    .header .meta { color: #8899a6; font-size: 0.9em; margin-top: 8px; }
+    .summary {
+      background: #192734;
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #38444d;
+    }
+    .summary h3 { margin-top: 0; color: #1d9bf0; }
+    .category { margin-bottom: 30px; }
+    .category-title {
+      color: #1d9bf0;
+      font-size: 1.3em;
+      padding: 10px 15px;
+      background: #192734;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border-left: 4px solid #1d9bf0;
+    }
+    .category-title .count { color: #8899a6; font-size: 0.8em; }
+    .tweet {
+      background: #192734;
+      border: 1px solid #38444d;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+    .tweet:hover { border-color: #1d9bf0; }
+    .tweet-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .line-num {
+      color: #8899a6;
+      font-size: 0.8em;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #253341;
+    }
+    .line-num:hover { background: #1d9bf0; color: white; }
+    .author {
+      font-weight: bold;
+      color: #e7e9ea;
+      cursor: pointer;
+    }
+    .author:hover { text-decoration: underline; }
+    .handle { color: #8899a6; font-weight: normal; }
+    .time { color: #8899a6; font-size: 0.9em; }
+    .tweet-link { text-decoration: none; margin-left: auto; font-size: 1.2em; }
+    .tweet-text {
+      color: #e7e9ea;
+      margin-bottom: 10px;
+      white-space: pre-wrap;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 6px;
+    }
+    .tweet-text:hover { background: #253341; }
+    .tweet-stats {
+      display: flex;
+      gap: 20px;
+      color: #8899a6;
+      font-size: 0.9em;
+    }
+    .blocked-notice {
+      background: #3a1c1c;
+      border: 1px solid #c94c4c;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .blocked-notice h2 { color: #c94c4c; }
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1d9bf0;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+    .toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🐦 X Top News</h1>
+    <div class="meta">2026/02/26 21:29 | 共 0 條推文</div>
+  </div>
+  
+  <div class="summary">
+    <h3>📊 記者摘要</h3>
+    <p><strong>總數：</strong>0 條 | <strong>熱門類別：</strong>N/A | <strong>平均互動：</strong>0</p>
+    <p><strong>分類分布：</strong></p>
+  </div>
+  
+  
+      <div class="blocked-notice">
+        <h2>⚠️ 抓取受阻</h2>
+        <p><strong>原因：</strong>X 需要登入，請先在手動登入 X 帳號</p>
+        <p>請確認 X 已登入，並重新執行抓取。</p>
+      </div>
+    
+  
+  <div class="toast" id="toast">已複製到剪貼簿</div>
+  
+  <script>
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+    
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => showToast('已複製作者'));
+    }
+    
+    function copyLine(num) {
+      const url = window.location.href.split('#')[0] + '#L' + num;
+      navigator.clipboard.writeText(url).then(() => showToast('已複製行號連結'));
+    }
+    
+    function copyTextWithUrl(el, url) {
+      const text = el.textContent + '\n' + url;
+      navigator.clipboard.writeText(text).then(() => showToast('已複製內文+連結'));
+    }
+  </script>
+</body>
+</html>
