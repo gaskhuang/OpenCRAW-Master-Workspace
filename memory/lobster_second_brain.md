@@ -8,6 +8,25 @@
 - **[2026-02-08] 安全協議**：龍蝦約法三章、身分認同防禦。
 
 ## 💡 隨手靈感錄
+
+### 2026-02-27｜Claude 3.5 Computer Use 玩《崩壞：星軌》
+**來源**：@gskgino 轉發 (Threads @paitatradehub / X @ayi_ainotes)
+
+**核心內容**：
+Claude 3.5 Computer Use 成功自動化執行《崩壞：星軌》日常任務，展現精準的 GUI 互動能力。
+
+**關鍵資源**：
+- **Paper**: https://huggingface.co/papers/2411.10323
+- **Repo**: https://github.com/showlab/computer_use_ootb (OOTB GUI，支援 Win/macOS)
+
+**標籤**: #ClaudeGame #sentinel
+
+**戰略價值**：
+- 證明 LLM + Computer Use 可處理複雜遊戲 GUI 互動
+- OOTB (Out of The Box) 開源實現降低技術門檻
+- 可延伸應用至其他需要精確視覺互動的自動化場景
+
+---
 - *(等待收集)*
 
 ## 2026-02-22｜槓桿策略與 2026 公司重心（G大）

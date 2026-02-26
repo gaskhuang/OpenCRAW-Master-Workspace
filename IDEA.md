@@ -118,6 +118,24 @@
 
 ---
 
+# 2026-02-27 每日覆盤更新 (Nightly Routine)
+
+## 覆盤報告
+- **報告連結**: [sentinel-intelligence-hub/reports/daily_review_2026-02-27.md](./sentinel-intelligence-hub/reports/daily_review_2026-02-27.md)
+- **執行狀態**: ✅ 已完成
+
+## 本日重點發現
+1. **OpenClaw 企業提示詞架構**：完成 Primary Orchestrator + 8 Subagents 設計
+2. **語音方案更新**：確認 microWakeWord + Speech-to-Phrase + Piper 為開車場景最佳組合
+3. **任務評分維持**：免提語音 10/10（最高優先級）、案例自動化 9/10、其餘 8/10
+
+## 下步行動（高優先級）
+- [ ] 測試 microWakeWord 本地語音組合
+- [ ] 建立 NAS 目錄監測器原型
+- [ ] 實作 Gemini 2.0 Flash OCR 腳本
+
+---
+
 # 2026-02-07 03:00 AM - X Sentinel Execution Notes
 
 ## 執行概況
