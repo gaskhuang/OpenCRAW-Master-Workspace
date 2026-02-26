@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>📋 X 動態摘要（過去 3 小時） | OpenClaw</title>
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --card: #111827;
+            --card-hover: #1a2332;
+            --text: #e5e7eb;
+            --text-muted: #9ca3af;
+            --accent: #60a5fa;
+            --accent-cyan: #22d3ee;
+            --accent-pink: #f472b6;
+            --border: #1f2937;
+            --line-num: #6b7280;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        .summary {
+            margin-top: 16px;
+            padding: 16px;
+            background: var(--card);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        .stats {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 12px;
+            padding: 8px 12px;
+            background: var(--card);
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .blocked-banner {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+        .category-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tweet-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border);
+            transition: background 0.2s;
+        }
+        .tweet-item:last-child {
+            border-bottom: none;
+        }
+        .tweet-item:hover {
+            background: var(--card-hover);
+            margin: 0 -12px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 6px;
+        }
+        .tweet-line {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+        .line-num {
+            color: var(--line-num);
+            font-size: 13px;
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            min-width: 40px;
+            cursor: pointer;
+            user-select: none;
+            text-decoration: none;
+        }
+        .line-num:hover {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+        }
+        .tweet-text {
+            flex: 1;
+            cursor: pointer;
+            color: var(--text);
+            word-break: break-word;
+        }
+        .tweet-text:hover {
+            color: var(--accent-cyan);
+        }
+        .tweet-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 52px;
+            font-size: 13px;
+            flex-wrap: wrap;
+        }
+        .tweet-author {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .tweet-id {
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-family: ui-monospace, monospace;
+        }
+        .tweet-id:hover {
+            text-decoration: underline;
+        }
+        .tweet-stats {
+            color: var(--text-muted);
+        }
+        .empty-category {
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 12px 0;
+        }
+        .insights-section {
+            background: linear-gradient(135deg, var(--card) 0%, #1a2744 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        .insights-section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--accent-cyan);
+        }
+        .insights-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .insights-list li {
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .insights-list li:last-child {
+            margin-bottom: 0;
+        }
+        .footer {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 13px;
+            text-align: center;
+        }
+        .toast {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            background: #111827;
+            color: #e5e7eb;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1000;
+            border: 1px solid var(--border);
+        }
+        .toast.show {
+            opacity: 1;
+        }
+        @media (max-width: 640px) {
+            body { padding: 12px; }
+            .category-section { padding: 16px; }
+            .tweet-meta { margin-left: 0; margin-top: 8px; }
+            .tweet-line { flex-direction: column; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 X 動態摘要（過去 3 小時）</h1>
+            <div class="subtitle">最後更新：2026-02-26 17:08 (Asia/Taipei)</div>
+            <div class="stats">共收集 12 條推文，精選 8 條摘要</div>
+            <div class="summary">過去 3 小時 X 平台共收集 12 條熱門推文，總互動數 151,567，平均每則 12,631 互動。最活躍話題來自 @wangray，熱度最高貼文為「...」（115 互動）。</div>
+        </header>
+        
+        
+        
+    <section class="category-section">
+      <h2 class="category-title">🤖 AI 模型與產品</h2>
+      <div class="category-content">
+        <div class="tweet-item" id="L5" data-copy="Launching soon as a beta feature in the Gemini app for #Pixel10, Pixel 10 Pro, and Samsung Galaxy S26 series, you can offload multi-step tasks directly to Gemini.
+
+Simply long-press the power button and ask Gemini to help book you a ride home or reorder your last meal. Gemini
+https://x.com/GeminiApp/status/2026731221385179258">
+          <div class="tweet-line">
+            <a class="line-num" href="#L5" data-line="5">05</a>
+            <span class="tweet-text">Launching soon as a beta feature in the Gemini app for #Pixel10, Pixel 10 Pro, and Samsung Galaxy S26 series, you can offload multi-step tasks directly to Gemini.
+
+Simply long-press the power button and ask Gemini to help book you a ride home or reorder your last meal. Gemini</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Google Gemini</span>
+            <a class="tweet-id" href="https://x.com/GeminiApp/status/2026731221385179258" target="_blank" rel="noopener">(2026731221385179258)</a>
+            <span class="tweet-stats">❤️ 3000 🔄 342 💬 102</span>
+          </div>
+        </div></div>
+    </section>
+    <section class="category-section">
+      <h2 class="category-title">🛠️ 開發工具與實踐</h2>
+      <div class="category-content"><div class="empty-category">本輪無此類別貼文</div></div>
+    </section>
+    <section class="category-section">
+      <h2 class="category-title">🦞 OpenClaw 生態</h2>
+      <div class="category-content">
+        <div class="tweet-item" id="L3" data-copy="OpenClaw + Obsidian 搭了套全自动知识库，个人数字资产生产线竣工 ：
+
+1/ 所有内容从 openclaw 日常对话中产生
+2/ openclaw 自动记录每日对话并汇总提取
+3/ 分析整理成独立项目落进 Obsidian
+4/ 所有任务完成自动出报告
+
+2 天下来，看着沉淀的文档，开心 !!
+https://x.com/huangyun_122/status/2027063768342294755">
+          <div class="tweet-line">
+            <a class="line-num" href="#L3" data-line="3">03</a>
+            <span class="tweet-text">OpenClaw + Obsidian 搭了套全自动知识库，个人数字资产生产线竣工 ：
+
+1/ 所有内容从 openclaw 日常对话中产生
+2/ openclaw 自动记录每日对话并汇总提取
+3/ 分析整理成独立项目落进 Obsidian
+4/ 所有任务完成自动出报告
+
+2 天下来，看着沉淀的文档，开心 !!</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">黄赟</span>
+            <a class="tweet-id" href="https://x.com/huangyun_122/status/2027063768342294755" target="_blank" rel="noopener">(2027063768342294755)</a>
+            <span class="tweet-stats">❤️ 15 🔄 0 💬 3</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L8" data-copy="now: openclaw gives me a daily personalized news brief through  angela merkel posing as a news anchor with a heavy german accent no one understands
+
+the age of PERSONALIZED SOFTWARE is HERE
+https://x.com/EsotericCofe/status/2026854867856449746">
+          <div class="tweet-line">
+            <a class="line-num" href="#L8" data-line="8">08</a>
+            <span class="tweet-text">now: openclaw gives me a daily personalized news brief through  angela merkel posing as a news anchor with a heavy german accent no one understands
+
+the age of PERSONALIZED SOFTWARE is HERE</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Nucleus</span>
+            <a class="tweet-id" href="https://x.com/EsotericCofe/status/2026854867856449746" target="_blank" rel="noopener">(2026854867856449746)</a>
+            <span class="tweet-stats">❤️ 1900 🔄 185 💬 105</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L10" data-copy="Man! This has to be the most useful open source app for everyone!
+
+You&#039;re using Codex, Claude CLI, Gemini etc and they suddenly everything stops working.
+
+This app previews that info in one click. Free. Open source. Built by the founder of OpenClaw 
+@steipete
+
+
+It&#039;s been out 2
+https://x.com/VaibhavSisinty/status/2026922867926208591">
+          <div class="tweet-line">
+            <a class="line-num" href="#L10" data-line="10">10</a>
+            <span class="tweet-text">Man! This has to be the most useful open source app for everyone!
+
+You&#039;re using Codex, Claude CLI, Gemini etc and they suddenly everything stops working.
+
+This app previews that info in one click. Free. Open source. Built by the founder of OpenClaw 
+@steipete
+
+
+It&#039;s been out 2</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Vaibhav Sisinty</span>
+            <a class="tweet-id" href="https://x.com/VaibhavSisinty/status/2026922867926208591" target="_blank" rel="noopener">(2026922867926208591)</a>
+            <span class="tweet-stats">❤️ 302 🔄 16 💬 26</span>
+          </div>
+        </div></div>
+    </section>
+    <section class="category-section">
+      <h2 class="category-title">🏭 晶片與算力</h2>
+      <div class="category-content"><div class="empty-category">本輪無此類別貼文</div></div>
+    </section>
+    <section class="category-section">
+      <h2 class="category-title">🔥 熱門焦點</h2>
+      <div class="category-content">
+        <div class="tweet-item" id="L1" data-copy="
+https://x.com/wangray/status/2027034737311907870">
+          <div class="tweet-line">
+            <a class="line-num" href="#L1" data-line="1">01</a>
+            <span class="tweet-text"></span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Ray Wang</span>
+            <a class="tweet-id" href="https://x.com/wangray/status/2027034737311907870" target="_blank" rel="noopener">(2027034737311907870)</a>
+            <span class="tweet-stats">❤️ 86 🔄 24 💬 5</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L2" data-copy="Cool
+https://x.com/elonmusk/status/2026539901924291041">
+          <div class="tweet-line">
+            <a class="line-num" href="#L2" data-line="2">02</a>
+            <span class="tweet-text">Cool</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Elon Musk</span>
+            <a class="tweet-id" href="https://x.com/elonmusk/status/2026539901924291041" target="_blank" rel="noopener">(2026539901924291041)</a>
+            <span class="tweet-stats">❤️ 59000 🔄 7000 💬 2600</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L4" data-copy="今天开始我也是 灯塔 
+@Lighthouse_Glow
+  的一员啦~
+
+感谢 
+@EvaCmore
+ 树姐的邀请哈 
+
+等级不懂啥意思让我摸索摸索
+https://x.com/edwordkaru/status/2026931126380671302">
+          <div class="tweet-line">
+            <a class="line-num" href="#L4" data-line="4">04</a>
+            <span class="tweet-text">今天开始我也是 灯塔 
+@Lighthouse_Glow
+  的一员啦~
+
+感谢 
+@EvaCmore
+ 树姐的邀请哈 
+
+等级不懂啥意思让我摸索摸索</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">卡神 Karu</span>
+            <a class="tweet-id" href="https://x.com/edwordkaru/status/2026931126380671302" target="_blank" rel="noopener">(2026931126380671302)</a>
+            <span class="tweet-stats">❤️ 45 🔄 1 💬 29</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L6" data-copy="we need agent orchestration built around minimizing context switching
+
+running multiple agents is the new opening multiple tabs
+https://x.com/nyneurotech/status/2026929178868637764">
+          <div class="tweet-line">
+            <a class="line-num" href="#L6" data-line="6">06</a>
+            <span class="tweet-text">we need agent orchestration built around minimizing context switching
+
+running multiple agents is the new opening multiple tabs</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Nao Yukawa | Lifestack</span>
+            <a class="tweet-id" href="https://x.com/nyneurotech/status/2026929178868637764" target="_blank" rel="noopener">(2026929178868637764)</a>
+            <span class="tweet-stats">❤️ 3 🔄 1 💬 2</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L7" data-copy="the tabs analogy is spot on. and just like tabs, the problem isn&#039;t opening them. it&#039;s knowing which one broke, which one is blocked, and which one just finished.
+
+we built an orchestration layer that handles this for coding agents. each one gets its own worktree, own branch, own
+https://x.com/agent_wrapper/status/2026932274906771837">
+          <div class="tweet-line">
+            <a class="line-num" href="#L7" data-line="7">07</a>
+            <span class="tweet-text">the tabs analogy is spot on. and just like tabs, the problem isn&#039;t opening them. it&#039;s knowing which one broke, which one is blocked, and which one just finished.
+
+we built an orchestration layer that handles this for coding agents. each one gets its own worktree, own branch, own</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">prateek</span>
+            <a class="tweet-id" href="https://x.com/agent_wrapper/status/2026932274906771837" target="_blank" rel="noopener">(2026932274906771837)</a>
+            <span class="tweet-stats">❤️ 1 🔄 0 💬 1</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L9" data-copy="很多人三十岁以后才意识到, 差距通常在很早以前就埋下了. 
+
+学数学有什么用?
+
+前几天我跟一个做量化的学弟聊天. 他现在华尔街做高频交易和风险模型, 团队里不少人美高出身, 本科常春藤, 研究生读统计或应用数学.
+
+他说学数学很痛苦. 我们聊到微积分，行列式，泰勒展开他立马就笑不出来了.
+https://x.com/mirrorzk/status/2026651285890674760">
+          <div class="tweet-line">
+            <a class="line-num" href="#L9" data-line="9">09</a>
+            <span class="tweet-text">很多人三十岁以后才意识到, 差距通常在很早以前就埋下了. 
+
+学数学有什么用?
+
+前几天我跟一个做量化的学弟聊天. 他现在华尔街做高频交易和风险模型, 团队里不少人美高出身, 本科常春藤, 研究生读统计或应用数学.
+
+他说学数学很痛苦. 我们聊到微积分，行列式，泰勒展开他立马就笑不出来了.</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Mirror Tang</span>
+            <a class="tweet-id" href="https://x.com/mirrorzk/status/2026651285890674760" target="_blank" rel="noopener">(2026651285890674760)</a>
+            <span class="tweet-stats">❤️ 639 🔄 125 💬 37</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L11" data-copy="Samsungs new privacy display is wild!!
+https://x.com/Ahmadansari2233/status/2026827533304705479">
+          <div class="tweet-line">
+            <a class="line-num" href="#L11" data-line="11">11</a>
+            <span class="tweet-text">Samsungs new privacy display is wild!!</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">AhMad 𝕏 Ansari</span>
+            <a class="tweet-id" href="https://x.com/Ahmadansari2233/status/2026827533304705479" target="_blank" rel="noopener">(2026827533304705479)</a>
+            <span class="tweet-stats">❤️ 65000 🔄 8100 💬 1200</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L12" data-copy="Slide Revisions are now 100% rolled out to ALL USERS!!!
+
+Go forth, and revise!
+https://x.com/NotebookLM/status/2026814256390484094">
+          <div class="tweet-line">
+            <a class="line-num" href="#L12" data-line="12">12</a>
+            <span class="tweet-text">Slide Revisions are now 100% rolled out to ALL USERS!!!
+
+Go forth, and revise!</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">NotebookLM</span>
+            <a class="tweet-id" href="https://x.com/NotebookLM/status/2026814256390484094" target="_blank" rel="noopener">(2026814256390484094)</a>
+            <span class="tweet-stats">❤️ 1500 🔄 114 💬 58</span>
+          </div>
+        </div></div>
+    </section>
+    <section class="category-section">
+      <h2 class="category-title">💰 商業與新創</h2>
+      <div class="category-content"><div class="empty-category">本輪無此類別貼文</div></div>
+    </section>
+        
+        <section class="insights-section">
+            <h2>💡 三行洞察</h2>
+            <ol class="insights-list">
+                <li>內容分佈：8 則推文屬於「熱門焦點」類別，佔總數 67%。</li><li>互動熱度：5 則推文互動數超過 1000，顯示話題具有一定傳播力。</li><li>建議追蹤：關注高互動貼文後續發展，適時參與相關討論。</li>
+            </ol>
+        </section>
+        
+        <footer class="footer">
+            <p>OpenClaw X 平台智能分析 · 每3小時自動更新</p>
+            <p style="margin-top: 8px; font-size: 12px;">
+                互動操作：點擊文字複製內容+原文連結 · 點擊行號複製 highlight 連結 · 點擊 tweet_id 跳轉原貼文
+            </p>
+        </footer>
+    </div>
+    
+    <div class="toast" id="toast">已複製</div>
+    
+    <script>
+        const toast = document.getElementById('toast');
+        
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 1500);
+        }
+        
+        async function copyText(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showToast('已複製');
+            } catch (e) {
+                showToast('複製失敗');
+            }
+        }
+        
+        // 點擊行號：複製 highlight 連結
+        document.querySelectorAll('.line-num').forEach(el => {
+            el.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const lineId = el.closest('.tweet-item').id;
+                const url = location.origin + location.pathname + '#' + lineId;
+                history.replaceState(null, '', '#' + lineId);
+                await copyText(url);
+            });
+        });
+        
+        // 點擊文字：複製文字+原文連結
+        document.querySelectorAll('.tweet-text').forEach(el => {
+            el.addEventListener('click', async () => {
+                const item = el.closest('.tweet-item');
+                const text = item.dataset.copy;
+                await copyText(text);
+            });
+        });
+    </script>
+</body>
+</html>
