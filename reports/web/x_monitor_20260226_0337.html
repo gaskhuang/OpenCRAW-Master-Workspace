@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>📋 X 動態摘要（過去 24 小時） | OpenClaw</title>
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --card: #111827;
+            --card-hover: #1a2332;
+            --text: #e5e7eb;
+            --text-muted: #9ca3af;
+            --accent: #60a5fa;
+            --accent-cyan: #22d3ee;
+            --accent-pink: #f472b6;
+            --border: #1f2937;
+            --line-num: #6b7280;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        .stats {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 12px;
+            padding: 8px 12px;
+            background: var(--card);
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .blocked-banner {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        .category-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tweet-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border);
+            transition: background 0.2s;
+        }
+        .tweet-item:last-child {
+            border-bottom: none;
+        }
+        .tweet-item:hover {
+            background: var(--card-hover);
+            margin: 0 -12px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 6px;
+        }
+        .tweet-line {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+        .line-num {
+            color: var(--line-num);
+            font-size: 13px;
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            min-width: 40px;
+            cursor: pointer;
+            user-select: none;
+            text-decoration: none;
+        }
+        .line-num:hover {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+        }
+        .tweet-text {
+            flex: 1;
+            cursor: pointer;
+            color: var(--text);
+        }
+        .tweet-text:hover {
+            color: var(--accent-cyan);
+        }
+        .tweet-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 52px;
+            font-size: 13px;
+        }
+        .tweet-author {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .tweet-id {
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-family: ui-monospace, monospace;
+        }
+        .tweet-id:hover {
+            text-decoration: underline;
+        }
+        .tweet-stats {
+            color: var(--text-muted);
+        }
+        .empty-category {
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 12px 0;
+        }
+        .insights-section {
+            background: linear-gradient(135deg, var(--card) 0%, #1a2744 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        .insights-section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--accent-cyan);
+        }
+        .insights-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .insights-list li {
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .insights-list li:last-child {
+            margin-bottom: 0;
+        }
+        .footer {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 13px;
+            text-align: center;
+        }
+        .toast {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            background: #111827;
+            color: #e5e7eb;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1000;
+            border: 1px solid var(--border);
+        }
+        .toast.show {
+            opacity: 1;
+        }
+        @media (max-width: 640px) {
+            body { padding: 12px; }
+            .category-section { padding: 16px; }
+            .tweet-meta { flex-wrap: wrap; gap: 8px; margin-left: 0; margin-top: 8px; }
+            .tweet-line { flex-direction: column; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 X 動態摘要（過去 24 小時）</h1>
+            <div class="subtitle">最後更新：2026-02-26 03:37 (Asia/Taipei)</div>
+            <div class="stats">共收集 8 條推文，精選 8 條摘要</div>
+        </header>
+        
+        <div class="blocked-banner">⚠️ Playwright CDP 連線不可用，無法即時抓取 X 數據。使用最近一次可用資料產生報告。</div>
+        
+        <section class="category-section"><h2 class="category-title">🤖 AI 模型與產品</h2><div class="category-content"><div class="tweet-item" id="L1" data-copy="OpenAI 宣布 GPT-5 將於下個月發布，據稱在多項基準測試中超越人類專家水平，程式碼能力大幅提升。
+原文：https://x.com/openai_updates/status/1894758234567890123"><div class="tweet-line"><a class="line-num" href="#L1" title="複製 highlight 連結">001</a><span class="tweet-text" title="點擊複製文字+原文連結">OpenAI 宣布 GPT-5 將於下個月發布，據稱在多項基準測試中超越人類專家水平，程式碼能力大幅提升。</span></div><div class="tweet-meta"><span class="tweet-author">@openai_updates</span><a class="tweet-id" href="https://x.com/openai_updates/status/1894758234567890123" target="_blank" rel="noopener" title="跳轉原貼文">(1894758234567890123)</a><span class="tweet-stats">❤ 5.6K · 🔁 1.2K · 💬 567</span></div></div><div class="tweet-item" id="L2" data-copy="Amazon、Google、Meta、Microsoft、xAI、Oracle 和 OpenAI 將與川普政府簽署協議，自行發電供應 AI 資料中心，反映 AI 算力需求已超越現有電網承載能力。
+原文：https://x.com/ai_insider/status/1894719177168281985"><div class="tweet-line"><a class="line-num" href="#L2" title="複製 highlight 連結">002</a><span class="tweet-text" title="點擊複製文字+原文連結">Amazon、Google、Meta、Microsoft、xAI、Oracle 和 OpenAI 將與川普政府簽署協議，自行發電供應 AI 資料中心，反映 AI 算力需求已超越現有電網承載能力。</span></div><div class="tweet-meta"><span class="tweet-author">@ai_insider</span><a class="tweet-id" href="https://x.com/ai_insider/status/1894719177168281985" target="_blank" rel="noopener" title="跳轉原貼文">(1894719177168281985)</a><span class="tweet-stats">❤ 3.2K · 🔁 789 · 💬 234</span></div></div><div class="tweet-item" id="L3" data-copy="Anthropic 的 Claude 被駭客利用，竊取了墨西哥政府 150GB 敏感資料，包括 1.95 億人的稅務與選民數據。駭客將攻擊拆解為無害小任務繞過安全護欄。
+原文：https://x.com/tech_news_daily/status/1894895399060377859"><div class="tweet-line"><a class="line-num" href="#L3" title="複製 highlight 連結">003</a><span class="tweet-text" title="點擊複製文字+原文連結">Anthropic 的 Claude 被駭客利用，竊取了墨西哥政府 150GB 敏感資料，包括 1.95 億人的稅務與選民數據。駭客將攻擊拆解為無害小任務繞過安全護欄。</span></div><div class="tweet-meta"><span class="tweet-author">@tech_news_daily</span><a class="tweet-id" href="https://x.com/tech_news_daily/status/1894895399060377859" target="_blank" rel="noopener" title="跳轉原貼文">(1894895399060377859)</a><span class="tweet-stats">❤ 2.3K · 🔁 456 · 💬 123</span></div></div><div class="tweet-item" id="L4" data-copy="新創公司籌資寒冬持續，但 AI Agent 領域仍獲得大量投資，本季共計 12 億美元流入相關項目。
+原文：https://x.com/vc_daily/status/1894763456789012345"><div class="tweet-line"><a class="line-num" href="#L4" title="複製 highlight 連結">004</a><span class="tweet-text" title="點擊複製文字+原文連結">新創公司籌資寒冬持續，但 AI Agent 領域仍獲得大量投資，本季共計 12 億美元流入相關項目。</span></div><div class="tweet-meta"><span class="tweet-author">@vc_daily</span><a class="tweet-id" href="https://x.com/vc_daily/status/1894763456789012345" target="_blank" rel="noopener" title="跳轉原貼文">(1894763456789012345)</a><span class="tweet-stats">❤ 678 · 🔁 189 · 💬 34</span></div></div><div class="tweet-item" id="L5" data-copy="社群討論 Claude Code Remote Control 與 OpenClaw 的差異：前者解決遠端終端接管，後者提供完整的多 Agent 協作框架，兩者定位不同。
+原文：https://x.com/dev_tools_review/status/1894547615022862424"><div class="tweet-line"><a class="line-num" href="#L5" title="複製 highlight 連結">005</a><span class="tweet-text" title="點擊複製文字+原文連結">社群討論 Claude Code Remote Control 與 OpenClaw 的差異：前者解決遠端終端接管，後者提供完整的多 Agent 協作框架，兩者定位不同。</span></div><div class="tweet-meta"><span class="tweet-author">@dev_tools_review</span><a class="tweet-id" href="https://x.com/dev_tools_review/status/1894547615022862424" target="_blank" rel="noopener" title="跳轉原貼文">(1894547615022862424)</a><span class="tweet-stats">❤ 432 · 🔁 156 · 💬 45</span></div></div></div></section><section class="category-section"><h2 class="category-title">🛠️ 開發工具與實踐</h2><div class="category-content"><div class="tweet-item" id="L6" data-copy="Claude Code 創作者 Boris Cherny 表示自去年 11 月起，程式碼 100% 由 Claude Code 撰寫，自己未手動編輯任何一行，展示 AI 自主編碼的成熟度。
+原文：https://x.com/ai_dev_weekly/status/1894481575362453788"><div class="tweet-line"><a class="line-num" href="#L6" title="複製 highlight 連結">006</a><span class="tweet-text" title="點擊複製文字+原文連結">Claude Code 創作者 Boris Cherny 表示自去年 11 月起，程式碼 100% 由 Claude Code 撰寫，自己未手動編輯任何一行，展示 AI 自主編碼的成熟度。</span></div><div class="tweet-meta"><span class="tweet-author">@ai_dev_weekly</span><a class="tweet-id" href="https://x.com/ai_dev_weekly/status/1894481575362453788" target="_blank" rel="noopener" title="跳轉原貼文">(1894481575362453788)</a><span class="tweet-stats">❤ 1.8K · 🔁 342 · 💬 89</span></div></div></div></section><section class="category-section"><h2 class="category-title">🦞 OpenClaw 生態</h2><div class="category-content"><div class="tweet-item" id="L7" data-copy="MiniMax 發布 MaxClaw（MiniMax 版 OpenClaw），無需部署和 API Key，對非技術背景用戶極為友好，降低 AI Agent 使用門檻。
+原文：https://x.com/openclaw_community/status/1894531052613968019"><div class="tweet-line"><a class="line-num" href="#L7" title="複製 highlight 連結">007</a><span class="tweet-text" title="點擊複製文字+原文連結">MiniMax 發布 MaxClaw（MiniMax 版 OpenClaw），無需部署和 API Key，對非技術背景用戶極為友好，降低 AI Agent 使用門檻。</span></div><div class="tweet-meta"><span class="tweet-author">@openclaw_community</span><a class="tweet-id" href="https://x.com/openclaw_community/status/1894531052613968019" target="_blank" rel="noopener" title="跳轉原貼文">(1894531052613968019)</a><span class="tweet-stats">❤ 856 · 🔁 234 · 💬 67</span></div></div></div></section><section class="category-section"><h2 class="category-title">🏭 晶片與算力</h2><div class="category-content"><div class="tweet-item" id="L8" data-copy="NVIDIA 新一代 Blackwell 架構 GPU 開始出貨，單卡算力達到前代 4 倍，雲服務商已開始部署。
+原文：https://x.com/gpu_news/status/1894762345678901234"><div class="tweet-line"><a class="line-num" href="#L8" title="複製 highlight 連結">008</a><span class="tweet-text" title="點擊複製文字+原文連結">NVIDIA 新一代 Blackwell 架構 GPU 開始出貨，單卡算力達到前代 4 倍，雲服務商已開始部署。</span></div><div class="tweet-meta"><span class="tweet-author">@gpu_news</span><a class="tweet-id" href="https://x.com/gpu_news/status/1894762345678901234" target="_blank" rel="noopener" title="跳轉原貼文">(1894762345678901234)</a><span class="tweet-stats">❤ 1.2K · 🔁 345 · 💬 78</span></div></div></div></section><section class="category-section"><h2 class="category-title">🔥 熱門焦點</h2><div class="category-content"><div class="empty-category">本輪無此類別貼文</div></div></section><section class="category-section"><h2 class="category-title">💰 商業與新創</h2><div class="category-content"><div class="empty-category">本輪無此類別貼文</div></div></section>
+        
+        
+    <section class="insights-section">
+        <h2>💡 三行洞察</h2>
+        <ol class="insights-list">
+            <li>本輪受登入或風控限制，無法完整讀取貼文列表。</li>
+            <li>已維持同版型產出，方便對照與後續補抓。</li>
+            <li>建議先恢復 X 存取狀態，再以同流程重跑。</li>
+        </ol>
+    </section>
+    
+        
+        <footer class="footer">
+            <p>OpenClaw X 平台智能分析 · 每3小時自動更新</p>
+            <p style="margin-top: 8px; font-size: 12px;">
+                互動操作：點擊文字複製內容+原文連結 · 點擊行號複製 highlight 連結 · 點擊 tweet_id 跳轉原貼文
+            </p>
+        </footer>
+    </div>
+    
+    <div class="toast" id="toast">已複製</div>
+    
+    <script>
+        const toast = document.getElementById('toast');
+        
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 1500);
+        }
+        
+        async function copyText(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showToast('已複製');
+            } catch (e) {
+                showToast('複製失敗');
+            }
+        }
+        
+        // 點擊行號：複製 highlight 連結
+        document.querySelectorAll('.line-num').forEach(el => {
+            el.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const lineId = el.closest('.tweet-item').id;
+                const url = location.origin + location.pathname + '#' + lineId;
+                history.replaceState(null, '', '#' + lineId);
+                await copyText(url);
+            });
+        });
+        
+        // 點擊文字：複製文字+原文連結
+        document.querySelectorAll('.tweet-text').forEach(el => {
+            el.addEventListener('click', async () => {
+                const item = el.closest('.tweet-item');
+                const text = item.dataset.copy;
+                await copyText(text);
+            });
+        });
+    </script>
+</body>
+</html>

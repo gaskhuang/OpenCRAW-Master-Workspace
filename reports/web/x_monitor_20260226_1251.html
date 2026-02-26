@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>📋 X 動態摘要（過去 24 小時） | OpenClaw</title>
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --card: #111827;
+            --card-hover: #1a2332;
+            --text: #e5e7eb;
+            --text-muted: #9ca3af;
+            --accent: #60a5fa;
+            --accent-cyan: #22d3ee;
+            --accent-pink: #f472b6;
+            --border: #1f2937;
+            --line-num: #6b7280;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        .stats {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 12px;
+            padding: 8px 12px;
+            background: var(--card);
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .blocked-banner {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        .category-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tweet-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border);
+            transition: background 0.2s;
+        }
+        .tweet-item:last-child {
+            border-bottom: none;
+        }
+        .tweet-item:hover {
+            background: var(--card-hover);
+            margin: 0 -12px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 6px;
+        }
+        .tweet-line {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+        .line-num {
+            color: var(--line-num);
+            font-size: 13px;
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            min-width: 40px;
+            cursor: pointer;
+            user-select: none;
+            text-decoration: none;
+        }
+        .line-num:hover {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+        }
+        .tweet-text {
+            flex: 1;
+            cursor: pointer;
+            color: var(--text);
+        }
+        .tweet-text:hover {
+            color: var(--accent-cyan);
+        }
+        .tweet-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 52px;
+            font-size: 13px;
+        }
+        .tweet-author {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .tweet-id {
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-family: ui-monospace, monospace;
+        }
+        .tweet-id:hover {
+            text-decoration: underline;
+        }
+        .tweet-stats {
+            color: var(--text-muted);
+        }
+        .empty-category {
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 12px 0;
+        }
+        .insights-section {
+            background: linear-gradient(135deg, var(--card) 0%, #1a2744 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        .insights-section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--accent-cyan);
+        }
+        .insights-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .insights-list li {
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .insights-list li:last-child {
+            margin-bottom: 0;
+        }
+        .footer {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 13px;
+            text-align: center;
+        }
+        .toast {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            background: #111827;
+            color: #e5e7eb;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1000;
+            border: 1px solid var(--border);
+        }
+        .toast.show {
+            opacity: 1;
+        }
+        @media (max-width: 640px) {
+            body { padding: 12px; }
+            .category-section { padding: 16px; }
+            .tweet-meta { flex-wrap: wrap; gap: 8px; margin-left: 0; margin-top: 8px; }
+            .tweet-line { flex-direction: column; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 X 動態摘要（過去 24 小時）</h1>
+            <div class="subtitle">最後更新：2026-02-26 12:51 (Asia/Taipei)</div>
+            <div class="stats">共收集 0 條推文，精選 0 條摘要</div>
+        </header>
+        
+        <div class="blocked-banner">⚠️ 資料來源受阻：CDP 連線不可用，且 Tavily/Firecrawl API 額度已耗盡。無法即時抓取 X 數據。已維持同版型產出，待服務恢復後自動補齊。</div>
+        
+        <section class="category-section"><h2 class="category-title">🤖 AI 模型與產品</h2><div class="category-content"><div class="empty-category">本輪無此類別貼文</div></div></section>
+        <section class="category-section"><h2 class="category-title">🛠️ 開發工具與實踐</h2><div class="category-content"><div class="empty-category">本輪無此類別貼文</div></div></section>
+        <section class="category-section"><h2 class="category-title">🦞 OpenClaw 生態</h2><div class="category-content"><div class="empty-category">本輪無此類別貼文</div></div></section>
+        <section class="category-section"><h2 class="category-title">🏭 晶片與算力</h2><div class="category-content"><div class="empty-category">本輪無此類別貼文</div></div></section>
+        <section class="category-section"><h2 class="category-title">🔥 熱門焦點</h2><div class="category-content"><div class="empty-category">本輪無此類別貼文</div></div></section>
+        <section class="category-section"><h2 class="category-title">💰 商業與新創</h2><div class="category-content"><div class="empty-category">本輪無此類別貼文</div></div></section>
+        
+        <section class="insights-section">
+            <h2>💡 三行洞察</h2>
+            <ol class="insights-list">
+                <li>本輪受登入風控與 API 額度限制，無法完整讀取 X 貼文列表。</li>
+                <li>已維持同版型產出，方便對照與後續補抓。</li>
+                <li>建議檢查 CDP 狀態並補充 API 額度後，再以同流程重跑。</li>
+            </ol>
+        </section>
+        
+        <footer class="footer">
+            <p>OpenClaw X 平台智能分析 · 每3小時自動更新</p>
+            <p style="margin-top: 8px; font-size: 12px;">
+                互動操作：點擊文字複製內容+原文連結 · 點擊行號複製 highlight 連結 · 點擊 tweet_id 跳轉原貼文
+            </p>
+        </footer>
+    </div>
+    
+    <div class="toast" id="toast">已複製</div>
+    
+    <script>
+        const toast = document.getElementById('toast');
+        
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 1500);
+        }
+        
+        async function copyText(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showToast('已複製');
+            } catch (e) {
+                showToast('複製失敗');
+            }
+        }
+        
+        // 點擊行號：複製 highlight 連結
+        document.querySelectorAll('.line-num').forEach(el => {
+            el.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const lineId = el.closest('.tweet-item').id;
+                const url = location.origin + location.pathname + '#' + lineId;
+                history.replaceState(null, '', '#' + lineId);
+                await copyText(url);
+            });
+        });
+        
+        // 點擊文字：複製文字+原文連結
+        document.querySelectorAll('.tweet-text').forEach(el => {
+            el.addEventListener('click', async () => {
+                const item = el.closest('.tweet-item');
+                const text = item.dataset.copy;
+                await copyText(text);
+            });
+        });
+    </script>
+</body>
+</html>

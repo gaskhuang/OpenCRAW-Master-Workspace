@@ -1,0 +1,33 @@
+# Threads 動態深度摘要（過去 3 小時）
+
+> 任務時間：2026-02-25 02:04 (Asia/Taipei)
+> 採集流程：Threads 首頁流 → 連續下滑 80 次 → 前後集合去重
+
+## 本輪採集結果
+- 本輪新增貼文（去重後）：0
+
+## ⚠️ 抓取受阻
+頁面載入失敗: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://www.threads.net/", waiting until "networkidle"
+
+
+## 本輪最值得關注的 3 個議題（記者評註）
+1. **抓取受阻**: 頁面載入失敗: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://www.threads.net/", waiting until "networkidle"
+
+2. 建議檢查網絡連接或 Threads 登入狀態。
+3. 可嘗試手動登入後再執行抓取。
+
+## 風險訊號
+- 本輪貼文時間跨度依 Threads 演算法推送決定。
+- 互動欄位（按讚/留言）結構化抽取可能有 null 缺值。
+- 若 Threads 出現反爬機制，部分內容可能未被完整載入。
+
+## 下一輪追蹤關鍵詞
+- AI
+- 開發
+- 產品
+- 設計
+- 創業
