@@ -118,6 +118,24 @@
 
 ---
 
+# 2026-02-28 每日覆盤更新 (Nightly Routine)
+
+## 覆盤報告
+- **報告連結**: [sentinel-intelligence-hub/reports/daily_review_2026-02-28.md](./sentinel-intelligence-hub/reports/daily_review_2026-02-28.md)
+- **執行狀態**: ✅ 已完成
+
+## 本日重點發現
+1. **OpenClaw Skill 架構研究**：追蹤 mgechev/skills 四驗證 SKILL.md 架構
+2. **系統待辦回顧**：Whisper SSL、ClawHub Skills 測試、二腦監控報告待完成
+3. **任務評分維持**：免提語音 10/10（最高優先級）、案例自動化 9/10、其餘 8/10
+
+## 下步行動（高優先級）
+- [ ] 測試 microWakeWord 本地語音組合
+- [ ] 建立 NAS 目錄監測器原型
+- [ ] 實作 Gemini 2.0 Flash OCR 腳本
+
+---
+
 # 2026-02-27 每日覆盤更新 (Nightly Routine)
 
 ## 覆盤報告
