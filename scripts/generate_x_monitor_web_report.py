@@ -50,11 +50,12 @@ def detect_categories(posts: list[dict], errors: list[dict]) -> list[str]:
     return chosen
 
 
-def make_insights(status: str, post_count: int, errors: list[dict]) -> list[str]:
+def make_insights(status: str, post_count: int, errors: list[dict], blocked_reason: str) -> list[str]:
     e = "；".join(clean_text(x.get("message", "")) for x in errors[:2]) if errors else "無"
+    reason = blocked_reason or (e if e and e != "無" else "無明確阻礙")
     return [
         f"資料可用性：本輪狀態為「{status}」，可分析貼文 {post_count} 則。",
-        f"阻礙焦點：{e if e else '無明確阻礙'}。",
+        f"阻礙焦點：{reason}。",
         "下一步：優先恢復可抓取來源（已登入 X + Relay tab），再執行 3 小時追蹤可得到完整趨勢。",
     ]
 
@@ -66,8 +67,15 @@ def render(data: dict, out_html: Path, out_md: Path) -> None:
     posts = crawl.get("posts", []) or []
     errors = crawl.get("errors", []) or []
     summary = clean_text(analysis.get("summary", ""))
+
+    blocked_reason = ""
+    if errors:
+        blocked_reason = "；".join(clean_text(e.get("message", "")) for e in errors[:2] if clean_text(e.get("message", "")))
+    if not blocked_reason and not posts:
+        blocked_reason = "找不到可用來源資料（memory/openclaw_x_top_*.json）或本輪未抓到貼文。"
+
     cats = detect_categories(posts, errors)
-    insights = make_insights(status, len(posts), errors)
+    insights = make_insights(status, len(posts), errors, blocked_reason)
 
     lines = []
     ln = 1
@@ -106,6 +114,8 @@ def render(data: dict, out_html: Path, out_md: Path) -> None:
             f"<span class='txt' data-text='{text}' data-link='{link}'>{text}</span> {tid_html}</div>"
         )
 
+    blocked_html = f"<div class='card'><h2>⚠️ 資料阻擋</h2><p>{blocked_reason}</p></div>" if blocked_reason else ""
+
     html = f"""<!doctype html>
 <html lang='zh-Hant'>
 <head>
@@ -134,6 +144,7 @@ def render(data: dict, out_html: Path, out_md: Path) -> None:
       <div class='muted'>Generated: {gen_str} (Asia/Taipei) ｜ Source: {latest_source_json().name if latest_source_json() else 'N/A'}</div>
       <p>記者摘要：{summary if summary else '本輪未取得可供重寫的貼文內容。'}</p>
     </div>
+    {blocked_html}
     <div class='card'><h2>六類自動歸納</h2>{''.join([f"<span class='pill'>{c}</span>" for c in cats])}</div>
     <div class='card'><h2>三行洞察</h2><ol>{''.join([f'<li>{x}</li>' for x in insights])}</ol></div>
     <div class='card'>
@@ -171,6 +182,16 @@ def render(data: dict, out_html: Path, out_md: Path) -> None:
         "## 記者摘要",
         summary if summary else "本輪未取得可供重寫的貼文內容。",
         "",
+    ]
+
+    if blocked_reason:
+        md_lines.extend([
+            "## ⚠️ 資料阻擋",
+            f"- {blocked_reason}",
+            "",
+        ])
+
+    md_lines.extend([
         "## 六類自動歸納",
         *[f"- {c}" for c in cats],
         "",
@@ -178,7 +199,7 @@ def render(data: dict, out_html: Path, out_md: Path) -> None:
         *[f"1. {insights[0]}", f"2. {insights[1]}", f"3. {insights[2]}"],
         "",
         "## 明細",
-    ]
+    ])
     if lines:
         for item in lines:
             tid = f" `{item['tweet_id']}`" if item["tweet_id"] else ""
