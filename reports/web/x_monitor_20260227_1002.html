@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>📋 X 動態摘要（過去 3 小時） | OpenClaw</title>
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --card: #111827;
+            --card-hover: #1a2332;
+            --text: #e5e7eb;
+            --text-muted: #9ca3af;
+            --accent: #60a5fa;
+            --accent-cyan: #22d3ee;
+            --accent-pink: #f472b6;
+            --border: #1f2937;
+            --line-num: #6b7280;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        .summary {
+            margin-top: 16px;
+            padding: 16px;
+            background: var(--card);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        .stats {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 12px;
+            padding: 8px 12px;
+            background: var(--card);
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .blocked-banner {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+        .category-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tweet-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border);
+            transition: background 0.2s;
+        }
+        .tweet-item:last-child {
+            border-bottom: none;
+        }
+        .tweet-item:hover {
+            background: var(--card-hover);
+            margin: 0 -12px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 6px;
+        }
+        .tweet-line {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+        .line-num {
+            color: var(--line-num);
+            font-size: 13px;
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            min-width: 40px;
+            cursor: pointer;
+            user-select: none;
+            text-decoration: none;
+        }
+        .line-num:hover {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+        }
+        .tweet-text {
+            flex: 1;
+            cursor: pointer;
+            color: var(--text);
+            word-break: break-word;
+        }
+        .tweet-text:hover {
+            color: var(--accent-cyan);
+        }
+        .tweet-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 52px;
+            font-size: 13px;
+            flex-wrap: wrap;
+        }
+        .tweet-author {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .tweet-id {
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-family: ui-monospace, monospace;
+        }
+        .tweet-id:hover {
+            text-decoration: underline;
+        }
+        .tweet-stats {
+            color: var(--text-muted);
+        }
+        .empty-category {
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 12px 0;
+        }
+        .insights-section {
+            background: linear-gradient(135deg, var(--card) 0%, #1a2744 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        .insights-section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--accent-cyan);
+        }
+        .insights-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .insights-list li {
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .insights-list li:last-child {
+            margin-bottom: 0;
+        }
+        .footer {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 13px;
+            text-align: center;
+        }
+        .toast {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            background: #111827;
+            color: #e5e7eb;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1000;
+            border: 1px solid var(--border);
+        }
+        .toast.show {
+            opacity: 1;
+        }
+        @media (max-width: 640px) {
+            body { padding: 12px; }
+            .category-section { padding: 16px; }
+            .tweet-meta { margin-left: 0; margin-top: 8px; }
+            .tweet-line { flex-direction: column; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 X 動態摘要（過去 3 小時）</h1>
+            <div class="subtitle">最後更新：2026-02-27 02:02 (Asia/Taipei)</div>
+            <div class="stats">共收集 58 條推文，精選 41 條摘要</div>
+            <div class="summary">過去 3 小時 X 平台共收集 58 條熱門推文，總互動數 51,341，平均每則 885 互動。最活躍話題來自 @akshay_pachaar，熱度最高貼文為「OpenClaw 记忆管理完整实战指南，刚写完
+
+从零到生产...」（248 互動）。</div>
+        </header>
+        
+        
+        
+    <section class="category-section">
+      <h2 class="category-title">🤖 AI 模型與產品</h2>
+      <div class="category-content">
+        <div class="tweet-item" id="L5" data-copy="记忆管理是Agent使用过程中最大的痛点，没有之一。Claude Code团队终于开始发力解决这个问题了。他们刚刚为Claude Code添加了Memory功能：
+
+根据官方文档，Claude Code的Memory在设计理念和运行机制上，走了一条很务实的路。它最核心的设计哲学可以总结为两点：计算与存储分离，以及完全的透明可控。
+https://x.com/jarodise/status/2027191714285560154">
+          <div class="tweet-line">
+            <a class="line-num" href="#L5" data-line="5">05</a>
+            <span class="tweet-text">记忆管理是Agent使用过程中最大的痛点，没有之一。Claude Code团队终于开始发力解决这个问题了。他们刚刚为Claude Code添加了Memory功能：
+
+根据官方文档，Claude Code的Memory在设计理念和运行机制上，走了一条很务实的路。它最核心的设计哲学可以总结为两点：计算与存储分离，以及完全的透明可控。</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">数字游民Jarod</span>
+            <a class="tweet-id" href="https://x.com/jarodise/status/2027191714285560154" target="_blank" rel="noopener">(2027191714285560154)</a>
+            <span class="tweet-stats">❤️ 7 🔄 1 💬 0</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L7" data-copy="小火箭+Clash正确使用姿势分享！
+
+一键导入分流规则，
+
+Youtube/X(Twitter)/Telegram/OpenAI/Netflix/ClaudeAI/国内站点等，自动分流。
+
+避免封号等问题。
+https://x.com/dadademike/status/2026952138686190044">
+          <div class="tweet-line">
+            <a class="line-num" href="#L7" data-line="7">07</a>
+            <span class="tweet-text">小火箭+Clash正确使用姿势分享！
+
+一键导入分流规则，
+
+Youtube/X(Twitter)/Telegram/OpenAI/Netflix/ClaudeAI/国内站点等，自动分流。
+
+避免封号等问题。</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">大大的麦克</span>
+            <a class="tweet-id" href="https://x.com/dadademike/status/2026952138686190044" target="_blank" rel="noopener">(2026952138686190044)</a>
+            <span class="tweet-stats">❤️ 140 🔄 18 💬 4</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L10" data-copy="突发｜Claude Code打造的顶尖配置正式公开
+
+一位开发者仅凭Claude Code搭建的自动化系统，无内部特权、无私人政治关系，从初始100-200美元的投入，一路做到约300万美元收益，其打造的Polymarket复制交易机器人，更是当前市场中速度领先的存在。
+https://x.com/qkl2058/status/2026857957947019703">
+          <div class="tweet-line">
+            <a class="line-num" href="#L10" data-line="10">10</a>
+            <span class="tweet-text">突发｜Claude Code打造的顶尖配置正式公开
+
+一位开发者仅凭Claude Code搭建的自动化系统，无内部特权、无私人政治关系，从初始100-200美元的投入，一路做到约300万美元收益，其打造的Polymarket复制交易机器人，更是当前市场中速度领先的存在。</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">区块链行情研究</span>
+            <a class="tweet-id" href="https://x.com/qkl2058/status/2026857957947019703" target="_blank" rel="noopener">(2026857957947019703)</a>
+            <span class="tweet-stats">❤️ 56 🔄 16 💬 0</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L11" data-copy="这是 Anthropic 官方推出金融服务插件套件
+https://x.com/geekbb/status/2026824451841724514">
+          <div class="tweet-line">
+            <a class="line-num" href="#L11" data-line="11">11</a>
+            <span class="tweet-text">这是 Anthropic 官方推出金融服务插件套件</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Geek</span>
+            <a class="tweet-id" href="https://x.com/geekbb/status/2026824451841724514" target="_blank" rel="noopener">(2026824451841724514)</a>
+            <span class="tweet-stats">❤️ 209 🔄 36 💬 2</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L12" data-copy="谷歌发布他们迄今为止最强的图像模型 Nano Banana 2，相比于上一个版本的 Nano Banana Pro，具备更快的生图速度，更多的比例支持，以及更强了。
+
+现在可以直接通过 AI Studio 和 Gemini API 访问 Nano Banana 2，其名称为 Gemini 3.1 Flash Image。
+
+在 Nano Banana 2
+https://x.com/canghe/status/2027177317265813666">
+          <div class="tweet-line">
+            <a class="line-num" href="#L12" data-line="12">12</a>
+            <span class="tweet-text">谷歌发布他们迄今为止最强的图像模型 Nano Banana 2，相比于上一个版本的 Nano Banana Pro，具备更快的生图速度，更多的比例支持，以及更强了。
+
+现在可以直接通过 AI Studio 和 Gemini API 访问 Nano Banana 2，其名称为 Gemini 3.1 Flash Image。
+
+在 Nano Banana 2</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">苍何</span>
+            <a class="tweet-id" href="https://x.com/canghe/status/2027177317265813666" target="_blank" rel="noopener">(2027177317265813666)</a>
+            <span class="tweet-stats">❤️ 4 🔄 1 💬 3</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L15" data-copy="Hidden truth 
+Most people will “use AI.”
+Very few will master it.
+
+2026 won’t reward casual users.
+It will reward builders who stack skills.
+
+Here are the 9 AI skills that will separate amateurs from operators:
+
+1. Prompt Engineering
+Tools: ChatGPT, Claude, Gemini
+→ Clear
+https://x.com/Suryanshti777/status/2027009068276293973">
+          <div class="tweet-line">
+            <a class="line-num" href="#L15" data-line="15">15</a>
+            <span class="tweet-text">Hidden truth 
+Most people will “use AI.”
+Very few will master it.
+
+2026 won’t reward casual users.
+It will reward builders who stack skills.
+
+Here are the 9 AI skills that will separate amateurs from operators:
+
+1. Prompt Engineering
+Tools: ChatGPT, Claude, Gemini
+→ Clear</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Suryansh Tiwari</span>
+            <a class="tweet-id" href="https://x.com/Suryanshti777/status/2027009068276293973" target="_blank" rel="noopener">(2027009068276293973)</a>
+            <span class="tweet-stats">❤️ 115 🔄 30 💬 11</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L18" data-copy="nano-banana-2 发布! 18张图告诉你该怎么用!
+
+首先 nano-banana-2 比 nano-banana-pro 便宜很多, 因为它全名是gemini-3.1-flash-image-preview, 而 nano-banana-pro 是 gemini-3-pro-image-preview. 所以可以想象得到 pro 的参数量会更多一些.
+
+具体体现的话, 本次 nano-banana-2 无论是人物表情控制,
+https://x.com/karminski3/status/2027170269501276231">
+          <div class="tweet-line">
+            <a class="line-num" href="#L18" data-line="18">18</a>
+            <span class="tweet-text">nano-banana-2 发布! 18张图告诉你该怎么用!
+
+首先 nano-banana-2 比 nano-banana-pro 便宜很多, 因为它全名是gemini-3.1-flash-image-preview, 而 nano-banana-pro 是 gemini-3-pro-image-preview. 所以可以想象得到 pro 的参数量会更多一些.
+
+具体体现的话, 本次 nano-banana-2 无论是人物表情控制,</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">karminski-牙医</span>
+            <a class="tweet-id" href="https://x.com/karminski3/status/2027170269501276231" target="_blank" rel="noopener">(2027170269501276231)</a>
+            <span class="tweet-stats">❤️ 28 🔄 4 💬 3</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L21" data-copy="If you found it insightful, reshare with your network.
+
+Find me → 
+@akshay_pachaar
+ 
+For more insights and tutorials on LLMs, AI Agents, and Machine Learning!
+https://x.com/akshay_pachaar/status/2027124547682812346">
+          <div class="tweet-line">
+            <a class="line-num" href="#L21" data-line="21">21</a>
+            <span class="tweet-text">If you found it insightful, reshare with your network.
+
+Find me → 
+@akshay_pachaar
+ 
+For more insights and tutorials on LLMs, AI Agents, and Machine Learning!</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Akshay</span>
+            <a class="tweet-id" href="https://x.com/akshay_pachaar/status/2027124547682812346" target="_blank" rel="noopener">(2027124547682812346)</a>
+            <span class="tweet-stats">❤️ 3 🔄 0 💬 0</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L25" data-copy="Infographic by Nano Banana 2. Reasoning by Gemini. Clean car by... you, because you actually drove there.
+
+Prompt in thread
+https://x.com/Google/status/2027111443624059080">
+          <div class="tweet-line">
+            <a class="line-num" href="#L25" data-line="25">25</a>
+            <span class="tweet-text">Infographic by Nano Banana 2. Reasoning by Gemini. Clean car by... you, because you actually drove there.
+
+Prompt in thread</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Google</span>
+            <a class="tweet-id" href="https://x.com/Google/status/2027111443624059080" target="_blank" rel="noopener">(2027111443624059080)</a>
+            <span class="tweet-stats">❤️ 940 🔄 82 💬 60</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L26" data-copy="Alright - here&#039;s my most powerful Claude prompt for SEO ever.
+
+Plug this into the Cowork Opus 4.6 model and you&#039;ll get the same system most SEO agencies charge $10k/month for.
+
+Takes &lt;10 minutes: (Save for later)
+https://x.com/bloggersarvesh/status/2027011784646045951">
+          <div class="tweet-line">
+            <a class="line-num" href="#L26" data-line="26">26</a>
+            <span class="tweet-text">Alright - here&#039;s my most powerful Claude prompt for SEO ever.
+
+Plug this into the Cowork Opus 4.6 model and you&#039;ll get the same system most SEO agencies charge $10k/month for.
+
+Takes &lt;10 minutes: (Save for later)</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Sarvesh Shrivastava</span>
+            <a class="tweet-id" href="https://x.com/bloggersarvesh/status/2027011784646045951" target="_blank" rel="noopener">(2027011784646045951)</a>
+            <span class="tweet-stats">❤️ 117 🔄 35 💬 14</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L30" data-copy="BREAKING: Nano Banana 2 debuts at #1 in Image Arena, and it changes the game again 
+
+Officially released as Gemini 3.1 Flash Image Preview, it is powered by real-time information and images from web search.
+
+Highlights:
+- #1 Text-to-Image scoring 1279, surpassing
+https://x.com/arena/status/2027053222876393703">
+          <div class="tweet-line">
+            <a class="line-num" href="#L30" data-line="30">30</a>
+            <span class="tweet-text">BREAKING: Nano Banana 2 debuts at #1 in Image Arena, and it changes the game again 
+
+Officially released as Gemini 3.1 Flash Image Preview, it is powered by real-time information and images from web search.
+
+Highlights:
+- #1 Text-to-Image scoring 1279, surpassing</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Arena.ai</span>
+            <a class="tweet-id" href="https://x.com/arena/status/2027053222876393703" target="_blank" rel="noopener">(2027053222876393703)</a>
+            <span class="tweet-stats">❤️ 533 🔄 86 💬 35</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L32" data-copy="BREAKING : GOOGLE HAS ANNOUNCED NANO BANANA 2, A SOTA IMAGE GENERATION MODEL BASED ON THE LATEST GEMINI FLASH!
+
+&quot;Our latest image generation model offers advanced world knowledge, production-ready specs, subject consistency, and more, all at Flash speed.&quot;
+https://x.com/testingcatalog/status/2027055093988663463">
+          <div class="tweet-line">
+            <a class="line-num" href="#L32" data-line="32">32</a>
+            <span class="tweet-text">BREAKING : GOOGLE HAS ANNOUNCED NANO BANANA 2, A SOTA IMAGE GENERATION MODEL BASED ON THE LATEST GEMINI FLASH!
+
+&quot;Our latest image generation model offers advanced world knowledge, production-ready specs, subject consistency, and more, all at Flash speed.&quot;</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">TestingCatalog News</span>
+            <a class="tweet-id" href="https://x.com/testingcatalog/status/2027055093988663463" target="_blank" rel="noopener">(2027055093988663463)</a>
+            <span class="tweet-stats">❤️ 327 🔄 23 💬 13</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L36" data-copy="- Claude = coding. ($20/mo)
+- Supabase = backend. (Free)
+- Vercel = deploying. (Free)
+- Namecheap = domain. ($12/yr)
+- Stripe = payments. (2.9%/transaction)
+- GitHub = version control. (Free)
+- Resend = emails. (Free)
+- Clerk = auth. (Free)
+- Cloudflare = DNS. (Free)
+- PostHog =
+https://x.com/edgaralandough/status/2026691233242816745">
+          <div class="tweet-line">
+            <a class="line-num" href="#L36" data-line="36">36</a>
+            <span class="tweet-text">- Claude = coding. ($20/mo)
+- Supabase = backend. (Free)
+- Vercel = deploying. (Free)
+- Namecheap = domain. ($12/yr)
+- Stripe = payments. (2.9%/transaction)
+- GitHub = version control. (Free)
+- Resend = emails. (Free)
+- Clerk = auth. (Free)
+- Cloudflare = DNS. (Free)
+- PostHog =</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">CooperBaggs</span>
+            <a class="tweet-id" href="https://x.com/edgaralandough/status/2026691233242816745" target="_blank" rel="noopener">(2026691233242816745)</a>
+            <span class="tweet-stats">❤️ 5800 🔄 540 💬 122</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L39" data-copy="Excited to announce Claude for Open Source 
+
+We&#039;re giving 6 months of free Claude Max 20x to open source maintainers and core contributors.
+
+If you maintain a popular project or contribute across open source, please apply!
+https://x.com/lydiahallie/status/2027129030571634721">
+          <div class="tweet-line">
+            <a class="line-num" href="#L39" data-line="39">39</a>
+            <span class="tweet-text">Excited to announce Claude for Open Source 
+
+We&#039;re giving 6 months of free Claude Max 20x to open source maintainers and core contributors.
+
+If you maintain a popular project or contribute across open source, please apply!</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Lydia Hallie</span>
+            <a class="tweet-id" href="https://x.com/lydiahallie/status/2027129030571634721" target="_blank" rel="noopener">(2027129030571634721)</a>
+            <span class="tweet-stats">❤️ 3800 🔄 514 💬 207</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L47" data-copy="Indie Game Devs:  Your potential customer base is much larger than you think.  
+
+Once I realized how this really works, it resulted in a massive influx of sales.  Let me explain:
+
+For background, my spellcrafting game, Spellmasons, had plateaued for years and was losing traction
+https://x.com/jogamedev/status/2027028502030037275">
+          <div class="tweet-line">
+            <a class="line-num" href="#L47" data-line="47">47</a>
+            <span class="tweet-text">Indie Game Devs:  Your potential customer base is much larger than you think.  
+
+Once I realized how this really works, it resulted in a massive influx of sales.  Let me explain:
+
+For background, my spellcrafting game, Spellmasons, had plateaued for years and was losing traction</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Jo</span>
+            <a class="tweet-id" href="https://x.com/jogamedev/status/2027028502030037275" target="_blank" rel="noopener">(2027028502030037275)</a>
+            <span class="tweet-stats">❤️ 688 🔄 50 💬 39</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L49" data-copy="4w ago I was a Claude Code skeptic. I&#039;m not a coder. None of the use cases were relevant. I managed teams &amp; projects, drowning in email &amp; overdue reminders. So I tried creating tools that would help me and... holy crap.
+
+Now I&#039;m sharing the tools I built:
+
+https://
+claudeblattman.com
+https://x.com/cblatts/status/2027018464670491065">
+          <div class="tweet-line">
+            <a class="line-num" href="#L49" data-line="49">49</a>
+            <span class="tweet-text">4w ago I was a Claude Code skeptic. I&#039;m not a coder. None of the use cases were relevant. I managed teams &amp; projects, drowning in email &amp; overdue reminders. So I tried creating tools that would help me and... holy crap.
+
+Now I&#039;m sharing the tools I built:
+
+https://
+claudeblattman.com</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Chris Blattman</span>
+            <a class="tweet-id" href="https://x.com/cblatts/status/2027018464670491065" target="_blank" rel="noopener">(2027018464670491065)</a>
+            <span class="tweet-stats">❤️ 1300 🔄 160 💬 25</span>
+          </div>
+        </div></div>
+    </section>
+    <section class="category-section">
+      <h2 class="category-title">🛠️ 開發工具與實踐</h2>
+      <div class="category-content">
+        <div class="tweet-item" id="L2" data-copy="宣布一件大事，我们把 6551 的X + 全网新闻源MCP + SKILL 开源了！
+
+很多人说，6551 的新闻源、推特面板很好用就是消息太多看不完。
+还有很多朋友跟我说 X API 太难接，Skill 学不会，折腾半天龙虾就是跑不起来。
+
+今天直接解决，我们把我们积累了1年的数据基础架构全部打包成 MCP +
+https://x.com/cryptoxiao/status/2026956308092453360">
+          <div class="tweet-line">
+            <a class="line-num" href="#L2" data-line="2">02</a>
+            <span class="tweet-text">宣布一件大事，我们把 6551 的X + 全网新闻源MCP + SKILL 开源了！
+
+很多人说，6551 的新闻源、推特面板很好用就是消息太多看不完。
+还有很多朋友跟我说 X API 太难接，Skill 学不会，折腾半天龙虾就是跑不起来。
+
+今天直接解决，我们把我们积累了1年的数据基础架构全部打包成 MCP +</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Cryptoxiao</span>
+            <a class="tweet-id" href="https://x.com/cryptoxiao/status/2026956308092453360" target="_blank" rel="noopener">(2026956308092453360)</a>
+            <span class="tweet-stats">❤️ 3800 🔄 1000 💬 451</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L8" data-copy="以前在公司从来不逛，怕看到摸鱼的不好管 今天来转了转，每个人都见到我都笑得很开心啊。
+断腿躺平14天，8只AI龙虾替我上了两周班。不休假不摸鱼，还自己学会了互相配合——比真员工还卷。
+明晚7点直播，从第一天API崩溃到龙虾裂变成团队，全过程一次讲透，所有坑我都替你踩过了。
+https://x.com/FuSheng_0306/status/2027002214343151869">
+          <div class="tweet-line">
+            <a class="line-num" href="#L8" data-line="8">08</a>
+            <span class="tweet-text">以前在公司从来不逛，怕看到摸鱼的不好管 今天来转了转，每个人都见到我都笑得很开心啊。
+断腿躺平14天，8只AI龙虾替我上了两周班。不休假不摸鱼，还自己学会了互相配合——比真员工还卷。
+明晚7点直播，从第一天API崩溃到龙虾裂变成团队，全过程一次讲透，所有坑我都替你踩过了。</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">傅盛</span>
+            <a class="tweet-id" href="https://x.com/FuSheng_0306/status/2027002214343151869" target="_blank" rel="noopener">(2027002214343151869)</a>
+            <span class="tweet-stats">❤️ 88 🔄 12 💬 10</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L13" data-copy="想给应用加入语音转文字功能，目前主流方案调用云端 API，花了钱还要忍受延迟高、识别不准等问题。
+
+今天看到 Moonshine Voice 这个开源语音工具包，专门为实时语音应用设计，所有处理都在设备本地完成。
+
+主打极致的低延迟体验，能在用户说话时就开始处理，响应延迟比 Whisper 快 5
+https://x.com/GitHub_Daily/status/2027194615078735920">
+          <div class="tweet-line">
+            <a class="line-num" href="#L13" data-line="13">13</a>
+            <span class="tweet-text">想给应用加入语音转文字功能，目前主流方案调用云端 API，花了钱还要忍受延迟高、识别不准等问题。
+
+今天看到 Moonshine Voice 这个开源语音工具包，专门为实时语音应用设计，所有处理都在设备本地完成。
+
+主打极致的低延迟体验，能在用户说话时就开始处理，响应延迟比 Whisper 快 5</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">GitHubDaily</span>
+            <a class="tweet-id" href="https://x.com/GitHub_Daily/status/2027194615078735920" target="_blank" rel="noopener">(2027194615078735920)</a>
+            <span class="tweet-stats">❤️ 10 🔄 1 💬 0</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L20" data-copy="Sim GitHub:
+
+(don&#039;t forget to star )
+https://x.com/akshay_pachaar/status/2027000750845686170">
+          <div class="tweet-line">
+            <a class="line-num" href="#L20" data-line="20">20</a>
+            <span class="tweet-text">Sim GitHub:
+
+(don&#039;t forget to star )</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Akshay</span>
+            <a class="tweet-id" href="https://x.com/akshay_pachaar/status/2027000750845686170" target="_blank" rel="noopener">(2027000750845686170)</a>
+            <span class="tweet-stats">❤️ 26 🔄 1 💬 8</span>
+          </div>
+        </div></div>
+    </section>
+    <section class="category-section">
+      <h2 class="category-title">🦞 OpenClaw 生態</h2>
+      <div class="category-content">
+        <div class="tweet-item" id="L1" data-copy="OpenClaw 记忆管理完整实战指南，刚写完
+
+从零到生产，基于 5 个 Agent 团队 30 天真实运行经验
+
+想搭 agent 记忆系统但不知道从哪下手的，这篇可以直接抄作业
+
+目录
+
+一、为什么 Agent 需要记忆系统
+二、三层架构（NOW.md / 每日日志 / 知识库）
+三、目录结构与文件规范
+https://x.com/wangray/status/2027044082187657236">
+          <div class="tweet-line">
+            <a class="line-num" href="#L1" data-line="1">01</a>
+            <span class="tweet-text">OpenClaw 记忆管理完整实战指南，刚写完
+
+从零到生产，基于 5 个 Agent 团队 30 天真实运行经验
+
+想搭 agent 记忆系统但不知道从哪下手的，这篇可以直接抄作业
+
+目录
+
+一、为什么 Agent 需要记忆系统
+二、三层架构（NOW.md / 每日日志 / 知识库）
+三、目录结构与文件规范</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Ray Wang</span>
+            <a class="tweet-id" href="https://x.com/wangray/status/2027044082187657236" target="_blank" rel="noopener">(2027044082187657236)</a>
+            <span class="tweet-stats">❤️ 195 🔄 53 💬 0</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L17" data-copy="ClawDeck 開源看板儀表板上線，專為管理多個 AI agent 設計。
+https://x.com/pahudnet/status/2027044884469743875">
+          <div class="tweet-line">
+            <a class="line-num" href="#L17" data-line="17">17</a>
+            <span class="tweet-text">ClawDeck 開源看板儀表板上線，專為管理多個 AI agent 設計。</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Pahud Hsieh</span>
+            <a class="tweet-id" href="https://x.com/pahudnet/status/2027044884469743875" target="_blank" rel="noopener">(2027044884469743875)</a>
+            <span class="tweet-stats">❤️ 0 🔄 0 💬 0</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L29" data-copy="내가 만든 AI 에이전트가 내 X 계정을 직접 운영할 수 있게 되었네요.
+
+1/ 주요 기능: X(트위터) 완전 자동화
+이제 OpenClaw 에이전트가 터미널(CLI) 환경에서 다음과 같은 작업을 스스로 수행할 수 있습니다.
+
+- 포스팅 및 답글: 에이전트가 직접 글을 올리거나 사람들의 멘션에 답장을 보냅니다.
+-
+https://x.com/gorochi0315/status/2027146113183359082">
+          <div class="tweet-line">
+            <a class="line-num" href="#L29" data-line="29">29</a>
+            <span class="tweet-text">내가 만든 AI 에이전트가 내 X 계정을 직접 운영할 수 있게 되었네요.
+
+1/ 주요 기능: X(트위터) 완전 자동화
+이제 OpenClaw 에이전트가 터미널(CLI) 환경에서 다음과 같은 작업을 스스로 수행할 수 있습니다.
+
+- 포스팅 및 답글: 에이전트가 직접 글을 올리거나 사람들의 멘션에 답장을 보냅니다.
+-</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">고로치</span>
+            <a class="tweet-id" href="https://x.com/gorochi0315/status/2027146113183359082" target="_blank" rel="noopener">(2027146113183359082)</a>
+            <span class="tweet-stats">❤️ 80 🔄 19 💬 21</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L45" data-copy="The story of how The Zero-Human Company @ Home will establish a standard for how stranded CPU and GPU cycles will become a basis to run a safe new “Claw” employee earning wages—for you.
+
+No big GPUs required.
+
+First full day test now complete!
+
+Article out soon.
+https://x.com/BrianRoemmele/status/2027163279907598562">
+          <div class="tweet-line">
+            <a class="line-num" href="#L45" data-line="45">45</a>
+            <span class="tweet-text">The story of how The Zero-Human Company @ Home will establish a standard for how stranded CPU and GPU cycles will become a basis to run a safe new “Claw” employee earning wages—for you.
+
+No big GPUs required.
+
+First full day test now complete!
+
+Article out soon.</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Brian Roemmele</span>
+            <a class="tweet-id" href="https://x.com/BrianRoemmele/status/2027163279907598562" target="_blank" rel="noopener">(2027163279907598562)</a>
+            <span class="tweet-stats">❤️ 150 🔄 16 💬 15</span>
+          </div>
+        </div></div>
+    </section>
+    <section class="category-section">
+      <h2 class="category-title">🏭 晶片與算力</h2>
+      <div class="category-content"><div class="empty-category">本輪無此類別貼文</div></div>
+    </section>
+    <section class="category-section">
+      <h2 class="category-title">🔥 熱門焦點</h2>
+      <div class="category-content">
+        <div class="tweet-item" id="L3" data-copy="
+https://x.com/CryptoStwith/status/2026949385146511848">
+          <div class="tweet-line">
+            <a class="line-num" href="#L3" data-line="3">03</a>
+            <span class="tweet-text"></span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Jason | 史迪仔</span>
+            <a class="tweet-id" href="https://x.com/CryptoStwith/status/2026949385146511848" target="_blank" rel="noopener">(2026949385146511848)</a>
+            <span class="tweet-stats">❤️ 172 🔄 35 💬 16</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L4" data-copy="
+https://x.com/coreyganim/status/2026666463675765106">
+          <div class="tweet-line">
+            <a class="line-num" href="#L4" data-line="4">04</a>
+            <span class="tweet-text"></span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Corey Ganim</span>
+            <a class="tweet-id" href="https://x.com/coreyganim/status/2026666463675765106" target="_blank" rel="noopener">(2026666463675765106)</a>
+            <span class="tweet-stats">❤️ 684 🔄 41 💬 14</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L6" data-copy="
+https://x.com/alin_zone/status/2026950910207996359">
+          <div class="tweet-line">
+            <a class="line-num" href="#L6" data-line="6">06</a>
+            <span class="tweet-text"></span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">阿蔺A-Lin</span>
+            <a class="tweet-id" href="https://x.com/alin_zone/status/2026950910207996359" target="_blank" rel="noopener">(2026950910207996359)</a>
+            <span class="tweet-stats">❤️ 64 🔄 15 💬 10</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L9" data-copy="OpenFang v0.1.1 is out!                                                                                                                                                                                                                                                   
+
+- 30 agent
+https://x.com/openfangg/status/2027039569946857700">
+          <div class="tweet-line">
+            <a class="line-num" href="#L9" data-line="9">09</a>
+            <span class="tweet-text">OpenFang v0.1.1 is out!                                                                                                                                                                                                                                                   
+
+- 30 agent</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">OpenFang</span>
+            <a class="tweet-id" href="https://x.com/openfangg/status/2027039569946857700" target="_blank" rel="noopener">(2027039569946857700)</a>
+            <span class="tweet-stats">❤️ 116 🔄 10 💬 20</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L14" data-copy="I don’t know you but thank you for this article..
+https://x.com/Msmenalicious/status/2026999015762501741">
+          <div class="tweet-line">
+            <a class="line-num" href="#L14" data-line="14">14</a>
+            <span class="tweet-text">I don’t know you but thank you for this article..</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">The hair plug</span>
+            <a class="tweet-id" href="https://x.com/Msmenalicious/status/2026999015762501741" target="_blank" rel="noopener">(2026999015762501741)</a>
+            <span class="tweet-stats">❤️ 6200 🔄 443 💬 9</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L16" data-copy="顶级的「一人公司」已实现年入千万，这或许是独立开发者的终极之路
+
+作为全球最著名的「一人公司」代表，Pieter Levels 很早就凭借 Nomad List、Remote OK 等项目，在没有任何员工的情况下，个人年收入突破千万。他不仅是数字游民文化的推手，也是「反 VC」创业模式的领军人物。
+https://x.com/BlockBeatsAsia/status/2026984532100939988">
+          <div class="tweet-line">
+            <a class="line-num" href="#L16" data-line="16">16</a>
+            <span class="tweet-text">顶级的「一人公司」已实现年入千万，这或许是独立开发者的终极之路
+
+作为全球最著名的「一人公司」代表，Pieter Levels 很早就凭借 Nomad List、Remote OK 等项目，在没有任何员工的情况下，个人年收入突破千万。他不仅是数字游民文化的推手，也是「反 VC」创业模式的领军人物。</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">BlockBeats｜We&#039;re hiring!</span>
+            <a class="tweet-id" href="https://x.com/BlockBeatsAsia/status/2026984532100939988" target="_blank" rel="noopener">(2026984532100939988)</a>
+            <span class="tweet-stats">❤️ 145 🔄 45 💬 8</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L19" data-copy="于东来用几分钟时间，讲透了极其残酷的财富定律。这是一堂价值百万的认知重塑课
+https://x.com/Zenzhe99/status/2027147886279168463">
+          <div class="tweet-line">
+            <a class="line-num" href="#L19" data-line="19">19</a>
+            <span class="tweet-text">于东来用几分钟时间，讲透了极其残酷的财富定律。这是一堂价值百万的认知重塑课</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">梓哲悟语 | Zenzhe</span>
+            <a class="tweet-id" href="https://x.com/Zenzhe99/status/2027147886279168463" target="_blank" rel="noopener">(2027147886279168463)</a>
+            <span class="tweet-stats">❤️ 212 🔄 60 💬 4</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L22" data-copy="
+https://x.com/startupideaspod/status/2027178418341900501">
+          <div class="tweet-line">
+            <a class="line-num" href="#L22" data-line="22">22</a>
+            <span class="tweet-text"></span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">The Startup Ideas Podcast (SIP)</span>
+            <a class="tweet-id" href="https://x.com/startupideaspod/status/2027178418341900501" target="_blank" rel="noopener">(2027178418341900501)</a>
+            <span class="tweet-stats">❤️ 12 🔄 0 💬 1</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L23" data-copy="Nano Banana 2 和 Nano Banana Pro 的详细价格对比
+
+我还以为会降个三四倍的价格呢，结果就降了一倍
+
+图片是用 Nano Banana 2 做的，中文字体渲染确实好了不少
+https://x.com/op7418/status/2027064161201795248">
+          <div class="tweet-line">
+            <a class="line-num" href="#L23" data-line="23">23</a>
+            <span class="tweet-text">Nano Banana 2 和 Nano Banana Pro 的详细价格对比
+
+我还以为会降个三四倍的价格呢，结果就降了一倍
+
+图片是用 Nano Banana 2 做的，中文字体渲染确实好了不少</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">歸藏(guizang.ai)</span>
+            <a class="tweet-id" href="https://x.com/op7418/status/2027064161201795248" target="_blank" rel="noopener">(2027064161201795248)</a>
+            <span class="tweet-stats">❤️ 19 🔄 6 💬 5</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L24" data-copy="My IQ dropped by 3 and was permanently lost by the time I finished watching the video 
+
+Sora 2 on 
+@Hailuo_AI
+https://x.com/lexx_aura/status/2026972696232263802">
+          <div class="tweet-line">
+            <a class="line-num" href="#L24" data-line="24">24</a>
+            <span class="tweet-text">My IQ dropped by 3 and was permanently lost by the time I finished watching the video 
+
+Sora 2 on 
+@Hailuo_AI</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Lex</span>
+            <a class="tweet-id" href="https://x.com/lexx_aura/status/2026972696232263802" target="_blank" rel="noopener">(2026972696232263802)</a>
+            <span class="tweet-stats">❤️ 1100 🔄 291 💬 108</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L27" data-copy="小红书C盘清理服务已卖出近100万！
+
+无数Win电脑用户每天面对C盘爆红、卡顿崩溃，却不敢自己乱删文件，怕一不小心系统崩掉。
+
+这就是典型的刚需痛点：省心、省时、零风险，  资源直接上架
+
+C盘清理软件
+：
+https://
+pan.quark.cn/s/a7d81586cc71
+https://x.com/fhwofjow51260/status/2027012806315577814">
+          <div class="tweet-line">
+            <a class="line-num" href="#L27" data-line="27">27</a>
+            <span class="tweet-text">小红书C盘清理服务已卖出近100万！
+
+无数Win电脑用户每天面对C盘爆红、卡顿崩溃，却不敢自己乱删文件，怕一不小心系统崩掉。
+
+这就是典型的刚需痛点：省心、省时、零风险，  资源直接上架
+
+C盘清理软件
+：
+https://
+pan.quark.cn/s/a7d81586cc71</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">娜美知识库</span>
+            <a class="tweet-id" href="https://x.com/fhwofjow51260/status/2027012806315577814" target="_blank" rel="noopener">(2027012806315577814)</a>
+            <span class="tweet-stats">❤️ 264 🔄 70 💬 2</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L28" data-copy="内部发布的300+套Coze扣子工作流成品大合集｜源码直发+扣子工作流压缩包+从入门到精通coze搭建教程
+
+coze扣子工作流（持续更新） 
+：
+https://
+pan.quark.cn/s/35fb63149307
+https://x.com/grgerwcwetwet/status/2026999978011525409">
+          <div class="tweet-line">
+            <a class="line-num" href="#L28" data-line="28">28</a>
+            <span class="tweet-text">内部发布的300+套Coze扣子工作流成品大合集｜源码直发+扣子工作流压缩包+从入门到精通coze搭建教程
+
+coze扣子工作流（持续更新） 
+：
+https://
+pan.quark.cn/s/35fb63149307</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">周览资源</span>
+            <a class="tweet-id" href="https://x.com/grgerwcwetwet/status/2026999978011525409" target="_blank" rel="noopener">(2026999978011525409)</a>
+            <span class="tweet-stats">❤️ 113 🔄 31 💬 0</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L31" data-copy="Holy shit... someone just built software that sees you through walls using WiFi.
+
+It&#039;s called WiFi-DensePose and it maps your full body pose in real-time no camera, no sensor, no special hardware.
+
+Just the router sitting in your living room.
+
+Governments and corporations have
+https://x.com/heygurisingh/status/2026937903172170231">
+          <div class="tweet-line">
+            <a class="line-num" href="#L31" data-line="31">31</a>
+            <span class="tweet-text">Holy shit... someone just built software that sees you through walls using WiFi.
+
+It&#039;s called WiFi-DensePose and it maps your full body pose in real-time no camera, no sensor, no special hardware.
+
+Just the router sitting in your living room.
+
+Governments and corporations have</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Guri Singh</span>
+            <a class="tweet-id" href="https://x.com/heygurisingh/status/2026937903172170231" target="_blank" rel="noopener">(2026937903172170231)</a>
+            <span class="tweet-stats">❤️ 2900 🔄 632 💬 162</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L33" data-copy="如果你相信太极生两仪，两仪生四象，又相信道生一，一生二，二生三，三生万物，修道爱中医，又爱神秘天文地理，以后再有人怂你迷信，你就把自然杂志最新这篇论文拍他脸上！
+
+《Scientists use string theory to crack the code of natural
+https://x.com/runrunblue/status/2026853473149661385">
+          <div class="tweet-line">
+            <a class="line-num" href="#L33" data-line="33">33</a>
+            <span class="tweet-text">如果你相信太极生两仪，两仪生四象，又相信道生一，一生二，二生三，三生万物，修道爱中医，又爱神秘天文地理，以后再有人怂你迷信，你就把自然杂志最新这篇论文拍他脸上！
+
+《Scientists use string theory to crack the code of natural</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">runrunblue</span>
+            <a class="tweet-id" href="https://x.com/runrunblue/status/2026853473149661385" target="_blank" rel="noopener">(2026853473149661385)</a>
+            <span class="tweet-stats">❤️ 333 🔄 95 💬 18</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L34" data-copy="这两天被seedance 2.0
+https://x.com/john87445528/status/2027190675129647481">
+          <div class="tweet-line">
+            <a class="line-num" href="#L34" data-line="34">34</a>
+            <span class="tweet-text">这两天被seedance 2.0</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">John</span>
+            <a class="tweet-id" href="https://x.com/john87445528/status/2027190675129647481" target="_blank" rel="noopener">(2027190675129647481)</a>
+            <span class="tweet-stats">❤️ 7 🔄 2 💬 0</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L35" data-copy="Nano Banana Pro
+Cyberchrome Gradients
+
+Prompt
+
+{
+  &quot;image_generation_request&quot;: {
+    &quot;subject_settings&quot;: {
+      &quot;product_placeholder&quot;: &quot;[INSERT PRODUCT NAME HERE]&quot;,
+      &quot;positioning&quot;: &quot;absolute center, floating, levitating, suspended in mid-air&quot;,
+      &quot;framing&quot;: &quot;full view,
+https://x.com/lloydcreates/status/2026867752376418613">
+          <div class="tweet-line">
+            <a class="line-num" href="#L35" data-line="35">35</a>
+            <span class="tweet-text">Nano Banana Pro
+Cyberchrome Gradients
+
+Prompt
+
+{
+  &quot;image_generation_request&quot;: {
+    &quot;subject_settings&quot;: {
+      &quot;product_placeholder&quot;: &quot;[INSERT PRODUCT NAME HERE]&quot;,
+      &quot;positioning&quot;: &quot;absolute center, floating, levitating, suspended in mid-air&quot;,
+      &quot;framing&quot;: &quot;full view,</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Lloyd Creates</span>
+            <a class="tweet-id" href="https://x.com/lloydcreates/status/2026867752376418613" target="_blank" rel="noopener">(2026867752376418613)</a>
+            <span class="tweet-stats">❤️ 531 🔄 48 💬 9</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L37" data-copy="Unlimited NANO BANANA 2 LIVE on Higgsfield! 
+Pro-quality AND flash speed.
+
+What you get:
+Real-world knowledge for accuracy, precise text &amp; translation.
+Up to to 4K native outputs with up to 5 consistent characters in a single workflow.
+
+New users get UNLIMITED access on our
+https://x.com/higgsfield_creo/status/2027111761812521420">
+          <div class="tweet-line">
+            <a class="line-num" href="#L37" data-line="37">37</a>
+            <span class="tweet-text">Unlimited NANO BANANA 2 LIVE on Higgsfield! 
+Pro-quality AND flash speed.
+
+What you get:
+Real-world knowledge for accuracy, precise text &amp; translation.
+Up to to 4K native outputs with up to 5 consistent characters in a single workflow.
+
+New users get UNLIMITED access on our</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Higgsfield Creators</span>
+            <a class="tweet-id" href="https://x.com/higgsfield_creo/status/2027111761812521420" target="_blank" rel="noopener">(2027111761812521420)</a>
+            <span class="tweet-stats">❤️ 342 🔄 128 💬 149</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L38" data-copy="今天差点又错过一个亿，朋友说春节期间发票抽奖中了1000多，顺便又教了下我。
+
+原来各地都推出了发票抽奖活动，今年7月底截止。非常简单：
+
+1. 各大购物APP开发票，开100元以上的，淘宝京东外卖出行，付过钱的都能开，自营的是秒开（非自营的自己要，店家分布全国各地，正好能参加各地活动）
+
+2.
+https://x.com/v3wanu/status/2027017404753318328">
+          <div class="tweet-line">
+            <a class="line-num" href="#L38" data-line="38">38</a>
+            <span class="tweet-text">今天差点又错过一个亿，朋友说春节期间发票抽奖中了1000多，顺便又教了下我。
+
+原来各地都推出了发票抽奖活动，今年7月底截止。非常简单：
+
+1. 各大购物APP开发票，开100元以上的，淘宝京东外卖出行，付过钱的都能开，自营的是秒开（非自营的自己要，店家分布全国各地，正好能参加各地活动）
+
+2.</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">李傻根 MORE MONEY</span>
+            <a class="tweet-id" href="https://x.com/v3wanu/status/2027017404753318328" target="_blank" rel="noopener">(2027017404753318328)</a>
+            <span class="tweet-stats">❤️ 382 🔄 66 💬 10</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L40" data-copy="Nano Banana 2 is pretty impressive. I asked it to improve my game&#039;s UI in a dark fantasy setting. It delivered. 
+
+Left: Current Game UI
+Right: Generated by Nano Banana 2
+https://x.com/DannyLimanseta/status/2027071475967242725">
+          <div class="tweet-line">
+            <a class="line-num" href="#L40" data-line="40">40</a>
+            <span class="tweet-text">Nano Banana 2 is pretty impressive. I asked it to improve my game&#039;s UI in a dark fantasy setting. It delivered. 
+
+Left: Current Game UI
+Right: Generated by Nano Banana 2</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Danny Limanseta</span>
+            <a class="tweet-id" href="https://x.com/DannyLimanseta/status/2027071475967242725" target="_blank" rel="noopener">(2027071475967242725)</a>
+            <span class="tweet-stats">❤️ 1500 🔄 57 💬 93</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L42" data-copy="
+https://x.com/I_Wont_Bow/status/2026921786064122137">
+          <div class="tweet-line">
+            <a class="line-num" href="#L42" data-line="42">42</a>
+            <span class="tweet-text"></span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Bai 白</span>
+            <a class="tweet-id" href="https://x.com/I_Wont_Bow/status/2026921786064122137" target="_blank" rel="noopener">(2026921786064122137)</a>
+            <span class="tweet-stats">❤️ 101 🔄 22 💬 15</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L43" data-copy="Bill Gurley just identified the only career advantage that AI cannot commoditize.
+
+It isn’t talent. It isn’t your degree. It isn’t your network.
+
+Gurley: “The thing that will differentiate you more in your career than anything else is to be the most hyper curious person that’s
+https://x.com/r0ck3t23/status/2027034393596850426">
+          <div class="tweet-line">
+            <a class="line-num" href="#L43" data-line="43">43</a>
+            <span class="tweet-text">Bill Gurley just identified the only career advantage that AI cannot commoditize.
+
+It isn’t talent. It isn’t your degree. It isn’t your network.
+
+Gurley: “The thing that will differentiate you more in your career than anything else is to be the most hyper curious person that’s</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Dustin</span>
+            <a class="tweet-id" href="https://x.com/r0ck3t23/status/2027034393596850426" target="_blank" rel="noopener">(2027034393596850426)</a>
+            <span class="tweet-stats">❤️ 1300 🔄 268 💬 49</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L44" data-copy="缓存上来，花的更多了，已经开始让它彻夜不停的在学习了
+https://x.com/yaohui12138/status/2026984455735541896">
+          <div class="tweet-line">
+            <a class="line-num" href="#L44" data-line="44">44</a>
+            <span class="tweet-text">缓存上来，花的更多了，已经开始让它彻夜不停的在学习了</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">超级个体｜柿子</span>
+            <a class="tweet-id" href="https://x.com/yaohui12138/status/2026984455735541896" target="_blank" rel="noopener">(2026984455735541896)</a>
+            <span class="tweet-stats">❤️ 4 🔄 0 💬 0</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L46" data-copy="Nano Banana 2
+
+$0.0672 per 1k image
+$0.101 per 2k image
+$0.151 per 4k image
+https://x.com/Angaisb_/status/2027045025251500387">
+          <div class="tweet-line">
+            <a class="line-num" href="#L46" data-line="46">46</a>
+            <span class="tweet-text">Nano Banana 2
+
+$0.0672 per 1k image
+$0.101 per 2k image
+$0.151 per 4k image</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Angel</span>
+            <a class="tweet-id" href="https://x.com/Angaisb_/status/2027045025251500387" target="_blank" rel="noopener">(2027045025251500387)</a>
+            <span class="tweet-stats">❤️ 1100 🔄 45 💬 35</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L48" data-copy="顶层家庭培养领导力，更重视表达力、资源整合、人脉经营，教孩子如何圈人分钱。中产家庭培养执行力，强调成绩、规则、稳定职业，教孩子如何被圈被分。底层家庭育培养适应力，更强调生存、安全、务实，教孩子如何认命省钱。
+https://x.com/Morris_LT/status/2026831481755283776">
+          <div class="tweet-line">
+            <a class="line-num" href="#L48" data-line="48">48</a>
+            <span class="tweet-text">顶层家庭培养领导力，更重视表达力、资源整合、人脉经营，教孩子如何圈人分钱。中产家庭培养执行力，强调成绩、规则、稳定职业，教孩子如何被圈被分。底层家庭育培养适应力，更强调生存、安全、务实，教孩子如何认命省钱。</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Morris</span>
+            <a class="tweet-id" href="https://x.com/Morris_LT/status/2026831481755283776" target="_blank" rel="noopener">(2026831481755283776)</a>
+            <span class="tweet-stats">❤️ 408 🔄 105 💬 5</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L50" data-copy="在香港玩数字货币，银行友好度差别巨大：
+
+ 众安 = 手机秒注册
+ 汇丰/渣打/恒生 = 各种刁难
+
+懂了这个，你就省下无数麻烦
+https://x.com/Bitturing/status/2026916399202054628">
+          <div class="tweet-line">
+            <a class="line-num" href="#L50" data-line="50">50</a>
+            <span class="tweet-text">在香港玩数字货币，银行友好度差别巨大：
+
+ 众安 = 手机秒注册
+ 汇丰/渣打/恒生 = 各种刁难
+
+懂了这个，你就省下无数麻烦</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Bitturing</span>
+            <a class="tweet-id" href="https://x.com/Bitturing/status/2026916399202054628" target="_blank" rel="noopener">(2026916399202054628)</a>
+            <span class="tweet-stats">❤️ 113 🔄 21 💬 7</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L51" data-copy="经济越不好，普通人越能逆袭而上。
+
+中国经济即将迎来大变局。如果你银行卡里还有存款，如果你还有车有房，那么接下来你一定要特别小心。
+https://x.com/jiamibtc/status/2027052976272203816">
+          <div class="tweet-line">
+            <a class="line-num" href="#L51" data-line="51">51</a>
+            <span class="tweet-text">经济越不好，普通人越能逆袭而上。
+
+中国经济即将迎来大变局。如果你银行卡里还有存款，如果你还有车有房，那么接下来你一定要特别小心。</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">BNB蛙蛙</span>
+            <a class="tweet-id" href="https://x.com/jiamibtc/status/2027052976272203816" target="_blank" rel="noopener">(2027052976272203816)</a>
+            <span class="tweet-stats">❤️ 526 🔄 135 💬 34</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L52" data-copy="half of all jobs are exposed to AI automation and most companies are doing nothing about it.
+https://x.com/damianplayer/status/2027191778617536964">
+          <div class="tweet-line">
+            <a class="line-num" href="#L52" data-line="52">52</a>
+            <span class="tweet-text">half of all jobs are exposed to AI automation and most companies are doing nothing about it.</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Damian Player</span>
+            <a class="tweet-id" href="https://x.com/damianplayer/status/2027191778617536964" target="_blank" rel="noopener">(2027191778617536964)</a>
+            <span class="tweet-stats">❤️ 15 🔄 4 💬 5</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L53" data-copy="“babe wake up.”
+
+Google just dropped Nano Banana 2
+https://x.com/cgtwts/status/2027054385906504127">
+          <div class="tweet-line">
+            <a class="line-num" href="#L53" data-line="53">53</a>
+            <span class="tweet-text">“babe wake up.”
+
+Google just dropped Nano Banana 2</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">CG</span>
+            <a class="tweet-id" href="https://x.com/cgtwts/status/2027054385906504127" target="_blank" rel="noopener">(2027054385906504127)</a>
+            <span class="tweet-stats">❤️ 3400 🔄 107 💬 36</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L54" data-copy="Apple M5系列：下一个AI硬件拐点？
+
+苹果的M系列芯片每次迭代都像在悄无声息地重塑计算边界，而2026年的M5家族（预计下周起陆续亮相，包括M5 Pro/Max MacBook Pro、M5 Max/Ultra Mac Studio）很可能成为AI从“云端依赖”转向“本地主权”的关键转折点。
+
+M5的核心猜测：不止是“更快”，而是“更AI原生”
+https://x.com/billtheinvestor/status/2027079412382859325">
+          <div class="tweet-line">
+            <a class="line-num" href="#L54" data-line="54">54</a>
+            <span class="tweet-text">Apple M5系列：下一个AI硬件拐点？
+
+苹果的M系列芯片每次迭代都像在悄无声息地重塑计算边界，而2026年的M5家族（预计下周起陆续亮相，包括M5 Pro/Max MacBook Pro、M5 Max/Ultra Mac Studio）很可能成为AI从“云端依赖”转向“本地主权”的关键转折点。
+
+M5的核心猜测：不止是“更快”，而是“更AI原生”</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Bill The Investor</span>
+            <a class="tweet-id" href="https://x.com/billtheinvestor/status/2027079412382859325" target="_blank" rel="noopener">(2027079412382859325)</a>
+            <span class="tweet-stats">❤️ 22 🔄 5 💬 2</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L55" data-copy="看网友说
+@1password
+涨价了，翻了下记录，我从2024年8月开始使用自部署 
+@Bitwarden
+ ，已经快一年半了，非常稳定、好用。
+https://x.com/huhexian/status/2027035786059886661">
+          <div class="tweet-line">
+            <a class="line-num" href="#L55" data-line="55">55</a>
+            <span class="tweet-text">看网友说
+@1password
+涨价了，翻了下记录，我从2024年8月开始使用自部署 
+@Bitwarden
+ ，已经快一年半了，非常稳定、好用。</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Bruce</span>
+            <a class="tweet-id" href="https://x.com/huhexian/status/2027035786059886661" target="_blank" rel="noopener">(2027035786059886661)</a>
+            <span class="tweet-stats">❤️ 25 🔄 3 💬 2</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L56" data-copy="小时候老师说什么金庸、老舍、冰心，说实话当时不懂他们多牛逼；现在，刷了好几遍老舍的茶馆，猛地被触动，老舍确实牛，非你我可以比拟的。
+https://x.com/nongfu_finn/status/2026995132671959301">
+          <div class="tweet-line">
+            <a class="line-num" href="#L56" data-line="56">56</a>
+            <span class="tweet-text">小时候老师说什么金庸、老舍、冰心，说实话当时不懂他们多牛逼；现在，刷了好几遍老舍的茶馆，猛地被触动，老舍确实牛，非你我可以比拟的。</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">潜龙在渊</span>
+            <a class="tweet-id" href="https://x.com/nongfu_finn/status/2026995132671959301" target="_blank" rel="noopener">(2026995132671959301)</a>
+            <span class="tweet-stats">❤️ 204 🔄 69 💬 7</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L57" data-copy="AI Anime is wild.
+
+Goku meets Naruto
+https://x.com/markgadala/status/2027186999090696613">
+          <div class="tweet-line">
+            <a class="line-num" href="#L57" data-line="57">57</a>
+            <span class="tweet-text">AI Anime is wild.
+
+Goku meets Naruto</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Mark Gadala-Maria</span>
+            <a class="tweet-id" href="https://x.com/markgadala/status/2027186999090696613" target="_blank" rel="noopener">(2027186999090696613)</a>
+            <span class="tweet-stats">❤️ 12 🔄 2 💬 0</span>
+          </div>
+        </div>
+        <div class="tweet-item" id="L58" data-copy="اذا عندك صوره جودتها ضعيفه اكتب الامر ذا في Nano banana 2 الجديد وهو يتكفل بالباقي 
+
+
+Upscale the image while following the constraints below!  
+＜Constraints＞  
+・Don&#039;t distort it  
+・Don&#039;t change the colors
+https://x.com/Majed_/status/2027135956415926716">
+          <div class="tweet-line">
+            <a class="line-num" href="#L58" data-line="58">58</a>
+            <span class="tweet-text">اذا عندك صوره جودتها ضعيفه اكتب الامر ذا في Nano banana 2 الجديد وهو يتكفل بالباقي 
+
+
+Upscale the image while following the constraints below!  
+＜Constraints＞  
+・Don&#039;t distort it  
+・Don&#039;t change the colors</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">ماجد</span>
+            <a class="tweet-id" href="https://x.com/Majed_/status/2027135956415926716" target="_blank" rel="noopener">(2027135956415926716)</a>
+            <span class="tweet-stats">❤️ 2200 🔄 74 💬 56</span>
+          </div>
+        </div></div>
+    </section>
+    <section class="category-section">
+      <h2 class="category-title">💰 商業與新創</h2>
+      <div class="category-content">
+        <div class="tweet-item" id="L41" data-copy="Spend $0 to market your SaaS:
+
+Reddit is FREE
+Versily is FREE
+Peerlist is FREE
+Betalist is FREE
+Dang AI is FREE
+SaaSHub is FREE
+TrustMRR is FREE
+FounderList is FREE
+AlternativeTo is FREE
+MicroLaunch is FREE
+Hacker News is FREE
+Product Hunt is FREE
+Indie Hackers is FREE
+Startup
+https://x.com/Param_eth/status/2027050427582476668">
+          <div class="tweet-line">
+            <a class="line-num" href="#L41" data-line="41">41</a>
+            <span class="tweet-text">Spend $0 to market your SaaS:
+
+Reddit is FREE
+Versily is FREE
+Peerlist is FREE
+Betalist is FREE
+Dang AI is FREE
+SaaSHub is FREE
+TrustMRR is FREE
+FounderList is FREE
+AlternativeTo is FREE
+MicroLaunch is FREE
+Hacker News is FREE
+Product Hunt is FREE
+Indie Hackers is FREE
+Startup</span>
+          </div>
+          <div class="tweet-meta">
+            <span class="tweet-author">Param</span>
+            <a class="tweet-id" href="https://x.com/Param_eth/status/2027050427582476668" target="_blank" rel="noopener">(2027050427582476668)</a>
+            <span class="tweet-stats">❤️ 720 🔄 78 💬 34</span>
+          </div>
+        </div></div>
+    </section>
+        
+        <section class="insights-section">
+            <h2>💡 三行洞察</h2>
+            <ol class="insights-list">
+                <li>內容分佈：33 則推文屬於「熱門焦點」類別，佔總數 57%。</li><li>互動熱度：13 則推文互動數超過 1000，顯示話題具有一定傳播力。</li><li>建議追蹤：關注高互動貼文後續發展，適時參與相關討論。</li>
+            </ol>
+        </section>
+        
+        <footer class="footer">
+            <p>OpenClaw X 平台智能分析 · 每3小時自動更新</p>
+            <p style="margin-top: 8px; font-size: 12px;">
+                互動操作：點擊文字複製內容+原文連結 · 點擊行號複製 highlight 連結 · 點擊 tweet_id 跳轉原貼文
+            </p>
+        </footer>
+    </div>
+    
+    <div class="toast" id="toast">已複製</div>
+    
+    <script>
+        const toast = document.getElementById('toast');
+        
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 1500);
+        }
+        
+        async function copyText(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showToast('已複製');
+            } catch (e) {
+                showToast('複製失敗');
+            }
+        }
+        
+        // 點擊行號：複製 highlight 連結
+        document.querySelectorAll('.line-num').forEach(el => {
+            el.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const lineId = el.closest('.tweet-item').id;
+                const url = location.origin + location.pathname + '#' + lineId;
+                history.replaceState(null, '', '#' + lineId);
+                await copyText(url);
+            });
+        });
+        
+        // 點擊文字：複製文字+原文連結
+        document.querySelectorAll('.tweet-text').forEach(el => {
+            el.addEventListener('click', async () => {
+                const item = el.closest('.tweet-item');
+                const text = item.dataset.copy;
+                await copyText(text);
+            });
+        });
+    </script>
+</body>
+</html>
