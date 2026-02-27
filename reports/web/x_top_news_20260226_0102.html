@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X Top News - 20260226</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #15202b;
+      color: #e7e9ea;
+      line-height: 1.6;
+    }
+    .header {
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #38444d;
+      margin-bottom: 20px;
+    }
+    .header h1 { margin: 0; color: #1d9bf0; font-size: 1.8em; }
+    .header .meta { color: #8899a6; font-size: 0.9em; margin-top: 8px; }
+    .summary {
+      background: #192734;
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #38444d;
+    }
+    .summary h3 { margin-top: 0; color: #1d9bf0; }
+    .category { margin-bottom: 30px; }
+    .category-title {
+      color: #1d9bf0;
+      font-size: 1.3em;
+      padding: 10px 15px;
+      background: #192734;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border-left: 4px solid #1d9bf0;
+    }
+    .category-title .count { color: #8899a6; font-size: 0.8em; }
+    .tweet {
+      background: #192734;
+      border: 1px solid #38444d;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+    .tweet:hover { border-color: #1d9bf0; }
+    .tweet-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .line-num {
+      color: #8899a6;
+      font-size: 0.8em;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #253341;
+    }
+    .line-num:hover { background: #1d9bf0; color: white; }
+    .author {
+      font-weight: bold;
+      color: #e7e9ea;
+      cursor: pointer;
+    }
+    .author:hover { text-decoration: underline; }
+    .handle { color: #8899a6; font-weight: normal; }
+    .time { color: #8899a6; font-size: 0.9em; }
+    .tweet-link { text-decoration: none; margin-left: auto; font-size: 1.2em; }
+    .tweet-text {
+      color: #e7e9ea;
+      margin-bottom: 10px;
+      white-space: pre-wrap;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 6px;
+    }
+    .tweet-text:hover { background: #253341; }
+    .tweet-stats {
+      display: flex;
+      gap: 20px;
+      color: #8899a6;
+      font-size: 0.9em;
+    }
+    .blocked-notice {
+      background: #3a1c1c;
+      border: 1px solid #c94c4c;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .blocked-notice h2 { color: #c94c4c; }
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1d9bf0;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+    .toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🐦 X Top News</h1>
+    <div class="meta">2026/02/27 01:04 | 共 59 條推文</div>
+  </div>
+  
+  <div class="summary">
+    <h3>📊 記者摘要</h3>
+    <p><strong>總數：</strong>59 條 | <strong>熱門類別：</strong>科技創新 | <strong>平均互動：</strong>1,095</p>
+    <p><strong>分類分布：</strong>科技創新: 35 | 其他: 18 | 社會民生: 3 | 政治國際: 2 | 財經商業: 1</p>
+  </div>
+  
+  
+        <section class="category">
+          <h2 class="category-title">科技創新 <span class="count">(35)</span></h2>
+          <div class="tweets">
+      
+          <div class="tweet" id="L1">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(1)" title="複製行號">#1</span>
+              <span class="author" onclick="copyText('Jaber @Akashi203')">Jaber <span class="handle">@Akashi203</span></span>
+              <span class="time">16h</span>
+              <a class="tweet-link" href="https://x.com/Akashi203/status/2026817793165779387" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/Akashi203/status/2026817793165779387')">We open sourced an operating system for ai agents
+137k lines of rust, MIT licensed
+
+we love 
+@openclaw
+  and it inspired a lot of what we built. but we wanted something that works at the kernel level so we built 
+@openfangg
+ 
+
+agents run inside WASM sandboxes the same way processes</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 2,600</span>
+              <span title="轉推">🔄 343</span>
+              <span title="回覆">💬 164</span>
+              <span title="總互動">📊 3,107</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L2">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(2)" title="複製行號">#2</span>
+              <span class="author" onclick="copyText('Figma @figma')">Figma <span class="handle">@figma</span></span>
+              <span class="time">17h</span>
+              <a class="tweet-link" href="https://x.com/figma/status/2026796079602413985" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/figma/status/2026796079602413985')">&gt; Send code from Claude
+&gt; Explore on the canvas
+&gt; Prototype with AI
+&gt; Work through feedback
+&gt; Roundtrip back to code
+
+All in Figma</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 2,700</span>
+              <span title="轉推">🔄 260</span>
+              <span title="回覆">💬 76</span>
+              <span title="總互動">📊 3,036</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L3">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(3)" title="複製行號">#3</span>
+              <span class="author" onclick="copyText('Cursor @cursor_ai')">Cursor <span class="handle">@cursor_ai</span></span>
+              <span class="time">23h</span>
+              <a class="tweet-link" href="https://x.com/cursor_ai/status/2026717494426173917" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/cursor_ai/status/2026717494426173917')">Software is changing.</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 2,700</span>
+              <span title="轉推">🔄 260</span>
+              <span title="回覆">💬 72</span>
+              <span title="總互動">📊 3,032</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L4">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(4)" title="複製行號">#4</span>
+              <span class="author" onclick="copyText('Wesley @wescld')">Wesley <span class="handle">@wescld</span></span>
+              <span class="time">21h</span>
+              <a class="tweet-link" href="https://x.com/wescld/status/2026739200314220781" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/wescld/status/2026739200314220781')">isso aqui é BIZARRO
+
+eu pedi pro claude testar o himetrica, ele criou uma conta fez o onboarding, testou a plataforma INTEIRA em minutos
+
+se você é QA eu tenho uma péssima notícia</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 747</span>
+              <span title="轉推">🔄 26</span>
+              <span title="回覆">💬 20</span>
+              <span title="總互動">📊 793</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L5">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(5)" title="複製行號">#5</span>
+              <span class="author" onclick="copyText('程序员鱼皮 @yupi996')">程序员鱼皮 <span class="handle">@yupi996</span></span>
+              <span class="time">14h</span>
+              <a class="tweet-link" href="https://x.com/yupi996/status/2026854947846058233" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/yupi996/status/2026854947846058233')">微软刚刚更新了免费的 AI Agent 零基础课，GitHub 狂涨 5w+ Star，有中文教程，适合想入门 Agent 开发的同学  建议收藏！
+项目叫 ai-agents-for-beginners，一共 15 节课（还在持续更新），每节都有文章 + 视频 + 代码示例。
+我帮大家划下重点，帮你节省一个小时：
+1）基础概念：AI Agent</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 424</span>
+              <span title="轉推">🔄 114</span>
+              <span title="回覆">💬 2</span>
+              <span title="總互動">📊 540</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L6">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(6)" title="複製行號">#6</span>
+              <span class="author" onclick="copyText('Sarvesh Shrivastava @bloggersarvesh')">Sarvesh Shrivastava <span class="handle">@bloggersarvesh</span></span>
+              <span class="time">23h</span>
+              <a class="tweet-link" href="https://x.com/bloggersarvesh/status/2026710864452362483" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/bloggersarvesh/status/2026710864452362483')">Just realized why I’m so addicted to Claude Cowork.
+
+Because it feels like I am buying Bitcoin at $100. 
+
+There’s a small group of businesses quietly building unfair distribution right now.
+
+Not louder. Not flashier.
+
+Just smarter.
+
+They’re using Claude Code to architect entire</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 395</span>
+              <span title="轉推">🔄 24</span>
+              <span title="回覆">💬 18</span>
+              <span title="總互動">📊 437</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L7">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(7)" title="複製行號">#7</span>
+              <span class="author" onclick="copyText('Machina @EXM7777')">Machina <span class="handle">@EXM7777</span></span>
+              <span class="time">Feb 25</span>
+              <a class="tweet-link" href="https://x.com/EXM7777/status/2026666140987175221" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/EXM7777/status/2026666140987175221')">i built something that rewires how AI thinks... this is the ONLY skill you will ever need for Claude, Codex or Openclaw:</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 313</span>
+              <span title="轉推">🔄 24</span>
+              <span title="回覆">💬 6</span>
+              <span title="總互動">📊 343</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L8">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(8)" title="複製行號">#8</span>
+              <span class="author" onclick="copyText('God of Prompt @godofprompt')">God of Prompt <span class="handle">@godofprompt</span></span>
+              <span class="time">8h</span>
+              <a class="tweet-link" href="https://x.com/godofprompt/status/2026935521046573450" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/godofprompt/status/2026935521046573450')">This paper broke my brain 
+
+Researchers gave Claude a simple question: “I want to wash my car. The car wash is 100 meters away. Should I walk or drive?”
+
+Claude said walk.
+
+Every major LLM said walk.
+
+The correct answer is drive.
+
+The car has to be there. Here’s the wild part:</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 203</span>
+              <span title="轉推">🔄 46</span>
+              <span title="回覆">💬 25</span>
+              <span title="總互動">📊 274</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L9">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(9)" title="複製行號">#9</span>
+              <span class="author" onclick="copyText('すぐる | ChatGPTガチ勢 𝕏 @SuguruKun_ai')">すぐる | ChatGPTガチ勢 𝕏 <span class="handle">@SuguruKun_ai</span></span>
+              <span class="time">10h</span>
+              <a class="tweet-link" href="https://x.com/SuguruKun_ai/status/2026912324544770322" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/SuguruKun_ai/status/2026912324544770322')"></div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 194</span>
+              <span title="轉推">🔄 10</span>
+              <span title="回覆">💬 0</span>
+              <span title="總互動">📊 204</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L10">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(10)" title="複製行號">#10</span>
+              <span class="author" onclick="copyText('MiniMax_Agent @MiniMaxAgent')">MiniMax_Agent <span class="handle">@MiniMaxAgent</span></span>
+              <span class="time">2h</span>
+              <a class="tweet-link" href="https://x.com/MiniMaxAgent/status/2027027163078336885" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/MiniMaxAgent/status/2027027163078336885')">MiniMax Agent + MaxClaw + Experts = ?
+
+ &quot;Build 3 landing pages&quot; on your commute → shipped before standup.  
+ &quot;Daily AI &amp; e-commerce briefs from X &amp; Hacker News&quot; before bed → in your phone every morning.  
+ &quot;Turn my syllabus into 10 lesson decks&quot; at lunch → posted to</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 162</span>
+              <span title="轉推">🔄 21</span>
+              <span title="回覆">💬 6</span>
+              <span title="總互動">📊 189</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L11">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(11)" title="複製行號">#11</span>
+              <span class="author" onclick="copyText('Joyen - AI @code_joyen0')">Joyen - AI <span class="handle">@code_joyen0</span></span>
+              <span class="time">8h</span>
+              <a class="tweet-link" href="https://x.com/code_joyen0/status/2026936638065226035" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/code_joyen0/status/2026936638065226035')">Full-Stack SEO AI Agent now in n8n!
+
+ What this workflow can do:
+ Analyze GA4 + SERP
+ Crawl + Clean FAQ
+ Auto-rewrite articles
+ Save  performance
+
+ The ultimate all-in-one SEO solution!
+
+ Like + RT
+ Comment “N8N”
+ Follow me &amp; I’ll DM you the full workflow</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 87</span>
+              <span title="轉推">🔄 43</span>
+              <span title="回覆">💬 54</span>
+              <span title="總互動">📊 184</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L12">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(12)" title="複製行號">#12</span>
+              <span class="author" onclick="copyText('宝玉 @dotey')">宝玉 <span class="handle">@dotey</span></span>
+              <span class="time">20h</span>
+              <a class="tweet-link" href="https://x.com/dotey/status/2026756475801186704" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/dotey/status/2026756475801186704')">Claude Code/Cowork 迭代还真快，小龙虾的定时任务也学过来了。
+
+现在有了远程操控 /remote-control 和定时任务，的大部分任务都可以做了。
+
+Anthropic 的桌面工具 Cowork 新增了&quot;定时任务&quot;功能，用户可以让 Claude</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 126</span>
+              <span title="轉推">🔄 30</span>
+              <span title="回覆">💬 22</span>
+              <span title="總互動">📊 178</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L13">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(13)" title="複製行號">#13</span>
+              <span class="author" onclick="copyText('Poonam Soni @CodeByPoonam')">Poonam Soni <span class="handle">@CodeByPoonam</span></span>
+              <span class="time">5h</span>
+              <a class="tweet-link" href="https://x.com/CodeByPoonam/status/2026983950879805533" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/CodeByPoonam/status/2026983950879805533')">Google suspended OpenClaw.
+
+MiniMax said hold my beer.
+
+MaxClaw just dropped.
+
+Here&#039;s what MaxClaw actually is:
+OpenClaw × MiniMax Agent × M2.5 — fully unlocked.
+
+Runs 24/7 across every app you already use:
+→ Telegram
+→ WhatsApp
+→ Slack
+→ Discord</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 146</span>
+              <span title="轉推">🔄 8</span>
+              <span title="回覆">💬 13</span>
+              <span title="總互動">📊 167</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L14">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(14)" title="複製行號">#14</span>
+              <span class="author" onclick="copyText('小互 @xiaohu')">小互 <span class="handle">@xiaohu</span></span>
+              <span class="time">5h</span>
+              <a class="tweet-link" href="https://x.com/xiaohu/status/2026985482123612213" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/xiaohu/status/2026985482123612213')">这算什么
+
+AI 诈骗？</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 119</span>
+              <span title="轉推">🔄 14</span>
+              <span title="回覆">💬 18</span>
+              <span title="總互動">📊 151</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L15">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(15)" title="複製行號">#15</span>
+              <span class="author" onclick="copyText('数字游民Jarod @jarodise')">数字游民Jarod <span class="handle">@jarodise</span></span>
+              <span class="time">17h</span>
+              <a class="tweet-link" href="https://x.com/jarodise/status/2026797869479649738" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/jarodise/status/2026797869479649738')">Anthropic本来就不待见OpenClaw，后来龙虾之父被敌方招安后就更不待见了。
+
+所以，在过去的48小时内他们接连发布了Remote Control 和 Scheduled Tasks，明眼人都能看出来，这都是奔着OpenClaw命门去的狠招。
+
+折腾什么养虾，直接装个Claude Cowork</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 115</span>
+              <span title="轉推">🔄 14</span>
+              <span title="回覆">💬 10</span>
+              <span title="總互動">📊 139</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L16">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(16)" title="複製行號">#16</span>
+              <span class="author" onclick="copyText('AI探路者Tim @AIExplorerTim')">AI探路者Tim <span class="handle">@AIExplorerTim</span></span>
+              <span class="time">14h</span>
+              <a class="tweet-link" href="https://x.com/AIExplorerTim/status/2026852473353417174" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/AIExplorerTim/status/2026852473353417174')">速报：不要直接复制粘贴ChatGPT的回答。
+
+ChatGPT的文字很容易被识别。
+
+使用这些提示词，看看魔法发生：</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 84</span>
+              <span title="轉推">🔄 15</span>
+              <span title="回覆">💬 19</span>
+              <span title="總互動">📊 118</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L17">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(17)" title="複製行號">#17</span>
+              <span class="author" onclick="copyText('Vaibhav Sisinty @VaibhavSisinty')">Vaibhav Sisinty <span class="handle">@VaibhavSisinty</span></span>
+              <span class="time">7h</span>
+              <a class="tweet-link" href="https://x.com/VaibhavSisinty/status/2026951081809596485" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/VaibhavSisinty/status/2026951081809596485')">This is a game changer 
+
+Control your browser with just your voice and it actually does things for you.
+
+Comet just made this happen.
+
+The shipping velocity from the Perplexity team is insane.</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 105</span>
+              <span title="轉推">🔄 5</span>
+              <span title="回覆">💬 5</span>
+              <span title="總互動">📊 115</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L18">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(18)" title="複製行號">#18</span>
+              <span class="author" onclick="copyText('zhl @onlyice0328')">zhl <span class="handle">@onlyice0328</span></span>
+              <span class="time">9h</span>
+              <a class="tweet-link" href="https://x.com/onlyice0328/status/2026917626757382267" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/onlyice0328/status/2026917626757382267')">这两天试用 AMP Code 下来，发现它非常强啊……
+
+它的 CLI 使用体验非常好，好过 Claude Code 及 Codex。看图 1，它的输出非常干净，操作符合直觉。
+
+模型的 Thinking 部分右边会有个 ▷ 符号，点击就可以展开这一段。这比 Claude Code 需要使用 Ctrl+O 展示所有 thinking block 体验好得多。
+
+1/n</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 58</span>
+              <span title="轉推">🔄 1</span>
+              <span title="回覆">💬 12</span>
+              <span title="總互動">📊 71</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L19">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(19)" title="複製行號">#19</span>
+              <span class="author" onclick="copyText('Geek Lite @QingQ77')">Geek Lite <span class="handle">@QingQ77</span></span>
+              <span class="time">13h</span>
+              <a class="tweet-link" href="https://x.com/QingQ77/status/2026867316273852535" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/QingQ77/status/2026867316273852535')">LLM 时代的 Markdown 阅读器
+
+AI 工具每天都在生成 Markdown——代码文档、技术规范、分析报告——里面塞满图表、表格和结构化内容。mdr 解决的是「如何快速、优雅地阅读这些内容」，而不是编辑。
+
+mdr（Markdown Reader） 用 Rust 开发的轻量级 Markdown 查看器，支持 Mermaid 图表渲染和实时重载。</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 54</span>
+              <span title="轉推">🔄 6</span>
+              <span title="回覆">💬 2</span>
+              <span title="總互動">📊 62</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L20">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(20)" title="複製行號">#20</span>
+              <span class="author" onclick="copyText('Julian Goldie SEO @JulianGoldieSEO')">Julian Goldie SEO <span class="handle">@JulianGoldieSEO</span></span>
+              <span class="time">6h</span>
+              <a class="tweet-link" href="https://x.com/JulianGoldieSEO/status/2026968987188314618" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/JulianGoldieSEO/status/2026968987188314618')">This guy runs 6 AI agents at the same time on the same OpenClaw setup.
+
+Each one working on a different project. All at once.
+
+Here&#039;s exactly how →
+
+Most people run OpenClaw through Telegram.
+
+One task. Wait. One task. Wait.
+
+That&#039;s like hiring 5 employees and making them all</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 48</span>
+              <span title="轉推">🔄 3</span>
+              <span title="回覆">💬 2</span>
+              <span title="總互動">📊 53</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L21">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(21)" title="複製行號">#21</span>
+              <span class="author" onclick="copyText('毒猫猫 @NekoStranding')">毒猫猫 <span class="handle">@NekoStranding</span></span>
+              <span class="time">8h</span>
+              <a class="tweet-link" href="https://x.com/NekoStranding/status/2026939445916905778" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/NekoStranding/status/2026939445916905778')">Andrewj Karpathy 断言：从 2025 年 12 月开始，编程已经变天了。所以，现在还需要人类做什么？
+
+现在是 vibe coding 一周年。但直到 25 年底，大家还只是在做「祈祷式编程」：写一大坨 prompt，祈祷 AI 写的东西能跑，相当于一个大号代码补全
+
+而 12 月之后，业界全方位变成了 Agent 自主编程：AI</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 47</span>
+              <span title="轉推">🔄 3</span>
+              <span title="回覆">💬 3</span>
+              <span title="總互動">📊 53</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L22">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(22)" title="複製行號">#22</span>
+              <span class="author" onclick="copyText('Leo @runes_leo')">Leo <span class="handle">@runes_leo</span></span>
+              <span class="time">9h</span>
+              <a class="tweet-link" href="https://x.com/runes_leo/status/2026924694369341739" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/runes_leo/status/2026924694369341739')">Claude Code 重度用户实测验证。
+
+六个缺失全踩过，最痛两个：
+• 没有遗忘 — 一年前过时经验跟昨天关键教训权重相同
+• Memory Misevolution — 错误经验写入 patterns.md 后，后续每轮对话自动加载、重复犯错
+
+目前土法方案：today.md → MEMORY.md →</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 36</span>
+              <span title="轉推">🔄 8</span>
+              <span title="回覆">💬 2</span>
+              <span title="總互動">📊 46</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L23">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(23)" title="複製行號">#23</span>
+              <span class="author" onclick="copyText('阿绎 · 认知代码 @AYi_AInotes')">阿绎 · 认知代码 <span class="handle">@AYi_AInotes</span></span>
+              <span class="time">4h</span>
+              <a class="tweet-link" href="https://x.com/AYi_AInotes/status/2027000350646161722" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/AYi_AInotes/status/2027000350646161722')"></div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 38</span>
+              <span title="轉推">🔄 7</span>
+              <span title="回覆">💬 0</span>
+              <span title="總互動">📊 45</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L24">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(24)" title="複製行號">#24</span>
+              <span class="author" onclick="copyText('Julian Goldie SEO @JulianGoldieSEO')">Julian Goldie SEO <span class="handle">@JulianGoldieSEO</span></span>
+              <span class="time">18h</span>
+              <a class="tweet-link" href="https://x.com/JulianGoldieSEO/status/2026794340433944870" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/JulianGoldieSEO/status/2026794340433944870')">This new NotebookLM feature is wild.
+
+You can now control your AI-generated video overviews.
+
+Before: generic summary.
+
+Now: fully customizable direction.
+
+You choose:
+
+• The angle
+• The focus
+• What to emphasize
+• What to skip
+
+Upload research → Write a focused prompt →</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 34</span>
+              <span title="轉推">🔄 6</span>
+              <span title="回覆">💬 1</span>
+              <span title="總互動">📊 41</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L25">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(25)" title="複製行號">#25</span>
+              <span class="author" onclick="copyText('卡比卡比 @jakevin7')">卡比卡比 <span class="handle">@jakevin7</span></span>
+              <span class="time">15h</span>
+              <a class="tweet-link" href="https://x.com/jakevin7/status/2026835731453456500" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/jakevin7/status/2026835731453456500')">分享个 skill 的 store: 
+https://
+skillsmp.com
+
+刚刚还在用它找TG的skill。。</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 34</span>
+              <span title="轉推">🔄 5</span>
+              <span title="回覆">💬 1</span>
+              <span title="總互動">📊 40</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L26">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(26)" title="複製行號">#26</span>
+              <span class="author" onclick="copyText('AIGCLINK @aigclink')">AIGCLINK <span class="handle">@aigclink</span></span>
+              <span class="time">8h</span>
+              <a class="tweet-link" href="https://x.com/aigclink/status/2026943638287351874" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/aigclink/status/2026943638287351874')">本地小模型的OpenClaw替代方案：SmallClaw，4B小模型，2019年笔记本，8G内存能跑
+
+响应时间，在上下文占满情况下最多30秒
+多步工具调用最多2分钟
+网页搜索约1.5分钟
+虽不算快但在4B小模型下也能用
+
+区别于OpenClaw等的多智能体协作模式，SmallClaw采用单轮工具调用架构，减少小模型协调负担</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 22</span>
+              <span title="轉推">🔄 7</span>
+              <span title="回覆">💬 2</span>
+              <span title="總互動">📊 31</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L27">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(27)" title="複製行號">#27</span>
+              <span class="author" onclick="copyText('Julian Goldie SEO @JulianGoldieSEO')">Julian Goldie SEO <span class="handle">@JulianGoldieSEO</span></span>
+              <span class="time">6h</span>
+              <a class="tweet-link" href="https://x.com/JulianGoldieSEO/status/2026975898071941151" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/JulianGoldieSEO/status/2026975898071941151')">Your AI agent can now talk to you out loud.
+
+Not a chatbot. Not Siri. Your own personal AI running on your machine with a real voice.
+
+It&#039;s called VoxClaw and it just dropped today.
+
+Here&#039;s what it actually does →
+
+Plugs straight into OpenClaw and gives it a voice
+
+3 voice</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 16</span>
+              <span title="轉推">🔄 5</span>
+              <span title="回覆">💬 2</span>
+              <span title="總互動">📊 23</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L28">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(28)" title="複製行號">#28</span>
+              <span class="author" onclick="copyText('海拉鲁编程客 @hylarucoder')">海拉鲁编程客 <span class="handle">@hylarucoder</span></span>
+              <span class="time">10h</span>
+              <a class="tweet-link" href="https://x.com/hylarucoder/status/2026911318507401716" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/hylarucoder/status/2026911318507401716')">@CuiMao
+ 翠猫老师艾特我了, 那我分享个数据
+
+以油管来说, 40w 播放量不到 8000人民币激励, 还不够 AI 费的
+
+我也不是什么自媒体成功人士，但至少不是纸上谈兵
+
+之前我也写过我的油管是怎么做的
+
+
+https://
+x.com/hylarucoder/st
+atus/1944913818792157480
+… 
+
+很多人做自媒体的目标很简单：搞钱。常见变现渠道其实就这几类：</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 10</span>
+              <span title="轉推">🔄 0</span>
+              <span title="回覆">💬 5</span>
+              <span title="總互動">📊 15</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L29">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(29)" title="複製行號">#29</span>
+              <span class="author" onclick="copyText('Steve机械飞升 @SteveHotspots')">Steve机械飞升 <span class="handle">@SteveHotspots</span></span>
+              <span class="time">1h</span>
+              <a class="tweet-link" href="https://x.com/SteveHotspots/status/2027045843178758459" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/SteveHotspots/status/2027045843178758459')">Clash设置一直都弄不太好
+不论是在电脑上还是软路由上
+雨哥写了一篇很好的教程
+可以帮助新人快速搭建自己的配置规则
+让上网速度更快</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 8</span>
+              <span title="轉推">🔄 1</span>
+              <span title="回覆">💬 4</span>
+              <span title="總互動">📊 13</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L30">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(30)" title="複製行號">#30</span>
+              <span class="author" onclick="copyText('Tz @Tz_2022')">Tz <span class="handle">@Tz_2022</span></span>
+              <span class="time">20h</span>
+              <a class="tweet-link" href="https://x.com/Tz_2022/status/2026755270635040793" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/Tz_2022/status/2026755270635040793')">和 Suno 的差距还是太大了。。。
+
+左边这首是 
+http://
+Producer.ai 生成的，右边是 
+http://
+Suno.ai 做的，同一首歌，可以对比听一下差距。。。
+
+提示词和歌词都是相同的
+
+《千年以后仍会想起你》
+
+风格（styles）
+
+• anime cinematic / fantasy
+• ambient orchestral
+•</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 8</span>
+              <span title="轉推">🔄 2</span>
+              <span title="回覆">💬 3</span>
+              <span title="總互動">📊 13</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L31">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(31)" title="複製行號">#31</span>
+              <span class="author" onclick="copyText('rocketman @rocketman_w')">rocketman <span class="handle">@rocketman_w</span></span>
+              <span class="time">18h</span>
+              <a class="tweet-link" href="https://x.com/rocketman_w/status/2026786568929976708" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/rocketman_w/status/2026786568929976708')">I actually think I&#039;m 10x as productive as I was a year ago. 
+
+Making an AI-managed DAO protocol, incredibly hard to build, probably would&#039;ve taken me a year+ to do it by myself. 
+
+Now I think I&#039;m going to finish it in a few weeks</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 6</span>
+              <span title="轉推">🔄 0</span>
+              <span title="回覆">💬 3</span>
+              <span title="總互動">📊 9</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L32">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(32)" title="複製行號">#32</span>
+              <span class="author" onclick="copyText('n8n.io @n8n_io')">n8n.io <span class="handle">@n8n_io</span></span>
+              <span class="time">1h</span>
+              <a class="tweet-link" href="https://x.com/n8n_io/status/2027050137860943877" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/n8n_io/status/2027050137860943877')">n8n Livestream: new Community Challenge &amp; 
+http://
+Instantly.ai</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 7</span>
+              <span title="轉推">🔄 0</span>
+              <span title="回覆">💬 0</span>
+              <span title="總互動">📊 7</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L33">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(33)" title="複製行號">#33</span>
+              <span class="author" onclick="copyText('Julian Goldie SEO @JulianGoldieSEO')">Julian Goldie SEO <span class="handle">@JulianGoldieSEO</span></span>
+              <span class="time">6h</span>
+              <a class="tweet-link" href="https://x.com/JulianGoldieSEO/status/2026967620394844424" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/JulianGoldieSEO/status/2026967620394844424')">99% of new AI agents are just dressed-up chatbots.
+
+Notion just proved it.
+
+They launched custom agents today. Inspired by OpenClaw. Looks clean. Easy to set up.
+
+I tested it live.
+
+First task: find news about OpenClaw.
+
+It ran two web searches and said — &quot;OpenClaw doesn&#039;t appear</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 3</span>
+              <span title="轉推">🔄 1</span>
+              <span title="回覆">💬 3</span>
+              <span title="總互動">📊 7</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L34">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(34)" title="複製行號">#34</span>
+              <span class="author" onclick="copyText('Shruti Codes @Shruti_0810')">Shruti Codes <span class="handle">@Shruti_0810</span></span>
+              <span class="time">12m</span>
+              <a class="tweet-link" href="https://x.com/Shruti_0810/status/2027063815381381158" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/Shruti_0810/status/2027063815381381158')">BYE-BYE POWERPOINT. 
+CLAUDE can now create a presentation in 2 minutes.  
+
+Use these prompts instead and see the magic:</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 3</span>
+              <span title="轉推">🔄 0</span>
+              <span title="回覆">💬 2</span>
+              <span title="總互動">📊 5</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L35">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(35)" title="複製行號">#35</span>
+              <span class="author" onclick="copyText('Brady Long @thisguyknowsai')">Brady Long <span class="handle">@thisguyknowsai</span></span>
+              <span class="time">1h</span>
+              <a class="tweet-link" href="https://x.com/thisguyknowsai/status/2027041987791056972" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/thisguyknowsai/status/2027041987791056972')">This isn’t “generate an ad and hope.” 
+
+Pixel uses what’s already worked across millions of campaigns to stack the odds in your favor.</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 1</span>
+              <span title="轉推">🔄 0</span>
+              <span title="回覆">💬 1</span>
+              <span title="總互動">📊 2</span>
+            </div>
+          </div>
+        </div></section>
+        <section class="category">
+          <h2 class="category-title">財經商業 <span class="count">(1)</span></h2>
+          <div class="tweets">
+      
+          <div class="tweet" id="L36">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(36)" title="複製行號">#36</span>
+              <span class="author" onclick="copyText('比特币橙子Trader @chengzi_95330')">比特币橙子Trader <span class="handle">@chengzi_95330</span></span>
+              <span class="time">17h</span>
+              <a class="tweet-link" href="https://x.com/chengzi_95330/status/2026807751142428735" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/chengzi_95330/status/2026807751142428735')">Perplexity 的“超级 Agent 系统”来了！
+
+前两天大家都在学英文区的Openclaw配置架构，今天Perplexity 推出的“超级 Agent 系统”。
+
+本质上就是一台能干活的云端电脑。
+
+ 从回答到交付：不再是吐字，而是直接交付文档、代码、PPT 或数据报告。</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 36</span>
+              <span title="轉推">🔄 11</span>
+              <span title="回覆">💬 3</span>
+              <span title="總互動">📊 50</span>
+            </div>
+          </div>
+        </div></section>
+        <section class="category">
+          <h2 class="category-title">政治國際 <span class="count">(2)</span></h2>
+          <div class="tweets">
+      
+          <div class="tweet" id="L37">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(37)" title="複製行號">#37</span>
+              <span class="author" onclick="copyText('Kang Ritel @kr39__')">Kang Ritel <span class="handle">@kr39__</span></span>
+              <span class="time">5h</span>
+              <a class="tweet-link" href="https://x.com/kr39__/status/2026983483684655120" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/kr39__/status/2026983483684655120')">Menggabungkan Openclaw + Perplexity (via OpenRouter) + Opus 4.6 untuk generate summary begini tiap pagi</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 506</span>
+              <span title="轉推">🔄 53</span>
+              <span title="回覆">💬 25</span>
+              <span title="總互動">📊 584</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L38">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(38)" title="複製行號">#38</span>
+              <span class="author" onclick="copyText('prateek @agent_wrapper')">prateek <span class="handle">@agent_wrapper</span></span>
+              <span class="time">9h</span>
+              <a class="tweet-link" href="https://x.com/agent_wrapper/status/2026930136709484892" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/agent_wrapper/status/2026930136709484892')">8-12 with subagents is serious scale. curious how you&#039;re handling merge ordering — at that count, the order agents merge starts to matter (agent B&#039;s PR might conflict with agent A&#039;s that merged 30 seconds earlier).
+
+we hit that wall and ended up building CI-gated merge sequencing</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 0</span>
+              <span title="轉推">🔄 0</span>
+              <span title="回覆">💬 1</span>
+              <span title="總互動">📊 1</span>
+            </div>
+          </div>
+        </div></section>
+        <section class="category">
+          <h2 class="category-title">社會民生 <span class="count">(3)</span></h2>
+          <div class="tweets">
+      
+          <div class="tweet" id="L39">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(39)" title="複製行號">#39</span>
+              <span class="author" onclick="copyText('Ring Hyacinth @ring_hyacinth')">Ring Hyacinth <span class="handle">@ring_hyacinth</span></span>
+              <span class="time">23h</span>
+              <a class="tweet-link" href="https://x.com/ring_hyacinth/status/2026717625469096426" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/ring_hyacinth/status/2026717625469096426')">给龙虾的办公室装修好了！
+
+1. 在不同工作状态时，会去房间不同区域：执行任务时去工作区、闲置时去休息区、报bug了去警报区。
+2. 做了个临时公网链接，手机可访问~
+3. 龙虾会随机说一些自己当时的想法。</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 795</span>
+              <span title="轉推">🔄 111</span>
+              <span title="回覆">💬 109</span>
+              <span title="總互動">📊 1,015</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L40">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(40)" title="複製行號">#40</span>
+              <span class="author" onclick="copyText('曾颖 @zengying1107')">曾颖 <span class="handle">@zengying1107</span></span>
+              <span class="time">4h</span>
+              <a class="tweet-link" href="https://x.com/zengying1107/status/2026992601270980972" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/zengying1107/status/2026992601270980972')">哈哈，朋友在国内给我相亲介绍过一些警察，警察其实都还蛮帅的，工作也很好，如果不是以后选择留在海外，其实警察也是很好的择偶对象。
+
+今年开始会更频繁的相亲，想找个靠谱的结婚对象，姐妹们有靠谱的也可以多多介绍。</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 48</span>
+              <span title="轉推">🔄 2</span>
+              <span title="回覆">💬 87</span>
+              <span title="總互動">📊 137</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L41">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(41)" title="複製行號">#41</span>
+              <span class="author" onclick="copyText('Agata @0xAgata')">Agata <span class="handle">@0xAgata</span></span>
+              <span class="time">10h</span>
+              <a class="tweet-link" href="https://x.com/0xAgata/status/2026912398939210146" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/0xAgata/status/2026912398939210146')">OpenClaw 帮我解决了一个实际问题：每天花在刷热点上的时间大幅缩短，她替我做了信息筛选和摘要。
+
+作为一个玩具，体验确实不错。
+
+毕竟谁能抵抗一个每天不断学习还能记得你习惯的小助理呢。
+
+至于如何通过Openclaw赚钱？
+
+能想到最稳的变现路径：
+1.卖 Mac mini （卖硬件）
+2.卖中转 API</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 22</span>
+              <span title="轉推">🔄 1</span>
+              <span title="回覆">💬 3</span>
+              <span title="總互動">📊 26</span>
+            </div>
+          </div>
+        </div></section>
+        <section class="category">
+          <h2 class="category-title">其他 <span class="count">(18)</span></h2>
+          <div class="tweets">
+      
+          <div class="tweet" id="L42">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(42)" title="複製行號">#42</span>
+              <span class="author" onclick="copyText('Elon Musk @elonmusk')">Elon Musk <span class="handle">@elonmusk</span></span>
+              <span class="time">Feb 25</span>
+              <a class="tweet-link" href="https://x.com/elonmusk/status/2026662374800068707" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/elonmusk/status/2026662374800068707')">Grok 4.20</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 30,000</span>
+              <span title="轉推">🔄 4,200</span>
+              <span title="回覆">💬 3,100</span>
+              <span title="總互動">📊 37,300</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L43">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(43)" title="複製行號">#43</span>
+              <span class="author" onclick="copyText('OneHopeA9 @onehopeA9')">OneHopeA9 <span class="handle">@onehopeA9</span></span>
+              <span class="time">10h</span>
+              <a class="tweet-link" href="https://x.com/onehopeA9/status/2026905651088339408" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/onehopeA9/status/2026905651088339408')"></div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 2,800</span>
+              <span title="轉推">🔄 758</span>
+              <span title="回覆">💬 113</span>
+              <span title="總互動">📊 3,671</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L44">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(44)" title="複製行號">#44</span>
+              <span class="author" onclick="copyText('ahhhhfs @abskoop')">ahhhhfs <span class="handle">@abskoop</span></span>
+              <span class="time">Feb 25</span>
+              <a class="tweet-link" href="https://x.com/abskoop/status/2026650672146571462" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/abskoop/status/2026650672146571462')">iPhone添加NFC门禁卡教程
+
+加密的门禁卡也可以？</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 1,800</span>
+              <span title="轉推">🔄 351</span>
+              <span title="回覆">💬 65</span>
+              <span title="總互動">📊 2,216</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L45">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(45)" title="複製行號">#45</span>
+              <span class="author" onclick="copyText('Gary Vaynerchuk @garyvee')">Gary Vaynerchuk <span class="handle">@garyvee</span></span>
+              <span class="time">Feb 25</span>
+              <a class="tweet-link" href="https://x.com/garyvee/status/2026667949382316285" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/garyvee/status/2026667949382316285')"></div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 1,500</span>
+              <span title="轉推">🔄 232</span>
+              <span title="回覆">💬 118</span>
+              <span title="總互動">📊 1,850</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L46">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(46)" title="複製行號">#46</span>
+              <span class="author" onclick="copyText('Matt Epstein @MattEpstein16')">Matt Epstein <span class="handle">@MattEpstein16</span></span>
+              <span class="time">Feb 25</span>
+              <a class="tweet-link" href="https://x.com/MattEpstein16/status/2026674945145577588" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/MattEpstein16/status/2026674945145577588')">I made this in one prompt...
+
+If your a creative right now
+
+You&#039;re f*cked</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 1,500</span>
+              <span title="轉推">🔄 81</span>
+              <span title="回覆">💬 40</span>
+              <span title="總互動">📊 1,621</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L47">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(47)" title="複製行號">#47</span>
+              <span class="author" onclick="copyText('Olivia Moore @omooretweets')">Olivia Moore <span class="handle">@omooretweets</span></span>
+              <span class="time">Feb 26</span>
+              <a class="tweet-link" href="https://x.com/omooretweets/status/2026693795275002018" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/omooretweets/status/2026693795275002018')"></div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 744</span>
+              <span title="轉推">🔄 118</span>
+              <span title="回覆">💬 48</span>
+              <span title="總互動">📊 910</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L48">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(48)" title="複製行號">#48</span>
+              <span class="author" onclick="copyText('0x卡卡撸特 @0xkakarot888')">0x卡卡撸特 <span class="handle">@0xkakarot888</span></span>
+              <span class="time">15h</span>
+              <a class="tweet-link" href="https://x.com/0xkakarot888/status/2026829338088460769" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/0xkakarot888/status/2026829338088460769')"></div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 284</span>
+              <span title="轉推">🔄 76</span>
+              <span title="回覆">💬 35</span>
+              <span title="總互動">📊 395</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L49">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(49)" title="複製行號">#49</span>
+              <span class="author" onclick="copyText('马东锡 NLP @dongxi_nlp')">马东锡 NLP <span class="handle">@dongxi_nlp</span></span>
+              <span class="time">19h</span>
+              <a class="tweet-link" href="https://x.com/dongxi_nlp/status/2026778028747973104" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/dongxi_nlp/status/2026778028747973104')">非常不理解的是，为什么似乎在2026年之后，短短两个月之内，coding agent 似乎瞬间就飞起了？</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 208</span>
+              <span title="轉推">🔄 21</span>
+              <span title="回覆">💬 51</span>
+              <span title="總互動">📊 280</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L50">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(50)" title="複製行號">#50</span>
+              <span class="author" onclick="copyText('Cell 细胞 @cellinlab')">Cell 细胞 <span class="handle">@cellinlab</span></span>
+              <span class="time">Feb 25</span>
+              <a class="tweet-link" href="https://x.com/cellinlab/status/2026575801374711842" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/cellinlab/status/2026575801374711842')">如果你在做一人公司，
+强烈推荐 你研究 下 关雅荻 的探索，
+能收获很多现成的最佳实践！！</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 192</span>
+              <span title="轉推">🔄 50</span>
+              <span title="回覆">💬 5</span>
+              <span title="總互動">📊 247</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L51">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(51)" title="複製行號">#51</span>
+              <span class="author" onclick="copyText('Aliez Ren @aliez_ren')">Aliez Ren <span class="handle">@aliez_ren</span></span>
+              <span class="time">Feb 25</span>
+              <a class="tweet-link" href="https://x.com/aliez_ren/status/2026657164077793423" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/aliez_ren/status/2026657164077793423')">先用 Opus 4.6 + superpowers 的 writing-plans skill 生成 plan doc。再用 Qwen3.5 27B + executing-plans skill 执行 plan doc，又快又省钱</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 194</span>
+              <span title="轉推">🔄 31</span>
+              <span title="回覆">💬 8</span>
+              <span title="總互動">📊 233</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L52">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(52)" title="複製行號">#52</span>
+              <span class="author" onclick="copyText('松果先森 @songguoxiansen')">松果先森 <span class="handle">@songguoxiansen</span></span>
+              <span class="time">10h</span>
+              <a class="tweet-link" href="https://x.com/songguoxiansen/status/2026909624293798129" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/songguoxiansen/status/2026909624293798129')">疑似字节Seedance 2.0模型的Weights已在俄罗斯论坛上泄露。
+
+里面包含了Seedance 2.0所有的训练模型
+
+如果这是真的，接下来会发生什么？</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 134</span>
+              <span title="轉推">🔄 20</span>
+              <span title="回覆">💬 32</span>
+              <span title="總互動">📊 186</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L53">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(53)" title="複製行號">#53</span>
+              <span class="author" onclick="copyText('香蕉Banana @treydtw')">香蕉Banana <span class="handle">@treydtw</span></span>
+              <span class="time">7h</span>
+              <a class="tweet-link" href="https://x.com/treydtw/status/2026956167864586424" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/treydtw/status/2026956167864586424')"></div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 92</span>
+              <span title="轉推">🔄 24</span>
+              <span title="回覆">💬 3</span>
+              <span title="總互動">📊 119</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L54">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(54)" title="複製行號">#54</span>
+              <span class="author" onclick="copyText('Geek @geekbb')">Geek <span class="handle">@geekbb</span></span>
+              <span class="time">12h</span>
+              <a class="tweet-link" href="https://x.com/geekbb/status/2026876165441585625" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/geekbb/status/2026876165441585625')">来看看速度对比：
+
+• 远程方案：M4 Mac mini (Frp + 日本节点) 运行 Qwen3-8B • 本地方案：i9-13900H 黑苹果 部署 混元翻译 MT 1.5-1.8B
+
+都是很不错的本地翻译服务实践，追求高隐私保护的朋友可以参考
+
+https://
+ollama.com/demonbyron/HY-
+MT1.5-1.8B
+…</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 85</span>
+              <span title="轉推">🔄 9</span>
+              <span title="回覆">💬 10</span>
+              <span title="總互動">📊 104</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L55">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(55)" title="複製行號">#55</span>
+              <span class="author" onclick="copyText('DeFi Teddy @DeFiTeddy2020')">DeFi Teddy <span class="handle">@DeFiTeddy2020</span></span>
+              <span class="time">15h</span>
+              <a class="tweet-link" href="https://x.com/DeFiTeddy2020/status/2026834233369764036" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/DeFiTeddy2020/status/2026834233369764036')"></div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 74</span>
+              <span title="轉推">🔄 14</span>
+              <span title="回覆">💬 7</span>
+              <span title="總互動">📊 95</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L56">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(56)" title="複製行號">#56</span>
+              <span class="author" onclick="copyText('Nav Toor @heynavtoor')">Nav Toor <span class="handle">@heynavtoor</span></span>
+              <span class="time">50m</span>
+              <a class="tweet-link" href="https://x.com/heynavtoor/status/2027054100807106829" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/heynavtoor/status/2027054100807106829')"></div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 23</span>
+              <span title="轉推">🔄 4</span>
+              <span title="回覆">💬 2</span>
+              <span title="總互動">📊 29</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L57">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(57)" title="複製行號">#57</span>
+              <span class="author" onclick="copyText('Jason Zuo @xxx111god')">Jason Zuo <span class="handle">@xxx111god</span></span>
+              <span class="time">14h</span>
+              <a class="tweet-link" href="https://x.com/xxx111god/status/2026852518630699498" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/xxx111god/status/2026852518630699498')">多agent额外消耗token，很大一部分来自重复加载system prompt
+
+但细分任务的多agent架构，也能最大限度减少无效context的预加载。每个agent只需要加载与任务相关的context，而非整个对话历史</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 5</span>
+              <span title="轉推">🔄 0</span>
+              <span title="回覆">💬 1</span>
+              <span title="總互動">📊 6</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L58">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(58)" title="複製行號">#58</span>
+              <span class="author" onclick="copyText('Robert Youssef @rryssf_')">Robert Youssef <span class="handle">@rryssf_</span></span>
+              <span class="time">8h</span>
+              <a class="tweet-link" href="https://x.com/rryssf_/status/2026935922051232091" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/rryssf_/status/2026935922051232091')">holy shit... why can&#039;t they answer it directly? 
+
+if you ask this question a 10 year old he will get it right...</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 1</span>
+              <span title="轉推">🔄 0</span>
+              <span title="回覆">💬 0</span>
+              <span title="總互動">📊 1</span>
+            </div>
+          </div>
+        
+          <div class="tweet" id="L59">
+            <div class="tweet-header">
+              <span class="line-num" onclick="copyLine(59)" title="複製行號">#59</span>
+              <span class="author" onclick="copyText('李科男 @li_ke_nan')">李科男 <span class="handle">@li_ke_nan</span></span>
+              <span class="time">4h</span>
+              <a class="tweet-link" href="https://x.com/li_ke_nan/status/2026996651500687710" target="_blank" title="開啟原文">🐦</a>
+            </div>
+            <div class="tweet-text" onclick="copyTextWithUrl(this, 'https://x.com/li_ke_nan/status/2026996651500687710')">对，结婚吧，然后就忘掉孙割了~</div>
+            <div class="tweet-stats">
+              <span title="愛心">❤️ 0</span>
+              <span title="轉推">🔄 0</span>
+              <span title="回覆">💬 0</span>
+              <span title="總互動">📊 0</span>
+            </div>
+          </div>
+        </div></section>
+  
+  <div class="toast" id="toast">已複製到剪貼簿</div>
+  
+  <script>
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+    
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => showToast('已複製作者'));
+    }
+    
+    function copyLine(num) {
+      const url = window.location.href.split('#')[0] + '#L' + num;
+      navigator.clipboard.writeText(url).then(() => showToast('已複製行號連結'));
+    }
+    
+    function copyTextWithUrl(el, url) {
+      const text = el.textContent + '\n' + url;
+      navigator.clipboard.writeText(text).then(() => showToast('已複製內文+連結'));
+    }
+  </script>
+</body>
+</html>

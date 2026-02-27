@@ -13,3 +13,6 @@
 7. 為什麼用 Mac mini
 8. 省 API 成本
 9. models.json / openclaw.json 教學
+
+## 執行紀錄 (2026-02-27)
+- [x] Threads OpenClaw 監控（記者版）：已執行，因 Browser Control timeout 阻塞；已輸出阻塞報告並推送 GitHub（commit: 8c8471e）。

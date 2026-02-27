@@ -8,8 +8,14 @@
  * 2) MD：reports/x_monitor_YYYYMMDD_HHmm.md
  */
 
+const CDP = require('chrome-remote-interface');
 const fs = require('fs');
 const path = require('path');
+
+const CDP_HOST = '127.0.0.1';
+const CDP_PORT = 19222;
+
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // 分類定義（動態命名，根據內容決定）
 const DEFAULT_CATEGORIES = [
@@ -20,6 +26,116 @@ const DEFAULT_CATEGORIES = [
   { id: 'hot', emoji: '🔥', name: '熱門焦點' },
   { id: 'business', emoji: '💰', name: '商業與新創' }
 ];
+
+// 檢查 CDP 是否可用
+async function checkCDP() {
+  try {
+    const response = await fetch(`http://${CDP_HOST}:${CDP_PORT}/json/version`);
+    return response.ok;
+  } catch (e) {
+    return false;
+  }
+}
+
+// 檢查 X 頁面狀態
+async function checkXPageStatus(client) {
+  const { Runtime } = client;
+  
+  const result = await Runtime.evaluate({
+    expression: `
+      (function() {
+        const url = window.location.href;
+        const title = document.title;
+        const hasLoginForm = !!document.querySelector('input[name="text"], input[name="password"], input[type="password"]');
+        const hasTimeline = !!document.querySelector('[data-testid="primaryColumn"], article, [data-testid="cellInnerDiv"]');
+        return { url, title, hasLoginForm, hasTimeline };
+      })()
+    `,
+    returnByValue: true
+  });
+  
+  return result.result.value;
+}
+
+// 提取推文
+async function extractTweets(client) {
+  const { Runtime } = client;
+  
+  const result = await Runtime.evaluate({
+    expression: `
+      (function() {
+        const articles = document.querySelectorAll('article');
+        const extracted = [];
+        
+        articles.forEach((article, idx) => {
+          try {
+            const timeEl = article.querySelector('time');
+            if (!timeEl) return;
+            
+            let linkEl = timeEl.closest('a');
+            if (!linkEl) {
+              linkEl = article.querySelector('a[href*="/status/"]');
+            }
+            if (!linkEl) return;
+            
+            const href = linkEl.getAttribute('href');
+            const match = href.match(/status\\/(\\d+)/);
+            if (!match) return;
+            
+            const tweetId = match[1];
+            
+            const textEl = article.querySelector('[data-testid="tweetText"]');
+            const text = textEl ? textEl.innerText.trim() : '';
+            
+            const authorEl = article.querySelector('a[role="link"] div[dir="ltr"] span');
+            const authorName = authorEl ? authorEl.textContent.trim() : '';
+            
+            const handleEl = article.querySelector('a[role="link"][href^="/"]');
+            const authorHandle = handleEl ? handleEl.getAttribute('href').split('/')[1] : '';
+            
+            const timestamp = timeEl.getAttribute('datetime');
+            const timeText = timeEl.textContent.trim();
+            
+            const getCount = (testid) => {
+              const el = article.querySelector('[data-testid="' + testid + '"]');
+              if (!el) return 0;
+              const spans = el.querySelectorAll('span');
+              for (const span of spans) {
+                const txt = span.textContent.trim();
+                if (txt && !isNaN(parseFloat(txt.replace(/[KM,]/g, '')))) {
+                  if (txt.includes('K')) return Math.round(parseFloat(txt.replace('K', '')) * 1000);
+                  if (txt.includes('M')) return Math.round(parseFloat(txt.replace('M', '')) * 1000000);
+                  return parseInt(txt.replace(/[^0-9]/g, '')) || 0;
+                }
+              }
+              return 0;
+            };
+            
+            extracted.push({
+              tweetId,
+              authorName,
+              authorHandle: '@' + authorHandle,
+              text,
+              timestamp,
+              timeText,
+              likes: getCount('like'),
+              retweets: getCount('retweet'),
+              replies: getCount('reply'),
+              bookmarks: getCount('bookmark'),
+              url: 'https://x.com' + href.split('?')[0],
+              engagement: 0
+            });
+          } catch (e) {}
+        });
+        
+        return extracted;
+      })()
+    `,
+    returnByValue: true
+  });
+  
+  return result.result.value || [];
+}
 
 // 從推文內容推斷分類
 function categorizeTweet(tweet) {
@@ -548,6 +664,34 @@ function escapeHtml(text) {
     .replace(/'/g, '&#039;');
 }
 
+// 載入已見過的推文 ID
+function loadSeenIds() {
+  const seenFile = '/Users/user/reports/.x_monitor_seen_ids.json';
+  try {
+    if (fs.existsSync(seenFile)) {
+      return new Set(JSON.parse(fs.readFileSync(seenFile, 'utf8')));
+    }
+  } catch (e) {}
+  return new Set();
+}
+
+// 保存已見過的推文 ID
+function saveSeenIds(seenIds) {
+  const seenFile = '/Users/user/reports/.x_monitor_seen_ids.json';
+  fs.writeFileSync(seenFile, JSON.stringify([...seenIds], null, 2));
+}
+
+// 保存原始數據
+function saveRawData(tweets, timestamp) {
+  const dataDir = '/Users/user/data';
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
+  }
+  const rawFile = path.join(dataDir, `x_top_raw_${timestamp}.json`);
+  fs.writeFileSync(rawFile, JSON.stringify(tweets, null, 2));
+  console.log(`✅ 原始數據已保存: ${rawFile}`);
+}
+
 // 主函數
 async function main() {
   const now = new Date();
@@ -569,44 +713,118 @@ async function main() {
     }
   });
   
-  // 嘗試讀取最新資料
-  let tweets = [];
+  // 檢查 CDP
+  const cdpAvailable = await checkCDP();
+  if (!cdpAvailable) {
+    console.log('❌ CDP 端口 19222 無法連線');
+    const html = generateHTML([], timestamp, 'CDP 無法連線', 'CDP 端口 19222 無法連線，請確認 Chrome 已啟動');
+    const md = generateMarkdown([], timestamp, 'CDP 無法連線', 'CDP 端口 19222 無法連線，請確認 Chrome 已啟動');
+    
+    const htmlFile = path.join(webDir, `x_monitor_${dateStr}_${timeStr}.html`);
+    const mdFile = path.join(mdDir, `x_monitor_${dateStr}_${timeStr}.md`);
+    
+    fs.writeFileSync(htmlFile, html);
+    fs.writeFileSync(mdFile, md);
+    
+    console.log(`✅ HTML 已產出: ${htmlFile}`);
+    console.log(`✅ Markdown 已產出: ${mdFile}`);
+    return;
+  }
+  
+  console.log('✅ CDP 可用，連線中...');
+  
+  let client;
   let blocked = null;
   let blockedReason = null;
+  let allTweets = [];
   
   try {
-    // 查找最新的 x_top_raw 檔案
-    const dataDir = '/Users/user/data';
-    const files = fs.readdirSync(dataDir)
-      .filter(f => f.startsWith('x_top_raw_') && f.endsWith('.json'))
-      .map(f => ({ name: f, time: fs.statSync(path.join(dataDir, f)).mtime }))
-      .sort((a, b) => b.time - a.time);
+    client = await CDP({ host: CDP_HOST, port: CDP_PORT });
+    const { Page, Runtime } = client;
     
-    if (files.length > 0) {
-      const latestFile = path.join(dataDir, files[0].name);
-      const data = JSON.parse(fs.readFileSync(latestFile, 'utf8'));
-      
-      if (Array.isArray(data) && data.length > 0) {
-        tweets = data;
-        console.log(`✅ 載入 ${tweets.length} 條推文從 ${files[0].name}`);
-      } else if (data.status === 'blocked' || data.blocked) {
-        blocked = data.blocked || '資料來源受阻';
-        blockedReason = data.errors?.join('; ') || blocked;
-        console.log(`⚠️ 資料受阻: ${blockedReason}`);
-      } else {
-        blocked = '無可用資料';
-        blockedReason = '資料檔案為空或格式不符';
-        console.log('⚠️ 資料檔案為空');
-      }
+    await Page.enable();
+    await Runtime.enable();
+    
+    // 檢查頁面狀態
+    console.log('🔍 檢查 X 頁面狀態...');
+    const pageStatus = await checkXPageStatus(client);
+    console.log('頁面狀態:', JSON.stringify(pageStatus));
+    
+    // 導航到 X
+    console.log('🌐 導航到 X...');
+    await Page.navigate({ url: 'https://x.com/home' });
+    await sleep(8000);
+    
+    // 檢查 X 頁面狀態
+    const xStatus = await checkXPageStatus(client);
+    console.log('X 頁面狀態:', JSON.stringify(xStatus));
+    
+    if (xStatus.hasLoginForm || xStatus.url.includes('login') || xStatus.title.includes('登入')) {
+      blocked = 'X 需要登入';
+      blockedReason = 'X 需要登入，請先在手動登入 X 帳號';
+      console.log('⚠️', blockedReason);
+    } else if (!xStatus.hasTimeline) {
+      blocked = 'X 頁面無時間軸';
+      blockedReason = 'X 頁面沒有時間軸內容，可能需要重新整理或登入';
+      console.log('⚠️', blockedReason);
     } else {
-      blocked = '找不到資料檔案';
-      blockedReason = '未找到 x_top_raw_*.json 檔案';
-      console.log('⚠️ 未找到資料檔案');
+      // 抓取推文
+      console.log('📥 開始抓取 X Top...');
+      const seenIds = loadSeenIds();
+      const newSeenIds = new Set(seenIds);
+      
+      // 初始提取
+      console.log('📥 初始提取...');
+      let tweets = await extractTweets(client);
+      let newCount = 0;
+      tweets.forEach(t => {
+        t.engagement = t.likes + t.retweets + t.replies;
+        if (!newSeenIds.has(t.tweetId)) {
+          newSeenIds.add(t.tweetId);
+          allTweets.push(t);
+          newCount++;
+        }
+      });
+      console.log(`  初始: ${newCount} 條新推文`);
+      
+      // 滾動 50 次
+      console.log('📜 開始滾動...');
+      for (let i = 0; i < 50; i++) {
+        await Runtime.evaluate({
+          expression: 'window.scrollTo(0, document.body.scrollHeight);',
+          returnByValue: true
+        });
+        await sleep(1000 + Math.random() * 500);
+        
+        if ((i + 1) % 5 === 0) {
+          tweets = await extractTweets(client);
+          let batchNew = 0;
+          tweets.forEach(t => {
+            t.engagement = t.likes + t.retweets + t.replies;
+            if (!newSeenIds.has(t.tweetId)) {
+              newSeenIds.add(t.tweetId);
+              allTweets.push(t);
+              batchNew++;
+            }
+          });
+          console.log(`  滾動 ${i+1}/50 - 新增 ${batchNew} 條，總計 ${allTweets.length}`);
+        }
+      }
+      
+      saveSeenIds(newSeenIds);
+      
+      // 保存原始數據
+      saveRawData(allTweets, timestamp);
+      
+      console.log(`\n✅ 完成! 共抓取 ${allTweets.length} 條新推文`);
     }
+    
   } catch (err) {
-    blocked = '讀取資料失敗';
-    blockedReason = err.message;
-    console.error('❌ 讀取資料失敗:', err.message);
+    console.error('❌ 錯誤:', err.message);
+    blocked = blocked || '執行錯誤';
+    blockedReason = blockedReason || err.message;
+  } finally {
+    if (client) await client.close();
   }
   
   // 產生檔案名稱
@@ -614,18 +832,18 @@ async function main() {
   const mdFile = path.join(mdDir, `x_monitor_${dateStr}_${timeStr}.md`);
   
   // 生成並寫入 HTML
-  const html = generateHTML(tweets, timestamp, blocked, blockedReason);
+  const html = generateHTML(allTweets, timestamp, blocked, blockedReason);
   fs.writeFileSync(htmlFile, html, 'utf8');
   console.log(`✅ HTML 已產出: ${htmlFile}`);
   
   // 生成並寫入 Markdown
-  const md = generateMarkdown(tweets, timestamp, blocked, blockedReason);
+  const md = generateMarkdown(allTweets, timestamp, blocked, blockedReason);
   fs.writeFileSync(mdFile, md, 'utf8');
   console.log(`✅ Markdown 已產出: ${mdFile}`);
   
   // 輸出摘要
   console.log('\n📊 報告摘要:');
-  console.log(`  - 推文數: ${tweets.length}`);
+  console.log(`  - 推文數: ${allTweets.length}`);
   console.log(`  - 狀態: ${blocked ? '受阻' : '正常'}`);
   if (blocked) {
     console.log(`  - 原因: ${blockedReason}`);
@@ -634,7 +852,7 @@ async function main() {
   console.log(`  - HTML: ${htmlFile}`);
   console.log(`  - MD: ${mdFile}`);
   
-  return { htmlFile, mdFile, tweets, blocked };
+  return { htmlFile, mdFile, tweets: allTweets, blocked };
 }
 
 // 執行

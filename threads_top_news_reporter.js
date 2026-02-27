@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Threads Top News Reporter - 記者版
- * 抓取 Threads，自動分類，生成 Markdown 報告
+ * Threads Top News Reporter - 新文記者版
+ * 抓取 Threads Top，自動分類，生成 MD 報告
  */
 
 const CDP = require('chrome-remote-interface');
@@ -13,13 +13,13 @@ const CDP_PORT = 19222;
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// 六大類別關鍵詞定義 - 依內容自動歸納
+// 六大類別關鍵詞定義（依內容動態歸納）
 const CATEGORY_DEFINITIONS = {
-  '科技創新': ['AI', '人工智能', 'artificial intelligence', 'LLM', 'GPT', 'Claude', 'machine learning', 'tech', '科技', '晶片', 'chip', 'semiconductor', 'NVIDIA', 'Apple', 'Google', 'OpenAI', 'Anthropic', 'startup', '創新', '區塊鏈', 'blockchain', 'crypto', 'bitcoin', '電動車', 'EV', 'Tesla', '機器人', 'robotics', '自動化', 'automation', '模型', 'model'],
-  '財經商業': ['stock', '股市', 'market', '市場', '經濟', 'economy', 'finance', '金融', '投資', 'invest', 'trading', 'trade', '匯率', '央行', 'Fed', '利率', 'inflation', '通膨', 'recession', '衰退', 'GDP', 'IPO', 'merger', '併購', 'earnings', '財報', 'startup', '創業', 'funding', '融資', 'valuation', '估值', '創業', '生意'],
-  '政治國際': ['politics', '政治', 'election', '選舉', 'government', '政府', 'policy', '政策', 'war', '戰爭', 'Ukraine', '烏克蘭', 'Israel', '以色列', 'China', '中國', 'Biden', 'Trump', 'EU', 'NATO', 'UN', '聯合國', 'sanctions', '制裁', 'diplomacy', '外交', 'geopolitics', '地緣政治', 'trade war', '貿易戰'],
-  '社會民生': ['health', '健康', '醫療', 'healthcare', 'education', '教育', 'housing', '住房', 'job', '就業', 'work', '工作', 'social', '社會', 'environment', '環境', 'climate', '氣候', 'crime', '犯罪', 'law', '法律', 'justice', '司法', 'inequality', '不平等', 'poverty', '貧困', 'welfare', '福利', 'transport', '交通', '生活'],
-  '娛樂文化': ['movie', '電影', 'music', '音樂', 'celebrity', '名人', 'entertainment', '娛樂', 'sport', '體育', 'NBA', 'football', 'soccer', 'fashion', '時尚', 'art', '藝術', 'culture', '文化', 'game', '遊戲', 'gaming', 'Netflix', 'Disney', 'K-pop', 'meme', '迷因', 'viral', '走紅'],
+  '科技創新': ['AI', '人工智能', 'artificial intelligence', 'LLM', 'GPT', 'Claude', 'machine learning', 'tech', '科技', '晶片', 'chip', 'semiconductor', 'NVIDIA', 'Apple', 'Google', 'OpenAI', 'startup', '創新', '區塊鏈', 'blockchain', 'crypto', 'bitcoin', '電動車', 'EV', 'Tesla', '機器人', 'robotics', '自動化', 'automation', '程式', 'coding', '軟體', '軟件', '開發'],
+  '財經商業': ['stock', '股市', 'market', '經濟', 'economy', 'finance', '金融', '投資', 'invest', 'trading', 'trade', '匯率', '央行', 'Fed', '利率', 'inflation', '通膨', 'recession', '衰退', 'GDP', 'IPO', 'merger', '併購', 'earnings', '財報', 'startup', '創業', 'funding', '融資', 'valuation', '估值', '賺錢', '副業'],
+  '政治國際': ['politics', '政治', 'election', '選舉', 'government', '政府', 'policy', '政策', 'war', '戰爭', 'Ukraine', '烏克蘭', 'Israel', '以色列', 'China', '中國', 'Biden', 'Trump', 'EU', 'NATO', 'UN', '聯合國', 'sanctions', '制裁', 'diplomacy', '外交', 'geopolitics', '地緣政治', 'trade war', '貿易戰', '總統', '立法院', '民意代表'],
+  '社會民生': ['health', '健康', '醫療', 'healthcare', 'education', '教育', 'housing', '住房', 'job', '就業', 'work', '工作', 'social', '社會', 'environment', '環境', 'climate', '氣候', 'crime', '犯罪', 'law', '法律', 'justice', '司法', 'inequality', '不平等', 'poverty', '貧困', 'welfare', '福利', 'transport', '交通', '生活', '家庭'],
+  '娛樂文化': ['movie', '電影', 'music', '音樂', 'celebrity', '名人', 'entertainment', '娛樂', 'sport', '體育', 'NBA', 'football', 'soccer', 'fashion', '時尚', 'art', '藝術', 'culture', '文化', 'game', '遊戲', 'gaming', 'Netflix', 'Disney', 'K-pop', 'meme', '迷因', 'viral', '走紅', '偶像', '明星', '演唱會'],
   '其他': [] // 其他未分類
 };
 
@@ -33,28 +33,7 @@ async function checkCDP() {
   }
 }
 
-// 檢查 Threads 頁面狀態
-async function checkThreadsPageStatus(client) {
-  const { Runtime } = client;
-  
-  const result = await Runtime.evaluate({
-    expression: `
-      (function() {
-        const url = window.location.href;
-        const title = document.title;
-        const hasLoginForm = !!document.querySelector('input[name="username"], input[type="password"], button[type="submit"]');
-        const hasContent = !!document.querySelector('article, [data-pressable-container="true"], span[dir="auto"]');
-        const bodyText = document.body ? document.body.innerText.substring(0, 500) : '';
-        return { url, title, hasLoginForm, hasContent, bodyText };
-      })()
-    `,
-    returnByValue: true
-  });
-  
-  return result.result.value;
-}
-
-// 提取 Threads 貼文
+// 提取貼文
 async function extractPosts(client) {
   const { Runtime } = client;
   
@@ -69,6 +48,7 @@ async function extractPosts(client) {
         const postContainers = [];
         
         for (const div of allDivs) {
+          // 尋找有 data-pressable-container 的 div
           if (div.getAttribute('data-pressable-container') === 'true') {
             postContainers.push(div);
           }
@@ -115,23 +95,17 @@ async function extractPosts(client) {
               const href = link.getAttribute('href') || '';
               if (href.includes('/post/')) {
                 const match = href.match(/\\/post\\/([^/?]+)/);
-                if (match) {
+                if (match && !seenIds.has(match[1])) {
                   postId = match[1];
+                  seenIds.add(postId);
                   postUrl = href.startsWith('http') ? href.split('?')[0] : 'https://www.threads.net' + href.split('?')[0];
                   break;
                 }
               }
             }
             
-            // 如果沒有找到 post ID，創建一個基於內容的 ID
-            if (!postId && text) {
-              postId = 'text_' + text.substring(0, 30).replace(/\\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
-              postUrl = authorHandle ? 'https://www.threads.net/@' + authorHandle : '';
-            }
-            
-            // 去重
-            if (seenIds.has(postId)) continue;
-            seenIds.add(postId);
+            // 如果沒有找到 post ID，跳過
+            if (!postId) continue;
             
             // 提取時間
             let timeText = '';
@@ -213,136 +187,95 @@ function categorizePosts(posts) {
     }
   });
   
-  // 各類別內按互動數排序
-  for (const category of Object.keys(categories)) {
-    categories[category].sort((a, b) => b.engagement - a.engagement);
-  }
-  
   return categories;
 }
 
-// 生成記者摘要
-function generateSummary(categories, totalCount) {
-  const categoryCounts = Object.entries(categories)
-    .map(([name, posts]) => ({ name, count: posts.length }))
-    .filter(c => c.count > 0)
-    .sort((a, b) => b.count - a.count);
+// 生成記者評註 - 挑選最值得關注的議題
+function generateHighlights(posts) {
+  if (posts.length === 0) return [];
   
-  const topCategory = categoryCounts[0];
-  const totalEngagement = Object.values(categories).flat()
-    .reduce((sum, p) => sum + p.engagement, 0);
+  // 按互動數排序取前 5，再從中選出 3 個最有新聞價值的
+  const sorted = [...posts].sort((a, b) => b.engagement - a.engagement).slice(0, 5);
   
-  return {
-    totalCount,
-    categoryCounts,
-    topCategory: topCategory ? topCategory.name : 'N/A',
-    avgEngagement: totalCount > 0 ? Math.round(totalEngagement / totalCount) : 0
-  };
-}
-
-// 載入已見過的貼文 ID
-function loadSeenIds() {
-  const seenFile = '/Users/user/reports/.threads_monitor_seen_ids.json';
-  try {
-    if (fs.existsSync(seenFile)) {
-      const data = JSON.parse(fs.readFileSync(seenFile, 'utf8'));
-      return new Set(Object.keys(data));
-    }
-  } catch (e) {}
-  return new Set();
-}
-
-// 保存已見過的貼文 ID
-function saveSeenIds(seenIds) {
-  const seenFile = '/Users/user/reports/.threads_monitor_seen_ids.json';
-  const data = {};
-  const now = new Date().toISOString();
-  seenIds.forEach(id => {
-    data[id] = now;
-  });
-  fs.writeFileSync(seenFile, JSON.stringify(data, null, 2));
+  // 簡單選擇前 3 個（可根據內容相關性進一步篩選）
+  return sorted.slice(0, 3).map((post, idx) => ({
+    rank: idx + 1,
+    author: post.author,
+    handle: post.authorHandle,
+    text: post.text.substring(0, 100) + (post.text.length > 100 ? '...' : ''),
+    postId: post.postId,
+    url: post.url,
+    engagement: post.engagement
+  }));
 }
 
 // 生成 Markdown 報告
-function generateMD(categories, summary, blockedReason = null) {
+function generateReport(categories, posts, blockedReason = null) {
   const now = new Date();
+  const timestamp = now.toLocaleString('zh-TW', {
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hour12: false
+  });
   const dateStr = now.toISOString().slice(0, 10).replace(/-/g, '');
   const timeStr = now.toTimeString().slice(0, 5).replace(':', '');
-  const timestamp = now.toLocaleString('zh-TW', { 
-    year: 'numeric', month: '2-digit', day: '2-digit', 
-    hour: '2-digit', minute: '2-digit', hour12: false 
-  });
   
   let md = `# Threads 動態深度摘要（過去 3 小時）
 
 > 任務時間：${timestamp} (Asia/Taipei)
 > 採集流程：Threads 首頁流 → 連續下滑 80 次 → 前後集合去重
-> 本輪新增貼文（去重後）：${summary.totalCount}
+> 本輪新增貼文（去重後）：${posts.length}
 
 `;
-  
+
   if (blockedReason) {
     md += `## ⚠️ 抓取受阻
 
 **原因：** ${blockedReason}
 
-請確認 Threads 可正常訪問，並重新執行抓取。
-
+請確認 Threads 已登入，並重新執行抓取。
 `;
-  } else {
-    let lineNumber = 1;
-    
-    for (const [category, posts] of Object.entries(categories)) {
-      if (posts.length === 0) continue;
-      
-      md += `## ${category}\n\n`;
-      
-      posts.forEach(post => {
-        const text = post.text.length > 120 ? post.text.substring(0, 120) + '...' : post.text;
-        const cleanText = text.replace(/\n/g, ' ').trim();
-        const postIdShort = post.postId.substring(0, 12);
-        
-        md += `[${lineNumber}] ${cleanText} [（${postIdShort}...）](${post.url})\n\n`;
-        lineNumber++;
-      });
-    }
+    return { md, dateStr, timeStr };
   }
+
+  // 依類別輸出
+  let lineNumber = 1;
   
+  for (const [category, catPosts] of Object.entries(categories)) {
+    if (catPosts.length === 0) continue;
+    
+    md += `## ${category}\n\n`;
+    
+    catPosts.forEach(post => {
+      const shortId = post.postId.substring(0, 15);
+      md += `[${lineNumber}] ${post.text.substring(0, 100)}${post.text.length > 100 ? '...' : ''} [（${shortId}...）](${post.url})\n\n`;
+      lineNumber++;
+    });
+  }
+
   // 記者評註
+  const highlights = generateHighlights(posts);
   md += `---
 
 ## 本輪最值得關注的 3 個議題（記者評註）
 
 `;
   
-  if (summary.totalCount === 0) {
-    md += `1. 本輪新增內容較少，建議稍後重試。\n`;
-    md += `2. Threads 演算法推送內容有限。\n`;
-    md += `3. 建議擴大追蹤範圍或調整抓取策略。\n`;
-  } else {
-    const topPosts = Object.values(categories).flat()
-      .sort((a, b) => b.engagement - a.engagement)
-      .slice(0, 3);
-    
-    topPosts.forEach((post, i) => {
-      const text = post.text.substring(0, 60);
-      md += `${i + 1}. **@${post.author}**（${post.engagement} 互動）: ${text}...\n`;
-    });
-  }
-  
+  highlights.forEach(h => {
+    md += `${h.rank}. **@${h.handle}**（${h.engagement} 互動）: ${h.text}...
+`;
+  });
+
   // 風險訊號
   md += `
 ---
 
 ## 風險訊號
 
-- 本輪貼文時間跨度依 Threads 演算法推送決定。\n`;
-  if (blockedReason) {
-    md += `- ⚠️ 抓取受阻：${blockedReason}\n`;
-  }
-  md += `- 互動欄位（按讚/留言）結構化抽取可能有 null 缺值。\n`;
-  md += `- 若 Threads 出現反爬機制，部分內容可能未被完整載入。\n`;
-  
+- 本輪貼文時間跨度依 Threads 演算法推送決定。
+- 互動欄位（按讚/留言）結構化抽取可能有 null 缺值。
+- 若 Threads 出現反爬機制，部分內容可能未被完整載入。
+`;
+
   // 下一輪追蹤關鍵詞
   md += `
 ---
@@ -356,12 +289,33 @@ function generateMD(categories, summary, blockedReason = null) {
 - 創業
 - 科技新聞
 `;
-  
+
   return { md, dateStr, timeStr };
+}
+
+// 載入已見過的貼文 ID
+function loadSeenIds() {
+  const seenFile = '/Users/user/data/threads_last_seen.json';
+  try {
+    if (fs.existsSync(seenFile)) {
+      const data = JSON.parse(fs.readFileSync(seenFile, 'utf8'));
+      return new Set(data.ids || []);
+    }
+  } catch (e) {}
+  return new Set();
+}
+
+// 保存已見過的貼文 ID
+function saveSeenIds(seenIds) {
+  const seenFile = '/Users/user/data/threads_last_seen.json';
+  const data = { ids: [...seenIds], updatedAt: new Date().toISOString() };
+  fs.writeFileSync(seenFile, JSON.stringify(data, null, 2));
 }
 
 // 主函數
 async function main() {
+  console.log('🚀 Threads Top News Reporter 啟動...');
+  
   const now = new Date();
   const dateStr = now.toISOString().slice(0, 10).replace(/-/g, '');
   const timeStr = now.toTimeString().slice(0, 5).replace(':', '');
@@ -370,15 +324,14 @@ async function main() {
   const cdpAvailable = await checkCDP();
   if (!cdpAvailable) {
     console.log('❌ CDP 端口 19222 無法連線');
-    const summary = { totalCount: 0, categoryCounts: [], topCategory: 'N/A', avgEngagement: 0 };
-    const { md } = generateMD({}, summary, 'CDP 端口 19222 無法連線，請確認 Chrome 已啟動並開啟 remote debugging');
+    const { md } = generateReport({}, [], 'CDP 端口 19222 無法連線，請確認 Chrome 已啟動');
     
     const mdPath = `/Users/user/reports/threads_top_news_${dateStr}_${timeStr}.md`;
     fs.writeFileSync(mdPath, md);
     
     console.log('OUTPUT_FILE:', mdPath);
     console.log('BLOCKED_REASON: CDP unavailable');
-    return;
+    return { blocked: true, mdPath };
   }
   
   console.log('✅ CDP 可用，連線中...');
@@ -399,15 +352,29 @@ async function main() {
     await Page.navigate({ url: 'https://www.threads.net' });
     await sleep(10000);
     
-    // 檢查 Threads 頁面狀態
-    const pageStatus = await checkThreadsPageStatus(client);
-    console.log('Threads 頁面狀態:', JSON.stringify(pageStatus));
+    // 檢查頁面狀態
+    const pageStatus = await Runtime.evaluate({
+      expression: `
+        (function() {
+          return {
+            url: window.location.href,
+            title: document.title,
+            hasLoginForm: !!document.querySelector('input[type="password"]'),
+            hasContent: document.querySelectorAll('div[data-pressable-container="true"]').length > 0
+          };
+        })()
+      `,
+      returnByValue: true
+    });
     
-    if (pageStatus.hasLoginForm || pageStatus.url.includes('login')) {
-      blockedReason = 'Threads 需要登入，請先在手動登入 Threads 帳號';
+    console.log('📄 頁面狀態:', JSON.stringify(pageStatus.result.value));
+    
+    const status = pageStatus.result.value;
+    if (status.url.includes('login') || status.hasLoginForm) {
+      blockedReason = 'Threads 需要登入，請先手動登入 Threads 帳號';
       console.log('⚠️', blockedReason);
-    } else if (!pageStatus.hasContent) {
-      blockedReason = 'Threads 頁面沒有內容，可能需要登入或重新整理';
+    } else if (!status.hasContent) {
+      blockedReason = 'Threads 頁面沒有內容，可能需要重新整理或登入';
       console.log('⚠️', blockedReason);
     } else {
       // 抓取貼文
@@ -435,9 +402,9 @@ async function main() {
           expression: 'window.scrollTo(0, document.body.scrollHeight);',
           returnByValue: true
         });
-        await sleep(1000 + Math.random() * 500);
+        await sleep(800 + Math.random() * 400);
         
-        if ((i + 1) % 5 === 0) {
+        if ((i + 1) % 10 === 0) {
           posts = await extractPosts(client);
           let batchNew = 0;
           posts.forEach(p => {
@@ -462,12 +429,11 @@ async function main() {
     if (client) await client.close();
   }
   
-  // 分類和排序
+  // 分類
   const categories = categorizePosts(allPosts);
-  const summary = generateSummary(categories, allPosts.length);
   
   // 生成報告
-  const { md, dateStr: ds, timeStr: ts } = generateMD(categories, summary, blockedReason);
+  const { md, dateStr: ds, timeStr: ts } = generateReport(categories, allPosts, blockedReason);
   const mdPath = `/Users/user/reports/threads_top_news_${ds}_${ts}.md`;
   
   fs.writeFileSync(mdPath, md);
@@ -480,6 +446,14 @@ async function main() {
   if (blockedReason) {
     console.log('BLOCKED_REASON:', blockedReason);
   }
+  
+  return { blocked: !!blockedReason, mdPath, totalPosts: allPosts.length };
 }
 
-main().catch(console.error);
+// 執行
+main().then(result => {
+  process.exit(result && result.blocked ? 1 : 0);
+}).catch(err => {
+  console.error('❌ 執行失敗:', err);
+  process.exit(1);
+});

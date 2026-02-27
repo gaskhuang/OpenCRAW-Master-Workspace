@@ -13,14 +13,14 @@ const CDP_PORT = 19222;
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// 六大類別關鍵詞定義
+// 六大類別關鍵詞定義（對齊 x.deepsrt.com 風格）
 const CATEGORY_DEFINITIONS = {
-  '科技創新': ['AI', '人工智能', 'artificial intelligence', 'LLM', 'GPT', 'Claude', 'machine learning', 'tech', '科技', '晶片', 'chip', 'semiconductor', 'NVIDIA', 'Apple', 'Google', 'OpenAI', 'startup', '創新', '區塊鏈', 'blockchain', 'crypto', 'bitcoin', '電動車', 'EV', 'Tesla', '機器人', 'robotics', '自動化', 'automation'],
-  '財經商業': ['stock', '股市', 'market', 'market', '經濟', 'economy', 'finance', '金融', '投資', 'invest', 'trading', 'trade', '匯率', '央行', 'Fed', '利率', 'inflation', '通膨', 'recession', '衰退', 'GDP', 'IPO', 'merger', '併購', 'earnings', '財報', 'startup', '創業', 'funding', '融資', 'valuation', '估值'],
-  '政治國際': ['politics', '政治', 'election', '選舉', 'government', '政府', 'policy', '政策', 'war', '戰爭', 'Ukraine', '烏克蘭', 'Israel', '以色列', 'China', '中國', 'Biden', 'Trump', 'EU', 'NATO', 'UN', '聯合國', 'sanctions', '制裁', 'diplomacy', '外交', 'geopolitics', '地緣政治', 'trade war', '貿易戰'],
-  '社會民生': ['health', '健康', '醫療', 'healthcare', 'education', '教育', 'housing', '住房', 'job', '就業', 'work', '工作', 'social', '社會', 'environment', '環境', 'climate', '氣候', 'crime', '犯罪', 'law', '法律', 'justice', '司法', 'inequality', '不平等', 'poverty', '貧困', 'welfare', '福利', 'transport', '交通'],
-  '娛樂文化': ['movie', '電影', 'music', '音樂', 'celebrity', '名人', 'entertainment', '娛樂', 'sport', '體育', 'NBA', 'football', 'soccer', 'fashion', '時尚', 'art', '藝術', 'culture', '文化', 'game', '遊戲', 'gaming', 'Netflix', 'Disney', 'K-pop', 'meme', '迷因', 'viral', '走紅'],
-  '其他': [] // 其他未分類
+  '🤖 AI 模型與產品': ['AI', '人工智能', 'artificial intelligence', 'LLM', 'GPT', 'Claude', 'machine learning', 'Gemini', 'OpenAI', 'Anthropic', 'Perplexity', 'Midjourney', 'Stable Diffusion', 'Sora', 'nano banana', 'image generation', 'text-to-image', '多模態', 'multimodal', 'agent', '智能體', 'chatbot', '聊天機器人', 'model', '模型', 'reasoning', '推理'],
+  '🛠️ 開發工具與實踐': ['coding', 'programming', '開發', '代碼', 'code', 'github', 'git', 'API', 'SDK', 'framework', '框架', 'library', '庫', 'debug', '調試', 'deploy', '部署', 'DevOps', 'CI/CD', 'docker', 'kubernetes', 'cloud', '雲端', 'serverless', 'database', '數據庫', 'frontend', 'backend', '全端', 'fullstack', 'vscode', 'IDE', 'terminal', 'CLI'],
+  '🦞 OpenClaw 生態': ['OpenClaw', 'Claw', '龍蝦', 'Lobster', 'agent team', 'AI team', 'multi-agent', 'Claude Code', 'Claude Max', 'memory', '記憶', 'skill', '技能', 'MCP', 'Model Context Protocol', 'tambo', 'AGENTS.md', 'SOUL.md', 'heartbeat', 'cron', '自動化', 'automation', 'workflow', '工作流'],
+  '🏭 晶片與算力': ['NVIDIA', 'GPU', 'CPU', '晶片', 'chip', 'semiconductor', '半導體', 'TSMC', '台積電', 'Intel', 'AMD', 'ARM', '算力', 'computing', 'data center', '數據中心', 'cloud computing', '雲計算', 'edge computing', '邊緣計算', 'hardware', '硬件', 'server', '伺服器'],
+  '💰 財經與企業動態': ['stock', '股市', 'market', '市場', '經濟', 'economy', 'finance', '金融', '投資', 'invest', 'trading', '交易', 'startup', '創業', 'funding', '融資', 'IPO', 'valuation', '估值', 'revenue', '收入', 'profit', '利潤', 'earnings', '財報', 'acquisition', '收購', 'merger', '併購', '裁員', 'layoff', 'hiring', '招聘'],
+  '🔥 熱門焦點': [] // 其他熱門內容
 };
 
 // 檢查 CDP 是否可用
@@ -136,12 +136,12 @@ async function extractTweets(client) {
 // 自動分類推文
 function categorizeTweets(tweets) {
   const categories = {
-    '科技創新': [],
-    '財經商業': [],
-    '政治國際': [],
-    '社會民生': [],
-    '娛樂文化': [],
-    '其他': []
+    '🤖 AI 模型與產品': [],
+    '🛠️ 開發工具與實踐': [],
+    '🦞 OpenClaw 生態': [],
+    '🏭 晶片與算力': [],
+    '💰 財經與企業動態': [],
+    '🔥 熱門焦點': []
   };
   
   tweets.forEach(tweet => {
@@ -149,7 +149,7 @@ function categorizeTweets(tweets) {
     let assigned = false;
     
     for (const [category, keywords] of Object.entries(CATEGORY_DEFINITIONS)) {
-      if (category === '其他') continue;
+      if (category === '🔥 熱門焦點') continue;
       
       for (const keyword of keywords) {
         if (text.includes(keyword.toLowerCase())) {
@@ -162,7 +162,7 @@ function categorizeTweets(tweets) {
     }
     
     if (!assigned) {
-      categories['其他'].push(tweet);
+      categories['🔥 熱門焦點'].push(tweet);
     }
   });
   
@@ -262,7 +262,7 @@ function generateHTML(categories, summary, blockedReason = null) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>X Top News - ${dateStr}</title>
+  <title>X Monitor - ${dateStr}</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -375,12 +375,12 @@ function generateHTML(categories, summary, blockedReason = null) {
 </head>
 <body>
   <div class="header">
-    <h1>🐦 X Top News</h1>
+    <h1>📋 X Monitor</h1>
     <div class="meta">${timestamp} | 共 ${summary.totalCount} 條推文</div>
   </div>
   
   <div class="summary">
-    <h3>📊 記者摘要</h3>
+    <h3>📊 三行洞察</h3>
     <p><strong>總數：</strong>${summary.totalCount} 條 | <strong>熱門類別：</strong>${summary.topCategory} | <strong>平均互動：</strong>${formatNumber(summary.avgEngagement)}</p>
     <p><strong>分類分布：</strong>${categorySummary}</p>
   </div>
@@ -481,7 +481,7 @@ function escapeHtml(text) {
 
 // 載入已見過的推文 ID
 function loadSeenIds() {
-  const seenFile = '/Users/user/reports/.x_top_seen_ids.json';
+  const seenFile = '/Users/user/reports/.x_monitor_seen_ids.json';
   try {
     if (fs.existsSync(seenFile)) {
       return new Set(JSON.parse(fs.readFileSync(seenFile, 'utf8')));
@@ -492,7 +492,7 @@ function loadSeenIds() {
 
 // 保存已見過的推文 ID
 function saveSeenIds(seenIds) {
-  const seenFile = '/Users/user/reports/.x_top_seen_ids.json';
+  const seenFile = '/Users/user/reports/.x_monitor_seen_ids.json';
   fs.writeFileSync(seenFile, JSON.stringify([...seenIds], null, 2));
 }
 
@@ -510,8 +510,8 @@ async function main() {
     const html = generateHTML({}, summary, 'CDP 端口 19222 無法連線，請確認 Chrome 已啟動');
     const md = generateMD({}, summary, 'CDP 端口 19222 無法連線，請確認 Chrome 已啟動');
     
-    const htmlPath = `/Users/user/reports/web/x_top_news_${dateStr}_${timeStr}.html`;
-    const mdPath = `/Users/user/reports/x_top_news_${dateStr}_${timeStr}.md`;
+    const htmlPath = `/Users/user/reports/web/x_monitor_${dateStr}_${timeStr}.html`;
+    const mdPath = `/Users/user/reports/x_monitor_${dateStr}_${timeStr}.md`;
     
     fs.writeFileSync(htmlPath, html);
     fs.writeFileSync(mdPath, md);
@@ -614,8 +614,8 @@ async function main() {
   const summary = generateSummary(categories, allTweets.length);
   
   // 生成報告
-  const htmlPath = `/Users/user/reports/web/x_top_news_${dateStr}_${timeStr}.html`;
-  const mdPath = `/Users/user/reports/x_top_news_${dateStr}_${timeStr}.md`;
+  const htmlPath = `/Users/user/reports/web/x_monitor_${dateStr}_${timeStr}.html`;
+  const mdPath = `/Users/user/reports/x_monitor_${dateStr}_${timeStr}.md`;
   
   const html = generateHTML(categories, summary, blockedReason);
   const md = generateMD(categories, summary, blockedReason);
