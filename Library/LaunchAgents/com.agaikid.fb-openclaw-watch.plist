@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.agaikid.fb-openclaw-watch</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/bin/python3</string>
+      <string>/Users/user/scripts/fb_openclaw_watch.py</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string>/Users/user/.local/bin:/Users/user/.npm-global/bin:/Users/user/bin:/Users/user/.volta/bin:/Users/user/.asdf/shims:/Users/user/.bun/bin:/Users/user/Library/Application Support/fnm/aliases/default/bin:/Users/user/.fnm/aliases/default/bin:/Users/user/Library/pnpm:/Users/user/.local/share/pnpm:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+      <key>HOME</key>
+      <string>/Users/user</string>
+      <key>OPENCLAW_PROFILE</key>
+      <string>lobster3</string>
+      <key>OPENCLAW_CONFIG_PATH</key>
+      <string>/Users/user/.openclaw-lobster3/openclaw.json</string>
+      <key>OPENCLAW_STATE_DIR</key>
+      <string>/Users/user/.openclaw-lobster3</string>
+      <key>OPENCLAW_GATEWAY_PORT</key>
+      <string>18791</string>
+    </dict>
+
+    <key>StartInterval</key>
+    <integer>10800</integer>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/user</string>
+
+    <key>StandardOutPath</key>
+    <string>/Users/user/fb_openclaw_watch.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/user/fb_openclaw_watch.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+    <key>KeepAlive</key>
+    <false/>
+  </dict>
+</plist>
