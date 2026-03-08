@@ -1,7 +1,7 @@
 # OpenClaw Auto Update 報告
 
 - 日期：2026-03-09
-- 執行時間：2026-03-09 04:43:12 CST
+- 執行時間：2026-03-09 04:44:56 CST
 - Node：v25.7.0
 - npm：11.10.1
 - OpenClaw（更新前）：2026.3.7
@@ -9,9 +9,9 @@
 ## 1. OpenClaw 更新
 - 更新指令：`openclaw update`
 - 更新前：
-  - \
+  - `2026.3.7`
 - 更新後：
-  - \
+  - `2026.3.7`
 
 ```text
 │
@@ -32,16 +32,16 @@ Update Result: SKIPPED
   Before: 2026.3.7
 
 Steps:
-  ✓ clean check (81ms)
+  ✓ clean check (74ms)
 
-Total time: 175ms
+Total time: 158ms
 Skipped: working directory has uncommitted changes. Commit or stash them first.
 ```
 
 ## 2. ~/skills 更新
 ### opennews-mcp
-- branch: \
-- commit: \ → \
+- branch: main
+- commit: 1b7b806 -> 1b7b806
 ```text
 From https://github.com/6551Team/opennews-mcp
  * branch            main       -> FETCH_HEAD
@@ -49,8 +49,8 @@ Already up to date.
 ```
 
 ### clawdhub
-- branch: \
-- commit: \ → \
+- branch: main
+- commit: c617ef1 -> c617ef1
 ```text
 From https://github.com/steipete/clawdhub
  * branch            main       -> FETCH_HEAD
@@ -58,8 +58,8 @@ Already up to date.
 ```
 
 ### proactive-agent
-- branch: \
-- commit: \ → \
+- branch: main
+- commit: 058ed00 -> 058ed00
 ```text
 From https://github.com/halthelobster/proactive-agent
  * branch            main       -> FETCH_HEAD
@@ -67,8 +67,8 @@ Already up to date.
 ```
 
 ### opentwitter-mcp
-- branch: \
-- commit: \ → \
+- branch: main
+- commit: d3dd331 -> d3dd331
 ```text
 From https://github.com/6551Team/opentwitter-mcp
  * branch            main       -> FETCH_HEAD
@@ -92,11 +92,11 @@ Overview
 │ Channel         │ beta (config)                                                                                     │
 │ Git             │ detached · tag v2026.3.7 · @ 42a1394c                                                             │
 │ Update          │ git HEAD · dirty · npm latest 2026.3.7 · deps ok                                                  │
-│ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · reachable 63ms · auth token · userdeMacBook-Pro.  │
+│ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · reachable 23ms · auth token · userdeMacBook-Pro.  │
 │                 │ local (192.168.1.110) app 2026.3.7 macos 26.3                                                     │
 │ Gateway service │ LaunchAgent installed · loaded · running (pid 89175, state active)                                │
 │ Node service    │ LaunchAgent not installed                                                                         │
-│ Agents          │ 1 · no bootstrap files · sessions 3 · default hq active 1m ago                                    │
+│ Agents          │ 1 · no bootstrap files · sessions 3 · default hq active 2m ago                                    │
 │ Memory          │ 55 files · 99 chunks · sources memory · plugin memory-core · vector ready · fts ready · cache on  │
 │                 │ (318)                                                                                             │
 │ Probes          │ skipped (use --deep)                                                                              │
@@ -130,7 +130,7 @@ Sessions
 ┌───────────────────────────────────────────┬────────┬─────────┬───────────────────┬──────────────────────────────────┐
 │ Key                                       │ Kind   │ Age     │ Model             │ Tokens                           │
 ├───────────────────────────────────────────┼────────┼─────────┼───────────────────┼──────────────────────────────────┤
-│ agent:hq:telegram:direct:713279…          │ direct │ 1m ago  │ gpt-5.4           │ 183k/200k (92%) · 🗄️ 100% cached │
+│ agent:hq:telegram:direct:713279…          │ direct │ 2m ago  │ gpt-5.4           │ 183k/200k (92%) · 🗄️ 100% cached │
 │ agent:hq:main                             │ direct │ 5h ago  │ claude-opus-4-6   │ 55k/131k (42%)                   │
 │ agent:hq:telegram:slash:7132792…          │ direct │ 3d ago  │ claude-sonnet-4-6 │ unknown/200k (?%)                │
 └───────────────────────────────────────────┴────────┴─────────┴───────────────────┴──────────────────────────────────┘
