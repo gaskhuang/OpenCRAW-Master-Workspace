@@ -45,10 +45,10 @@ printf "%s\n" "$OPENCLAW_UPDATE_OUTPUT" >> "$LOG_FILE"
 OPENCLAW_AFTER=$(after_or_unknown openclaw --version | head -1)
 {
   echo '- 更新指令：`openclaw update`'
-  echo "- 更新前：
-  - \\`${OPENCLAW_BEFORE:-unknown}\\`"
-  echo "- 更新後：
-  - \\`${OPENCLAW_AFTER:-unknown}\\`"
+  echo '- 更新前：'
+  printf '  - `%s`\n' "${OPENCLAW_BEFORE:-unknown}"
+  echo '- 更新後：'
+  printf '  - `%s`\n' "${OPENCLAW_AFTER:-unknown}"
   echo
   echo '```text'
   printf "%s\n" "$OPENCLAW_UPDATE_OUTPUT" | tail -n 40
@@ -68,8 +68,8 @@ if [ -d "$WORKSPACE/skills" ]; then
       AFTER=$(git -C "$dir" rev-parse --short HEAD 2>/dev/null || echo unknown)
       {
         echo "### $REPO_NAME"
-        echo "- branch: \\`${BRANCH}\\`"
-        echo "- commit: \\`${BEFORE}\\` → \\`${AFTER}\\`"
+        echo "- branch: $BRANCH"
+        echo "- commit: $BEFORE -> $AFTER"
         echo '```text'
         printf "%s\n" "$PULL_OUT" | tail -n 20
         echo '```'
@@ -90,8 +90,8 @@ if [ -d "$WORKSPACE/openclaw/.git" ]; then
   OC_PULL=$(git -C "$WORKSPACE/openclaw" pull origin "$OC_BRANCH" 2>&1 || git -C "$WORKSPACE/openclaw" pull origin main 2>&1 || true)
   OC_AFTER=$(git -C "$WORKSPACE/openclaw" rev-parse --short HEAD 2>/dev/null || echo unknown)
   {
-    echo "- branch: \\`${OC_BRANCH}\\`"
-    echo "- commit: \\`${OC_BEFORE}\\` → \\`${OC_AFTER}\\`"
+    echo "- branch: $OC_BRANCH"
+    echo "- commit: $OC_BEFORE -> $OC_AFTER"
     echo '```text'
     printf "%s\n" "$OC_PULL" | tail -n 20
     echo '```'
@@ -132,7 +132,7 @@ openclaw message send \
   --channel telegram \
   --account default \
   --target 7132792298 \
-  --message "🔄 OpenClaw 自動更新完成\n- 報告：$REPORT_FILE\n- skills 檢查數量：$SKILLS_UPDATED" \
+  --message "🦀 阿蓋三號｜OpenClaw 自動更新完成\n- 報告：$REPORT_FILE\n- skills 檢查數量：$SKILLS_UPDATED\n- 已同步 GitHub" \
   --silent >/dev/null 2>&1 || true
 
 echo "=== OpenClaw Auto Update 結束: $(date) ===" >> "$LOG_FILE"
