@@ -1,6 +1,6 @@
 ---
 name: openclaw-auto-updater
-description: OpenClaw 版自動更新器。每天固定檢查並更新 OpenClaw、~/skills、workspace 內指定 repo，產出 Markdown 報告，並同步 GitHub。
+description: OpenClaw 版自動更新器。交由阿蓋三號執行。每天固定檢查並更新 OpenClaw、~/skills、workspace 內指定 repo，產出 Markdown 報告，並同步 GitHub。
 ---
 
 # OpenClaw Auto Updater
