@@ -1,21 +1,29 @@
 {
-  "current_goal": "OpenCRAW 第二大腦收集與任務執行導向",
-  "active_projects": [
-    "OpenCRAW 第二大腦收集 (Knowledge Base)",
-    "任務執行清單維護 (Task List Management)",
-    "龍蝦配額管理系統 (Quota Guardian)"
+  "current_goal": "建立不會忘記上下文的 OpenClaw 工作流，並落地到監控、夜班、長任務、GitHub 同步流程",
+  "current_workflow": "Context Retention Workflow v1",
+  "active_tasks": [
+    "Reddit OpenClaw 監控改為繁中、每 3 小時、全量、排序後回報",
+    "Facebook 社團／粉絲團監控每 3 小時產出繁中結構化摘要",
+    "Facebook 帶圖發文 SOP：以可見圖片預覽作為成功條件",
+    "OpenClaw auto-updater 由阿蓋三號每日 00:00 執行",
+    "將 compact 前 memory flush / 任務狀態寫盤 / GitHub 同步固化為標準流程"
+  ],
+  "blockers": [
+    "Facebook composer 上傳圖片成功但未真正綁定到貼文，需以可見預覽驗證",
+    "部分長任務仍可能因 timeout 中斷，需持續改為背景執行或長 timeout"
+  ],
+  "next_actions": [
+    "在 compact 前固定執行 prepare_context_flush.py",
+    "後續所有 workflow 變更同步寫入 daily note 與必要的長期記憶",
+    "所有新寫或修改的 md / config 去敏感後同步 GitHub",
+    "將長任務回報格式統一為 status / why / output / next"
   ],
   "technical_decisions": {
-    "information_routing": {
-      "task_signal": "執行任務",
-      "strategy_categories": ["龍蝦", "烤", "戰略"],
-      "website_lock": true
-    },
-    "memory_management": "龍蝦精華協議 (Distilled Asset Protocol) + 每10分鐘自動壓縮"
+    "memory_strategy": "daily note + MEMORY + TASK_STATE + pre-compact flush",
+    "history_strategy": "按 user turn / workflow boundary 保留，不做半截裁切",
+    "long_task_strategy": "background 或長 timeout，避免假失憶",
+    "report_strategy": "staged summarize，先結構化再中文摘要",
+    "sync_strategy": "md/config 寫完後同步 GitHub"
   },
-  "hardware_info": {
-    "host": "user的MacBook Pro",
-    "os": "Darwin 21.6.0 (arm64)"
-  },
-  "last_updated": "2026-02-23 00:15:00"
+  "last_updated": "2026-03-09 15:15:00 Asia/Taipei"
 }
