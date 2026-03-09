@@ -1,27 +1,50 @@
 #!/bin/bash
+set -euo pipefail
 
-# OpenCRAW 龍蝦記憶體釋放腳本 (Auto Quota & Context Guardian)
-# 用途：每 10 分鐘自動監控使用量與對話長度，必要時發起壓縮
+export PATH="/Users/user/.local/bin:/Users/user/.npm-global/bin:/Users/user/bin:/Users/user/.volta/bin:/Users/user/.asdf/shims:/Users/user/.bun/bin:/Users/user/Library/Application Support/fnm/aliases/default/bin:/Users/user/.fnm/aliases/default/bin:/Users/user/Library/pnpm:/Users/user/.local/share/pnpm:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+export HOME="/Users/user"
 
-# 1. 取得當前 Session 狀態
-STATUS=$(openclaw status --json)
+WORKSPACE="/Users/user"
+LOG_FILE="$WORKSPACE/openclaw_memory_guard.log"
+FLUSH_SCRIPT="$WORKSPACE/scripts/prepare_context_flush.py"
+TODAY=$(date '+%Y-%m-%d')
+FLUSH_REPORT="$WORKSPACE/reports/context-flush/context-flush-$TODAY.md"
 
-# 2. 解析上下文長度 (Context Tokens) 與 使用量 (Quota)
-# 這裡模擬邏輯，實際會透過 openclaw 內部 API 觸發
-CONTEXT_TOKENS=$(echo $STATUS | jq -r '.session.context.tokens')
-QUOTA_USAGE=$(echo $STATUS | jq -r '.usage.primary.percent_used')
+log() {
+  printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$1" | tee -a "$LOG_FILE"
+}
 
-echo "當前 Context: $CONTEXT_TOKENS, 使用量: $QUOTA_USAGE%"
+log "Lobster Memory Guard v2 開始"
 
-# 3. 判斷是否觸發「龍蝦清空」協議 (門檻設為 60%)
-if [ "$QUOTA_USAGE" -gt 60 ] || [ "$CONTEXT_TOKENS" -gt 80000 ]; then
-    echo "🚨 觸發龍蝦清空協議：正在提煉精華並壓縮對話..."
-    
-    # 執行精華提煉 (由 agent 內部邏輯處理)
-    # 呼叫 openclaw compact 指令
-    openclaw compact --force
-    
-    echo "✅ 記憶體釋放完成，大腦恢復神速！"
+if [ -x "$FLUSH_SCRIPT" ] || [ -f "$FLUSH_SCRIPT" ]; then
+  python3 "$FLUSH_SCRIPT" >/dev/null 2>&1 || true
+  log "已執行 pre-compact context flush：$FLUSH_REPORT"
 else
-    echo "🟢 狀態良好，繼續監控。"
+  log "找不到 flush 腳本，略過 pre-compact flush"
 fi
+
+STATUS_TEXT=$(openclaw status 2>&1 || true)
+printf "%s\n" "$STATUS_TEXT" >> "$LOG_FILE"
+
+SESSION_LINE=$(printf "%s\n" "$STATUS_TEXT" | grep 'agent:hq:telegram:direct:' | head -n 1 || true)
+PERCENT=$(printf "%s\n" "$SESSION_LINE" | sed -n 's/.*(\([0-9][0-9]*\)%).*/\1/p')
+
+if [ -z "$PERCENT" ]; then
+  PERCENT=0
+fi
+
+log "目前主 session 使用率：約 ${PERCENT}%"
+
+if [ "$PERCENT" -ge 80 ]; then
+  log "達到 compact 建議門檻，送出提醒"
+  openclaw message send \
+    --channel telegram \
+    --account default \
+    --target 7132792298 \
+    --message "🦞 Lobster Memory Guard\n目前主 session 約 ${PERCENT}% 使用率。\n已完成 pre-compact flush：$FLUSH_REPORT\n建議現在執行 /compact" \
+    --silent >/dev/null 2>&1 || true
+else
+  log "未達 compact 門檻，僅完成 flush 與紀錄"
+fi
+
+log "Lobster Memory Guard v2 結束"
