@@ -3,68 +3,104 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OpenClaw 安裝服務｜把 AI 變成會做事的系統</title>
+  <title>OpenClaw 安裝服務｜老闆級 AI 分身建置</title>
+  <meta name="description" content="OpenClaw 安裝、模型路由、社群監控、每日早報、老闆分身、自動化工作流，一次幫你建好。">
   <style>
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0b1020;color:#eef2ff;margin:0;line-height:1.7}
-    .wrap{max-width:1100px;margin:0 auto;padding:32px 20px}
-    .hero{padding:72px 0}
-    .badge{display:inline-block;background:#1d4ed8;color:#fff;padding:6px 12px;border-radius:999px;font-size:14px}
-    h1{font-size:56px;line-height:1.1;margin:18px 0 12px}
-    h2{font-size:32px;margin:0 0 18px}
-    p.lead{font-size:20px;color:#cbd5e1;max-width:760px}
-    .cta a{display:inline-block;background:#22c55e;color:#08110a;text-decoration:none;padding:14px 20px;border-radius:12px;font-weight:700;margin-right:12px}
-    .cta .ghost{background:transparent;border:1px solid #334155;color:#fff}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-    .card{background:#11182d;border:1px solid #24304d;border-radius:18px;padding:20px}
-    .section{padding:36px 0}
-    .price{font-size:36px;font-weight:800;color:#86efac}
-    ul{padding-left:18px}
+    :root{--bg:#081122;--panel:#101b33;--line:#24324f;--text:#edf3ff;--muted:#b8c4da;--green:#7ef0a7;--blue:#67b7ff;--gold:#ffd76a}
+    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#07111f,#0b1630);color:var(--text);line-height:1.7}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 20px}.hero{padding:82px 0 56px}.badge{display:inline-block;padding:7px 12px;border:1px solid #2a426d;border-radius:999px;color:var(--blue);font-size:14px}
+    h1{font-size:58px;line-height:1.08;margin:18px 0 14px;max-width:900px} h2{font-size:34px;line-height:1.2;margin:0 0 16px} h3{margin:0 0 10px;font-size:22px}
+    p.lead{font-size:21px;color:var(--muted);max-width:840px}.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}.cta a{display:inline-block;text-decoration:none;padding:14px 22px;border-radius:14px;font-weight:800}
+    .btn-primary{background:var(--green);color:#06210f}.btn-ghost{border:1px solid #355080;color:#fff}.section{padding:34px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}.card{background:rgba(16,27,51,.92);border:1px solid var(--line);border-radius:18px;padding:22px}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:start}.hero-side .card{margin-bottom:16px}
+    .price{font-size:40px;font-weight:900;color:var(--green)} ul{padding-left:20px;margin:0}.muted{color:var(--muted)} .check{color:var(--green);font-weight:700}.gold{color:var(--gold)} .steps{counter-reset:s}.step{position:relative;padding-left:56px}.step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;background:#163255;display:grid;place-items:center;font-weight:800;color:#fff}
+    .quote{font-size:26px;font-weight:700;max-width:880px}.footer{padding:42px 0 60px;color:#9fb0cf}.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.kpi{background:#0f1c35;border:1px solid #24324f;border-radius:16px;padding:18px}.kpi b{display:block;font-size:28px;color:var(--gold);margin-bottom:4px}
+    @media (max-width:900px){.hero-grid{grid-template-columns:1fr}h1{font-size:40px}p.lead{font-size:18px}}
   </style>
 </head>
 <body>
   <div class="wrap hero">
-    <span class="badge">OpenClaw 安裝服務</span>
-    <h1>把 AI 從聊天工具，變成真的會替你做事的系統。</h1>
-    <p class="lead">不是只幫你安裝。是直接幫你把 Telegram、LINE、Google、排程、監控、報告、工作流整合成一套能每天替你工作的 AI 分身。</p>
-    <div class="cta">
-      <a href="quote.html">我要報價</a>
-      <a class="ghost" href="#pricing">看方案</a>
+    <div class="hero-grid">
+      <div>
+        <span class="badge">OpenClaw 安裝服務｜AI 分身建置</span>
+        <h1>不是幫你裝一個 bot，<br>是直接幫你做一套會替你工作的 AI 系統。</h1>
+        <p class="lead">把 Telegram、LINE、Google Workspace、社群監控、每日早報、提醒、報告、工作流，全部整合成一套能每天替你跑流程的 OpenClaw 系統。你只要專心做決策。</p>
+        <div class="cta">
+          <a class="btn-primary" href="quote.html">我要報價 / 安裝評估</a>
+          <a class="btn-ghost" href="#pricing">先看方案</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="card"><h3>你買到的是</h3><ul><li>老闆分身</li><li>每日早報與監控</li><li>社群 / 新聞 / 情報自動整理</li><li>自動提醒與工作流</li><li>安裝 + 調教 + 交付</li></ul></div>
+        <div class="card"><h3>最適合</h3><ul><li>老闆 / 創業者</li><li>顧問 / 業務 / 社群經營</li><li>資訊密集型工作者</li><li>想把重複工作砍掉的人</li></ul></div>
+      </div>
     </div>
   </div>
 
   <div class="wrap section">
-    <h2>你買的不是 bot，是一套作業系統</h2>
+    <div class="kpis">
+      <div class="kpi"><b>省 2~4 小時/天</b><span>把整理、跟進、提醒、監控自動化</span></div>
+      <div class="kpi"><b>更快成交</b><span>更快回、整理更完整、跟進更穩</span></div>
+      <div class="kpi"><b>可擴充</b><span>從入門版一路升級到老闆分身版</span></div>
+      <div class="kpi"><b>可本地部署</b><span>資料留在自己手上，比純雲端更可控</span></div>
+    </div>
+  </div>
+
+  <div class="wrap section">
+    <h2>你現在真正痛的，不是沒有 AI，是事情太多、太碎、太吵。</h2>
     <div class="grid">
-      <div class="card"><h3>自動整理</h3><p>幫你把分散在各平台的訊息與資訊整理進同一個入口。</p></div>
-      <div class="card"><h3>自動監控</h3><p>追社群、追新聞、追競品、追工作狀態，不用你一直盯。</p></div>
-      <div class="card"><h3>自動回報</h3><p>每日/每週產出摘要、報告、提醒，讓老闆不漏重點。</p></div>
-      <div class="card"><h3>自動工作流</h3><p>把重複工作接成流程，讓 AI 不只是回答，而是真的執行。</p></div>
+      <div class="card"><h3>訊息太多</h3><p class="muted">Telegram、LINE、Email、社群、客戶、行事曆，資訊散在不同地方。</p></div>
+      <div class="card"><h3>重複工作太多</h3><p class="muted">每天整理、提醒、追進度、看社群、寫報告，做不完也做不動。</p></div>
+      <div class="card"><h3>你不是沒工具</h3><p class="muted">你缺的是一套真的會幫你把工作跑起來的系統。</p></div>
+    </div>
+  </div>
+
+  <div class="wrap section">
+    <h2>OpenClaw 安裝服務會幫你做好的事</h2>
+    <div class="grid">
+      <div class="card"><h3>每日早報</h3><p>每天固定整理你在乎的新聞、社群、競品、討論串。</p></div>
+      <div class="card"><h3>社群監控</h3><p>幫你追 FB / Reddit / X / Threads，不用自己一直滑。</p></div>
+      <div class="card"><h3>工作提醒</h3><p>把會議、待辦、跟進、回報接成自動化提醒。</p></div>
+      <div class="card"><h3>AI 分身</h3><p>讓系統先幫你整理、摘要、分流、追任務，你只做最後決策。</p></div>
+      <div class="card"><h3>模型路由</h3><p>把不同模型用在對的位置，省成本也省時間。</p></div>
+      <div class="card"><h3>第二大腦</h3><p>把記憶、報告、工作流和決策整理起來，越用越順。</p></div>
     </div>
   </div>
 
   <div class="wrap section" id="pricing">
-    <h2>方案</h2>
+    <h2>方案與價格</h2>
     <div class="grid">
-      <div class="card"><h3>方案 A｜入門安裝版</h3><div class="price">NT$ 6,800</div><ul><li>基礎安裝</li><li>Telegram 對接</li><li>1 個模型</li><li>1 次交付教學</li></ul></div>
-      <div class="card"><h3>方案 B｜商務自動化版</h3><div class="price">NT$ 12,800</div><ul><li>完整安裝</li><li>Telegram / LINE / Google 整合</li><li>2~3 模型路由</li><li>監控 / 報告 / 1 套 workflow</li></ul></div>
-      <div class="card"><h3>方案 C｜老闆分身版</h3><div class="price">NT$ 25,800 起</div><ul><li>多 Agent 分工</li><li>夜班 / 監控 / 報告</li><li>第二大腦 / GitHub / workflow</li><li>30 天微調支援</li></ul></div>
+      <div class="card"><h3>方案 A｜入門安裝版</h3><div class="price">NT$ 6,800</div><ul><li><span class="check">✓</span> OpenClaw 基礎安裝</li><li><span class="check">✓</span> Telegram 對接</li><li><span class="check">✓</span> 1 個模型配置</li><li><span class="check">✓</span> 1 次遠端交付教學</li></ul></div>
+      <div class="card"><h3>方案 B｜商務自動化版</h3><div class="price">NT$ 12,800</div><ul><li><span class="check">✓</span> 完整安裝 + 調教</li><li><span class="check">✓</span> Telegram / LINE / Google 整合</li><li><span class="check">✓</span> 2~3 模型路由</li><li><span class="check">✓</span> 1 組監控 / 報告 / workflow</li></ul></div>
+      <div class="card"><h3>方案 C｜老闆分身版</h3><div class="price">NT$ 25,800 起</div><ul><li><span class="check">✓</span> 多 Agent 分工</li><li><span class="check">✓</span> 夜班 / 監控 / 報告</li><li><span class="check">✓</span> 第二大腦 / GitHub / 工作流</li><li><span class="check">✓</span> 30 天微調支援</li></ul></div>
     </div>
   </div>
 
   <div class="wrap section">
-    <h2>最適合誰</h2>
+    <h2>導入流程</h2>
     <div class="grid">
-      <div class="card">老闆 / 創業者</div>
-      <div class="card">顧問 / 業務</div>
-      <div class="card">社群經營者</div>
-      <div class="card">資訊密集型工作者</div>
+      <div class="card step"><h3>需求訪談</h3><p>先找出你每天最煩的重複工作與資訊入口。</p></div>
+      <div class="card step"><h3>方案配置</h3><p>依你的場景決定裝什麼、接什麼、先自動化哪一段。</p></div>
+      <div class="card step"><h3>安裝交付</h3><p>幫你把系統、模型、通訊、workflow 一次接好。</p></div>
+      <div class="card step"><h3>開始省時間</h3><p>讓 OpenClaw 開始替你盯、替你整理、替你回報。</p></div>
     </div>
   </div>
 
   <div class="wrap section">
-    <h2>下一步</h2>
-    <p>先聊你的工作流，我會直接幫你判斷應該裝哪個版本、怎麼整合、第一條 automation 做什麼最划算。</p>
-    <div class="cta"><a href="quote.html">填需求 / 先報價</a></div>
+    <h2>FAQ</h2>
+    <div class="grid">
+      <div class="card"><h3>跟 ChatGPT 有什麼差？</h3><p>ChatGPT 是對話工具，OpenClaw 是可執行、可排程、可整合的工作系統。</p></div>
+      <div class="card"><h3>不懂技術也能用嗎？</h3><p>可以。交付重點是讓你直接用，不是叫你自己研究設定。</p></div>
+      <div class="card"><h3>可不可以客製？</h3><p>可以。真正值錢的就是幫你把你自己的工作流做起來。</p></div>
+    </div>
   </div>
+
+  <div class="wrap section">
+    <p class="quote">你不是缺工具。你是缺一套，真的能替你工作、幫你省時間、幫你加快成交的 AI 系統。</p>
+    <div class="cta">
+      <a class="btn-primary" href="quote.html">我要先報價</a>
+    </div>
+  </div>
+
+  <div class="wrap footer">OpenClaw 安裝服務｜AI 分身、工作流、自動化、監控、報告、整合</div>
 </body>
 </html>
