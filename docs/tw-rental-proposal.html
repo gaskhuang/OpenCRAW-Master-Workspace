@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>台灣小租營運轉型與放大提案</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #162033;
+      --muted: #5b6880;
+      --brand: #1f5eff;
+      --brand2: #00a7b5;
+      --line: #e6ebf3;
+      --good: #0f9d58;
+      --warn: #d97706;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef3ff 0%, var(--bg) 42%, #ffffff 100%);
+      line-height: 1.7;
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 40px 20px 80px; }
+    .hero {
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 28px; align-items: center;
+      background: linear-gradient(135deg, #ffffff 0%, #f7fbff 100%);
+      border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+      box-shadow: 0 18px 50px rgba(32,55,120,.08);
+    }
+    .hero h1 { font-size: 42px; line-height: 1.15; margin: 0 0 14px; }
+    .hero p { color: var(--muted); margin: 0 0 18px; font-size: 18px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .chip {
+      padding: 8px 12px; border-radius: 999px; background: #eef4ff; color: var(--brand); font-weight: 700; font-size: 14px;
+      border: 1px solid #d9e5ff;
+    }
+    .hero img { width: 100%; border-radius: 18px; border: 1px solid var(--line); background: #fff; }
+    h2 { font-size: 28px; margin: 42px 0 14px; }
+    .lead { font-size: 18px; color: var(--muted); }
+    .grid-3, .grid-4, .grid-2 { display: grid; gap: 18px; }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px;
+      box-shadow: 0 8px 24px rgba(20,35,80,.05);
+    }
+    .card h3 { margin-top: 0; margin-bottom: 10px; font-size: 20px; }
+    .kpi { font-size: 34px; font-weight: 800; color: var(--brand); line-height: 1; margin-bottom: 8px; }
+    ul { margin: 8px 0 0 18px; padding: 0; }
+    .swot h3 { margin-bottom: 6px; }
+    .swot p { color: var(--muted); margin: 0; }
+    .section-note {
+      padding: 16px 18px; background: #f7fbff; border: 1px solid #dbeafe; color: #274472; border-radius: 16px;
+    }
+    .cta {
+      margin-top: 40px; padding: 28px; border-radius: 24px; color: white;
+      background: linear-gradient(135deg, #1b49d4 0%, #00a7b5 100%);
+      box-shadow: 0 18px 40px rgba(14,52,160,.22);
+    }
+    .footer { margin-top: 40px; color: var(--muted); font-size: 14px; }
+    @media (max-width: 900px) {
+      .hero, .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <div class="chip">企業設備租賃</div>
+        <h1>台灣小租營運轉型與放大提案</h1>
+        <p>從「租電腦」升級成「企業 IT 訂閱服務」，把硬體租賃、快速換機、端點管理、M365、資安與維運整合成更高續約、更高毛利、也更難被比價的商業模式。</p>
+        <div class="chips">
+          <span class="chip">月租制</span>
+          <span class="chip">6 小時換機</span>
+          <span class="chip">企業訂閱</span>
+          <span class="chip">多據點維運</span>
+          <span class="chip">AI 自動化加值</span>
+        </div>
+      </div>
+      <div>
+        <img src="./tw-rental-proposal-hero.png" alt="台灣小租營運轉型提案插圖" />
+      </div>
+    </section>
+
+    <section>
+      <h2>一、目前商業模式定位</h2>
+      <p class="lead">台灣小租目前的核心，不只是提供筆電，而是在賣「企業低門檻取得設備 + 維護服務 + 快速替換」。這是一個很適合往訂閱制、平台化與高附加價值服務升級的起點。</p>
+      <div class="grid-4">
+        <div class="card"><div class="kpi">1,000</div><div>月租方案主力價格帶（約每台 / 月）</div></div>
+        <div class="card"><div class="kpi">24</div><div>長租週期主軸（月）</div></div>
+        <div class="card"><div class="kpi">3h</div><div>線上快速回應訴求</div></div>
+        <div class="card"><div class="kpi">6h</div><div>快速換機品牌心智</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>二、核心優勢</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>台灣在地服務</h3>
+          <ul>
+            <li>企業更在意找不找得到人</li>
+            <li>換機快不快</li>
+            <li>能不能到場支援</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>月租制容易成交</h3>
+          <ul>
+            <li>降低一次性 CAPEX 壓力</li>
+            <li>更適合成長型企業</li>
+            <li>更容易綁維護與加購</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>可延伸成長約 LTV</h3>
+          <ul>
+            <li>續約</li>
+            <li>升級換機</li>
+            <li>M365 / 資安 / 維運</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>三、目前瓶頸</h2>
+      <div class="grid-3">
+        <div class="card"><h3>商品化不足</h3><p>若只講租筆電，市場很容易進入比價，客戶會把你當成硬體供應商，而不是長期服務商。</p></div>
+        <div class="card"><h3>服務層不夠厚</h3><p>若沒有 M365、資安、端點管理、備份與 IT 維護，毛利會受限於硬體成本與維修壓力。</p></div>
+        <div class="card"><h3>平台化能力待建立</h3><p>若未來要規模化，訂單、資產、維修、回收、再租賃與多據點服務都要變成標準流程。</p></div>
+      </div>
+    </section>
+
+    <section class="swot">
+      <h2>四、SWOT 分析</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>S｜Strengths</h3>
+          <p>台灣在地支援、快速換機、商務機種聚焦、企業服務導向、可建立長期租賃與維運關係。</p>
+        </div>
+        <div class="card">
+          <h3>W｜Weaknesses</h3>
+          <p>若只賣租機，差異化不足；規模不夠時，倉儲、維修、備品與跨區服務壓力會偏高。</p>
+        </div>
+        <div class="card">
+          <h3>O｜Opportunities</h3>
+          <p>AI、遠端辦公、多據點營運、中小企業訂閱化需求上升，可升級成企業 IT 訂閱服務。</p>
+        </div>
+        <div class="card">
+          <h3>T｜Threats</h3>
+          <p>大型 SI、品牌 DaaS、平台型租賃玩家壓價；若市場只看價格，容易被低價競爭拖住。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>五、可借鏡中國競品的地方</h2>
+      <div class="section-note">中國玩家強的不是只有租電腦，而是把訂單、風控、資產、維修、回收、再出租做成平台。台灣市場不必複製規模戰，但可以複製「平台思維 + 服務標準化」。</div>
+      <div class="grid-3" style="margin-top:18px;">
+        <div class="card"><h3>平台化</h3><p>線上申請、標準租期、標準換機、標準回收，提高營運效率。</p></div>
+        <div class="card"><h3>資產效率</h3><p>新機租賃、整備再出租、設備生命週期管理，讓資產報酬更高。</p></div>
+        <div class="card"><h3>企業整包方案</h3><p>從單機租賃升級成筆電 + 螢幕 + 周邊 + 維運 + 資安 + M365 的組合服務。</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>六、營運轉型建議</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>方向 1：從 Rental 變成 Managed IT Subscription</h3>
+          <ul>
+            <li>設備租賃</li>
+            <li>快速換機</li>
+            <li>端點管理</li>
+            <li>M365 導入</li>
+            <li>資安 / 備份 / 維護</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>方向 2：從單機租賃變角色型方案</h3>
+          <ul>
+            <li>行政辦公包</li>
+            <li>業務外勤包</li>
+            <li>門市據點包</li>
+            <li>AI 員工工作包</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>七、營運放大策略</h2>
+      <div class="grid-4">
+        <div class="card"><h3>1</h3><p>先把租賃 + M365 / 資安 / 維護做成高毛利組合包。</p></div>
+        <div class="card"><h3>2</h3><p>建立標準化企業方案，減少每案重做，提高業務成交率。</p></div>
+        <div class="card"><h3>3</h3><p>建立中南部維修 / 備品 / 區域夥伴聯盟，放大服務半徑。</p></div>
+        <div class="card"><h3>4</h3><p>建立設備生命週期後台，從租機變成企業資產管理入口。</p></div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2 style="margin-top:0;color:#fff;">提案主結論</h2>
+      <p style="font-size:20px; margin:0; opacity:.96;">台灣小租下一步不應該只是把更多電腦租出去，而是把「設備租賃」升級成「企業 IT 訂閱服務平台」。未來最值錢的，不是設備本身，而是企業持續依賴你的維運能力、換機能力、管理能力與自動化能力。</p>
+    </section>
+
+    <div class="footer">
+      本頁為提案初版，由 OpenClaw 協助整理生成。可再延伸為正式簡報版、報價版與社群圖卡版。
+    </div>
+  </div>
+</body>
+</html>
