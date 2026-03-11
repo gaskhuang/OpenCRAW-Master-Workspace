@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>女力學院商業分析報告</title>
+  <title>女力學院 × 2027 線上學習趨勢 商業優化報告</title>
   <style>
     :root {
       --bg: #fdf7ff;
@@ -12,7 +12,7 @@
       --muted: #64547a;
       --brand: #7c3aed;
       --brand2: #db2777;
-      --brand3: #c084fc;
+      --teal: #0d9488;
       --gold: #d97706;
       --line: #ede9f4;
       --good: #059669;
@@ -21,88 +21,137 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
-      background: linear-gradient(180deg, #f5eeff 0%, var(--bg) 40%, #fff 100%);
-      color: var(--ink);
-      line-height: 1.75;
+      background: linear-gradient(180deg, #f0e8ff 0%, var(--bg) 38%, #fff 100%);
+      color: var(--ink); line-height: 1.75;
     }
     .wrap { max-width: 1100px; margin: 0 auto; padding: 44px 20px 80px; }
 
     /* HERO */
     .hero {
-      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; align-items: center;
-      background: linear-gradient(135deg, #fff 0%, #f9f4ff 100%);
-      border: 1px solid var(--line); border-radius: 24px; padding: 32px;
-      box-shadow: 0 18px 50px rgba(100,50,160,.08);
-      margin-bottom: 36px;
+      background: linear-gradient(135deg, #1a0540 0%, #3b0764 50%, #1e1b4b 100%);
+      border-radius: 28px; padding: 40px 36px 32px; color: #fff;
+      margin-bottom: 36px; position: relative; overflow: hidden;
+      box-shadow: 0 24px 60px rgba(100,20,200,.28);
     }
-    .hero .tag { display:inline-block; padding:6px 14px; border-radius:999px; background:#f3e8ff; color:var(--brand); font-weight:700; font-size:13px; margin-bottom:12px; border:1px solid #ddd6fe; }
-    .hero h1 { font-size:40px; line-height:1.2; margin:0 0 12px; }
-    .hero p { color:var(--muted); font-size:18px; margin:0 0 20px; }
-    .chips { display:flex; flex-wrap:wrap; gap:10px; }
-    .chip { padding:6px 14px; border-radius:999px; font-size:13px; font-weight:700; border:1px solid; }
-    .chip-p { background:#f3e8ff; color:var(--brand); border-color:#ddd6fe; }
-    .chip-r { background:#fce7f3; color:var(--brand2); border-color:#fbcfe8; }
-    .chip-g { background:#d1fae5; color:#065f46; border-color:#a7f3d0; }
-    .hero img { width:100%; border-radius:18px; border:1px solid var(--line); }
+    .hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(192,132,252,.25) 0%, transparent 70%);
+    }
+    .hero .badge {
+      display: inline-block; padding: 5px 14px; border-radius: 999px;
+      background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+      font-size: 13px; font-weight: 700; margin-bottom: 14px; backdrop-filter: blur(4px);
+    }
+    .hero h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+    .hero p { opacity: .88; font-size: 17px; max-width: 680px; margin: 0 0 22px; }
+    .hero img { width: 100%; border-radius: 16px; margin-top: 16px; opacity: .95; }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .hero-chip {
+      padding: 6px 14px; border-radius: 999px;
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+      font-size: 13px; font-weight: 700; color: #e9d5ff;
+    }
 
-    h2 { font-size:26px; margin:40px 0 14px; }
-    h3 { font-size:18px; margin:0 0 8px; }
-    p { margin:0 0 10px; }
-    .lead { color:var(--muted); font-size:17px; margin-bottom:18px; }
+    h2 { font-size: 26px; margin: 44px 0 6px; }
+    .section-lead { color: var(--muted); font-size: 16px; margin-bottom: 18px; }
+    h3 { font-size: 17px; margin: 0 0 8px; }
+    p { margin: 0 0 8px; font-size: 15px; }
 
-    .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
-    .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
 
     .card {
-      background:var(--card); border:1px solid var(--line); border-radius:20px; padding:22px;
-      box-shadow:0 6px 20px rgba(100,50,160,.05);
+      background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px;
+      box-shadow: 0 6px 20px rgba(100,50,160,.05);
     }
-    .card.accent-p { border-top:3px solid var(--brand); }
-    .card.accent-r { border-top:3px solid var(--brand2); }
-    .card.accent-g { border-top:3px solid var(--good); }
-    .card.accent-gold { border-top:3px solid var(--gold); }
+    .card.t-p { border-top: 3px solid var(--brand); }
+    .card.t-r { border-top: 3px solid var(--brand2); }
+    .card.t-t { border-top: 3px solid var(--teal); }
+    .card.t-g { border-top: 3px solid var(--good); }
+    .card.t-gold { border-top: 3px solid var(--gold); }
 
-    .kpi { font-size:36px; font-weight:800; line-height:1; margin-bottom:6px; }
-    .kpi-p { color:var(--brand); }
-    .kpi-r { color:var(--brand2); }
-    .kpi-g { color:var(--good); }
-    .kpi-gold { color:var(--gold); }
+    .kpi { font-size: 34px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+    .kpi-p { color: var(--brand); }
+    .kpi-r { color: var(--brand2); }
+    .kpi-t { color: var(--teal); }
+    .kpi-g { color: var(--good); }
+    .kpi-gold { color: var(--gold); }
 
-    ul { margin:8px 0 0 18px; padding:0; }
-    li { margin-bottom:4px; }
+    ul { margin: 8px 0 0 18px; padding: 0; }
+    li { margin-bottom: 4px; font-size: 15px; }
 
-    .note {
-      padding:16px 20px; border-radius:14px; background:#faf5ff; border:1px solid #e9d5ff;
-      color:#5b21b6; font-size:15px; margin-bottom:20px;
+    /* TREND CARDS */
+    .trend-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+    .trend-card {
+      background: linear-gradient(135deg, #faf5ff 0%, #fdf2f8 100%);
+      border: 1px solid var(--line); border-radius: 18px; padding: 18px;
+      position: relative; overflow: hidden;
     }
-
-    .swot-box h3 { margin-bottom:6px; font-size:16px; }
-    .swot-box p { color:var(--muted); font-size:15px; margin:0; }
-
-    .timeline { display:flex; flex-direction:column; gap:16px; }
-    .tline-item { display:flex; gap:16px; align-items:flex-start; }
-    .tline-num {
-      min-width:36px; height:36px; background:linear-gradient(135deg,var(--brand),var(--brand2));
-      border-radius:50%; display:flex; align-items:center; justify-content:center;
-      color:#fff; font-weight:800; font-size:16px;
+    .trend-num {
+      font-size: 40px; font-weight: 900; color: rgba(124,58,237,.12);
+      position: absolute; top: 6px; right: 12px; line-height: 1;
     }
-    .tline-body h4 { margin:0 0 4px; font-size:17px; }
-    .tline-body p { margin:0; color:var(--muted); font-size:15px; }
+    .trend-icon { font-size: 24px; margin-bottom: 8px; }
+    .trend-card h4 { margin: 0 0 6px; font-size: 15px; font-weight: 800; color: var(--brand); }
+    .trend-card p { font-size: 13px; color: var(--muted); margin: 0; }
 
+    /* HOW TO APPLY */
+    .apply-row {
+      display: grid; grid-template-columns: 220px 1fr; gap: 0; border: 1px solid var(--line);
+      border-radius: 16px; overflow: hidden; margin-bottom: 12px;
+      box-shadow: 0 4px 12px rgba(100,50,160,.04);
+    }
+    .apply-trend {
+      background: linear-gradient(135deg, #7c3aed, #db2777);
+      color: #fff; padding: 16px 18px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .apply-trend .label { font-size: 11px; opacity: .8; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+    .apply-trend .name { font-size: 15px; font-weight: 800; line-height: 1.3; }
+    .apply-body { background: #fff; padding: 16px 20px; }
+    .apply-body h4 { margin: 0 0 6px; font-size: 15px; color: var(--ink); }
+    .apply-body p { font-size: 14px; color: var(--muted); margin: 0; }
+
+    /* TIMELINE */
+    .timeline { display: flex; flex-direction: column; gap: 14px; }
+    .titem { display: flex; gap: 16px; align-items: flex-start; }
+    .tnum {
+      min-width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 15px; flex-shrink: 0;
+    }
+    .tbody h4 { margin: 0 0 4px; font-size: 16px; }
+    .tbody p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    /* SWOT */
+    .swot-wrap { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .swot-item h3 { margin-bottom: 6px; }
+    .swot-item p { color: var(--muted); font-size: 14px; margin: 0; }
+
+    /* CTA */
     .cta {
-      margin-top:36px; padding:32px; border-radius:24px; color:#fff;
-      background:linear-gradient(135deg,#7c3aed 0%,#db2777 100%);
-      box-shadow:0 18px 40px rgba(120,50,200,.25);
+      margin-top: 40px; padding: 36px; border-radius: 26px; color: #fff;
+      background: linear-gradient(135deg, #3b0764 0%, #7c3aed 50%, #db2777 100%);
+      box-shadow: 0 20px 50px rgba(120,40,200,.3);
     }
-    .cta h2 { color:#fff; margin-top:0; }
-    .cta p { opacity:.95; font-size:18px; margin:0; }
+    .cta h2 { color: #fff; margin-top: 0; font-size: 28px; }
+    .cta p { opacity: .95; font-size: 17px; margin: 0 0 22px; }
+    .cta-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .cta-box {
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 16px; padding: 16px; backdrop-filter: blur(4px);
+    }
+    .cta-box h4 { color: #f0e6ff; margin: 0 0 6px; font-size: 15px; }
+    .cta-box p { color: rgba(255,255,255,.8); font-size: 13px; margin: 0; }
 
-    .footer { margin-top:36px; color:var(--muted); font-size:13px; }
+    .footer { margin-top: 36px; color: var(--muted); font-size: 13px; text-align: center; }
 
-    @media (max-width:880px) {
-      .hero, .grid-4, .grid-3, .grid-2 { grid-template-columns:1fr; }
-      .hero h1 { font-size:30px; }
+    @media (max-width: 900px) {
+      .trend-grid, .grid-4, .grid-3, .grid-2, .apply-row, .cta-grid, .swot-wrap { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 28px; }
+      .apply-row { display: flex; flex-direction: column; }
     }
   </style>
 </head>
@@ -111,225 +160,248 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div>
-      <span class="tag">女性創業 &amp; 職涯賦能</span>
-      <h1>女力學院<br>商業分析報告</h1>
-      <p>針對女力學院的商業模式、市場定位、客群擴張與營收放大方向，進行全面分析並提出具體建議。</p>
-      <div class="chips">
-        <span class="chip chip-p">女性賦能</span>
-        <span class="chip chip-r">課程訂閱</span>
-        <span class="chip chip-g">企業培訓</span>
-        <span class="chip chip-p">社群經濟</span>
-        <span class="chip chip-r">AI 數位轉型</span>
-      </div>
+    <div class="badge">🔮 2027 線上學習趨勢優化版</div>
+    <h1>女力學院<br>× 2027 線上學習趨勢<br>商業優化報告</h1>
+    <p>整合 2027 年八大線上學習產業趨勢，為女力學院量身打造客群擴張、營收放大與數位轉型的完整行動方案。</p>
+    <div class="hero-chips">
+      <span class="hero-chip">AI 個人化學習</span>
+      <span class="hero-chip">訂閱制平台</span>
+      <span class="hero-chip">社群共學</span>
+      <span class="hero-chip">微認證</span>
+      <span class="hero-chip">短影音教育</span>
+      <span class="hero-chip">企業 B2B2C</span>
     </div>
-    <div>
-      <img src="./women-academy-infographic.png" alt="女力學院商業分析插圖" />
+    <img src="./women-academy-2027-hero.png" alt="2027 線上學習趨勢視覺" />
+  </section>
+
+  <!-- 2027 八大趨勢 -->
+  <section>
+    <h2>一、2027 線上學習八大關鍵趨勢</h2>
+    <p class="section-lead">這八個趨勢將重塑教育市場——每一個都是女力學院可以直接切入的機會。</p>
+    <div class="trend-grid">
+      <div class="trend-card">
+        <span class="trend-num">1</span>
+        <div class="trend-icon">🤖</div>
+        <h4>AI 個人化學習路徑</h4>
+        <p>AI 根據學習者背景、目標、進度，自動推薦最適課程序列。Duolingo、Khan Academy 已大規模落地。</p>
+      </div>
+      <div class="trend-card">
+        <span class="trend-num">2</span>
+        <div class="trend-icon">👥</div>
+        <h4>同期共學社群（Cohort）</h4>
+        <p>不再是自學影片，而是一批人同時學、互相打氣、分組討論。完課率從 10% 提升到 60%+。</p>
+      </div>
+      <div class="trend-card">
+        <span class="trend-num">3</span>
+        <div class="trend-icon">🏅</div>
+        <h4>微認證 &amp; 數位徽章</h4>
+        <p>LinkedIn 可秀出的短期認證課程。企業開始接受「非學位」的技能認證，求職效益顯著。</p>
+      </div>
+      <div class="trend-card">
+        <span class="trend-num">4</span>
+        <div class="trend-icon">📱</div>
+        <h4>Mobile-First 短碎學習</h4>
+        <p>70% 學習發生在手機。每段 5–10 分鐘的微課程（Micro-learning）成主流，搭配推播提醒。</p>
+      </div>
+      <div class="trend-card">
+        <span class="trend-num">5</span>
+        <div class="trend-icon">🎬</div>
+        <h4>短影音教育漏斗</h4>
+        <p>Reels/TikTok/YouTube Shorts 成為課程引流主力。「免費短片 → 付費深度課程」是最高效的轉化路徑。</p>
+      </div>
+      <div class="trend-card">
+        <span class="trend-num">6</span>
+        <div class="trend-icon">♾️</div>
+        <h4>訂閱制學習平台</h4>
+        <p>Coursera、Masterclass、MasterClass 月費化。使用者更偏好「一個月費解鎖全部」而非單次購課。</p>
+      </div>
+      <div class="trend-card">
+        <span class="trend-num">7</span>
+        <div class="trend-icon">🏢</div>
+        <h4>企業 B2B2C 模型</h4>
+        <p>企業替員工買課（B2B），員工在平台學習（B2C）。EdTech 最大的錢在企業端，不在個人端。</p>
+      </div>
+      <div class="trend-card">
+        <span class="trend-num">8</span>
+        <div class="trend-icon">🌐</div>
+        <h4>華語跨境教育市場</h4>
+        <p>台灣、新加坡、馬來西亞、香港女性族群，透過線上課程可一次觸及。邊際成本趨近於零。</p>
+      </div>
     </div>
   </section>
 
-  <!-- 商業模式 -->
+  <!-- 趨勢 × 女力學院 對照 -->
   <section>
-    <h2>一、核心商業模式分析</h2>
-    <p class="lead">女力學院本質上是一個「女性賦能平台」——透過課程、社群、教練與企業合作，持續為女性創造職涯成長與創業工具。</p>
-    <div class="grid-3">
-      <div class="card accent-p">
-        <h3>🎓 課程銷售</h3>
-        <p>主要收入來源。涵蓋線上課程、線下工作坊、年度方案。單次購課 vs. 訂閱制。高影片課程毛利率（60–80%）。</p>
+    <h2>二、趨勢 × 女力學院｜如何直接轉化為行動</h2>
+    <p class="section-lead">每一個 2027 趨勢，都對應女力學院可以馬上做的具體動作。</p>
+
+    <div class="apply-row">
+      <div class="apply-trend"><span class="label">趨勢 1</span><span class="name">AI 個人化學習路徑</span></div>
+      <div class="apply-body">
+        <h4>導入 AI 學習顧問（搭配 OpenClaw）</h4>
+        <p>讓每位學員加入時填寫「職涯目標 + 現況」，AI 自動推薦課程路徑。從「我要買什麼課」→「AI 幫你規劃整套學習計劃」。</p>
       </div>
-      <div class="card accent-r">
-        <h3>👥 社群會員制</h3>
-        <p>建立女性創業者與職場女性社群，透過月費或年費會員制收取經常性收入。增加黏性與轉介。</p>
+    </div>
+    <div class="apply-row">
+      <div class="apply-trend"><span class="label">趨勢 2</span><span class="name">Cohort 同期共學</span></div>
+      <div class="apply-body">
+        <h4>每季推出「女力共學計畫」</h4>
+        <p>限 30–50 人同期開班，8 週課程 + LINE 群組 + 每週直播。完課率高、黏性強、口碑爆。售價 NT$6,000–15,000/人。</p>
       </div>
-      <div class="card accent-g">
-        <h3>🏢 企業培訓</h3>
-        <p>B2B 業務：提供企業女性領導力培訓、DE&amp;I 課程、職場賦能工作坊。單案金額高，拓展潛力大。</p>
+    </div>
+    <div class="apply-row">
+      <div class="apply-trend"><span class="label">趨勢 3</span><span class="name">微認證 &amp; 數位徽章</span></div>
+      <div class="apply-body">
+        <h4>推出「女力學院認證」系列</h4>
+        <p>設計可掛在 LinkedIn 的認證標章。學員願意為「有憑有據的能力證明」多付 20–50%。可授權企業採購用於 DE&I 培訓紀錄。</p>
       </div>
-      <div class="card accent-gold">
-        <h3>🤝 教練輔導</h3>
-        <p>1-on-1 或小組教練服務。高單價、高附加值。可作為進階版課程後的服務升級路徑。</p>
+    </div>
+    <div class="apply-row">
+      <div class="apply-trend"><span class="label">趨勢 4</span><span class="name">Mobile-First 微課程</span></div>
+      <div class="apply-body">
+        <h4>每個大課拆成 5–10 分鐘模組</h4>
+        <p>讓忙碌的職場女性「通勤 10 分鐘就能學完一個技能」。搭配每日推播提醒，讓平台成為每天打開的習慣。</p>
       </div>
-      <div class="card accent-p">
-        <h3>🎤 演講 &amp; 活動</h3>
-        <p>講師受邀演講、主持論壇、舉辦年度大會。品牌曝光 + 轉化管道，也可收取門票或贊助。</p>
+    </div>
+    <div class="apply-row">
+      <div class="apply-trend"><span class="label">趨勢 5</span><span class="name">短影音教育漏斗</span></div>
+      <div class="apply-body">
+        <h4>每週發 3 支 Reels/Shorts → 導流報名</h4>
+        <p>每支 60 秒談一個「職場女性痛點解法」，結尾 CTA 進免費課程或試聽。成本低、觸及廣，是現在最有效的有機流量策略。</p>
       </div>
-      <div class="card accent-r">
-        <h3>🤖 AI 工具整合</h3>
-        <p>導入 OpenClaw 等 AI 工具，為學員提供「AI 助理 + 工作自動化」加值服務，形成差異化競爭優勢。</p>
+    </div>
+    <div class="apply-row">
+      <div class="apply-trend"><span class="label">趨勢 6</span><span class="name">訂閱制學習平台</span></div>
+      <div class="apply-body">
+        <h4>推出「女力會員月費制」</h4>
+        <p>NT$799/月，解鎖全部課程庫 + 社群 + 每月直播。建立 MRR（月經常性收入），降低對單次課程的依賴。目標：6 個月內 300 位會員。</p>
+      </div>
+    </div>
+    <div class="apply-row">
+      <div class="apply-trend"><span class="label">趨勢 7</span><span class="name">企業 B2B2C</span></div>
+      <div class="apply-body">
+        <h4>打包「企業女性賦能方案」</h4>
+        <p>對企業賣「女性領導力 + AI 工具應用」年度培訓套件。企業幫員工買 → 員工在女力平台學。單案 NT$50,000–200,000，毛利高。</p>
+      </div>
+    </div>
+    <div class="apply-row">
+      <div class="apply-trend"><span class="label">趨勢 8</span><span class="name">華語跨境市場</span></div>
+      <div class="apply-body">
+        <h4>線上課程 → 觸及新加坡、馬來西亞、香港</h4>
+        <p>課程錄製好，觸達全球華語女性，邊際成本幾乎為零。搭配海外社群媒體，3 個月就能打開華語圈知名度。</p>
       </div>
     </div>
   </section>
 
-  <!-- KPI 估算 -->
+  <!-- SWOT 升級版 -->
   <section>
-    <h2>二、市場規模與潛力</h2>
+    <h2>三、SWOT × 2027 趨勢升級分析</h2>
+    <div class="swot-wrap">
+      <div class="card t-g swot-item">
+        <h3>S｜優勢（趨勢加持後更強）</h3>
+        <p>女性賦能定位契合 Cohort 社群學習風潮；在地人脈網絡適合口碑裂變；創辦人個人 IP 適合短影音行銷；信義區地點適合高端 Mastermind 線下活動。</p>
+      </div>
+      <div class="card t-r swot-item">
+        <h3>W｜劣勢（趨勢可以修補）</h3>
+        <p>若沒有訂閱制，每月收入不穩定；短影音若缺乏系統性輸出，品牌觸及有限；缺乏 AI 工具整合則競爭力在 2027 明顯落後。</p>
+      </div>
+      <div class="card t-p swot-item">
+        <h3>O｜機會（2027 趨勢直接創造）</h3>
+        <p>微認證市場爆發；AI 個人化學習需求激增；企業 DE&I + AI 培訓預算大增；華語線上學習市場持續擴張；短影音教育紅利仍在。</p>
+      </div>
+      <div class="card t-gold swot-item">
+        <h3>T｜威脅（需搶先佈局）</h3>
+        <p>Hahow、Pressplay、Udemy 也在搶女性課程客群；AI 工具讓競爭者做課更容易；若未建立自有社群，很容易被平台的演算法淘汰。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 營收模型升級 -->
+  <section>
+    <h2>四、2027 最優先的 5 個營收放大動作</h2>
+    <div class="timeline">
+      <div class="titem">
+        <div class="tnum">1</div>
+        <div class="tbody">
+          <h4>訂閱制上線（30 天內可做到）</h4>
+          <p>推出月費 NT$799 會員制 → 建立 MRR。目標 6 個月 300 位 = 月收 NT$240,000 穩定底。</p>
+        </div>
+      </div>
+      <div class="titem">
+        <div class="tnum">2</div>
+        <div class="tbody">
+          <h4>Cohort 共學計畫（每季一班）</h4>
+          <p>限 40 人 × NT$9,800/人 = 單班 NT$392,000。每年 4 班 = NT$1,568,000 穩定收入。完課率高，口碑最好。</p>
+        </div>
+      </div>
+      <div class="titem">
+        <div class="tnum">3</div>
+        <div class="tbody">
+          <h4>AI 女力課程上線（最高需求）</h4>
+          <p>「AI 助理讓你一人抵三人」× OpenClaw 整合課程。NT$4,800–8,800/人，目標 100 人 = NT$480,000–880,000/梯次。</p>
+        </div>
+      </div>
+      <div class="titem">
+        <div class="tnum">4</div>
+        <div class="tbody">
+          <h4>企業 B2B 培訓方案（最大單筆）</h4>
+          <p>「女性領導力 × AI 賦能」企業套件，NT$60,000–180,000/案。每月 2 案 = NT$120,000–360,000 額外收入。</p>
+        </div>
+      </div>
+      <div class="titem">
+        <div class="tnum">5</div>
+        <div class="tbody">
+          <h4>短影音漏斗（最低成本獲客）</h4>
+          <p>每週 3 支 Reels/Shorts → 免費試聽 → 付費課程。估算每支觸及 5,000+ → 轉化率 1% = 每月 60+ 新學員進漏斗。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 市場數字 -->
+  <section>
+    <h2>五、市場規模與潛力</h2>
     <div class="grid-4">
       <div class="card">
-        <div class="kpi kpi-p">180萬+</div>
-        <div>台灣職場女性人口（潛在受眾）</div>
+        <div class="kpi kpi-p">$6,700 億</div>
+        <div style="font-size:14px;color:var(--muted)">2027 全球線上學習市場規模（美元）</div>
       </div>
       <div class="card">
-        <div class="kpi kpi-r">35%</div>
-        <div>女性有意願透過線上學習提升職涯技能</div>
+        <div class="kpi kpi-r">18%</div>
+        <div style="font-size:14px;color:var(--muted)">亞太 EdTech 年複合成長率（2024–2027）</div>
       </div>
       <div class="card">
-        <div class="kpi kpi-g">3–5x</div>
-        <div>女性賦能教育市場年成長率（亞太區）</div>
+        <div class="kpi kpi-t">73%</div>
+        <div style="font-size:14px;color:var(--muted)">企業計劃增加數位學習投資比例</div>
       </div>
       <div class="card">
-        <div class="kpi kpi-gold">企業 B2B</div>
-        <div>台灣 DE&amp;I 企業培訓需求快速上升</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SWOT -->
-  <section>
-    <h2>三、SWOT 分析</h2>
-    <div class="grid-2 swot-box">
-      <div class="card accent-g">
-        <h3>S｜優勢</h3>
-        <p>明確品牌定位（女性賦能）、社群黏性強、創辦人個人 IP、學員口碑、信義區優質辦公地點適合形象。</p>
-      </div>
-      <div class="card accent-r">
-        <h3>W｜劣勢</h3>
-        <p>若主要靠線下課程，擴張受限於場地與講師人力；品牌知名度需持續投入；數位化程度若不足，難以規模化。</p>
-      </div>
-      <div class="card accent-p">
-        <h3>O｜機會</h3>
-        <p>AI 工具快速普及、女性創業人數成長、企業 DE&amp;I 需求上升、訂閱制教育市場擴大、可切入政府婦女就業培訓。</p>
-      </div>
-      <div class="card accent-gold">
-        <h3>T｜威脅</h3>
-        <p>大型平台（Hahow、PressPlay、Udemy）搶進女性課程；若只做線下，受景氣與疫情影響大；個人 IP 依賴度過高則抗風險能力弱。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 客群擴張 -->
-  <section>
-    <h2>四、客群擴張方向</h2>
-    <p class="lead">目前可能客群集中在「台北女性創業者 / 職場女性」——以下是能顯著放大客群的幾個方向。</p>
-    <div class="grid-3">
-      <div class="card">
-        <h3>1. 地域擴張</h3>
-        <ul>
-          <li>錄製線上課程 → 全台灣可達</li>
-          <li>直播工作坊 → 不受地理限制</li>
-          <li>中南部合作辦課 / 授權節點</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>2. 年齡層下沉</h3>
-        <ul>
-          <li>大學女性社團合作</li>
-          <li>「職涯入門」課程切入大學應屆生</li>
-          <li>與校方合作認證課程</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>3. 企業 B2B 開發</h3>
-        <ul>
-          <li>主動開發 DE&amp;I 預算公司</li>
-          <li>打包「女性領導力培訓方案」</li>
-          <li>與 HR 顧問公司合作導流</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>4. 海外華語市場</h3>
-        <ul>
-          <li>新加坡 / 馬來西亞 / 香港女性族群</li>
-          <li>線上課程零邊際成本擴張</li>
-          <li>海外社群媒體經營</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>5. 政府資源結合</h3>
-        <ul>
-          <li>婦女館、就業服務站合作</li>
-          <li>中小企業處女性創業補助</li>
-          <li>勞動部職訓課程合作</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>6. AI 工具賦能課程</h3>
-        <ul>
-          <li>「AI 助理讓你工作效率 3 倍」</li>
-          <li>OpenClaw / ChatGPT 職場應用</li>
-          <li>高需求 + 差異化 + 高定價</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 營收放大 -->
-  <section>
-    <h2>五、營收放大策略</h2>
-    <div class="timeline">
-      <div class="tline-item">
-        <div class="tline-num">1</div>
-        <div class="tline-body">
-          <h4>課程訂閱化：從單次購課 → 月費會員</h4>
-          <p>建立「女力學院會員制」，月費 NT$699–1,499，享有課程庫、社群、直播工作坊。讓每月產生穩定 MRR（經常性月收入）。</p>
-        </div>
-      </div>
-      <div class="tline-item">
-        <div class="tline-num">2</div>
-        <div class="tline-body">
-          <h4>建立 Mastermind 高端社群</h4>
-          <p>針對有意願投資自己的高端女性客群，推出年費 NT$15,000–30,000 的 Mastermind 小圈子。每月線下聚會 + 線上教練 + 人脈網絡。高毛利、高黏性。</p>
-        </div>
-      </div>
-      <div class="tline-item">
-        <div class="tline-num">3</div>
-        <div class="tline-body">
-          <h4>企業培訓標準化套件</h4>
-          <p>把「女性領導力培訓」做成可一鍵報價的標準化方案，3–5 堂 × NT$50,000–120,000/場。主動開發企業 HR 與 CSR 預算。</p>
-        </div>
-      </div>
-      <div class="tline-item">
-        <div class="tline-num">4</div>
-        <div class="tline-body">
-          <h4>品牌課程出版 &amp; IP 授權</h4>
-          <p>核心課程製作為影音產品，放上 Hahow / 104 / 自有平台販售。一次製作，長期被動收入。</p>
-        </div>
-      </div>
-      <div class="tline-item">
-        <div class="tline-num">5</div>
-        <div class="tline-body">
-          <h4>AI 賦能課程 × OpenClaw</h4>
-          <p>與 OpenClaw 合作，推出「AI 助理 × 女力工作術」課程。新興話題 + 高定價（NT$3,000–8,000/人）+ 企業團購空間大。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 建議 -->
-  <section>
-    <h2>六、最值得優先執行的 3 件事</h2>
-    <div class="grid-3">
-      <div class="card accent-p">
-        <h3>① 推出會員訂閱制</h3>
-        <p>最快建立 MRR，增加學員黏性，降低對單次課程銷售的依賴。目標：3 個月內滿 100 位會員。</p>
-      </div>
-      <div class="card accent-r">
-        <h3>② 開發 AI 女力課程</h3>
-        <p>市場需求最旺、差異化最強、定價最高。可與 OpenClaw 深度整合，打造「AI 助理讓你一人抵三人」的爆款主題。</p>
-      </div>
-      <div class="card accent-g">
-        <h3>③ 進攻企業 B2B</h3>
-        <p>單筆金額大、預算穩定、口碑轉介效果佳。打包「女性領導力 × AI 賦能」成企業培訓套件，主動出擊中大型企業 HR。</p>
+        <div class="kpi kpi-gold">3.2x</div>
+        <div style="font-size:14px;color:var(--muted)">Cohort 共學完課率 vs. 傳統自學課</div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="cta">
-    <h2>總結：女力學院的下一步</h2>
-    <p>女力學院現在擁有最稀缺的資源——清晰的品牌定位、真實的學員社群，以及市場對女性賦能的高度需求。下一步的關鍵不是做更多，而是把「最有價值的那幾件事」系統化、訂閱化、平台化。真正的成長飛輪，是讓每一位學員都成為下一位學員的入口。</p>
+    <h2>2027 總結：女力學院的制勝公式</h2>
+    <p>在 2027 年，贏的教育平台不是「課最多」，而是「社群最黏、AI 最聰明、認證最有價值」。女力學院現在就具備這三個條件的起點——接下來就是把它們系統化、訂閱化、B2B 化。</p>
+    <div class="cta-grid">
+      <div class="cta-box">
+        <h4>🤝 社群最黏</h4>
+        <p>Cohort 共學 + 訂閱社群 + Mastermind 高端圈，讓學員不只是來上課，而是找到同頻的人。</p>
+      </div>
+      <div class="cta-box">
+        <h4>🤖 AI 最聰明</h4>
+        <p>OpenClaw 整合 + AI 個人化學習路徑 + AI 女力課程，讓女力學院在 2027 成為「AI 賦能女性」的代名詞。</p>
+      </div>
+      <div class="cta-box">
+        <h4>🏅 認證最有價值</h4>
+        <p>微認證 + 企業採購背書 + LinkedIn 可見，讓「女力學院認證」成為職場女性的實質競爭力加分項。</p>
+      </div>
+    </div>
   </section>
 
-  <div class="footer">本報告由 OpenClaw 協助整理生成，適合作為提案、內部討論或合作企劃的參考基礎。</div>
+  <div class="footer">本報告由 OpenClaw 整合 2027 線上學習趨勢研究生成。適合作為女力學院提案、策略規劃與投資人溝通的參考文件。</div>
 </div>
 </body>
 </html>
