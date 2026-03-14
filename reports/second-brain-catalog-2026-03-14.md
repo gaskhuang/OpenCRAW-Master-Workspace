@@ -1,0 +1,601 @@
+# 第二大腦完整分類清冊
+
+- 總條目數：**288**
+- 統計範圍：`memory/second_brain.md`、`memory/lobster_second_brain.md`、`memory/archive/*.md`、相關 protocol / sessions archive
+- 格式：只列標題，不做摘要
+
+## 按月份分類
+
+### 2026-02（252）
+- 1. 100萬 Token 上下文窗口（Beta）｜其他
+- 1. Adaptive Thinking（適應性思考）｜其他
+- 1. Agentic Terminal Coding（代理終端編碼）｜OpenClaw / Agent / Skills
+- 1. Threads OpenClaw 監控 (2026-02-27 23:26)｜OpenClaw / Agent / Skills
+- 1. 工具能力的「階躍式進步」｜其他
+- 1. 性能全面提升 25%｜其他
+- 1. 新增「視覺分析」服務｜其他
+- 1. 更新銷售文案｜其他
+- 1. 為什麼「多模型切換」是對的策略｜其他
+- 1. 現在就做｜其他
+- 2. Agentic Coding（代理編碼）｜OpenClaw / Agent / Skills
+- 2. Effort Controls（努力程度控制）｜OpenClaw / Agent / Skills
+- 2. Sonnet 4.5 的定位｜其他
+- 2. X Monitor 智能分析網站版 (2026-02-28 01:04)｜內容 / 社群 / 創作
+- 2. 「代理型軟體開發」成為主流｜其他
+- 2. 內容行銷策略｜其他
+- 2. 創造歷史：自己創造自己！｜其他
+- 2. 本週完成｜其他
+- 2. 經濟價值知識工作 Benchmark 冠軍｜工具 / 技術 / 協議
+- 2. 職場應用場景｜其他
+- 2026-02-22｜槓桿策略與 2026 公司重心（G大）｜商業 / 策略 / 用例
+- 2026-02-24｜AI 全自動寫代碼策略 (from @runes_leo)｜其他
+- 2026-02-27｜Claude 3.5 Computer Use 玩《崩壞：星軌》｜OpenClaw / Agent / Skills
+- 2026-03-08｜喬幫主精選 OpenClaw Skills (from @vista8)｜OpenClaw / Agent / Skills
+- 3. Agentic Computer Use（代理電腦操作）｜OpenClaw / Agent / Skills
+- 3. Context Compaction（上下文壓縮）Beta｜其他
+- 3. OpenAI 的六大方針（可複製到 G大的服務）｜其他
+- 3. X Monitor 報告生成 (2026-02-28 01:13)｜內容 / 社群 / 創作
+- 3. 代理型編碼能力頂尖｜其他
+- 3. 基準測試全面領先｜其他
+- 3. 技術整合機會｜其他
+- 3. 產品升級｜其他
+- 3. 銷售話術更新｜其他
+- 3. 長期目標｜其他
+- 4. 1M Token 上下文（Beta）｜其他
+- 4. Reddit + Threads 監控整合 (2026-02-28 21:39)｜其他
+- 4. Visual Reasoning（視覺推理）｜其他
+- 4. 即時互動協作（Interactive Collaborator）｜其他
+- 4. 深度推理能力突破｜其他
+- 5. 128K Token 輸出｜其他
+- 5. Graduate-level Reasoning（研究生級推理）｜其他
+- 5. 全方位電腦工作夥伴｜其他
+- 5. 安全性能同步提升｜其他
+- 6. Novel Problem Solving（新穎問題解決）｜其他
+- 6. US-only Inference｜其他
+- 6. 代理團隊協作（Agent Teams）｜OpenClaw / Agent / Skills
+- ai_model_benchmark_analysis｜工具 / 技術 / 協議
+- BrowseComp｜其他
+- Claude 非常擅長為自己編寫規則！｜OpenClaw / Agent / Skills
+- CLAUDE.md 模板（G大專用）｜OpenClaw / Agent / Skills
+- claude_best_practices_advanced｜OpenClaw / Agent / Skills
+- claude_opus_4_6_launch_analysis｜OpenClaw / Agent / Skills
+- Demo 展示｜其他
+- fb_openclaw_20260228｜OpenClaw / Agent / Skills
+- GDPval-AA 評測｜其他
+- gemini_agentic_vision_mobile01｜OpenClaw / Agent / Skills
+- gpt_5_3_codex_launch_analysis｜OpenClaw / Agent / Skills
+- Greg Brockman 原文重點摘要｜其他
+- greg_brockman_agentic_development_analysis｜OpenClaw / Agent / Skills
+- G大可以分享的內容｜其他
+- G大的先機｜其他
+- G大的應用｜其他
+- G大的應用場景｜其他
+- Humanity's Last Exam｜其他
+- MRCR v2 測試（大海撈針）｜其他
+- OpenAI 和 Anthropic 在同一天發布頂級模型｜其他
+- OpenAI 工程師的實際轉變｜其他
+- sessions_archive_20260227_20260228｜OpenClaw / Agent / Skills
+- SWE-Bench Verified｜其他
+- Terminal-Bench 2.0｜其他
+- ⚠️ 注意事項｜其他
+- ✍️ 內容創作類 Skills｜OpenClaw / Agent / Skills
+- 下一階段重心（2026）｜其他
+- 主要 Benchmark 成績｜工具 / 技術 / 協議
+- 主要任務摘要｜其他
+- 什麼是 CLAUDE.md？｜OpenClaw / Agent / Skills
+- 什麼是 Plan Mode？｜其他
+- 什麼是 Skills？｜OpenClaw / Agent / Skills
+- 今天（2月6日）｜其他
+- 作者：樓主（4332分資深用戶）｜其他
+- 你的定位｜其他
+- 你的服務優勢｜其他
+- 你目前使用的 Sonnet 4.5 的表現｜其他
+- 來源：Anthropic 官方｜其他
+- 來源：Anthropic 官方或第三方基準測試｜其他
+- 來源：Anthropic 開發者社群 / Engineering Blogs｜其他
+- 來源：Mobile01 論壇｜其他
+- 來源：OpenAI 官方｜其他
+- 具體案例｜其他
+- 冠軍：Gemini 3 Pro（81.0%）｜OpenClaw / Agent / Skills
+- 冠軍：GPT-5.2（93.2%）｜OpenClaw / Agent / Skills
+- 冠軍：Opus 4.5（80.9%）｜其他
+- 冠軍：Opus 4.6（65.4%）｜其他
+- 冠軍：Opus 4.6（68.8%）｜其他
+- 冠軍：Opus 4.6（72.7%）｜其他
+- 分析與整理：阿蓋小弟 🦞｜其他
+- 分析與歸檔：阿蓋小弟 🦞｜其他
+- 分析：阿蓋小弟 🦞｜其他
+- 分類為「高能力」網路安全模型｜其他
+- 即將推出｜其他
+- 原文作者：Greg Brockman（OpenAI 共同創辦人）｜其他
+- 原文摘要｜其他
+- 參考連結｜其他
+- 可整合到 OpenClaw 的技能｜OpenClaw / Agent / Skills
+- 同一天發布 = AI 代理戰爭正式開打！｜其他
+- 商業機會｜商業 / 策略 / 用例
+- 問題 1：[簡短描述]｜其他
+- 啟用方式｜其他
+- 四級控制｜其他
+- 團隊實戰技巧｜其他
+- 團隊經驗法則｜其他
+- 執行摘要｜其他
+- 場景 1：電商自動化｜其他
+- 場景 2：數據分析與報告｜其他
+- 場景 3：一般客服與自動化｜其他
+- 多代理協作模式｜其他
+- 大型企業專案時｜其他
+- 官方資源｜其他
+- 客戶偏好｜其他
+- 客戶諮詢時的標準流程｜其他
+- 實作概念｜其他
+- 實際案例｜其他
+- 專案概述｜其他
+- 對 G大的 OpenClaw 服務意味著什麼？｜OpenClaw / Agent / Skills
+- 對 G大的商業機會｜商業 / 策略 / 用例
+- 對 G大的意義｜其他
+- 已刪除 Sessions｜OpenClaw / Agent / Skills
+- 已確認的設定｜其他
+- 市場正在快速成長，現在是進場的最佳時機！｜商業 / 策略 / 用例
+- 建議立即行動｜其他
+- 待辦事項｜其他
+- 從「程式碼生成」進化到「全方位知識工作」｜其他
+- 應用場景｜其他
+- 應用於 OpenClaw｜OpenClaw / Agent / Skills
+- 技術債與問題｜其他
+- 推薦的 Skills 類型｜OpenClaw / Agent / Skills
+- 提取貼文（最新 1 則）｜其他
+- 搭配 Gems 效果更佳｜其他
+- 教學步驟｜其他
+- 文章/影片標題｜其他
+- 新主打標語｜其他
+- 新增「企業方案」內容｜其他
+- 新增服務項目｜其他
+- 新服務包裝｜其他
+- 新的主打點｜其他
+- 方案 A：單次分析服務｜其他
+- 方案 B：整合到進階方案｜其他
+- 方案 C：企業客製｜其他
+- 日期：2026-02-06｜其他
+- 更新日誌｜其他
+- 更新時機｜其他
+- 最佳實踐流程｜其他
+- 最佳策略｜其他
+- 服務包裝｜其他
+- 本週完成｜其他
+- 核心原則｜其他
+- 核心特色｜其他
+- 核心理念｜其他
+- 案例 1：自主開發遊戲｜其他
+- 案例 2：Landing Page 比較｜其他
+- 案例 3：資料分析報告｜其他
+- 槓桿現況｜商業 / 策略 / 用例
+- 檔案結構建議｜其他
+- 歷史首次｜其他
+- 沒有任何一個模型能在所有任務中稱霸！｜其他
+- 法律與金融｜其他
+- 測試 1：Sudoku 數獨（極限難度）｜其他
+- 測試 2：手指數量辨識｜其他
+- 測試 3：分車表分析（職場應用）｜其他
+- 測試 4：行車數據分析（逆向工程水平）｜其他
+- 測試 5：程式碼測試｜其他
+- 現在可用｜其他
+- 發布文章/影片主題｜其他
+- 發布日期：2026-02-06｜其他
+- 發布日期：2026-02-06（與 GPT-5.3-Codex 同一天！）｜OpenClaw / Agent / Skills
+- 目前狀況｜其他
+- 目標客戶｜其他
+- 社群分享｜其他
+- 立即可以做的｜其他
+- 立即影響｜其他
+- 立即更新｜其他
+- 立即行動｜其他
+- 競爭優勢更新｜其他
+- 競爭對比：GPT-5.3-Codex vs Opus 4.6｜OpenClaw / Agent / Skills
+- 給 Solo Builder 的簡化版｜其他
+- 給客戶的建議｜其他
+- 網路安全｜其他
+- 補充文字｜其他
+- 解決「上下文衰減」問題｜其他
+- 設計與創意｜其他
+- 貼文 1: Jiayun Zhou（追蹤）｜其他
+- 軟體工程｜其他
+- 進階做法｜其他
+- 遇到的問題與解決方案｜其他
+- 錯誤記錄｜其他
+- 長上下文能力質的飛躍｜其他
+- 長期策略｜其他
+- 開發團隊管理｜其他
+- 限制與風險｜其他
+- 雙向策略｜其他
+- 需要立即加入 GPT-5.3-Codex｜OpenClaw / Agent / Skills
+- 革命性功能｜其他
+- 頁面資訊｜其他
+- 首次有模型參與自己的創造｜其他
+- 🎮 實測案例展示｜其他
+- 🎯 三大關鍵轉變｜其他
+- 🎯 什麼是 Agentic Vision？｜OpenClaw / Agent / Skills
+- 🎯 值得記錄的踩坑洞察｜其他
+- 🎯 核心定位｜其他
+- 🎯 立即行動清單｜其他
+- 🎯 給客戶的模型選擇建議｜其他
+- 🎯 總結｜其他
+- 🎯 總結與行動｜其他
+- 🎯 總結：三個核心行動｜其他
+- 🏆 各領域冠軍分析｜其他
+- 💡 G大可以做的｜其他
+- 💡 G大的 OpenClaw 業務應用｜OpenClaw / Agent / Skills
+- 💡 對 G大 OpenClaw 業務的啟示｜OpenClaw / Agent / Skills
+- 💡 對 G大 OpenClaw 業務的影響｜OpenClaw / Agent / Skills
+- 💡 對 G大 的關鍵啟示｜其他
+- 💡 隨手靈感錄｜其他
+- 💰 商業模式建議｜商業 / 策略 / 用例
+- 💰 商業機會分析｜商業 / 策略 / 用例
+- 💰 定價｜其他
+- 💼 實際應用案例（Early Access 夥伴反饋）｜其他
+- 📅 可用性｜其他
+- 📊 基準測試對比｜其他
+- 📊 測試模型一覽｜其他
+- 📋 行動建議｜其他
+- 📌 核心觀點｜其他
+- 📚 學習資源｜其他
+- 📚 延伸閱讀與參考｜其他
+- 📝 投資於你的 CLAUDE.md｜OpenClaw / Agent / Skills
+- 📦 抓取採集類 Skills｜OpenClaw / Agent / Skills
+- 📱 建議內容行銷主題｜其他
+- 🔍 去哪找更多 Skill？｜OpenClaw / Agent / Skills
+- 🔥 五大重大突破｜其他
+- 🔥 六大重大突破｜其他
+- 🔧 如何啟用 Agentic Vision｜OpenClaw / Agent / Skills
+- 🔮 戰略意義｜其他
+- 🔮 未來展望｜其他
+- 🔮 未來趨勢預測｜其他
+- 🚀 市場機會｜商業 / 策略 / 用例
+- 🚀 立即行動建議｜其他
+- 🚀 進階：建立 AI 團隊｜其他
+- 🛠️ 建立你自己的 Skills（技能）｜OpenClaw / Agent / Skills
+- 🛠️ 效率工具類 Skills｜OpenClaw / Agent / Skills
+- 🛠️ 新 API 功能｜其他
+- 🛡️ 網路安全：最高級別防護｜其他
+- 🧠 核心心法：Plan Mode（計畫模式）｜其他
+- 🧠 核心知識與戰略｜其他
+- 🧪 實測案例與效果｜其他
+
+### 2026-03（11）
+- AI 自動研究 / 長時推進優化案例（來源：@nash_su, 2026-03-13）｜其他
+- awesome-openclaw-usecases repo 分析｜OpenClaw / Agent / Skills
+- Codex / AI Coding Agent 使用方法論（來源：tools.wingzero.tw 文章, 2026-03-14）｜OpenClaw / Agent / Skills
+- OpenClaw 控制中心 / 可觀測性面板（來源：@ai_muzi, 2026-03-14）｜OpenClaw / Agent / Skills
+- OpenClaw 最小飛輪技能組（來源：@aiwarts, 2026-03-13）｜OpenClaw / Agent / Skills
+- PinchTab 基本用法｜工具 / 技術 / 協議
+- pinchtab_protocol｜工具 / 技術 / 協議
+- qmd_protocol｜工具 / 技術 / 協議
+- 工具分工｜其他
+- 系統監控 - CLI Agent 異常終止 [2026-03-08]｜OpenClaw / Agent / Skills
+- 領導團隊會議 [2026-03-05]\n\n[2026-03-07] **X @vista8 貼文**\n\n**來源**：https://x.com/vista8/status/2029935446810308817?s=52\n\n**說明**：G大提供第二大腦知識來源（Twitter 貼文）。\n抓取嘗試失敗（反爬蟲），請手動查看或後續用專用工具擷取內容。\n\n**標籤**：#Twitter #vista8 #SecondBrain｜內容 / 社群 / 創作
+
+### 未標明（25）
+- fb_promo_posts｜內容 / 社群 / 創作
+- fb_promo_posts_batch2｜內容 / 社群 / 創作
+- Post 1 - TrigglyX 排程工具｜內容 / 社群 / 創作
+- Post 10 - localissue sync 小本本同步｜內容 / 社群 / 創作
+- Post 2 - Google Chrome × Gemini 3｜OpenClaw / Agent / Skills
+- Post 3 - Video Wrapper Skills｜OpenClaw / Agent / Skills
+- Post 4 - 職場邊緣化警訊｜內容 / 社群 / 創作
+- Post 5 - Claude Cowork × 本地 SEO｜OpenClaw / Agent / Skills
+- Post 6 - GAS + AI 自動化記帳系統｜內容 / 社群 / 創作
+- Post 7 - Google Apps Script 大補帖｜內容 / 社群 / 創作
+- Post 8 - OpenClaw AI 管家首日上線｜OpenClaw / Agent / Skills
+- Post 9 - OpenClaw 多模型切換｜OpenClaw / Agent / Skills
+- Post R1 - 小紅書 跨境電商 Skills｜OpenClaw / Agent / Skills
+- Post R10 - OpenClaw Zeabur救蝦｜OpenClaw / Agent / Skills
+- Post R11 - Will保哥 Gemini 3.1 Pro 三角函數教學｜OpenClaw / Agent / Skills
+- Post R2 - 三層網路架構圖｜內容 / 社群 / 創作
+- Post R3 - Moltbot機器選購建議｜內容 / 社群 / 創作
+- Post R4 - 關係信任衝突模型｜內容 / 社群 / 創作
+- Post R5 - 風水火土工作人格｜內容 / 社群 / 創作
+- Post R6 - 領導平行向上管理方式｜內容 / 社群 / 創作
+- Post R7 - OpenClaw運行架構比較｜OpenClaw / Agent / Skills
+- Post R8 - Claude Cowork SEO 進階三部曲｜OpenClaw / Agent / Skills
+- Post R9 - Will保哥 OpenClaw訂閱危機｜OpenClaw / Agent / Skills
+- usecases_analysis｜工具 / 技術 / 協議
+- 訂閱制的秘密｜其他
+
+## 按主題分類
+
+### OpenClaw / Agent / Skills（56）
+- 1. Agentic Terminal Coding（代理終端編碼）｜2026-02
+- 1. Threads OpenClaw 監控 (2026-02-27 23:26)｜2026-02
+- 2. Agentic Coding（代理編碼）｜2026-02
+- 2. Effort Controls（努力程度控制）｜2026-02
+- 2026-02-27｜Claude 3.5 Computer Use 玩《崩壞：星軌》｜2026-02
+- 2026-03-08｜喬幫主精選 OpenClaw Skills (from @vista8)｜2026-02
+- 3. Agentic Computer Use（代理電腦操作）｜2026-02
+- 6. 代理團隊協作（Agent Teams）｜2026-02
+- awesome-openclaw-usecases repo 分析｜2026-03
+- Claude 非常擅長為自己編寫規則！｜2026-02
+- CLAUDE.md 模板（G大專用）｜2026-02
+- claude_best_practices_advanced｜2026-02
+- claude_opus_4_6_launch_analysis｜2026-02
+- Codex / AI Coding Agent 使用方法論（來源：tools.wingzero.tw 文章, 2026-03-14）｜2026-03
+- fb_openclaw_20260228｜2026-02
+- gemini_agentic_vision_mobile01｜2026-02
+- gpt_5_3_codex_launch_analysis｜2026-02
+- greg_brockman_agentic_development_analysis｜2026-02
+- OpenClaw 控制中心 / 可觀測性面板（來源：@ai_muzi, 2026-03-14）｜2026-03
+- OpenClaw 最小飛輪技能組（來源：@aiwarts, 2026-03-13）｜2026-03
+- Post 2 - Google Chrome × Gemini 3｜未標明
+- Post 3 - Video Wrapper Skills｜未標明
+- Post 5 - Claude Cowork × 本地 SEO｜未標明
+- Post 8 - OpenClaw AI 管家首日上線｜未標明
+- Post 9 - OpenClaw 多模型切換｜未標明
+- Post R1 - 小紅書 跨境電商 Skills｜未標明
+- Post R10 - OpenClaw Zeabur救蝦｜未標明
+- Post R11 - Will保哥 Gemini 3.1 Pro 三角函數教學｜未標明
+- Post R7 - OpenClaw運行架構比較｜未標明
+- Post R8 - Claude Cowork SEO 進階三部曲｜未標明
+- Post R9 - Will保哥 OpenClaw訂閱危機｜未標明
+- sessions_archive_20260227_20260228｜2026-02
+- ✍️ 內容創作類 Skills｜2026-02
+- 什麼是 CLAUDE.md？｜2026-02
+- 什麼是 Skills？｜2026-02
+- 冠軍：Gemini 3 Pro（81.0%）｜2026-02
+- 冠軍：GPT-5.2（93.2%）｜2026-02
+- 可整合到 OpenClaw 的技能｜2026-02
+- 對 G大的 OpenClaw 服務意味著什麼？｜2026-02
+- 已刪除 Sessions｜2026-02
+- 應用於 OpenClaw｜2026-02
+- 推薦的 Skills 類型｜2026-02
+- 發布日期：2026-02-06（與 GPT-5.3-Codex 同一天！）｜2026-02
+- 競爭對比：GPT-5.3-Codex vs Opus 4.6｜2026-02
+- 系統監控 - CLI Agent 異常終止 [2026-03-08]｜2026-03
+- 需要立即加入 GPT-5.3-Codex｜2026-02
+- 🎯 什麼是 Agentic Vision？｜2026-02
+- 💡 G大的 OpenClaw 業務應用｜2026-02
+- 💡 對 G大 OpenClaw 業務的啟示｜2026-02
+- 💡 對 G大 OpenClaw 業務的影響｜2026-02
+- 📝 投資於你的 CLAUDE.md｜2026-02
+- 📦 抓取採集類 Skills｜2026-02
+- 🔍 去哪找更多 Skill？｜2026-02
+- 🔧 如何啟用 Agentic Vision｜2026-02
+- 🛠️ 建立你自己的 Skills（技能）｜2026-02
+- 🛠️ 效率工具類 Skills｜2026-02
+
+### 內容 / 社群 / 創作（15）
+- 2. X Monitor 智能分析網站版 (2026-02-28 01:04)｜2026-02
+- 3. X Monitor 報告生成 (2026-02-28 01:13)｜2026-02
+- fb_promo_posts｜未標明
+- fb_promo_posts_batch2｜未標明
+- Post 1 - TrigglyX 排程工具｜未標明
+- Post 10 - localissue sync 小本本同步｜未標明
+- Post 4 - 職場邊緣化警訊｜未標明
+- Post 6 - GAS + AI 自動化記帳系統｜未標明
+- Post 7 - Google Apps Script 大補帖｜未標明
+- Post R2 - 三層網路架構圖｜未標明
+- Post R3 - Moltbot機器選購建議｜未標明
+- Post R4 - 關係信任衝突模型｜未標明
+- Post R5 - 風水火土工作人格｜未標明
+- Post R6 - 領導平行向上管理方式｜未標明
+- 領導團隊會議 [2026-03-05]\n\n[2026-03-07] **X @vista8 貼文**\n\n**來源**：https://x.com/vista8/status/2029935446810308817?s=52\n\n**說明**：G大提供第二大腦知識來源（Twitter 貼文）。\n抓取嘗試失敗（反爬蟲），請手動查看或後續用專用工具擷取內容。\n\n**標籤**：#Twitter #vista8 #SecondBrain｜2026-03
+
+### 其他（202）
+- 1. 100萬 Token 上下文窗口（Beta）｜2026-02
+- 1. Adaptive Thinking（適應性思考）｜2026-02
+- 1. 工具能力的「階躍式進步」｜2026-02
+- 1. 性能全面提升 25%｜2026-02
+- 1. 新增「視覺分析」服務｜2026-02
+- 1. 更新銷售文案｜2026-02
+- 1. 為什麼「多模型切換」是對的策略｜2026-02
+- 1. 現在就做｜2026-02
+- 2. Sonnet 4.5 的定位｜2026-02
+- 2. 「代理型軟體開發」成為主流｜2026-02
+- 2. 內容行銷策略｜2026-02
+- 2. 創造歷史：自己創造自己！｜2026-02
+- 2. 本週完成｜2026-02
+- 2. 職場應用場景｜2026-02
+- 2026-02-24｜AI 全自動寫代碼策略 (from @runes_leo)｜2026-02
+- 3. Context Compaction（上下文壓縮）Beta｜2026-02
+- 3. OpenAI 的六大方針（可複製到 G大的服務）｜2026-02
+- 3. 代理型編碼能力頂尖｜2026-02
+- 3. 基準測試全面領先｜2026-02
+- 3. 技術整合機會｜2026-02
+- 3. 產品升級｜2026-02
+- 3. 銷售話術更新｜2026-02
+- 3. 長期目標｜2026-02
+- 4. 1M Token 上下文（Beta）｜2026-02
+- 4. Reddit + Threads 監控整合 (2026-02-28 21:39)｜2026-02
+- 4. Visual Reasoning（視覺推理）｜2026-02
+- 4. 即時互動協作（Interactive Collaborator）｜2026-02
+- 4. 深度推理能力突破｜2026-02
+- 5. 128K Token 輸出｜2026-02
+- 5. Graduate-level Reasoning（研究生級推理）｜2026-02
+- 5. 全方位電腦工作夥伴｜2026-02
+- 5. 安全性能同步提升｜2026-02
+- 6. Novel Problem Solving（新穎問題解決）｜2026-02
+- 6. US-only Inference｜2026-02
+- AI 自動研究 / 長時推進優化案例（來源：@nash_su, 2026-03-13）｜2026-03
+- BrowseComp｜2026-02
+- Demo 展示｜2026-02
+- GDPval-AA 評測｜2026-02
+- Greg Brockman 原文重點摘要｜2026-02
+- G大可以分享的內容｜2026-02
+- G大的先機｜2026-02
+- G大的應用｜2026-02
+- G大的應用場景｜2026-02
+- Humanity's Last Exam｜2026-02
+- MRCR v2 測試（大海撈針）｜2026-02
+- OpenAI 和 Anthropic 在同一天發布頂級模型｜2026-02
+- OpenAI 工程師的實際轉變｜2026-02
+- SWE-Bench Verified｜2026-02
+- Terminal-Bench 2.0｜2026-02
+- ⚠️ 注意事項｜2026-02
+- 下一階段重心（2026）｜2026-02
+- 主要任務摘要｜2026-02
+- 什麼是 Plan Mode？｜2026-02
+- 今天（2月6日）｜2026-02
+- 作者：樓主（4332分資深用戶）｜2026-02
+- 你的定位｜2026-02
+- 你的服務優勢｜2026-02
+- 你目前使用的 Sonnet 4.5 的表現｜2026-02
+- 來源：Anthropic 官方｜2026-02
+- 來源：Anthropic 官方或第三方基準測試｜2026-02
+- 來源：Anthropic 開發者社群 / Engineering Blogs｜2026-02
+- 來源：Mobile01 論壇｜2026-02
+- 來源：OpenAI 官方｜2026-02
+- 具體案例｜2026-02
+- 冠軍：Opus 4.5（80.9%）｜2026-02
+- 冠軍：Opus 4.6（65.4%）｜2026-02
+- 冠軍：Opus 4.6（68.8%）｜2026-02
+- 冠軍：Opus 4.6（72.7%）｜2026-02
+- 分析與整理：阿蓋小弟 🦞｜2026-02
+- 分析與歸檔：阿蓋小弟 🦞｜2026-02
+- 分析：阿蓋小弟 🦞｜2026-02
+- 分類為「高能力」網路安全模型｜2026-02
+- 即將推出｜2026-02
+- 原文作者：Greg Brockman（OpenAI 共同創辦人）｜2026-02
+- 原文摘要｜2026-02
+- 參考連結｜2026-02
+- 同一天發布 = AI 代理戰爭正式開打！｜2026-02
+- 問題 1：[簡短描述]｜2026-02
+- 啟用方式｜2026-02
+- 四級控制｜2026-02
+- 團隊實戰技巧｜2026-02
+- 團隊經驗法則｜2026-02
+- 執行摘要｜2026-02
+- 場景 1：電商自動化｜2026-02
+- 場景 2：數據分析與報告｜2026-02
+- 場景 3：一般客服與自動化｜2026-02
+- 多代理協作模式｜2026-02
+- 大型企業專案時｜2026-02
+- 官方資源｜2026-02
+- 客戶偏好｜2026-02
+- 客戶諮詢時的標準流程｜2026-02
+- 實作概念｜2026-02
+- 實際案例｜2026-02
+- 專案概述｜2026-02
+- 對 G大的意義｜2026-02
+- 工具分工｜2026-03
+- 已確認的設定｜2026-02
+- 建議立即行動｜2026-02
+- 待辦事項｜2026-02
+- 從「程式碼生成」進化到「全方位知識工作」｜2026-02
+- 應用場景｜2026-02
+- 技術債與問題｜2026-02
+- 提取貼文（最新 1 則）｜2026-02
+- 搭配 Gems 效果更佳｜2026-02
+- 教學步驟｜2026-02
+- 文章/影片標題｜2026-02
+- 新主打標語｜2026-02
+- 新增「企業方案」內容｜2026-02
+- 新增服務項目｜2026-02
+- 新服務包裝｜2026-02
+- 新的主打點｜2026-02
+- 方案 A：單次分析服務｜2026-02
+- 方案 B：整合到進階方案｜2026-02
+- 方案 C：企業客製｜2026-02
+- 日期：2026-02-06｜2026-02
+- 更新日誌｜2026-02
+- 更新時機｜2026-02
+- 最佳實踐流程｜2026-02
+- 最佳策略｜2026-02
+- 服務包裝｜2026-02
+- 本週完成｜2026-02
+- 核心原則｜2026-02
+- 核心特色｜2026-02
+- 核心理念｜2026-02
+- 案例 1：自主開發遊戲｜2026-02
+- 案例 2：Landing Page 比較｜2026-02
+- 案例 3：資料分析報告｜2026-02
+- 檔案結構建議｜2026-02
+- 歷史首次｜2026-02
+- 沒有任何一個模型能在所有任務中稱霸！｜2026-02
+- 法律與金融｜2026-02
+- 測試 1：Sudoku 數獨（極限難度）｜2026-02
+- 測試 2：手指數量辨識｜2026-02
+- 測試 3：分車表分析（職場應用）｜2026-02
+- 測試 4：行車數據分析（逆向工程水平）｜2026-02
+- 測試 5：程式碼測試｜2026-02
+- 現在可用｜2026-02
+- 發布文章/影片主題｜2026-02
+- 發布日期：2026-02-06｜2026-02
+- 目前狀況｜2026-02
+- 目標客戶｜2026-02
+- 社群分享｜2026-02
+- 立即可以做的｜2026-02
+- 立即影響｜2026-02
+- 立即更新｜2026-02
+- 立即行動｜2026-02
+- 競爭優勢更新｜2026-02
+- 給 Solo Builder 的簡化版｜2026-02
+- 給客戶的建議｜2026-02
+- 網路安全｜2026-02
+- 補充文字｜2026-02
+- 解決「上下文衰減」問題｜2026-02
+- 訂閱制的秘密｜未標明
+- 設計與創意｜2026-02
+- 貼文 1: Jiayun Zhou（追蹤）｜2026-02
+- 軟體工程｜2026-02
+- 進階做法｜2026-02
+- 遇到的問題與解決方案｜2026-02
+- 錯誤記錄｜2026-02
+- 長上下文能力質的飛躍｜2026-02
+- 長期策略｜2026-02
+- 開發團隊管理｜2026-02
+- 限制與風險｜2026-02
+- 雙向策略｜2026-02
+- 革命性功能｜2026-02
+- 頁面資訊｜2026-02
+- 首次有模型參與自己的創造｜2026-02
+- 🎮 實測案例展示｜2026-02
+- 🎯 三大關鍵轉變｜2026-02
+- 🎯 值得記錄的踩坑洞察｜2026-02
+- 🎯 核心定位｜2026-02
+- 🎯 立即行動清單｜2026-02
+- 🎯 給客戶的模型選擇建議｜2026-02
+- 🎯 總結｜2026-02
+- 🎯 總結與行動｜2026-02
+- 🎯 總結：三個核心行動｜2026-02
+- 🏆 各領域冠軍分析｜2026-02
+- 💡 G大可以做的｜2026-02
+- 💡 對 G大 的關鍵啟示｜2026-02
+- 💡 隨手靈感錄｜2026-02
+- 💰 定價｜2026-02
+- 💼 實際應用案例（Early Access 夥伴反饋）｜2026-02
+- 📅 可用性｜2026-02
+- 📊 基準測試對比｜2026-02
+- 📊 測試模型一覽｜2026-02
+- 📋 行動建議｜2026-02
+- 📌 核心觀點｜2026-02
+- 📚 學習資源｜2026-02
+- 📚 延伸閱讀與參考｜2026-02
+- 📱 建議內容行銷主題｜2026-02
+- 🔥 五大重大突破｜2026-02
+- 🔥 六大重大突破｜2026-02
+- 🔮 戰略意義｜2026-02
+- 🔮 未來展望｜2026-02
+- 🔮 未來趨勢預測｜2026-02
+- 🚀 立即行動建議｜2026-02
+- 🚀 進階：建立 AI 團隊｜2026-02
+- 🛠️ 新 API 功能｜2026-02
+- 🛡️ 網路安全：最高級別防護｜2026-02
+- 🧠 核心心法：Plan Mode（計畫模式）｜2026-02
+- 🧠 核心知識與戰略｜2026-02
+- 🧪 實測案例與效果｜2026-02
+
+### 商業 / 策略 / 用例（8）
+- 2026-02-22｜槓桿策略與 2026 公司重心（G大）｜2026-02
+- 商業機會｜2026-02
+- 對 G大的商業機會｜2026-02
+- 市場正在快速成長，現在是進場的最佳時機！｜2026-02
+- 槓桿現況｜2026-02
+- 💰 商業模式建議｜2026-02
+- 💰 商業機會分析｜2026-02
+- 🚀 市場機會｜2026-02
+
+### 工具 / 技術 / 協議（7）
+- 2. 經濟價值知識工作 Benchmark 冠軍｜2026-02
+- ai_model_benchmark_analysis｜2026-02
+- PinchTab 基本用法｜2026-03
+- pinchtab_protocol｜2026-03
+- qmd_protocol｜2026-03
+- usecases_analysis｜未標明
+- 主要 Benchmark 成績｜2026-02
