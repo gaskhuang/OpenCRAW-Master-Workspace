@@ -1,0 +1,2259 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw Use Cases — 174 個自動化技能</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --accent2: #3fb950;
+  --accent3: #d2a8ff;
+  --accent4: #f78166;
+  --search-bg: #0d1117;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+.hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1a1e2e 100%);
+  border-bottom: 1px solid var(--border);
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, var(--accent), var(--accent3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+.stat {
+  text-align: center;
+}
+.stat-num {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+.search-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.search-bar input {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--search-bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search-bar input:focus {
+  border-color: var(--accent);
+}
+.search-bar input::placeholder {
+  color: var(--text-muted);
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 24px;
+}
+.filter-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.filter-btn .count {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-left: 4px;
+}
+.result-count {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s;
+  cursor: default;
+}
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(88, 166, 255, 0.1);
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+.card-id {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 600;
+  background: rgba(88, 166, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.card-diff {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.diff-初中級 { background: rgba(63, 185, 80, 0.15); color: var(--accent2); }
+.diff-中級 { background: rgba(210, 168, 255, 0.15); color: var(--accent3); }
+.diff-初級 { background: rgba(63, 185, 80, 0.15); color: var(--accent2); }
+.diff-進階 { background: rgba(247, 129, 102, 0.15); color: var(--accent4); }
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.card-title-en {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.card-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.card-cat {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.card-source {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(139, 148, 158, 0.1);
+  color: var(--text-muted);
+}
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.8rem; }
+  .grid { grid-template-columns: 1fr; }
+  .stats { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>OpenClaw Use Cases</h1>
+  <p>AI 代理自動化技能庫 — 從個人生產力到企業級工作流，一鍵啟動。</p>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">174</div>
+      <div class="stat-label">Use Cases</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">14</div>
+      <div class="stat-label">Categories</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Source Repos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">361</div>
+      <div class="stat-label">Upstream Files</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="🔍 搜尋 use case（中文、英文、編號）..." autocomplete="off">
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-cat="all">全部 <span class="count">174</span></button>
+    <button class="filter-btn" data-cat="生產力工具">⚡ 生產力工具 <span class="count">32</span></button>
+    <button class="filter-btn" data-cat="商業、行銷與銷售">💼 商業、行銷與銷售 <span class="count">27</span></button>
+    <button class="filter-btn" data-cat="DevOps 與工程">🛠 DevOps 與工程 <span class="count">16</span></button>
+    <button class="filter-btn" data-cat="社群媒體">📱 社群媒體 <span class="count">12</span></button>
+    <button class="filter-btn" data-cat="安全與合規">🔒 安全與合規 <span class="count">11</span></button>
+    <button class="filter-btn" data-cat="監控與維運">📡 監控與維運 <span class="count">11</span></button>
+    <button class="filter-btn" data-cat="研究與學習">📚 研究與學習 <span class="count">11</span></button>
+    <button class="filter-btn" data-cat="日常生活自動化">🏠 日常生活自動化 <span class="count">10</span></button>
+    <button class="filter-btn" data-cat="AI 記憶與代理架構">🧠 AI 記憶與代理架構 <span class="count">9</span></button>
+    <button class="filter-btn" data-cat="創意與內容製作">🎨 創意與內容製作 <span class="count">9</span></button>
+    <button class="filter-btn" data-cat="加密貨幣與 DeFi">🪙 加密貨幣與 DeFi <span class="count">7</span></button>
+    <button class="filter-btn" data-cat="開發者工具">💻 開發者工具 <span class="count">7</span></button>
+    <button class="filter-btn" data-cat="健康與個人成長">🧘 健康與個人成長 <span class="count">6</span></button>
+    <button class="filter-btn" data-cat="金融與交易">📈 金融與交易 <span class="count">6</span></button>
+  </div>
+
+  <div class="result-count" id="resultCount"></div>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer>
+  <p>Built with OpenClaw &middot; 自動從 6 個上游 repo 同步 &middot; 每週一 22:00 自動更新</p>
+  <p style="margin-top: 8px;"><a href="https://github.com/gaskhuang/OpenCRAW-Master-Workspace/tree/claude/romantic-raman">GitHub Repo</a></p>
+</footer>
+
+<script>
+const skills = [
+  {
+    "id": 1,
+    "name": "每日 Reddit 摘要 (Daily Reddit Digest)",
+    "name_zh": "每日 Reddit 摘要",
+    "name_en": "Daily Reddit Digest",
+    "category": "社群媒體",
+    "icon": "📱",
+    "description": "",
+    "difficulty": "初中級",
+    "source": ""
+  },
+  {
+    "id": 2,
+    "name": "每日 YouTube 摘要 (Daily YouTube Digest)",
+    "name_zh": "每日 YouTube 摘要",
+    "name_en": "Daily YouTube Digest",
+    "category": "社群媒體",
+    "icon": "📱",
+    "description": "",
+    "difficulty": "初中級",
+    "source": "main"
+  },
+  {
+    "id": 3,
+    "name": "X 帳號質性分析 (X Account Qualitative Analysis)",
+    "name_zh": "X 帳號質性分析",
+    "name_en": "X Account Qualitative Analysis",
+    "category": "社群媒體",
+    "icon": "📱",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 4,
+    "name": "多來源科技新聞摘要 (Multi-Source Tech News Digest)",
+    "name_zh": "多來源科技新聞摘要",
+    "name_en": "Multi-Source Tech News Digest",
+    "category": "社群媒體",
+    "icon": "📱",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 5,
+    "name": "品牌社群監控 (Brand Social Monitoring)",
+    "name_zh": "品牌社群監控",
+    "name_en": "Brand Social Monitoring",
+    "category": "社群媒體",
+    "icon": "📱",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 6,
+    "name": "自動排程社群發文 (Auto-Schedule Social Posts)",
+    "name_zh": "自動排程社群發文",
+    "name_en": "Auto-Schedule Social Posts",
+    "category": "社群媒體",
+    "icon": "📱",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 7,
+    "name": "Instagram 限時動態管理 (Instagram Stories Management)",
+    "name_zh": "Instagram 限時動態管理",
+    "name_en": "Instagram Stories Management",
+    "category": "社群媒體",
+    "icon": "📱",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 8,
+    "name": "Reddit 產品聲量追蹤 (Reddit Product Buzz Tracking)",
+    "name_zh": "Reddit 產品聲量追蹤",
+    "name_en": "Reddit Product Buzz Tracking",
+    "category": "社群媒體",
+    "icon": "📱",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 9,
+    "name": "X 互動管理助手 (X Engagement Manager)",
+    "name_zh": "X 互動管理助手",
+    "name_en": "X Engagement Manager",
+    "category": "社群媒體",
+    "icon": "📱",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 10,
+    "name": "目標驅動自主任務 (Goal-Driven Autonomous Tasks)",
+    "name_zh": "目標驅動自主任務",
+    "name_en": "Goal-Driven Autonomous Tasks",
+    "category": "創意與內容製作",
+    "icon": "🎨",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 11,
+    "name": "YouTube 內容產線 (YouTube Content Pipeline)",
+    "name_zh": "YouTube 內容產線",
+    "name_en": "YouTube Content Pipeline",
+    "category": "創意與內容製作",
+    "icon": "🎨",
+    "description": "",
+    "difficulty": "中高級",
+    "source": "main"
+  },
+  {
+    "id": 12,
+    "name": "多代理內容工廠 (Multi-Agent Content Factory)",
+    "name_zh": "多代理內容工廠",
+    "name_en": "Multi-Agent Content Factory",
+    "category": "創意與內容製作",
+    "icon": "🎨",
+    "description": "",
+    "difficulty": "高級",
+    "source": "main"
+  },
+  {
+    "id": 13,
+    "name": "自主遊戲開發流水線 (Autonomous Game Dev Pipeline)",
+    "name_zh": "自主遊戲開發流水線",
+    "name_en": "Autonomous Game Dev Pipeline",
+    "category": "創意與內容製作",
+    "icon": "🎨",
+    "description": "",
+    "difficulty": "高級",
+    "source": "main"
+  },
+  {
+    "id": 14,
+    "name": "Podcast 製作流水線 (Podcast Production Pipeline)",
+    "name_zh": "Podcast 製作流水線",
+    "name_en": "Podcast Production Pipeline",
+    "category": "創意與內容製作",
+    "icon": "🎨",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 15,
+    "name": "電子報轉 Podcast (Newsletter to Podcast)",
+    "name_zh": "電子報轉 Podcast",
+    "name_en": "Newsletter to Podcast",
+    "category": "創意與內容製作",
+    "icon": "🎨",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 16,
+    "name": "AI 寫作助手 (AI Writing Assistant)",
+    "name_zh": "AI 寫作助手",
+    "name_en": "AI Writing Assistant",
+    "category": "創意與內容製作",
+    "icon": "🎨",
+    "description": "From blank page to published post. Your personal editor that never sleeps.",
+    "difficulty": "初中級",
+    "source": "var"
+  },
+  {
+    "id": 17,
+    "name": "一文多平台內容複製 (Cross-Platform Content Repurposing)",
+    "name_zh": "一文多平台內容複製",
+    "name_en": "Cross-Platform Content Repurposing",
+    "category": "創意與內容製作",
+    "icon": "🎨",
+    "description": "Turn one piece of content into 10+ platform-specific posts automatically.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 18,
+    "name": "學術研究助手 (Academic Research Assistant)",
+    "name_zh": "學術研究助手",
+    "name_en": "Academic Research Assistant",
+    "category": "創意與內容製作",
+    "icon": "🎨",
+    "description": "From literature search to paper draft. Research without the busywork.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 19,
+    "name": "Telegram 智慧家居控制 (Telegram Smart Home Control)",
+    "name_zh": "Telegram 智慧家居控制",
+    "name_en": "Telegram Smart Home Control",
+    "category": "日常生活自動化",
+    "icon": "🏠",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 20,
+    "name": "旅遊行程規劃 (Travel Itinerary Planner)",
+    "name_zh": "旅遊行程規劃",
+    "name_en": "Travel Itinerary Planner",
+    "category": "日常生活自動化",
+    "icon": "🏠",
+    "description": "",
+    "difficulty": "初中級",
+    "source": "hub"
+  },
+  {
+    "id": 21,
+    "name": "跨平台比價購物 (Cross-Platform Price Comparison)",
+    "name_zh": "跨平台比價購物",
+    "name_en": "Cross-Platform Price Comparison",
+    "category": "日常生活自動化",
+    "icon": "🏠",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 22,
+    "name": "天氣穿搭建議 (Weather-Based Outfit Suggestions)",
+    "name_zh": "天氣穿搭建議",
+    "name_en": "Weather-Based Outfit Suggestions",
+    "category": "日常生活自動化",
+    "icon": "🏠",
+    "description": "",
+    "difficulty": "初級",
+    "source": "hub"
+  },
+  {
+    "id": 23,
+    "name": "生日祝福自動發送 (Auto Birthday Wishes)",
+    "name_zh": "生日祝福自動發送",
+    "name_en": "Auto Birthday Wishes",
+    "category": "日常生活自動化",
+    "icon": "🏠",
+    "description": "",
+    "difficulty": "初級",
+    "source": "hub"
+  },
+  {
+    "id": 24,
+    "name": "自動預訂代理 (Auto Booking Agent)",
+    "name_zh": "自動預訂代理",
+    "name_en": "Auto Booking Agent",
+    "category": "日常生活自動化",
+    "icon": "🏠",
+    "description": "",
+    "difficulty": "中高級",
+    "source": "hub"
+  },
+  {
+    "id": 25,
+    "name": "閱讀清單智慧管理 (Smart Reading List Manager)",
+    "name_zh": "閱讀清單智慧管理",
+    "name_en": "Smart Reading List Manager",
+    "category": "日常生活自動化",
+    "icon": "🏠",
+    "description": "",
+    "difficulty": "初中級",
+    "source": "hub"
+  },
+  {
+    "id": 26,
+    "name": "食譜推薦與購物清單 (Recipe & Shopping List)",
+    "name_zh": "食譜推薦與購物清單",
+    "name_en": "Recipe & Shopping List",
+    "category": "日常生活自動化",
+    "icon": "🏠",
+    "description": "",
+    "difficulty": "初中級",
+    "source": "hub"
+  },
+  {
+    "id": 27,
+    "name": "耐心作業輔導老師 (Patient Homework Tutor)",
+    "name_zh": "耐心作業輔導老師",
+    "name_en": "Patient Homework Tutor",
+    "category": "日常生活自動化",
+    "icon": "🏠",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 28,
+    "name": "每日學習日誌 (Daily Learning Journal)",
+    "name_zh": "每日學習日誌",
+    "name_en": "Daily Learning Journal",
+    "category": "日常生活自動化",
+    "icon": "🏠",
+    "description": "",
+    "difficulty": "初級",
+    "source": "hub"
+  },
+  {
+    "id": 29,
+    "name": "自主專案管理 (Autonomous Project Management)",
+    "name_zh": "自主專案管理",
+    "name_en": "Autonomous Project Management",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中高級",
+    "source": "main"
+  },
+  {
+    "id": 30,
+    "name": "多通道 AI 客服 (Multi-Channel AI Customer Service)",
+    "name_zh": "多通道 AI 客服",
+    "name_en": "Multi-Channel AI Customer Service",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "高級",
+    "source": "main"
+  },
+  {
+    "id": 31,
+    "name": "電話語音個人助理 (Phone Voice Personal Assistant)",
+    "name_zh": "電話語音個人助理",
+    "name_en": "Phone Voice Personal Assistant",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "高級",
+    "source": "main"
+  },
+  {
+    "id": 32,
+    "name": "收件匣清理器 (Inbox Cleaner)",
+    "name_zh": "收件匣清理器",
+    "name_en": "Inbox Cleaner",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 33,
+    "name": "個人 CRM (Personal CRM)",
+    "name_zh": "個人 CRM",
+    "name_en": "Personal CRM",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 34,
+    "name": "健康與症狀追蹤器 (Health & Symptom Tracker)",
+    "name_zh": "健康與症狀追蹤器",
+    "name_en": "Health & Symptom Tracker",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 35,
+    "name": "多通道個人助理 (Multi-Channel Personal Assistant)",
+    "name_zh": "多通道個人助理",
+    "name_en": "Multi-Channel Personal Assistant",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "高級",
+    "source": "main"
+  },
+  {
+    "id": 36,
+    "name": "事件驅動專案狀態管理 (Event-Driven Project Status)",
+    "name_zh": "事件驅動專案狀態管理",
+    "name_en": "Event-Driven Project Status",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中高級",
+    "source": "main"
+  },
+  {
+    "id": 37,
+    "name": "動態即時儀表板 (Dynamic Real-Time Dashboard)",
+    "name_zh": "動態即時儀表板",
+    "name_en": "Dynamic Real-Time Dashboard",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 38,
+    "name": "Todoist 透明任務管理 (Todoist Transparent Task Management)",
+    "name_zh": "Todoist 透明任務管理",
+    "name_en": "Todoist Transparent Task Management",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 39,
+    "name": "家庭行事曆與家務助理 (Family Calendar & Chore Assistant)",
+    "name_zh": "家庭行事曆與家務助理",
+    "name_en": "Family Calendar & Chore Assistant",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 40,
+    "name": "多代理專業團隊 (Multi-Agent Professional Team)",
+    "name_zh": "多代理專業團隊",
+    "name_en": "Multi-Agent Professional Team",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "高級",
+    "source": "main"
+  },
+  {
+    "id": 41,
+    "name": "客製化晨間簡報 (Custom Morning Briefing)",
+    "name_zh": "客製化晨間簡報",
+    "name_en": "Custom Morning Briefing",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "初中級",
+    "source": "main"
+  },
+  {
+    "id": 42,
+    "name": "自動會議紀錄與行動項目 (Auto Meeting Notes & Action Items)",
+    "name_zh": "自動會議紀錄與行動項目",
+    "name_en": "Auto Meeting Notes & Action Items",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 43,
+    "name": "習慣追蹤與問責教練 (Habit Tracker & Accountability Coach)",
+    "name_zh": "習慣追蹤與問責教練",
+    "name_en": "Habit Tracker & Accountability Coach",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 44,
+    "name": "第二大腦 (Second Brain)",
+    "name_zh": "第二大腦",
+    "name_en": "Second Brain",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中高級",
+    "source": "main"
+  },
+  {
+    "id": 45,
+    "name": "活動賓客電話確認 (Event Guest Phone Confirmation)",
+    "name_zh": "活動賓客電話確認",
+    "name_en": "Event Guest Phone Confirmation",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "高級",
+    "source": "main"
+  },
+  {
+    "id": 46,
+    "name": "郵件自動分類器 (Email Auto Classifier)",
+    "name_zh": "郵件自動分類器",
+    "name_en": "Email Auto Classifier",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 47,
+    "name": "語音筆記轉任務 (Voice Notes to Tasks)",
+    "name_zh": "語音筆記轉任務",
+    "name_en": "Voice Notes to Tasks",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 48,
+    "name": "PDF 文件處理中心 (PDF Document Processing Hub)",
+    "name_zh": "PDF 文件處理中心",
+    "name_en": "PDF Document Processing Hub",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 49,
+    "name": "會議前情報準備 (Pre-Meeting Intel Prep)",
+    "name_zh": "會議前情報準備",
+    "name_en": "Pre-Meeting Intel Prep",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 50,
+    "name": "行事曆衝突排解 (Calendar Conflict Resolution)",
+    "name_zh": "行事曆衝突排解",
+    "name_en": "Calendar Conflict Resolution",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 51,
+    "name": "看板自動整理 (Kanban Auto Organizer)",
+    "name_zh": "看板自動整理",
+    "name_en": "Kanban Auto Organizer",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 52,
+    "name": "包裹追蹤自動化 (Package Tracking Automation)",
+    "name_zh": "包裹追蹤自動化",
+    "name_en": "Package Tracking Automation",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "",
+    "difficulty": "初中級",
+    "source": "hub"
+  },
+  {
+    "id": 53,
+    "name": "異步站會機器人 (Async Standup Bot)",
+    "name_zh": "異步站會機器人",
+    "name_en": "Async Standup Bot",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "Run standups without the meeting. Blockers surfaced, progress tracked, time saved.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 54,
+    "name": "會議時間自動協調 (Meeting Time Auto Coordination)",
+    "name_zh": "會議時間自動協調",
+    "name_en": "Meeting Time Auto Coordination",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "Schedule meetings in seconds. Timezone math done for you, conflicts detected, follow-ups automated.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 55,
+    "name": "競爭對手情報週報 (Competitor Intelligence Weekly)",
+    "name_zh": "競爭對手情報週報",
+    "name_en": "Competitor Intelligence Weekly",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "Automated competitive intelligence that keeps you one step ahead",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 56,
+    "name": "競品定價即時追蹤 (Competitor Pricing Tracker)",
+    "name_zh": "競品定價即時追蹤",
+    "name_en": "Competitor Pricing Tracker",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 57,
+    "name": "競品情緒分析 (Competitor Sentiment Analysis)",
+    "name_zh": "競品情緒分析",
+    "name_en": "Competitor Sentiment Analysis",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "Automated competitive intelligence that keeps you one step ahead",
+    "difficulty": "中高級",
+    "source": "var"
+  },
+  {
+    "id": 58,
+    "name": "程式化 SEO (Programmatic SEO)",
+    "name_zh": "程式化 SEO",
+    "name_en": "Programmatic SEO",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "Rank higher with less effort. Data-driven content that Google loves.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 59,
+    "name": "HARO 外鏈建設 (HARO Link Building)",
+    "name_zh": "HARO 外鏈建設",
+    "name_en": "HARO Link Building",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "",
+    "difficulty": "中級",
+    "source": ""
+  },
+  {
+    "id": 60,
+    "name": "潛在客戶資料豐富 (Lead Enrichment)",
+    "name_zh": "潛在客戶資料豐富",
+    "name_en": "Lead Enrichment",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "Focus on leads that convert. Stop wasting time on tire-kickers.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 61,
+    "name": "冷外聯自動化 (Cold Outreach Automation)",
+    "name_zh": "冷外聯自動化",
+    "name_en": "Cold Outreach Automation",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "Personalized at scale. Not spray-and-pray, but thoughtful outreach multiplied.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 62,
+    "name": "廣告效益每日報告 (Ad Performance Daily Report)",
+    "name_zh": "廣告效益每日報告",
+    "name_en": "Ad Performance Daily Report",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "",
+    "difficulty": "中級",
+    "source": ""
+  },
+  {
+    "id": 63,
+    "name": "每週策略備忘錄 (Weekly Strategy Memo)",
+    "name_zh": "每週策略備忘錄",
+    "name_en": "Weekly Strategy Memo",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "",
+    "difficulty": "中級",
+    "source": ""
+  },
+  {
+    "id": 64,
+    "name": "自由工作者案源開發 (Freelancer Lead Generation)",
+    "name_zh": "自由工作者案源開發",
+    "name_en": "Freelancer Lead Generation",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "Automate job discovery, lead qualification, proposal drafting, and follow-ups — so you can focus on actual client work.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 65,
+    "name": "網紅發掘與外聯 (Influencer Discovery & Outreach)",
+    "name_zh": "網紅發掘與外聯",
+    "name_en": "Influencer Discovery & Outreach",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "",
+    "difficulty": "中級",
+    "source": ""
+  },
+  {
+    "id": 66,
+    "name": "銷售電話準備助手 (Sales Call Prep Assistant)",
+    "name_zh": "銷售電話準備助手",
+    "name_en": "Sales Call Prep Assistant",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "",
+    "difficulty": "中級",
+    "source": ""
+  },
+  {
+    "id": 67,
+    "name": "評論追蹤管理 (Review Tracking Manager)",
+    "name_zh": "評論追蹤管理",
+    "name_en": "Review Tracking Manager",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "",
+    "difficulty": "中級",
+    "source": ""
+  },
+  {
+    "id": 68,
+    "name": "廣告創意 AB 測試 (Ad Creative AB Testing)",
+    "name_zh": "廣告創意 AB 測試",
+    "name_en": "Ad Creative AB Testing",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "Get instant UI/UX reviews without waiting for stakeholders. Ship better designs, faster.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 69,
+    "name": "n8n 工作流程編排 (n8n Workflow Orchestration)",
+    "name_zh": "n8n 工作流程編排",
+    "name_en": "n8n Workflow Orchestration",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 70,
+    "name": "自我修復家庭伺服器 (Self-Healing Home Server)",
+    "name_zh": "自我修復家庭伺服器",
+    "name_en": "Self-Healing Home Server",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "",
+    "difficulty": "高級",
+    "source": "main"
+  },
+  {
+    "id": 71,
+    "name": "PR 追蹤雷達 (PR Tracking Radar)",
+    "name_zh": "PR 追蹤雷達",
+    "name_en": "PR Tracking Radar",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 72,
+    "name": "CI 不穩定測試修復 (CI Flaky Test Fix)",
+    "name_zh": "CI 不穩定測試修復",
+    "name_en": "CI Flaky Test Fix",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "",
+    "difficulty": "中高級",
+    "source": "hub"
+  },
+  {
+    "id": 73,
+    "name": "文件漂移哨兵 (Doc Drift Sentinel)",
+    "name_zh": "文件漂移哨兵",
+    "name_en": "Doc Drift Sentinel",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 74,
+    "name": "變更日誌自動化 (Changelog Automation)",
+    "name_zh": "變更日誌自動化",
+    "name_en": "Changelog Automation",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "Release notes in seconds. Never write them manually again.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 75,
+    "name": "依賴套件審計 (Dependency Audit)",
+    "name_zh": "依賴套件審計",
+    "name_en": "Dependency Audit",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 76,
+    "name": "Sentry 事故回顧報告 (Sentry Incident Retrospective)",
+    "name_zh": "Sentry 事故回顧報告",
+    "name_en": "Sentry Incident Retrospective",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 77,
+    "name": "部署自動化流水線 (Deployment Automation Pipeline)",
+    "name_zh": "部署自動化流水線",
+    "name_en": "Deployment Automation Pipeline",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "Ship with confidence. Automated deployments done right.",
+    "difficulty": "中高級",
+    "source": "var"
+  },
+  {
+    "id": 78,
+    "name": "程式碼自動文件化 (Code Auto Documentation)",
+    "name_zh": "程式碼自動文件化",
+    "name_en": "Code Auto Documentation",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 79,
+    "name": "SSH 金鑰安全掃描 (SSH Key Security Scan)",
+    "name_zh": "SSH 金鑰安全掃描",
+    "name_en": "SSH Key Security Scan",
+    "category": "安全與合規",
+    "icon": "🔒",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 80,
+    "name": "AWS 憑證安全掃描 (AWS Credential Security Scan)",
+    "name_zh": "AWS 憑證安全掃描",
+    "name_en": "AWS Credential Security Scan",
+    "category": "安全與合規",
+    "icon": "🔒",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 81,
+    "name": "Git 歷史敏感資訊清理 (Git History Sensitive Data Cleanup)",
+    "name_zh": "Git 歷史敏感資訊清理",
+    "name_en": "Git History Sensitive Data Cleanup",
+    "category": "安全與合規",
+    "icon": "🔒",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 82,
+    "name": "API 安全測試 (API Security Testing)",
+    "name_zh": "API 安全測試",
+    "name_en": "API Security Testing",
+    "category": "安全與合規",
+    "icon": "🔒",
+    "description": "",
+    "difficulty": "中高級",
+    "source": "hub"
+  },
+  {
+    "id": 83,
+    "name": "漏洞自動掃描 (Vulnerability Auto Scan)",
+    "name_zh": "漏洞自動掃描",
+    "name_en": "Vulnerability Auto Scan",
+    "category": "安全與合規",
+    "icon": "🔒",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 84,
+    "name": "法規合規性自動檢查 (Regulatory Compliance Auto Check)",
+    "name_zh": "法規合規性自動檢查",
+    "name_en": "Regulatory Compliance Auto Check",
+    "category": "安全與合規",
+    "icon": "🔒",
+    "description": "",
+    "difficulty": "中高級",
+    "source": "hub"
+  },
+  {
+    "id": 85,
+    "name": "SLA 守護者 (SLA Guardian)",
+    "name_zh": "SLA 守護者",
+    "name_en": "SLA Guardian",
+    "category": "監控與維運",
+    "icon": "📡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 86,
+    "name": "網站可用性監控 (Website Uptime Monitor)",
+    "name_zh": "網站可用性監控",
+    "name_en": "Website Uptime Monitor",
+    "category": "監控與維運",
+    "icon": "📡",
+    "description": "",
+    "difficulty": "初中級",
+    "source": "hub"
+  },
+  {
+    "id": 87,
+    "name": "SSL 憑證到期監控 (SSL Certificate Expiry Monitor)",
+    "name_zh": "SSL 憑證到期監控",
+    "name_en": "SSL Certificate Expiry Monitor",
+    "category": "監控與維運",
+    "icon": "📡",
+    "description": "",
+    "difficulty": "初中級",
+    "source": "hub"
+  },
+  {
+    "id": 88,
+    "name": "資料庫自動備份 (Database Auto Backup)",
+    "name_zh": "資料庫自動備份",
+    "name_en": "Database Auto Backup",
+    "category": "監控與維運",
+    "icon": "📡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 89,
+    "name": "AI 模型費用追蹤中心 (AI Model Cost Tracker)",
+    "name_zh": "AI 模型費用追蹤中心",
+    "name_en": "AI Model Cost Tracker",
+    "category": "監控與維運",
+    "icon": "📡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 90,
+    "name": "每週事故摘要 (Weekly Incident Summary)",
+    "name_zh": "每週事故摘要",
+    "name_en": "Weekly Incident Summary",
+    "category": "監控與維運",
+    "icon": "📡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 91,
+    "name": "API 速率限制監控 (API Rate Limit Monitor)",
+    "name_zh": "API 速率限制監控",
+    "name_en": "API Rate Limit Monitor",
+    "category": "監控與維運",
+    "icon": "📡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 92,
+    "name": "智慧警報彙整去重 (Smart Alert Aggregation & Dedup)",
+    "name_zh": "智慧警報彙整去重",
+    "name_en": "Smart Alert Aggregation & Dedup",
+    "category": "監控與維運",
+    "icon": "📡",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 93,
+    "name": "AI 財報追蹤器 (AI Financial Report Tracker)",
+    "name_zh": "AI 財報追蹤器",
+    "name_en": "AI Financial Report Tracker",
+    "category": "研究與學習",
+    "icon": "📚",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 94,
+    "name": "個人知識庫 (RAG) (Personal Knowledge Base RAG)",
+    "name_zh": "個人知識庫",
+    "name_en": "RAG",
+    "category": "研究與學習",
+    "icon": "📚",
+    "description": "",
+    "difficulty": "中高級",
+    "source": "main"
+  },
+  {
+    "id": 95,
+    "name": "市場調研與 MVP 工廠 (Market Research & MVP Factory)",
+    "name_zh": "市場調研與 MVP 工廠",
+    "name_en": "Market Research & MVP Factory",
+    "category": "研究與學習",
+    "icon": "📚",
+    "description": "",
+    "difficulty": "高級",
+    "source": "main"
+  },
+  {
+    "id": 96,
+    "name": "建造前點子驗證器 (Pre-Build Idea Validator)",
+    "name_zh": "建造前點子驗證器",
+    "name_en": "Pre-Build Idea Validator",
+    "category": "研究與學習",
+    "icon": "📚",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 97,
+    "name": "語義記憶搜尋 (Semantic Memory Search)",
+    "name_zh": "語義記憶搜尋",
+    "name_en": "Semantic Memory Search",
+    "category": "研究與學習",
+    "icon": "📚",
+    "description": "",
+    "difficulty": "中高級",
+    "source": "main"
+  },
+  {
+    "id": 98,
+    "name": "YouTube 研究分析桌 (YouTube Research Desk)",
+    "name_zh": "YouTube 研究分析桌",
+    "name_en": "YouTube Research Desk",
+    "category": "研究與學習",
+    "icon": "📚",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 99,
+    "name": "每週研究情報摘要 (Weekly Research Intel Summary)",
+    "name_zh": "每週研究情報摘要",
+    "name_en": "Weekly Research Intel Summary",
+    "category": "研究與學習",
+    "icon": "📚",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 100,
+    "name": "內容靈感挖掘機 (Content Inspiration Miner)",
+    "name_zh": "內容靈感挖掘機",
+    "name_en": "Content Inspiration Miner",
+    "category": "研究與學習",
+    "icon": "📚",
+    "description": "",
+    "difficulty": "中級",
+    "source": ""
+  },
+  {
+    "id": 101,
+    "name": "產品需求文件起草 (Product Requirements Doc Draft)",
+    "name_zh": "產品需求文件起草",
+    "name_en": "Product Requirements Doc Draft",
+    "category": "研究與學習",
+    "icon": "📚",
+    "description": "",
+    "difficulty": "中級",
+    "source": "main"
+  },
+  {
+    "id": 102,
+    "name": "Polymarket 自動交易 (Polymarket Auto Trading)",
+    "name_zh": "Polymarket 自動交易",
+    "name_en": "Polymarket Auto Trading",
+    "category": "金融與交易",
+    "icon": "📈",
+    "description": "",
+    "difficulty": "高級",
+    "source": "main"
+  },
+  {
+    "id": 103,
+    "name": "投資案流程管理 (Investment Deal Pipeline)",
+    "name_zh": "投資案流程管理",
+    "name_en": "Investment Deal Pipeline",
+    "category": "金融與交易",
+    "icon": "📈",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 104,
+    "name": "投資組合監控 (Portfolio Monitor)",
+    "name_zh": "投資組合監控",
+    "name_en": "Portfolio Monitor",
+    "category": "金融與交易",
+    "icon": "📈",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 105,
+    "name": "訂閱費用審計 (Subscription Cost Audit)",
+    "name_zh": "訂閱費用審計",
+    "name_en": "Subscription Cost Audit",
+    "category": "金融與交易",
+    "icon": "📈",
+    "description": "Know where your money goes. Without manual data entry.",
+    "difficulty": "初中級",
+    "source": "var"
+  },
+  {
+    "id": 106,
+    "name": "發票處理自動化 (Invoice Processing Automation)",
+    "name_zh": "發票處理自動化",
+    "name_en": "Invoice Processing Automation",
+    "category": "金融與交易",
+    "icon": "📈",
+    "description": "Automated invoice tracking and payment reminders for freelancers and small businesses",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 107,
+    "name": "個人財務追蹤 (Personal Finance Tracker)",
+    "name_zh": "個人財務追蹤",
+    "name_en": "Personal Finance Tracker",
+    "category": "金融與交易",
+    "icon": "📈",
+    "description": "",
+    "difficulty": "初中級",
+    "source": "hub"
+  },
+  {
+    "id": 108,
+    "name": "睡眠品質優化 (Sleep Quality Optimizer)",
+    "name_zh": "睡眠品質優化",
+    "name_en": "Sleep Quality Optimizer",
+    "category": "健康與個人成長",
+    "icon": "🧘",
+    "description": "Wake up refreshed. Optimize your nights to own your days.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 109,
+    "name": "心理健康定期打卡 (Mental Health Check-In)",
+    "name_zh": "心理健康定期打卡",
+    "name_en": "Mental Health Check-In",
+    "category": "健康與個人成長",
+    "icon": "🧘",
+    "description": "Know yourself better. Track moods, prep for therapy, spot patterns before they spiral.",
+    "difficulty": "初中級",
+    "source": "var"
+  },
+  {
+    "id": 110,
+    "name": "健身打卡問責系統 (Fitness Accountability System)",
+    "name_zh": "健身打卡問責系統",
+    "name_en": "Fitness Accountability System",
+    "category": "健康與個人成長",
+    "icon": "🧘",
+    "description": "Train smarter. Never skip leg day.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 111,
+    "name": "個人學習路徑規劃 (Personal Learning Path Planner)",
+    "name_zh": "個人學習路徑規劃",
+    "name_en": "Personal Learning Path Planner",
+    "category": "健康與個人成長",
+    "icon": "🧘",
+    "description": "Learn anything systematically. No more random YouTube binges.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 112,
+    "name": "健身數據彙整分析 (Fitness Data Aggregation)",
+    "name_zh": "健身數據彙整分析",
+    "name_en": "Fitness Data Aggregation",
+    "category": "健康與個人成長",
+    "icon": "🧘",
+    "description": "Train smarter. Never skip leg day.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 113,
+    "name": "採購與營養優化 (Grocery & Nutrition Optimizer)",
+    "name_zh": "採購與營養優化",
+    "name_en": "Grocery & Nutrition Optimizer",
+    "category": "健康與個人成長",
+    "icon": "🧘",
+    "description": "Meal plan, shop smart, waste less.",
+    "difficulty": "中級",
+    "source": "var"
+  },
+  {
+    "id": 114,
+    "name": "三層記憶架構系統 (Three-Tier Memory Architecture)",
+    "name_zh": "三層記憶架構系統",
+    "name_en": "Three-Tier Memory Architecture",
+    "category": "AI 記憶與代理架構",
+    "icon": "🧠",
+    "description": "",
+    "difficulty": "高級",
+    "source": "hub"
+  },
+  {
+    "id": 115,
+    "name": "知識圖譜重建 (Knowledge Graph Reconstruction)",
+    "name_zh": "知識圖譜重建",
+    "name_en": "Knowledge Graph Reconstruction",
+    "category": "AI 記憶與代理架構",
+    "icon": "🧠",
+    "description": "",
+    "difficulty": "高級",
+    "source": "hub"
+  },
+  {
+    "id": 116,
+    "name": "每週記憶封存 (Weekly Memory Archive)",
+    "name_zh": "每週記憶封存",
+    "name_en": "Weekly Memory Archive",
+    "category": "AI 記憶與代理架構",
+    "icon": "🧠",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 117,
+    "name": "每日自我提升 Cron (Daily Self-Improvement Cron)",
+    "name_zh": "每日自我提升 Cron",
+    "name_en": "Daily Self-Improvement Cron",
+    "category": "AI 記憶與代理架構",
+    "icon": "🧠",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 118,
+    "name": "夜間自動化回報追蹤 (Nightly Automation Report Tracker)",
+    "name_zh": "夜間自動化回報追蹤",
+    "name_en": "Nightly Automation Report Tracker",
+    "category": "AI 記憶與代理架構",
+    "icon": "🧠",
+    "description": "",
+    "difficulty": "中級",
+    "source": "hub"
+  },
+  {
+    "id": 119,
+    "name": "LaTeX 論文寫作 (LaTeX Paper Writing)",
+    "name_zh": "LaTeX 論文寫作",
+    "name_en": "LaTeX Paper Writing",
+    "category": "研究與學習",
+    "icon": "📚",
+    "description": "使用 AI 代理協作撰寫 LaTeX 論文，即時編譯為 PDF，支援多種模板和參考文獻管理。",
+    "difficulty": "中級",
+    "source": "MAIN"
+  },
+  {
+    "id": 120,
+    "name": "本地 CRM 框架 (Local CRM Framework)",
+    "name_zh": "本地 CRM 框架",
+    "name_en": "Local CRM Framework",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "使用 DenchClaw 將 AI 代理轉變為完全本地的 CRM、銷售自動化和生產力平台，一鍵安裝。",
+    "difficulty": "中級",
+    "source": "MAIN"
+  },
+  {
+    "id": 121,
+    "name": "X Twitter 自動化 (X Twitter Automation)",
+    "name_zh": "X Twitter 自動化",
+    "name_en": "X Twitter Automation",
+    "category": "社群媒體",
+    "icon": "📱",
+    "description": "透過自然語言完全自動化 X/Twitter 操作：發推、回覆、按讚、轉推、追蹤、私訊、搜尋、抽獎和帳號監控。",
+    "difficulty": "中級",
+    "source": "MAIN"
+  },
+  {
+    "id": 122,
+    "name": "arXiv 論文閱讀器 (arXiv Paper Reader)",
+    "name_zh": "arXiv 論文閱讀器",
+    "name_en": "arXiv Paper Reader",
+    "category": "研究與學習",
+    "icon": "📚",
+    "description": "透過 AI 代理對話式閱讀、分析和比較 arXiv 論文，自動擷取和解析 LaTeX 原始碼。",
+    "difficulty": "初中級",
+    "source": "MAIN"
+  },
+  {
+    "id": 123,
+    "name": "合作夥伴更新生成器 (Partner Update Generator)",
+    "name_zh": "合作夥伴更新生成器",
+    "name_en": "Partner Update Generator",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "自動化合作夥伴更新生成器流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 124,
+    "name": "功能需求分類 (Feature Request Triage)",
+    "name_zh": "功能需求分類",
+    "name_en": "Feature Request Triage",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "自動化功能需求分類流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 125,
+    "name": "文檔程式碼片段驗證 (Docs Snippet Verifier)",
+    "name_zh": "文檔程式碼片段驗證",
+    "name_en": "Docs Snippet Verifier",
+    "category": "開發者工具",
+    "icon": "💻",
+    "description": "自動化文檔程式碼片段驗證流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 126,
+    "name": "Prompt 回歸監控 (Prompt Regression Watch)",
+    "name_zh": "Prompt 回歸監控",
+    "name_en": "Prompt Regression Watch",
+    "category": "監控與維運",
+    "icon": "📡",
+    "description": "自動化Prompt 回歸監控流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 127,
+    "name": "續約風險分析 (Renewal Risk Explainer)",
+    "name_zh": "續約風險分析",
+    "name_en": "Renewal Risk Explainer",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "自動化續約風險分析流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 128,
+    "name": "試用轉付費推動 (Trial to Paid Nudger)",
+    "name_zh": "試用轉付費推動",
+    "name_en": "Trial to Paid Nudger",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "自動化試用轉付費推動流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 129,
+    "name": "審批例外佇列 (Approval Exception Queue)",
+    "name_zh": "審批例外佇列",
+    "name_en": "Approval Exception Queue",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "自動化審批例外佇列流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 130,
+    "name": "行銷素材請求路由 (Campaign Asset Request Router)",
+    "name_zh": "行銷素材請求路由",
+    "name_en": "Campaign Asset Request Router",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "自動化行銷素材請求路由流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 131,
+    "name": "面試匯報整理 (Candidate Debrief Compiler)",
+    "name_zh": "面試匯報整理",
+    "name_en": "Candidate Debrief Compiler",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "自動化面試匯報整理流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 132,
+    "name": "入職清單管家 (Onboarding Checklist Concierge)",
+    "name_zh": "入職清單管家",
+    "name_en": "Onboarding Checklist Concierge",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "自動化入職清單管家流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 133,
+    "name": "採購評分 (Procurement Intake Scorer)",
+    "name_zh": "採購評分",
+    "name_en": "Procurement Intake Scorer",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "自動化採購評分流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 134,
+    "name": "逾期採購單追蹤 (Overdue PO Follow-up Queue)",
+    "name_zh": "逾期採購單追蹤",
+    "name_en": "Overdue PO Follow-up Queue",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "自動化逾期採購單追蹤流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 135,
+    "name": "影子 AI 監控 (Shadow AI Watchlist)",
+    "name_zh": "影子 AI 監控",
+    "name_en": "Shadow AI Watchlist",
+    "category": "安全與合規",
+    "icon": "🔒",
+    "description": "自動化影子 AI 監控流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 136,
+    "name": "設備問題分類 (Device Issue Triage Queue)",
+    "name_zh": "設備問題分類",
+    "name_en": "Device Issue Triage Queue",
+    "category": "監控與維運",
+    "icon": "📡",
+    "description": "自動化設備問題分類流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 137,
+    "name": "內部 FAQ 路由 (Internal FAQ Router)",
+    "name_zh": "內部 FAQ 路由",
+    "name_en": "Internal FAQ Router",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "自動化內部 FAQ 路由流程，提升效率。",
+    "difficulty": "中級",
+    "source": "EXAMPLES"
+  },
+  {
+    "id": 138,
+    "name": "奧運每日簡報 (Olympics Daily Briefing)",
+    "name_zh": "奧運每日簡報",
+    "name_en": "Olympics Daily Briefing",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "自動化奧運每日簡報流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 139,
+    "name": "天氣晨間報告 (Weather Morning Report)",
+    "name_zh": "天氣晨間報告",
+    "name_en": "Weather Morning Report",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "自動化天氣晨間報告流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 140,
+    "name": "夜間 Shell 別名建構器 (Night Shell Alias Builder)",
+    "name_zh": "夜間 Shell 別名建構器",
+    "name_en": "Night Shell Alias Builder",
+    "category": "開發者工具",
+    "icon": "💻",
+    "description": "自動化夜間 Shell 別名建構器流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 141,
+    "name": "交易機器人監控 (Trading Bot Monitor)",
+    "name_zh": "交易機器人監控",
+    "name_en": "Trading Bot Monitor",
+    "category": "加密貨幣與 DeFi",
+    "icon": "🪙",
+    "description": "自動化交易機器人監控流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 142,
+    "name": "GitHub Issue 優先排序 (GitHub Issue Prioritizer)",
+    "name_zh": "GitHub Issue 優先排序",
+    "name_en": "GitHub Issue Prioritizer",
+    "category": "開發者工具",
+    "icon": "💻",
+    "description": "自動化GitHub Issue 優先排序流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 143,
+    "name": "個人 CLI 工具包 (Personal CLI Toolkit)",
+    "name_zh": "個人 CLI 工具包",
+    "name_en": "Personal CLI Toolkit",
+    "category": "開發者工具",
+    "icon": "💻",
+    "description": "自動化個人 CLI 工具包流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 144,
+    "name": "V4 LP 自動複利 (V4 LP Auto Compounding)",
+    "name_zh": "V4 LP 自動複利",
+    "name_en": "V4 LP Auto Compounding",
+    "category": "加密貨幣與 DeFi",
+    "icon": "🪙",
+    "description": "自動化V4 LP 自動複利流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 145,
+    "name": "七子代理夜間並行 (Seven Sub-Agent Night Parallel)",
+    "name_zh": "七子代理夜間並行",
+    "name_en": "Seven Sub-Agent Night Parallel",
+    "category": "AI 記憶與代理架構",
+    "icon": "🧠",
+    "description": "自動化七子代理夜間並行流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 146,
+    "name": "凌晨基礎設施健檢 (5AM Infrastructure Health Check)",
+    "name_zh": "凌晨基礎設施健檢",
+    "name_en": "5AM Infrastructure Health Check",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "自動化凌晨基礎設施健檢流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 147,
+    "name": "夜間 WhatsApp 關係維護 (Night WhatsApp Revival)",
+    "name_zh": "夜間 WhatsApp 關係維護",
+    "name_en": "Night WhatsApp Revival",
+    "category": "社群媒體",
+    "icon": "📱",
+    "description": "自動化夜間 WhatsApp 關係維護流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 148,
+    "name": "比特幣銘文 (Bitcoin Inscription)",
+    "name_zh": "比特幣銘文",
+    "name_en": "Bitcoin Inscription",
+    "category": "加密貨幣與 DeFi",
+    "icon": "🪙",
+    "description": "自動化比特幣銘文流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 149,
+    "name": "GitHub 過期 Issue 清理 (GitHub Stale Issue Cleanup)",
+    "name_zh": "GitHub 過期 Issue 清理",
+    "name_en": "GitHub Stale Issue Cleanup",
+    "category": "開發者工具",
+    "icon": "💻",
+    "description": "自動化GitHub 過期 Issue 清理流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 150,
+    "name": "日誌異常偵測 (Log Anomaly Detection)",
+    "name_zh": "日誌異常偵測",
+    "name_en": "Log Anomaly Detection",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "自動化日誌異常偵測流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 151,
+    "name": "鏈上錢包監控 (Chain Wallet Monitor)",
+    "name_zh": "鏈上錢包監控",
+    "name_en": "Chain Wallet Monitor",
+    "category": "加密貨幣與 DeFi",
+    "icon": "🪙",
+    "description": "自動化鏈上錢包監控流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 152,
+    "name": "客戶訊號掃描器 (Customer Signal Scanner)",
+    "name_zh": "客戶訊號掃描器",
+    "name_en": "Customer Signal Scanner",
+    "category": "商業、行銷與銷售",
+    "icon": "💼",
+    "description": "自動化客戶訊號掃描器流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 153,
+    "name": "Pump.fun 掃描器 (Pump Fun Scanner)",
+    "name_zh": "Pump.fun 掃描器",
+    "name_en": "Pump Fun Scanner",
+    "category": "加密貨幣與 DeFi",
+    "icon": "🪙",
+    "description": "自動化Pump.fun 掃描器流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 154,
+    "name": "Moltbook 模式分析 (Moltbook Pattern Analysis)",
+    "name_zh": "Moltbook 模式分析",
+    "name_en": "Moltbook Pattern Analysis",
+    "category": "AI 記憶與代理架構",
+    "icon": "🧠",
+    "description": "自動化Moltbook 模式分析流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 155,
+    "name": "網路延遲基準測試 (Network Latency Benchmark)",
+    "name_zh": "網路延遲基準測試",
+    "name_en": "Network Latency Benchmark",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "自動化網路延遲基準測試流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 156,
+    "name": "Token 用量優化器 (Token Usage Optimizer)",
+    "name_zh": "Token 用量優化器",
+    "name_en": "Token Usage Optimizer",
+    "category": "監控與維運",
+    "icon": "📡",
+    "description": "自動化Token 用量優化器流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 157,
+    "name": "分散式追蹤基準 (Distributed Tracing Benchmark)",
+    "name_zh": "分散式追蹤基準",
+    "name_en": "Distributed Tracing Benchmark",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "自動化分散式追蹤基準流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 158,
+    "name": "鑰匙圈存取測試 (Keychain Access Tester)",
+    "name_zh": "鑰匙圈存取測試",
+    "name_en": "Keychain Access Tester",
+    "category": "安全與合規",
+    "icon": "🔒",
+    "description": "自動化鑰匙圈存取測試流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 159,
+    "name": "Skill 供應鏈審計 (Skill Supply Chain Audit)",
+    "name_zh": "Skill 供應鏈審計",
+    "name_en": "Skill Supply Chain Audit",
+    "category": "安全與合規",
+    "icon": "🔒",
+    "description": "自動化Skill 供應鏈審計流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 160,
+    "name": "Skill 預檢工具 (Skill Preflight Checker)",
+    "name_zh": "Skill 預檢工具",
+    "name_en": "Skill Preflight Checker",
+    "category": "開發者工具",
+    "icon": "💻",
+    "description": "自動化Skill 預檢工具流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 161,
+    "name": "Cron 儀表板狀態 (Cron Dashboard Status)",
+    "name_zh": "Cron 儀表板狀態",
+    "name_en": "Cron Dashboard Status",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "自動化Cron 儀表板狀態流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 162,
+    "name": "心跳狀態監控 (Heartbeat State Monitor)",
+    "name_zh": "心跳狀態監控",
+    "name_en": "Heartbeat State Monitor",
+    "category": "DevOps 與工程",
+    "icon": "🛠",
+    "description": "自動化心跳狀態監控流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 163,
+    "name": "Swift Logger 套件 (Swift Logger Package)",
+    "name_zh": "Swift Logger 套件",
+    "name_en": "Swift Logger Package",
+    "category": "開發者工具",
+    "icon": "💻",
+    "description": "自動化Swift Logger 套件流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 164,
+    "name": "安全操作帳本 (Safe Operations Ledger)",
+    "name_zh": "安全操作帳本",
+    "name_en": "Safe Operations Ledger",
+    "category": "安全與合規",
+    "icon": "🔒",
+    "description": "自動化安全操作帳本流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 165,
+    "name": "資安 CTF 課程 (Security CTF Curriculum)",
+    "name_zh": "資安 CTF 課程",
+    "name_en": "Security CTF Curriculum",
+    "category": "安全與合規",
+    "icon": "🔒",
+    "description": "自動化資安 CTF 課程流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 166,
+    "name": "鏈上俳句銘文 (On-Chain Haiku Inscription)",
+    "name_zh": "鏈上俳句銘文",
+    "name_en": "On-Chain Haiku Inscription",
+    "category": "加密貨幣與 DeFi",
+    "icon": "🪙",
+    "description": "自動化鏈上俳句銘文流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 167,
+    "name": "晨間摘要生成器 (Morning Digest Generator)",
+    "name_zh": "晨間摘要生成器",
+    "name_en": "Morning Digest Generator",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "自動化晨間摘要生成器流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 168,
+    "name": "加密幸運餅乾 (Crypto Fortune Cookie)",
+    "name_zh": "加密幸運餅乾",
+    "name_en": "Crypto Fortune Cookie",
+    "category": "加密貨幣與 DeFi",
+    "icon": "🪙",
+    "description": "自動化加密幸運餅乾流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 169,
+    "name": "Agent Skills 目錄 (Agent Skills Directory)",
+    "name_zh": "Agent Skills 目錄",
+    "name_en": "Agent Skills Directory",
+    "category": "AI 記憶與代理架構",
+    "icon": "🧠",
+    "description": "自動化Agent Skills 目錄流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 170,
+    "name": "夜間工作 ROI 追蹤 (Night Work ROI Tracker)",
+    "name_zh": "夜間工作 ROI 追蹤",
+    "name_en": "Night Work ROI Tracker",
+    "category": "AI 記憶與代理架構",
+    "icon": "🧠",
+    "description": "自動化夜間工作 ROI 追蹤流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 171,
+    "name": "多頻道狀態同步 (Multi-Channel Presence Sync)",
+    "name_zh": "多頻道狀態同步",
+    "name_en": "Multi-Channel Presence Sync",
+    "category": "社群媒體",
+    "icon": "📱",
+    "description": "自動化多頻道狀態同步流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 172,
+    "name": "冷關係復活 (Cold Relationship Revival)",
+    "name_zh": "冷關係復活",
+    "name_en": "Cold Relationship Revival",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "自動化冷關係復活流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 173,
+    "name": "智慧行事曆提醒 (Calendar Smart Reminder)",
+    "name_zh": "智慧行事曆提醒",
+    "name_en": "Calendar Smart Reminder",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "自動化智慧行事曆提醒流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  },
+  {
+    "id": 174,
+    "name": "生命記憶記錄器 (Memory Life Logger)",
+    "name_zh": "生命記憶記錄器",
+    "name_en": "Memory Life Logger",
+    "category": "生產力工具",
+    "icon": "⚡",
+    "description": "自動化生命記憶記錄器流程，提升效率與可靠性。",
+    "difficulty": "中級",
+    "source": "MOLTBOOK"
+  }
+];
+
+const grid = document.getElementById('grid');
+const search = document.getElementById('search');
+const resultCount = document.getElementById('resultCount');
+let activeCategory = 'all';
+
+function renderCards(filtered) {
+  resultCount.textContent = `顯示 ${filtered.length} / ${skills.length} 個 use case`;
+  grid.innerHTML = filtered.map(s => `
+    <div class="card">
+      <div class="card-header">
+        <span class="card-id">#${String(s.id).padStart(3, '0')}</span>
+        <span class="card-diff diff-${s.difficulty}">${s.difficulty}</span>
+      </div>
+      <div class="card-title">${s.name_zh}</div>
+      <div class="card-title-en">${s.name_en}</div>
+      <div class="card-desc">${s.description || '—'}</div>
+      <div class="card-footer">
+        <span class="card-cat">${s.icon} ${s.category}</span>
+        ${s.source ? `<span class="card-source">${s.source}</span>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterSkills() {
+  const q = search.value.toLowerCase();
+  const filtered = skills.filter(s => {
+    const matchCat = activeCategory === 'all' || s.category === activeCategory;
+    const matchSearch = !q ||
+      s.name_zh.toLowerCase().includes(q) ||
+      s.name_en.toLowerCase().includes(q) ||
+      s.description.toLowerCase().includes(q) ||
+      String(s.id).padStart(3, '0').includes(q) ||
+      s.category.toLowerCase().includes(q);
+    return matchCat && matchSearch;
+  });
+  renderCards(filtered);
+}
+
+search.addEventListener('input', filterSkills);
+
+document.getElementById('filters').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeCategory = btn.dataset.cat;
+  filterSkills();
+});
+
+filterSkills();
+</script>
+
+</body>
+</html>
