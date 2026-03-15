@@ -58,6 +58,11 @@ REPOS = {
         "usecases_dir": "",
         "label": "RONAK",
     },
+    "awesome-openclaw-usecases-moltbook": {
+        "url": "https://github.com/EvoLinkAI/awesome-openclaw-usecases-moltbook.git",
+        "usecases_dir": "usecases",
+        "label": "MOLTBOOK",
+    },
 }
 
 
