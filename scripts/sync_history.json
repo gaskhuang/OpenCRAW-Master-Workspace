@@ -35,6 +35,18 @@
         "awesome-openclaw-examples": "no_changes",
         "ronakkadhi": "no_changes"
       }
+    },
+    {
+      "date": "2026-03-16T02:28:25.413584",
+      "new_files": 74,
+      "total_files": 290,
+      "pull_results": {
+        "awesome-openclaw-usecases": "updated (5 files changed, 221 insertions(+), 1 deletion(-))",
+        "openclaw_usecase_hub": "no_changes",
+        "awesome-clawdbot-usecases": "no_changes",
+        "awesome-openclaw-examples": "updated (424 files changed, 10141 insertions(+), 51 deletions(-))",
+        "ronakkadhi": "no_changes"
+      }
     }
   ],
   "known_files": {
@@ -143,6 +155,11 @@
       "size": 4053,
       "first_seen": "2026-03-07T12:45:49.275090"
     },
+    "awesome-openclaw-usecases/usecases/latex-paper-writing.md": {
+      "title": "LaTeX Paper Writing",
+      "size": 2196,
+      "first_seen": "2026-03-16T02:28:25.413191"
+    },
     "awesome-openclaw-usecases/usecases/second-brain.md": {
       "title": "Second Brain",
       "size": 3076,
@@ -157,6 +174,11 @@
       "title": "OpenClaw + n8n Workflow Orchestration",
       "size": 5973,
       "first_seen": "2026-03-07T12:45:49.275094"
+    },
+    "awesome-openclaw-usecases/usecases/local-crm-framework.md": {
+      "title": "Local CRM Framework with DenchClaw",
+      "size": 4814,
+      "first_seen": "2026-03-16T02:28:25.413198"
     },
     "awesome-openclaw-usecases/usecases/overnight-mini-app-builder.md": {
       "title": "Goal-Driven Autonomous Tasks",
@@ -183,6 +205,11 @@
       "size": 1648,
       "first_seen": "2026-03-07T12:45:49.275100"
     },
+    "awesome-openclaw-usecases/usecases/x-twitter-automation.md": {
+      "title": "X/Twitter Automation from Chat",
+      "size": 2107,
+      "first_seen": "2026-03-16T02:28:25.413206"
+    },
     "awesome-openclaw-usecases/usecases/multi-source-tech-news-digest.md": {
       "title": "Multi-Source Tech News Digest",
       "size": 2280,
@@ -202,6 +229,11 @@
       "title": "Semantic Memory Search",
       "size": 3383,
       "first_seen": "2026-03-07T12:45:49.275107"
+    },
+    "awesome-openclaw-usecases/usecases/arxiv-paper-reader.md": {
+      "title": "arXiv Paper Reader",
+      "size": 2084,
+      "first_seen": "2026-03-16T02:28:25.413213"
     },
     "awesome-openclaw-usecases/usecases/autonomous-game-dev-pipeline.md": {
       "title": "Autonomous Educational Game Development Pipeline",
@@ -964,14 +996,44 @@
       "first_seen": "2026-03-07T12:45:49.275313"
     },
     "awesome-openclaw-examples/examples/catalog.md": {
-      "title": "Full Catalog (30 Examples)",
-      "size": 2221,
+      "title": "Full Catalog (100 Examples)",
+      "size": 7441,
       "first_seen": "2026-03-07T12:45:49.275314"
+    },
+    "awesome-openclaw-examples/examples/runnable/48-meeting-follow-up-enforcer/sample-output.md": {
+      "title": "Sample Output - Meeting Follow-up Enforcer",
+      "size": 627,
+      "first_seen": "2026-03-16T02:28:25.413438"
+    },
+    "awesome-openclaw-examples/examples/runnable/62-daily-operating-memo/sample-output.md": {
+      "title": "Sample Output - Daily Operating Memo",
+      "size": 629,
+      "first_seen": "2026-03-16T02:28:25.413439"
+    },
+    "awesome-openclaw-examples/examples/runnable/73-onboarding-checklist-concierge/sample-output.md": {
+      "title": "Sample Output - Onboarding Checklist Concierge",
+      "size": 635,
+      "first_seen": "2026-03-16T02:28:25.413441"
+    },
+    "awesome-openclaw-examples/examples/runnable/89-device-issue-triage-queue/sample-output.md": {
+      "title": "Sample Output - Device Issue Triage Queue",
+      "size": 622,
+      "first_seen": "2026-03-16T02:28:25.413442"
     },
     "awesome-openclaw-examples/examples/runnable/30-founder-daily-control-room/sample-output.md": {
       "title": "Sample Output - Founder Daily Control Room",
       "size": 617,
       "first_seen": "2026-03-07T12:45:49.275315"
+    },
+    "awesome-openclaw-examples/examples/runnable/52-partner-co-sell-brief/sample-output.md": {
+      "title": "Sample Output - Partner Co-sell Brief",
+      "size": 628,
+      "first_seen": "2026-03-16T02:28:25.413445"
+    },
+    "awesome-openclaw-examples/examples/runnable/51-pipeline-hygiene-monitor/sample-output.md": {
+      "title": "Sample Output - Pipeline Hygiene Monitor",
+      "size": 620,
+      "first_seen": "2026-03-16T02:28:25.413446"
     },
     "awesome-openclaw-examples/examples/runnable/17-sales-call-prep-bot/sample-output.md": {
       "title": "Sample Output - Sales Call Prep Bot",
@@ -983,10 +1045,35 @@
       "size": 529,
       "first_seen": "2026-03-07T12:45:49.275318"
     },
+    "awesome-openclaw-examples/examples/runnable/96-executive-weekly-wins-digest/sample-output.md": {
+      "title": "Sample Output - Executive Weekly Wins Digest",
+      "size": 627,
+      "first_seen": "2026-03-16T02:28:25.413450"
+    },
     "awesome-openclaw-examples/examples/runnable/14-weekly-research-digest/sample-output.md": {
       "title": "Sample Output - Weekly Research Digest",
       "size": 542,
       "first_seen": "2026-03-07T12:45:49.275319"
+    },
+    "awesome-openclaw-examples/examples/runnable/99-internal-faq-router/sample-output.md": {
+      "title": "Sample Output - Internal FAQ Router",
+      "size": 612,
+      "first_seen": "2026-03-16T02:28:25.413453"
+    },
+    "awesome-openclaw-examples/examples/runnable/55-calendar-prep-packet/sample-output.md": {
+      "title": "Sample Output - Calendar Prep Packet",
+      "size": 619,
+      "first_seen": "2026-03-16T02:28:25.413454"
+    },
+    "awesome-openclaw-examples/examples/runnable/66-seo-drift-watcher/sample-output.md": {
+      "title": "Sample Output - SEO Drift Watcher",
+      "size": 609,
+      "first_seen": "2026-03-16T02:28:25.413456"
+    },
+    "awesome-openclaw-examples/examples/runnable/87-audit-evidence-collector/sample-output.md": {
+      "title": "Sample Output - Audit Evidence Collector",
+      "size": 629,
+      "first_seen": "2026-03-16T02:28:25.413457"
     },
     "awesome-openclaw-examples/examples/runnable/05-content-idea-miner/sample-output.md": {
       "title": "Sample Output - Content Idea Miner",
@@ -997,6 +1084,11 @@
       "title": "Sample Output - Competitive Monitor",
       "size": 573,
       "first_seen": "2026-03-07T12:45:49.275321"
+    },
+    "awesome-openclaw-examples/examples/runnable/83-access-review-prep-bot/sample-output.md": {
+      "title": "Sample Output - Access Review Prep Bot",
+      "size": 627,
+      "first_seen": "2026-03-16T02:28:25.413461"
     },
     "awesome-openclaw-examples/examples/runnable/22-account-health-snapshot/sample-output.md": {
       "title": "Sample Output - Account Health Snapshot",
@@ -1013,15 +1105,55 @@
       "size": 590,
       "first_seen": "2026-03-07T12:45:49.275325"
     },
+    "awesome-openclaw-examples/examples/runnable/56-travel-and-meeting-reshuffler/sample-output.md": {
+      "title": "Sample Output - Travel-and-Meeting Reshuffler",
+      "size": 624,
+      "first_seen": "2026-03-16T02:28:25.413467"
+    },
+    "awesome-openclaw-examples/examples/runnable/44-expansion-opportunity-brief/sample-output.md": {
+      "title": "Sample Output - Expansion Opportunity Brief",
+      "size": 637,
+      "first_seen": "2026-03-16T02:28:25.413468"
+    },
     "awesome-openclaw-examples/examples/runnable/08-docs-drift-sentinel/sample-output.md": {
       "title": "Sample Output - Docs Drift Sentinel",
       "size": 605,
       "first_seen": "2026-03-07T12:45:49.275326"
     },
+    "awesome-openclaw-examples/examples/runnable/76-recruiting-source-quality-digest/sample-output.md": {
+      "title": "Sample Output - Recruiting Source Quality Digest",
+      "size": 622,
+      "first_seen": "2026-03-16T02:28:25.413471"
+    },
+    "awesome-openclaw-examples/examples/runnable/43-renewal-risk-explainer/sample-output.md": {
+      "title": "Sample Output - Renewal Risk Explainer",
+      "size": 614,
+      "first_seen": "2026-03-16T02:28:25.413472"
+    },
     "awesome-openclaw-examples/examples/runnable/19-support-escalation-digest/sample-output.md": {
       "title": "Sample Output - Support Escalation Digest",
       "size": 548,
       "first_seen": "2026-03-07T12:45:49.275327"
+    },
+    "awesome-openclaw-examples/examples/runnable/86-incident-comms-drafter/sample-output.md": {
+      "title": "Sample Output - Incident Comms Drafter",
+      "size": 630,
+      "first_seen": "2026-03-16T02:28:25.413475"
+    },
+    "awesome-openclaw-examples/examples/runnable/68-social-proof-collector/sample-output.md": {
+      "title": "Sample Output - Social Proof Collector",
+      "size": 619,
+      "first_seen": "2026-03-16T02:28:25.413476"
+    },
+    "awesome-openclaw-examples/examples/runnable/59-knowledge-base-freshness-scan/sample-output.md": {
+      "title": "Sample Output - Knowledge Base Freshness Scan",
+      "size": 623,
+      "first_seen": "2026-03-16T02:28:25.413477"
+    },
+    "awesome-openclaw-examples/examples/runnable/80-overdue-po-follow-up-queue/sample-output.md": {
+      "title": "Sample Output - Overdue PO Follow-up Queue",
+      "size": 618,
+      "first_seen": "2026-03-16T02:28:25.413479"
     },
     "awesome-openclaw-examples/examples/runnable/18-customer-feedback-miner/sample-output.md": {
       "title": "Sample Output - Customer Feedback Miner",
@@ -1033,25 +1165,100 @@
       "size": 583,
       "first_seen": "2026-03-07T12:45:49.275330"
     },
+    "awesome-openclaw-examples/examples/runnable/38-docs-snippet-verifier/sample-output.md": {
+      "title": "Sample Output - Docs Snippet Verifier",
+      "size": 629,
+      "first_seen": "2026-03-16T02:28:25.413483"
+    },
+    "awesome-openclaw-examples/examples/runnable/33-release-train-risk-board/sample-output.md": {
+      "title": "Sample Output - Release Train Risk Board",
+      "size": 632,
+      "first_seen": "2026-03-16T02:28:25.413484"
+    },
     "awesome-openclaw-examples/examples/runnable/06-pdf-ops-desk/sample-output.md": {
       "title": "Sample Output - PDF Ops Desk",
       "size": 612,
       "first_seen": "2026-03-07T12:45:49.275331"
+    },
+    "awesome-openclaw-examples/examples/runnable/71-candidate-debrief-compiler/sample-output.md": {
+      "title": "Sample Output - Candidate Debrief Compiler",
+      "size": 618,
+      "first_seen": "2026-03-16T02:28:25.413487"
+    },
+    "awesome-openclaw-examples/examples/runnable/35-incident-postmortem-drafter/sample-output.md": {
+      "title": "Sample Output - Incident Postmortem Drafter",
+      "size": 642,
+      "first_seen": "2026-03-16T02:28:25.413488"
+    },
+    "awesome-openclaw-examples/examples/runnable/58-approval-exception-queue/sample-output.md": {
+      "title": "Sample Output - Approval Exception Queue",
+      "size": 625,
+      "first_seen": "2026-03-16T02:28:25.413490"
+    },
+    "awesome-openclaw-examples/examples/runnable/36-bug-to-customer-impact-mapper/sample-output.md": {
+      "title": "Sample Output - Bug-to-Customer Impact Mapper",
+      "size": 633,
+      "first_seen": "2026-03-16T02:28:25.413491"
+    },
+    "awesome-openclaw-examples/examples/runnable/34-codeowners-coverage-sentinel/sample-output.md": {
+      "title": "Sample Output - Codeowners Coverage Sentinel",
+      "size": 619,
+      "first_seen": "2026-03-16T02:28:25.413492"
+    },
+    "awesome-openclaw-examples/examples/runnable/39-changelog-to-customer-impact-mapper/sample-output.md": {
+      "title": "Sample Output - Changelog-to-Customer Impact Mapper",
+      "size": 650,
+      "first_seen": "2026-03-16T02:28:25.413495"
+    },
+    "awesome-openclaw-examples/examples/runnable/49-p0-account-escalation-pack/sample-output.md": {
+      "title": "Sample Output - P0 Account Escalation Pack",
+      "size": 642,
+      "first_seen": "2026-03-16T02:28:25.413496"
     },
     "awesome-openclaw-examples/examples/runnable/15-youtube-research-desk/sample-output.md": {
       "title": "Sample Output - YouTube Research Desk",
       "size": 587,
       "first_seen": "2026-03-07T12:45:49.275332"
     },
+    "awesome-openclaw-examples/examples/runnable/57-task-debt-rollover-digest/sample-output.md": {
+      "title": "Sample Output - Task Debt Rollover Digest",
+      "size": 631,
+      "first_seen": "2026-03-16T02:28:25.413499"
+    },
+    "awesome-openclaw-examples/examples/runnable/31-dependency-drift-watchtower/sample-output.md": {
+      "title": "Sample Output - Dependency Drift Watchtower",
+      "size": 640,
+      "first_seen": "2026-03-16T02:28:25.413500"
+    },
     "awesome-openclaw-examples/examples/runnable/10-model-cost-command-center/sample-output.md": {
       "title": "Sample Output - Model Cost Command Center",
       "size": 622,
       "first_seen": "2026-03-07T12:45:49.275333"
     },
+    "awesome-openclaw-examples/examples/runnable/32-flaky-test-quarantine-queue/sample-output.md": {
+      "title": "Sample Output - Flaky Test Quarantine Queue",
+      "size": 636,
+      "first_seen": "2026-03-16T02:28:25.413503"
+    },
+    "awesome-openclaw-examples/examples/runnable/60-voice-memo-briefing-pack/sample-output.md": {
+      "title": "Sample Output - Voice Memo Briefing Pack",
+      "size": 626,
+      "first_seen": "2026-03-16T02:28:25.413504"
+    },
     "awesome-openclaw-examples/examples/runnable/09-weekly-incident-brief/sample-output.md": {
       "title": "Sample Output - Weekly Incident Brief",
       "size": 599,
       "first_seen": "2026-03-07T12:45:49.275335"
+    },
+    "awesome-openclaw-examples/examples/runnable/90-change-freeze-guard/sample-output.md": {
+      "title": "Sample Output - Change Freeze Guard",
+      "size": 626,
+      "first_seen": "2026-03-16T02:28:25.413507"
+    },
+    "awesome-openclaw-examples/examples/runnable/98-security-exception-register/sample-output.md": {
+      "title": "Sample Output - Security Exception Register",
+      "size": 627,
+      "first_seen": "2026-03-16T02:28:25.413508"
     },
     "awesome-openclaw-examples/examples/runnable/02-sla-guardian/sample-output.md": {
       "title": "Sample Output - SLA Guardian",
@@ -1063,35 +1270,185 @@
       "size": 582,
       "first_seen": "2026-03-07T12:45:49.275337"
     },
+    "awesome-openclaw-examples/examples/runnable/69-market-faq-synthesizer/sample-output.md": {
+      "title": "Sample Output - Market FAQ Synthesizer",
+      "size": 608,
+      "first_seen": "2026-03-16T02:28:25.413512"
+    },
+    "awesome-openclaw-examples/examples/runnable/92-pto-coverage-planner/sample-output.md": {
+      "title": "Sample Output - PTO Coverage Planner",
+      "size": 604,
+      "first_seen": "2026-03-16T02:28:25.413514"
+    },
+    "awesome-openclaw-examples/examples/runnable/41-alert-noise-deduper/sample-output.md": {
+      "title": "Sample Output - Alert Noise Deduper",
+      "size": 613,
+      "first_seen": "2026-03-16T02:28:25.413515"
+    },
+    "awesome-openclaw-examples/examples/runnable/91-asset-return-tracker/sample-output.md": {
+      "title": "Sample Output - Asset Return Tracker",
+      "size": 603,
+      "first_seen": "2026-03-16T02:28:25.413517"
+    },
+    "awesome-openclaw-examples/examples/runnable/46-lost-deal-pattern-miner/sample-output.md": {
+      "title": "Sample Output - Lost Deal Pattern Miner",
+      "size": 625,
+      "first_seen": "2026-03-16T02:28:25.413518"
+    },
     "awesome-openclaw-examples/examples/runnable/04-meeting-briefing-concierge/sample-output.md": {
       "title": "Sample Output - Meeting Briefing Concierge",
       "size": 658,
       "first_seen": "2026-03-07T12:45:49.275338"
+    },
+    "awesome-openclaw-examples/examples/runnable/88-shadow-ai-watchlist/sample-output.md": {
+      "title": "Sample Output - Shadow-AI Watchlist",
+      "size": 618,
+      "first_seen": "2026-03-16T02:28:25.413521"
+    },
+    "awesome-openclaw-examples/examples/runnable/61-customer-handoff-builder/sample-output.md": {
+      "title": "Sample Output - Customer Handoff Builder",
+      "size": 623,
+      "first_seen": "2026-03-16T02:28:25.413522"
+    },
+    "awesome-openclaw-examples/examples/runnable/54-vip-inbox-watchdog/sample-output.md": {
+      "title": "Sample Output - VIP Inbox Watchdog",
+      "size": 632,
+      "first_seen": "2026-03-16T02:28:25.413523"
+    },
+    "awesome-openclaw-examples/examples/runnable/85-vendor-security-questionnaire-assistant/sample-output.md": {
+      "title": "Sample Output - Vendor Security Questionnaire Assistant",
+      "size": 651,
+      "first_seen": "2026-03-16T02:28:25.413525"
+    },
+    "awesome-openclaw-examples/examples/runnable/81-expense-exception-digest/sample-output.md": {
+      "title": "Sample Output - Expense Exception Digest",
+      "size": 634,
+      "first_seen": "2026-03-16T02:28:25.413526"
+    },
+    "awesome-openclaw-examples/examples/runnable/63-competitor-launch-explainer/sample-output.md": {
+      "title": "Sample Output - Competitor Launch Explainer",
+      "size": 636,
+      "first_seen": "2026-03-16T02:28:25.413527"
+    },
+    "awesome-openclaw-examples/examples/runnable/84-secrets-leak-triage-digest/sample-output.md": {
+      "title": "Sample Output - Secrets Leak Triage Digest",
+      "size": 620,
+      "first_seen": "2026-03-16T02:28:25.413529"
     },
     "awesome-openclaw-examples/examples/runnable/28-on-call-handoff-builder/sample-output.md": {
       "title": "Sample Output - On-call Handoff Builder",
       "size": 584,
       "first_seen": "2026-03-07T12:45:49.275339"
     },
+    "awesome-openclaw-examples/examples/runnable/77-vendor-renewal-calendar-guard/sample-output.md": {
+      "title": "Sample Output - Vendor Renewal Calendar Guard",
+      "size": 639,
+      "first_seen": "2026-03-16T02:28:25.413532"
+    },
+    "awesome-openclaw-examples/examples/runnable/74-policy-acknowledgment-tracker/sample-output.md": {
+      "title": "Sample Output - Policy Acknowledgment Tracker",
+      "size": 615,
+      "first_seen": "2026-03-16T02:28:25.413533"
+    },
+    "awesome-openclaw-examples/examples/runnable/72-hiring-pipeline-stall-radar/sample-output.md": {
+      "title": "Sample Output - Hiring Pipeline Stall Radar",
+      "size": 602,
+      "first_seen": "2026-03-16T02:28:25.413534"
+    },
+    "awesome-openclaw-examples/examples/runnable/67-analyst-mention-monitor/sample-output.md": {
+      "title": "Sample Output - Analyst Mention Monitor",
+      "size": 619,
+      "first_seen": "2026-03-16T02:28:25.413536"
+    },
     "awesome-openclaw-examples/examples/runnable/03-release-notes-pilot/sample-output.md": {
       "title": "Sample Output - Release Notes Pilot",
       "size": 589,
       "first_seen": "2026-03-07T12:45:49.275341"
+    },
+    "awesome-openclaw-examples/examples/runnable/47-champion-change-detector/sample-output.md": {
+      "title": "Sample Output - Champion Change Detector",
+      "size": 640,
+      "first_seen": "2026-03-16T02:28:25.413538"
+    },
+    "awesome-openclaw-examples/examples/runnable/37-repo-hygiene-janitor/sample-output.md": {
+      "title": "Sample Output - Repo Hygiene Janitor",
+      "size": 633,
+      "first_seen": "2026-03-16T02:28:25.413540"
+    },
+    "awesome-openclaw-examples/examples/runnable/100-team-ritual-planner/sample-output.md": {
+      "title": "Sample Output - Team Ritual Planner",
+      "size": 603,
+      "first_seen": "2026-03-16T02:28:25.413541"
     },
     "awesome-openclaw-examples/examples/runnable/26-roadmap-signal-board/sample-output.md": {
       "title": "Sample Output - Roadmap Signal Board",
       "size": 580,
       "first_seen": "2026-03-07T12:45:49.275342"
     },
+    "awesome-openclaw-examples/examples/runnable/70-campaign-asset-request-router/sample-output.md": {
+      "title": "Sample Output - Campaign Asset Request Router",
+      "size": 631,
+      "first_seen": "2026-03-16T02:28:25.413544"
+    },
+    "awesome-openclaw-examples/examples/runnable/64-thought-leadership-quote-miner/sample-output.md": {
+      "title": "Sample Output - Thought-Leadership Quote Miner",
+      "size": 614,
+      "first_seen": "2026-03-16T02:28:25.413545"
+    },
+    "awesome-openclaw-examples/examples/runnable/65-webinar-repurposing-desk/sample-output.md": {
+      "title": "Sample Output - Webinar Repurposing Desk",
+      "size": 639,
+      "first_seen": "2026-03-16T02:28:25.413546"
+    },
+    "awesome-openclaw-examples/examples/runnable/97-board-question-tracker/sample-output.md": {
+      "title": "Sample Output - Board Question Tracker",
+      "size": 636,
+      "first_seen": "2026-03-16T02:28:25.413548"
+    },
     "awesome-openclaw-examples/examples/runnable/12-calendar-conflict-resolver/sample-output.md": {
       "title": "Sample Output - Calendar Conflict Resolver",
       "size": 586,
       "first_seen": "2026-03-07T12:45:49.275344"
     },
+    "awesome-openclaw-examples/examples/runnable/82-board-packet-evidence-collector/sample-output.md": {
+      "title": "Sample Output - Board Packet Evidence Collector",
+      "size": 633,
+      "first_seen": "2026-03-16T02:28:25.413550"
+    },
+    "awesome-openclaw-examples/examples/runnable/40-hotfix-readiness-monitor/sample-output.md": {
+      "title": "Sample Output - Hotfix Readiness Monitor",
+      "size": 622,
+      "first_seen": "2026-03-16T02:28:25.413552"
+    },
+    "awesome-openclaw-examples/examples/runnable/42-prompt-regression-watch/sample-output.md": {
+      "title": "Sample Output - Prompt Regression Watch",
+      "size": 629,
+      "first_seen": "2026-03-16T02:28:25.413553"
+    },
+    "awesome-openclaw-examples/examples/runnable/78-contract-redline-summary-board/sample-output.md": {
+      "title": "Sample Output - Contract Redline Summary Board",
+      "size": 638,
+      "first_seen": "2026-03-16T02:28:25.413554"
+    },
+    "awesome-openclaw-examples/examples/runnable/93-customer-renewal-meeting-prep/sample-output.md": {
+      "title": "Sample Output - Customer Renewal Meeting Prep",
+      "size": 636,
+      "first_seen": "2026-03-16T02:28:25.413556"
+    },
     "awesome-openclaw-examples/examples/runnable/13-personal-crm-lite/sample-output.md": {
       "title": "Sample Output - Personal CRM Lite",
       "size": 594,
       "first_seen": "2026-03-07T12:45:49.275345"
+    },
+    "awesome-openclaw-examples/examples/runnable/75-interview-prep-brief/sample-output.md": {
+      "title": "Sample Output - Interview Prep Brief",
+      "size": 608,
+      "first_seen": "2026-03-16T02:28:25.413558"
+    },
+    "awesome-openclaw-examples/examples/runnable/94-product-launch-readiness-board/sample-output.md": {
+      "title": "Sample Output - Product Launch Readiness Board",
+      "size": 639,
+      "first_seen": "2026-03-16T02:28:25.413559"
     },
     "awesome-openclaw-examples/examples/runnable/16-voice-notes-to-tasks/sample-output.md": {
       "title": "Sample Output - Voice Notes to Tasks",
@@ -1103,15 +1460,40 @@
       "size": 580,
       "first_seen": "2026-03-07T12:45:49.275348"
     },
+    "awesome-openclaw-examples/examples/runnable/53-bug-report-intake-cleaner/sample-output.md": {
+      "title": "Sample Output - Bug Report Intake Cleaner",
+      "size": 625,
+      "first_seen": "2026-03-16T02:28:25.413564"
+    },
     "awesome-openclaw-examples/examples/runnable/01-pr-radar/sample-output.md": {
       "title": "Sample Output - PR Radar",
       "size": 628,
       "first_seen": "2026-03-07T12:45:49.275349"
     },
+    "awesome-openclaw-examples/examples/runnable/95-data-request-triage-desk/sample-output.md": {
+      "title": "Sample Output - Data Request Triage Desk",
+      "size": 636,
+      "first_seen": "2026-03-16T02:28:25.413566"
+    },
+    "awesome-openclaw-examples/examples/runnable/50-invoice-dispute-summarizer/sample-output.md": {
+      "title": "Sample Output - Invoice Dispute Summarizer",
+      "size": 635,
+      "first_seen": "2026-03-16T02:28:25.413567"
+    },
     "awesome-openclaw-examples/examples/runnable/07-ci-flake-doctor/sample-output.md": {
       "title": "Sample Output - CI Flake Doctor",
       "size": 597,
       "first_seen": "2026-03-07T12:45:49.275350"
+    },
+    "awesome-openclaw-examples/examples/runnable/79-procurement-intake-scorer/sample-output.md": {
+      "title": "Sample Output - Procurement Intake Scorer",
+      "size": 636,
+      "first_seen": "2026-03-16T02:28:25.413570"
+    },
+    "awesome-openclaw-examples/examples/runnable/45-trial-to-paid-nudger/sample-output.md": {
+      "title": "Sample Output - Trial-to-Paid Nudger",
+      "size": 628,
+      "first_seen": "2026-03-16T02:28:25.413572"
     },
     "awesome-openclaw-examples/examples/runnable/24-lead-intake-router/sample-output.md": {
       "title": "Sample Output - Lead Intake Router",
