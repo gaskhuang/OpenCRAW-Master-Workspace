@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 """
 生成 Use Case 索引網頁 (index.html)
+使用 scripts/skills_metadata.json 的豐富資料
 """
 
 import os
-import re
 import json
 from collections import Counter
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SKILLS_DIR = os.path.join(BASE, ".claude", "skills")
+METADATA = os.path.join(BASE, "scripts", "skills_metadata.json")
 OUTPUT = os.path.join(BASE, "index.html")
 
-# Category consolidation (merge similar categories)
 CAT_MERGE = {
     "社群媒體自動化": "社群媒體",
     "商業與銷售": "商業、行銷與銷售",
@@ -48,71 +47,18 @@ CAT_ICONS = {
 }
 
 
-def parse_skills():
-    skills = []
-    for name in sorted(os.listdir(SKILLS_DIR)):
-        if name == "usecase-index":
-            continue
-        skill_md = os.path.join(SKILLS_DIR, name, "SKILL.md")
-        if not os.path.exists(skill_md):
-            continue
-        with open(skill_md, encoding="utf-8") as f:
-            content = f.read(2000)
+def main():
+    with open(METADATA, encoding="utf-8") as f:
+        skills = json.load(f)
 
-        # Extract ID
-        m = re.search(r"#(\d{3})", content)
-        num = int(m.group(1)) if m else 0
+    # Merge categories
+    for s in skills:
+        s["category"] = CAT_MERGE.get(s["category"], s["category"])
+        s["icon"] = CAT_ICONS.get(s["category"], "📦")
 
-        # Extract category
-        m2 = re.search(r"分類:\s*(.+?)\s*\|", content)
-        cat = m2.group(1).strip() if m2 else "其他"
-        cat = CAT_MERGE.get(cat, cat)
-
-        # Extract one-liner
-        desc = ""
-        if "一句話描述" in content:
-            after = content.split("一句話描述")[1]
-            m3 = re.search(r">\s*(.+)", after)
-            desc = m3.group(1).strip() if m3 else ""
-
-        # Extract difficulty
-        m4 = re.search(r"難度:\s*(\S+)", content)
-        diff = m4.group(1).strip() if m4 else "中級"
-
-        # Extract name parts
-        m5 = re.match(r"(.+?)\s*\((.+?)\)", name)
-        if m5:
-            name_zh = m5.group(1)
-            name_en = m5.group(2)
-        else:
-            name_zh = name
-            name_en = name
-
-        # Source label
-        m6 = re.search(r"`(\w+)`:\s*`(.+?)`", content)
-        source = m6.group(1) if m6 else ""
-
-        skills.append({
-            "id": num,
-            "name": name,
-            "name_zh": name_zh,
-            "name_en": name_en,
-            "category": cat,
-            "icon": CAT_ICONS.get(cat, "📦"),
-            "description": desc,
-            "difficulty": diff,
-            "source": source,
-        })
-
-    skills.sort(key=lambda s: s["id"])
-    return skills
-
-
-def generate_html(skills):
     cats = sorted(set(s["category"] for s in skills))
     cat_counts = Counter(s["category"] for s in skills)
-
-    skills_json = json.dumps(skills, ensure_ascii=False, indent=2)
+    skills_json = json.dumps(skills, ensure_ascii=False)
 
     html = f"""<!DOCTYPE html>
 <html lang="zh-TW">
@@ -225,6 +171,7 @@ body {{
   cursor: pointer;
   font-size: 0.85rem;
   transition: all 0.2s;
+  white-space: nowrap;
 }}
 .filter-btn:hover {{
   border-color: var(--accent);
@@ -247,7 +194,7 @@ body {{
 }}
 .grid {{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 16px;
 }}
 .card {{
@@ -257,6 +204,8 @@ body {{
   padding: 20px;
   transition: all 0.2s;
   cursor: default;
+  display: flex;
+  flex-direction: column;
 }}
 .card:hover {{
   border-color: var(--accent);
@@ -276,11 +225,13 @@ body {{
   background: rgba(88, 166, 255, 0.1);
   padding: 2px 8px;
   border-radius: 4px;
+  flex-shrink: 0;
 }}
 .card-diff {{
   font-size: 0.7rem;
   padding: 2px 8px;
   border-radius: 4px;
+  flex-shrink: 0;
 }}
 .diff-初中級 {{ background: rgba(63, 185, 80, 0.15); color: var(--accent2); }}
 .diff-中級 {{ background: rgba(210, 168, 255, 0.15); color: var(--accent3); }}
@@ -289,7 +240,7 @@ body {{
 .card-title {{
   font-size: 1.05rem;
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }}
 .card-title-en {{
   font-size: 0.8rem;
@@ -299,17 +250,29 @@ body {{
 .card-desc {{
   font-size: 0.85rem;
   color: var(--text-muted);
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  flex-grow: 1;
+}}
+.card-tools {{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}}
+.tool-tag {{
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(88, 166, 255, 0.08);
+  color: var(--accent);
+  border: 1px solid rgba(88, 166, 255, 0.2);
+  font-family: 'SF Mono', 'Fira Code', monospace;
 }}
 .card-footer {{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 14px;
   padding-top: 12px;
   border-top: 1px solid var(--border);
 }}
@@ -369,7 +332,7 @@ footer a {{
 
 <div class="container">
   <div class="search-bar">
-    <input type="text" id="search" placeholder="🔍 搜尋 use case（中文、英文、編號）..." autocomplete="off">
+    <input type="text" id="search" placeholder="🔍 搜尋 use case（中文、英文、編號、skill 名稱）..." autocomplete="off">
   </div>
 
   <div class="filters" id="filters">
@@ -399,7 +362,11 @@ let activeCategory = 'all';
 
 function renderCards(filtered) {
   resultCount.textContent = `顯示 ${filtered.length} / ${skills.length} 個 use case`;
-  grid.innerHTML = filtered.map(s => `
+  grid.innerHTML = filtered.map(s => {
+    const toolsHtml = (s.tools || []).map(t =>
+      `<span class="tool-tag">${t}</span>`
+    ).join('');
+    return `
     <div class="card">
       <div class="card-header">
         <span class="card-id">#${String(s.id).padStart(3, '0')}</span>
@@ -408,24 +375,27 @@ function renderCards(filtered) {
       <div class="card-title">${s.name_zh}</div>
       <div class="card-title-en">${s.name_en}</div>
       <div class="card-desc">${s.description || '—'}</div>
+      ${toolsHtml ? `<div class="card-tools">${toolsHtml}</div>` : ''}
       <div class="card-footer">
         <span class="card-cat">${s.icon} ${s.category}</span>
         ${s.source ? `<span class="card-source">${s.source}</span>` : ''}
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 function filterSkills() {
   const q = search.value.toLowerCase();
   const filtered = skills.filter(s => {
     const matchCat = activeCategory === 'all' || s.category === activeCategory;
+    const toolsStr = (s.tools || []).join(' ').toLowerCase();
     const matchSearch = !q ||
       s.name_zh.toLowerCase().includes(q) ||
       s.name_en.toLowerCase().includes(q) ||
       s.description.toLowerCase().includes(q) ||
       String(s.id).padStart(3, '0').includes(q) ||
-      s.category.toLowerCase().includes(q);
+      s.category.toLowerCase().includes(q) ||
+      toolsStr.includes(q);
     return matchCat && matchSearch;
   });
   renderCards(filtered);
@@ -447,22 +417,13 @@ filterSkills();
 
 </body>
 </html>"""
-    return html
-
-
-def main():
-    print("Parsing skills...")
-    skills = parse_skills()
-    print(f"Found {len(skills)} skills")
-
-    print("Generating HTML...")
-    html = generate_html(skills)
 
     with open(OUTPUT, "w", encoding="utf-8") as f:
         f.write(html)
 
-    print(f"Done! Output: {OUTPUT}")
-    print(f"File size: {os.path.getsize(OUTPUT) / 1024:.1f} KB")
+    print(f"Generated: {OUTPUT}")
+    print(f"Size: {os.path.getsize(OUTPUT) / 1024:.1f} KB")
+    print(f"Skills: {len(skills)}")
 
 
 if __name__ == "__main__":
