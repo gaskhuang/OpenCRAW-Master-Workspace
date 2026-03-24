@@ -13,6 +13,8 @@
 !/workspace/
 !/clawd/
 !/reddit-monitoring/
+!/skills/
+!/usecases/
 
 # ✅ Allow Strategic Markdown Files
 !/*.md
