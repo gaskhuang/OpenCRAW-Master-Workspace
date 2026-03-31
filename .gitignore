@@ -6,6 +6,10 @@
 !/reports/
 !/scripts/
 !/openclaw/
+!/.claude/
+!/docs/
+!/usecases/
+!/_repos/
 !/openclaw-service/
 !/openclaw-deploy-pack/
 !/sentinel-intelligence-hub/
