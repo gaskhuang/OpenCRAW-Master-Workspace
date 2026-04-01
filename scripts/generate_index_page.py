@@ -65,7 +65,7 @@ def main():
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OpenClaw Use Cases — {len(skills)} 個自動化技能</title>
+<title>龍蝦成功案例 — {len(skills)} 個自動化技能</title>
 <style>
 :root {{
   --bg: #0d1117;
@@ -308,7 +308,7 @@ footer a {{
 <body>
 
 <div class="hero">
-  <h1>OpenClaw Use Cases</h1>
+  <h1>龍蝦成功案例</h1>
   <p>AI 代理自動化技能庫 — 從個人生產力到企業級工作流，一鍵啟動。</p>
   <div class="stats">
     <div class="stat">
